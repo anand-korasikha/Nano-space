@@ -18,7 +18,7 @@ const Hero = ({ pageType = 'home' }) => {
     }, [pageType, heroImages.length]);
 
     return (
-        <div className="relative min-h-[90vh] flex flex-col lg:flex-row bg-white overflow-hidden pt-20">
+        <div className="relative min-h-[90vh] flex flex-col lg:flex-row bg-white overflow-hidden pt-16">
             {/* Left Column: Content */}
             <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-center px-6 md:px-12 lg:px-20 py-12 lg:py-0 z-10">
                 <div className="max-w-3xl">
