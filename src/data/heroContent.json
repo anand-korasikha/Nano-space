@@ -1,0 +1,124 @@
+{
+    "home": {
+        "title": {
+            "line1": "Find the Best",
+            "line2": "Work & Live",
+            "line3": "Spaces"
+        },
+        "searchPlaceholder": {
+            "type": "What are you looking for?",
+            "city": "Select City"
+        },
+        "searchButton": "Search",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Coworking Space",
+            "Coliving Space",
+            "Virtual Office"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi"
+        ],
+        "heroImages": [
+            "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+        ]
+    },
+    "coworking": {
+        "title": {
+            "line1": "Premium",
+            "line2": "Coworking",
+            "line3": "Spaces"
+        },
+        "searchPlaceholder": {
+            "type": "Select workspace type",
+            "city": "Select City"
+        },
+        "searchButton": "Find Spaces",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Hot Desk",
+            "Dedicated Desk",
+            "Private Office"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Hyderabad",
+            "Pune"
+        ],
+        "heroImages": [
+            "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+        ]
+    },
+    "coliving": {
+        "title": {
+            "line1": "Discover",
+            "line2": "Coliving",
+            "line3": "Communities"
+        },
+        "searchPlaceholder": {
+            "type": "Room type",
+            "city": "Select City"
+        },
+        "searchButton": "Explore",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Private Room",
+            "Shared Room",
+            "Studio Apartment"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Goa"
+        ],
+        "heroImages": [
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+        ]
+    },
+    "virtualoffice": {
+        "title": {
+            "line1": "Professional",
+            "line2": "Virtual Office",
+            "line3": "Solutions"
+        },
+        "searchPlaceholder": {
+            "type": "Select service",
+            "city": "Select City"
+        },
+        "searchButton": "Get Started",
+        "popularCitiesLabel": "Available Cities",
+        "typeOptions": [
+            "Business Address",
+            "Mail Handling",
+            "Meeting Rooms"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Chennai",
+            "Kolkata"
+        ],
+        "heroImages": [
+            "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+        ]
+    }
+}

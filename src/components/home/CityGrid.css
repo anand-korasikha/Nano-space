@@ -1,0 +1,58 @@
+/* City Icon Container */
+.city-icon-container {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+/* City Icon Image */
+.city-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.group:hover .city-icon-container {
+    background: #eff6ff;
+    width: 32px;
+    height: 32px;
+}
+
+.group:hover .city-icon {
+    width: 32px;
+    height: 32px;
+    transform: scale(1);
+}
+
+/* Responsive Sizes */
+@media (max-width: 768px) {
+    .city-icon-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .city-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .city-icon-container {
+        width: 32px;
+        height: 32px;
+    }
+
+    .city-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
