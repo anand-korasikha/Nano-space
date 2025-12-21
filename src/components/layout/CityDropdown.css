@@ -102,17 +102,36 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .dropdown-overlay {
+        display: none;
+    }
+
     .city-dropdown-menu {
-        min-width: 320px;
-        padding: 20px;
+        position: static;
+        transform: none;
+        min-width: 100%;
+        width: 100%;
+        padding: 16px;
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: #f9fafb;
+        animation: none;
     }
 
     .city-dropdown-grid {
-        gap: 10px;
+        gap: 8px;
     }
 
     .city-dropdown-item {
-        padding: 8px 10px;
+        padding: 12px;
+        background: white;
+        border-radius: 8px;
+    }
+
+    .city-dropdown-item:hover {
+        background: #f3f4f6;
+        transform: none;
     }
 
     .city-dropdown-icon {
@@ -122,5 +141,10 @@
 
     .city-dropdown-name {
         font-size: 14px;
+    }
+
+    .view-all-link {
+        margin-top: 12px;
+        background: white;
     }
 }
