@@ -1,18 +1,7 @@
-/* Dropdown Overlay */
-.dropdown-overlay {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    z-index: 998;
-}
-
 /* Dropdown Menu Container */
 .city-dropdown-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: white;
@@ -20,9 +9,23 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     padding: 24px;
     min-width: 400px;
-    z-index: 999;
+    z-index: 1101;
     animation: dropdownFadeIn 0.2s ease-out;
+    margin-top: 8px;
 }
+
+/* Invisible hover bridge to prevent dropdown from closing */
+.city-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: transparent;
+    pointer-events: auto;
+}
+
 
 @keyframes dropdownFadeIn {
     from {
@@ -102,10 +105,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .dropdown-overlay {
-        display: none;
-    }
-
     .city-dropdown-menu {
         position: static;
         transform: none;

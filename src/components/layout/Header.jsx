@@ -82,6 +82,8 @@ const Header = () => {
                                             e.preventDefault();
                                             toggleMobileDropdown('coworking');
                                         } else {
+                                            // On desktop, allow navigation and close dropdown
+                                            setIsCoworkingDropdownOpen(false);
                                             closeMobileMenu();
                                         }
                                     }}
@@ -108,6 +110,8 @@ const Header = () => {
                                 onClose={() => setIsCoworkingDropdownOpen(false)}
                                 servicePath="coworking"
                                 onCityClick={closeMobileMenu}
+                                onMouseEnter={() => window.innerWidth > 768 && setIsCoworkingDropdownOpen(true)}
+                                onMouseLeave={() => window.innerWidth > 768 && setIsCoworkingDropdownOpen(false)}
                             />
                         </li>
 
@@ -127,6 +131,8 @@ const Header = () => {
                                             e.preventDefault();
                                             toggleMobileDropdown('coliving');
                                         } else {
+                                            // On desktop, allow navigation and close dropdown
+                                            setIsColivingDropdownOpen(false);
                                             closeMobileMenu();
                                         }
                                     }}
@@ -153,6 +159,8 @@ const Header = () => {
                                 onClose={() => setIsColivingDropdownOpen(false)}
                                 servicePath="coliving"
                                 onCityClick={closeMobileMenu}
+                                onMouseEnter={() => window.innerWidth > 768 && setIsColivingDropdownOpen(true)}
+                                onMouseLeave={() => window.innerWidth > 768 && setIsColivingDropdownOpen(false)}
                             />
                         </li>
 
@@ -171,6 +179,8 @@ const Header = () => {
                                             e.preventDefault();
                                             toggleMobileDropdown('virtualoffice');
                                         } else {
+                                            // On desktop, allow navigation and close dropdown
+                                            setIsVirtualOfficeDropdownOpen(false);
                                             closeMobileMenu();
                                         }
                                     }}
@@ -197,6 +207,8 @@ const Header = () => {
                                 onClose={() => setIsVirtualOfficeDropdownOpen(false)}
                                 servicePath="virtual-office"
                                 onCityClick={closeMobileMenu}
+                                onMouseEnter={() => window.innerWidth > 768 && setIsVirtualOfficeDropdownOpen(true)}
+                                onMouseLeave={() => window.innerWidth > 768 && setIsVirtualOfficeDropdownOpen(false)}
                             />
                         </li>
                         <li>
@@ -260,7 +272,7 @@ const Header = () => {
                     </div>
                     <div className="divider"></div>
                     <button className="book-now-btn">
-                        <span>Book Now</span>
+                        <span>Contact Us</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>

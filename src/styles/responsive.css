@@ -1,0 +1,511 @@
+/* ========================================
+   GLOBAL MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Base Responsive Typography */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   CONTAINER & LAYOUT FIXES
+   ======================================== */
+
+/* Ensure all containers are responsive */
+@media (max-width: 1200px) {
+
+    .container,
+    [class*="-container"] {
+        max-width: 100%;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container,
+    [class*="-container"] {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container,
+    [class*="-container"] {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* ========================================
+   GRID LAYOUTS - RESPONSIVE
+   ======================================== */
+
+/* 4-column grids → 2 columns on tablet → 1 column on mobile */
+@media (max-width: 900px) {
+
+    [class*="-grid"],
+    .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+
+    [class*="-grid"],
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+}
+
+/* ========================================
+   SECTION SPACING - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    section,
+    [class*="-section"] {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    section,
+    [class*="-section"] {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* ========================================
+   TYPOGRAPHY - RESPONSIVE
+   ======================================== */
+
+/* Headings */
+@media (max-width: 768px) {
+
+    h1,
+    .h1 {
+        font-size: 1.875rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.25rem !important;
+    }
+
+    h4,
+    .h4 {
+        font-size: 1.125rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1,
+    .h1 {
+        font-size: 1.5rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.25rem !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.125rem !important;
+    }
+}
+
+/* ========================================
+   BUTTONS - MOBILE FRIENDLY
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    button,
+    .btn,
+    [class*="-btn"],
+    [class*="-button"] {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.9375rem !important;
+        min-height: 44px;
+        /* Touch-friendly */
+    }
+}
+
+@media (max-width: 480px) {
+
+    button,
+    .btn,
+    [class*="-btn"],
+    [class*="-button"] {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   CARDS - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    [class*="-card"],
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    [class*="-card"] img,
+    .card img {
+        max-height: 200px;
+    }
+}
+
+/* ========================================
+   IMAGES - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [class*="-image"],
+    [class*="-img"] {
+        height: auto !important;
+        min-height: 150px;
+        max-height: 250px;
+    }
+}
+
+/* ========================================
+   FORMS - MOBILE FRIENDLY
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+        /* Prevents zoom on iOS */
+        padding: 0.75rem !important;
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   MODALS - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    [class*="-modal"],
+    .modal {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem auto !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    [class*="-modal-content"],
+    .modal-content {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ========================================
+   NAVIGATION - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* ========================================
+   TABLES - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+    }
+}
+
+/* ========================================
+   HERO SECTIONS - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    [class*="hero"],
+    .hero {
+        min-height: 400px !important;
+        padding: 2rem 1rem !important;
+    }
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 1.875rem !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* ========================================
+   FLEXBOX - MOBILE STACK
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    [class*="flex"],
+    .flex {
+        flex-direction: column !important;
+    }
+
+    [class*="flex"]>* {
+        width: 100% !important;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ========================================
+   SPACING UTILITIES - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .gap-4 {
+        gap: 1rem !important;
+    }
+
+    .gap-3 {
+        gap: 0.75rem !important;
+    }
+
+    .gap-2 {
+        gap: 0.5rem !important;
+    }
+
+    .p-4 {
+        padding: 1rem !important;
+    }
+
+    .p-3 {
+        padding: 0.75rem !important;
+    }
+
+    .p-2 {
+        padding: 0.5rem !important;
+    }
+
+    .m-4 {
+        margin: 1rem !important;
+    }
+
+    .m-3 {
+        margin: 0.75rem !important;
+    }
+
+    .m-2 {
+        margin: 0.5rem !important;
+    }
+}
+
+/* ========================================
+   OVERFLOW - PREVENT HORIZONTAL SCROLL
+   ======================================== */
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    * {
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   TOUCH TARGETS - ACCESSIBILITY
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    a,
+    button,
+    input[type="submit"],
+    input[type="button"],
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   HIDE/SHOW UTILITIES - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+
+    .show-desktop {
+        display: block !important;
+    }
+}
+
+/* ========================================
+   SPECIFIC COMPONENT FIXES
+   ======================================== */
+
+/* City Coworking Page */
+@media (max-width: 768px) {
+    .city-coworking-hero {
+        padding: 2rem 1rem !important;
+    }
+
+    .location-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-dropdowns {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filter-dropdowns select {
+        width: 100%;
+    }
+}
+
+/* Home Page */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .city-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ========================================
+   PERFORMANCE - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+
+    img,
+    video {
+        will-change: transform;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .no-print,
+    nav,
+    footer,
+    button,
+    [class*="-modal"] {
+        display: none !important;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}

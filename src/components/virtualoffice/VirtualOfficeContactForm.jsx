@@ -208,9 +208,9 @@ const VirtualOfficeContactForm = () => {
                                         <span className="font-medium">93115 28043</span>
                                     </a>
                                     <span className="text-gray-300">|</span>
-                                    <a href="mailto:hello@cofynd.com" className="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                                    <a href="mailto:hello@nanospace.com" className="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
                                         <span>✉️</span>
-                                        <span className="font-medium">hello@cofynd.com</span>
+                                        <span className="font-medium">hello@nanospace.com</span>
                                     </a>
                                 </div>
                             </div>

@@ -1,0 +1,191 @@
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.faq-subtitle {
+    font-size: 1.0625rem;
+    color: #666;
+}
+
+/* FAQ List */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* FAQ Item */
+.faq-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+}
+
+.faq-item.active {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+}
+
+/* Question Button */
+.faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f8f9fa;
+}
+
+.faq-item.active .faq-question {
+    background-color: #f0f7ff;
+}
+
+.faq-question-text {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    flex: 1;
+    padding-right: 16px;
+    line-height: 1.5;
+}
+
+.faq-icon {
+    color: #0d6efd;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+/* Answer */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer.open {
+    max-height: 500px;
+    padding: 0 24px 20px 24px;
+}
+
+.faq-answer-text {
+    font-size: 0.9375rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 60px 0;
+    }
+
+    .faq-container {
+        padding: 0 1rem;
+    }
+
+    .faq-header {
+        margin-bottom: 40px;
+    }
+
+    .faq-title {
+        font-size: 1.875rem;
+    }
+
+    .faq-subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .faq-question {
+        padding: 16px 20px;
+    }
+
+    .faq-question-text {
+        font-size: 1rem;
+    }
+
+    .faq-answer.open {
+        padding: 0 20px 16px 20px;
+    }
+
+    .faq-answer-text {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-question {
+        padding: 14px 16px;
+    }
+
+    .faq-question-text {
+        font-size: 0.9375rem;
+    }
+
+    .faq-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Accessibility */
+.faq-question:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-answer.open .faq-answer-text {
+    animation: slideDown 0.3s ease;
+}

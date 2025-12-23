@@ -22,10 +22,11 @@
             "Delhi"
         ],
         "heroImages": [
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            "/images/hero/home-1.jpg",
+            "/images/hero/home-2.jpg",
+            "/images/hero/home-3.jpg",
+            "/images/hero/home-4.jpg",
+            "/images/hero/home-5.jpg"
         ]
     },
     "coworking": {
@@ -53,11 +54,11 @@
             "Pune"
         ],
         "heroImages": [
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            "/images/hero/coworking-1.jpg",
+            "/images/hero/coworking-2.jpg",
+            "/images/hero/coworking-3.jpg",
+            "/images/hero/coworking-4.jpg",
+            "/images/hero/coworking-5.jpg"
         ]
     },
     "coliving": {
@@ -84,10 +85,11 @@
             "Goa"
         ],
         "heroImages": [
-            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            "/images/hero/coliving-1.jpg",
+            "/images/hero/coliving-2.jpg",
+            "/images/hero/coliving-3.jpg",
+            "/images/hero/coliving-4.jpg",
+            "/images/hero/coliving-5.jpg"
         ]
     },
     "virtualoffice": {
@@ -115,10 +117,11 @@
             "Kolkata"
         ],
         "heroImages": [
-            "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-            "https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            "/images/hero/virtualoffice-1.jpg",
+            "/images/hero/virtualoffice-2.jpg",
+            "/images/hero/virtualoffice-3.jpg",
+            "/images/hero/virtualoffice-4.jpg",
+            "/images/hero/virtualoffice-5.jpg"
         ]
     }
 }

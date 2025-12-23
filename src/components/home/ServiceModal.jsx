@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath }) => {
+const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath, currentPage = 'home' }) => {
     if (!isOpen) return null;
+
+    // Normalize city name for URL (lowercase)
+    const cityUrlName = cityName?.toLowerCase();
 
     const services = [
         {
             name: 'Coworking Space',
-            path: '/coworking',
+            path: `/coworking/${cityUrlName}`,
             bgColor: 'bg-[#FFF8E7]', // Creamy yellow
             icon: (
                 <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,7 +20,7 @@ const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath }) => {
         },
         {
             name: 'Coliving Space',
-            path: '/coliving',
+            path: `/coliving/${cityUrlName}`,
             bgColor: 'bg-[#EAF6FF]', // Light blue
             icon: (
                 <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,7 +30,7 @@ const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath }) => {
         },
         {
             name: 'Virtual Office',
-            path: '/virtual-office',
+            path: `/virtual-office/${cityUrlName}`,
             bgColor: 'bg-[#FFF8E7]',
             icon: (
                 <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,6 +106,7 @@ const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath }) => {
                         <Link
                             key={service.name}
                             to={service.path}
+                            onClick={onClose}
                             className="group flex flex-col items-center gap-4 text-center w-full"
                         >
                             {/* Circular Icon Container */}

@@ -10,6 +10,7 @@ import TrustedCompanies from '../components/home/TrustedCompanies';
 import FounderNote from '../components/home/FounderNote';
 import CoworkingFAQ from '../components/coworking/CoworkingFAQ';
 
+
 const VirtualOffice = () => {
     return (
         <>
@@ -23,6 +24,7 @@ const VirtualOffice = () => {
             <TrustedCompanies />
             <FounderNote />
             <CoworkingFAQ pageType="virtualoffice" />
+
         </>
     );
 };

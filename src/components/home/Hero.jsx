@@ -60,7 +60,7 @@ const Hero = ({ pageType = 'home' }) => {
 
                     <div className="mb-4">
                         <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{content.popularCitiesLabel}</p>
-                        <CityGrid />
+                        <CityGrid currentPage={pageType} />
                     </div>
                 </div>
             </div>

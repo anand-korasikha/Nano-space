@@ -1,7 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 
 const TopVirtualOfficeCities = () => {
+    const navigate = useNavigate();
+
+    // Handler for city click
+    const handleCityClick = (cityName) => {
+        const citySlug = cityName.toLowerCase().replace(/\s+/g, '-');
+        navigate(`/virtual-office/${citySlug}`);
+    };
+
     // Hyderabad as the hero city (large card)
     const heroCity = {
         name: 'Hyderabad',
@@ -87,7 +96,10 @@ const TopVirtualOfficeCities = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
                     {/* Hero Card - Hyderabad (Large, spans 2 rows and 2 columns on desktop) */}
                     <div className="col-span-2 row-span-2">
-                        <div className="group relative h-full min-h-[320px] md:min-h-[400px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                        <div
+                            onClick={() => handleCityClick(heroCity.name)}
+                            className="group relative h-full min-h-[320px] md:min-h-[400px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                        >
                             {/* Image */}
                             <img
                                 src={heroCity.image}
@@ -120,7 +132,10 @@ const TopVirtualOfficeCities = () => {
                                     'col-span-1 row-span-1'
                                 }`}
                         >
-                            <div className="group relative h-full min-h-[150px] md:min-h-[190px] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer">
+                            <div
+                                onClick={() => handleCityClick(city.name)}
+                                className="group relative h-full min-h-[150px] md:min-h-[190px] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer"
+                            >
                                 {/* Image */}
                                 <img
                                     src={city.image}

@@ -25,7 +25,7 @@ const cities = [
     'Delhi', 'Indore', 'Ahmedabad'
 ];
 
-const CityDropdown = ({ isOpen, onClose, servicePath = 'coworking' }) => {
+const CityDropdown = ({ isOpen, onClose, servicePath = 'coworking', onCityClick, onMouseEnter, onMouseLeave }) => {
     if (!isOpen) return null;
 
     const getCityIconPath = (city) => {
@@ -33,40 +33,45 @@ const CityDropdown = ({ isOpen, onClose, servicePath = 'coworking' }) => {
     };
 
     return (
-        <>
-            {/* Invisible overlay to close dropdown when clicking outside */}
-            <div className="dropdown-overlay" onClick={onClose} />
-
-            {/* Dropdown content */}
-            <div className="city-dropdown-menu">
-                <div className="city-dropdown-grid">
-                    {cities.map((city) => (
-                        <Link
-                            key={city}
-                            to={`/${servicePath}?city=${city.toLowerCase()}`}
-                            className="city-dropdown-item"
-                            onClick={onClose}
-                        >
-                            <img
-                                src={getCityIconPath(city)}
-                                alt={`${city} icon`}
-                                className="city-dropdown-icon"
-                            />
-                            <span className="city-dropdown-name">{city}</span>
-                        </Link>
-                    ))}
-                </div>
-
-                {/* View All Link */}
-                <Link
-                    to={`/${servicePath}`}
-                    className="view-all-link"
-                    onClick={onClose}
-                >
-                    View All
-                </Link>
+        /* Dropdown content - NO OVERLAY */
+        <div
+            className="city-dropdown-menu"
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
+            <div className="city-dropdown-grid">
+                {cities.map((city) => (
+                    <Link
+                        key={city}
+                        to={`/${servicePath}/${city.toLowerCase()}`}
+                        className="city-dropdown-item"
+                        onClick={() => {
+                            onClose();
+                            if (onCityClick) onCityClick();
+                        }}
+                    >
+                        <img
+                            src={getCityIconPath(city)}
+                            alt={`${city} icon`}
+                            className="city-dropdown-icon"
+                        />
+                        <span className="city-dropdown-name">{city}</span>
+                    </Link>
+                ))}
             </div>
-        </>
+
+            {/* View All Link */}
+            <Link
+                to={`/${servicePath}`}
+                className="view-all-link"
+                onClick={() => {
+                    onClose();
+                    if (onCityClick) onCityClick();
+                }}
+            >
+                View All
+            </Link>
+        </div>
     );
 };
 

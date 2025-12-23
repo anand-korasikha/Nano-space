@@ -73,7 +73,7 @@ const PlatformStats = () => {
                     {/* Top Content */}
                     <div className="text-white mb-12 md:pl-8 pt-4">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-6">
-                            Boost your <span className="font-bold">Revenue, Visibility & Leads</span> with Cofynd Plans
+                            Boost your <span className="font-bold">Revenue, Visibility & Leads</span> with NanoSpace Plans
                         </h2>
                         <h3 className="text-xl md:text-2xl text-blue-50 mb-8 font-light leading-relaxed">
                             India's <span className="font-bold">#1 online platform</span> for Coworking & Coliving Spaces

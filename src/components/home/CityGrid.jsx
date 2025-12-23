@@ -30,7 +30,7 @@ const cities = [
     'Chandigarh', 'Kochi', 'Coimbatore', 'Noida', 'Gurgaon', 'Goa'
 ];
 
-const CityGrid = () => {
+const CityGrid = ({ currentPage = 'home' }) => {
     const [selectedCity, setSelectedCity] = useState(null);
 
     // Helper function to get icon path
@@ -67,6 +67,7 @@ const CityGrid = () => {
                 isOpen={!!selectedCity}
                 cityName={selectedCity}
                 cityIconPath={selectedCity ? getCityIconPath(selectedCity) : ''}
+                currentPage={currentPage}
                 onClose={() => setSelectedCity(null)}
             />
         </>
