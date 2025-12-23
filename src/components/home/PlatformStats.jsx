@@ -20,49 +20,49 @@ const PlatformStats = () => {
 
     return (
         <section className="bg-[#007bff] relative overflow-hidden">
-            <div className="max-w-[90%] mx-auto px-4 md:px-8 lg:px-16 pt-16 md:pt-24 flex flex-col md:flex-row gap-8 lg:gap-12">
+            <div className="max-w-[90%] mx-auto px-4 md:px-8 lg:px-16 pt-12 md:pt-16 lg:pt-24 flex flex-col md:flex-row gap-8 lg:gap-12">
 
                 {/* Left Column: Floating Cards & Stats */}
                 <div className="w-full md:w-1/2 flex flex-col justify-between relative z-10">
                     {/* Floating Cards Area */}
-                    <div className="relative min-h-[450px] md:min-h-[500px] w-full mb-12">
+                    <div className="relative min-h-[350px] sm:min-h-[400px] md:min-h-[450px] lg:min-h-[500px] w-full mb-8 md:mb-12">
                         {/* Card 1: Coworking (Back/Left) */}
-                        <div className="absolute top-0 left-0 w-64 md:w-72 bg-white p-3 rounded-2xl shadow-xl transform -rotate-3 z-10 hover:z-30 transition-all duration-300 hover:scale-105">
-                            <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-700 shadow-sm z-10 border border-gray-100">Coworking</span>
-                            <div className="h-40 rounded-xl overflow-hidden mb-3">
+                        <div className="absolute top-0 left-0 w-56 sm:w-60 md:w-64 lg:w-72 bg-white p-2.5 sm:p-3 rounded-2xl shadow-xl transform -rotate-3 z-10 hover:z-30 transition-all duration-300 hover:scale-105">
+                            <span className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-sm px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold text-gray-700 shadow-sm z-10 border border-gray-100">Coworking</span>
+                            <div className="h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden mb-2 sm:mb-3">
                                 <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=400&q=80" alt="WeWork Forum" className="w-full h-full object-cover" />
                             </div>
-                            <h4 className="font-bold text-gray-900 text-lg">WeWork Forum</h4>
+                            <h4 className="font-bold text-gray-900 text-base sm:text-lg">WeWork Forum</h4>
                             <p className="text-gray-500 text-xs">DLF Cyber City, Gurugram</p>
                             <p className="text-sm font-bold text-gray-900 mt-1">₹ 28,000/ <span className="text-xs font-normal text-gray-500">month</span></p>
                         </div>
 
                         {/* Card 2: Coliving (Front/Right) */}
-                        <div className="absolute top-32 left-32 md:left-40 w-64 md:w-72 bg-white p-3 rounded-2xl shadow-2xl transform rotate-3 z-20 hover:z-30 transition-all duration-300 hover:scale-105">
-                            <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-700 shadow-sm z-10 border border-gray-100">Coliving</span>
-                            <div className="h-40 rounded-xl overflow-hidden mb-3">
+                        <div className="absolute top-24 sm:top-28 md:top-32 left-24 sm:left-28 md:left-32 lg:left-40 w-56 sm:w-60 md:w-64 lg:w-72 bg-white p-2.5 sm:p-3 rounded-2xl shadow-2xl transform rotate-3 z-20 hover:z-30 transition-all duration-300 hover:scale-105">
+                            <span className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/90 backdrop-blur-sm px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold text-gray-700 shadow-sm z-10 border border-gray-100">Coliving</span>
+                            <div className="h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden mb-2 sm:mb-3">
                                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Stanza Living" className="w-full h-full object-cover" />
                             </div>
-                            <h4 className="font-bold text-gray-900 text-lg">Stanza Living Dunkirk House</h4>
+                            <h4 className="font-bold text-gray-900 text-base sm:text-lg">Stanza Living Dunkirk House</h4>
                             <p className="text-gray-500 text-xs">Sector 48, Gurgaon</p>
                             <p className="text-sm font-bold text-gray-900 mt-1">₹ 11,799/ <span className="text-xs font-normal text-gray-500">month</span></p>
                         </div>
                     </div>
 
                     {/* Stats Section (Bottom Left) */}
-                    <div className="pb-16 pt-4 pl-4 md:pl-0">
-                        <div className="flex flex-wrap gap-8 md:gap-16 text-white">
+                    <div className="pb-12 md:pb-16 pt-4 pl-0 md:pl-4">
+                        <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-16 text-white">
                             <div>
-                                <p className="text-3xl md:text-4xl font-bold mb-1">100,000+</p>
-                                <p className="text-blue-100 text-sm font-medium">Live Spaces</p>
+                                <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">100,000+</p>
+                                <p className="text-blue-100 text-xs sm:text-sm font-medium">Live Spaces</p>
                             </div>
                             <div>
-                                <p className="text-3xl md:text-4xl font-bold mb-1">1,000+</p>
-                                <p className="text-blue-100 text-sm font-medium">Locations</p>
+                                <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">1,000+</p>
+                                <p className="text-blue-100 text-xs sm:text-sm font-medium">Locations</p>
                             </div>
                             <div>
-                                <p className="text-3xl md:text-4xl font-bold mb-1">25+</p>
-                                <p className="text-blue-100 text-sm font-medium">Cities</p>
+                                <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1">25+</p>
+                                <p className="text-blue-100 text-xs sm:text-sm font-medium">Cities</p>
                             </div>
                         </div>
                     </div>
@@ -71,19 +71,19 @@ const PlatformStats = () => {
                 {/* Right Column: Text & Curved White Section */}
                 <div className="w-full md:w-1/2 flex flex-col min-h-full">
                     {/* Top Content */}
-                    <div className="text-white mb-12 md:pl-8 pt-4">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-6">
+                    <div className="text-white mb-8 md:mb-12 md:pl-8 pt-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-4 md:mb-6">
                             Boost your <span className="font-bold">Revenue, Visibility & Leads</span> with NanoSpace Plans
                         </h2>
-                        <h3 className="text-xl md:text-2xl text-blue-50 mb-8 font-light leading-relaxed">
+                        <h3 className="text-lg sm:text-xl md:text-2xl text-blue-50 mb-6 md:mb-8 font-light leading-relaxed">
                             India's <span className="font-bold">#1 online platform</span> for Coworking & Coliving Spaces
                         </h3>
 
-                        <div className="flex flex-wrap gap-4">
-                            <Link to="/list-property" className="px-6 py-3 border border-white rounded-lg font-medium hover:bg-white hover:text-[#007bff] transition-all text-sm">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
+                            <Link to="/list-property" className="px-5 md:px-6 py-2.5 md:py-3 border border-white rounded-lg font-medium hover:bg-white hover:text-[#007bff] transition-all text-sm text-center">
                                 List Your Space
                             </Link>
-                            <Link to="/business-plans" className="px-6 py-3 border border-white rounded-lg font-medium hover:bg-white hover:text-[#007bff] transition-all text-sm">
+                            <Link to="/business-plans" className="px-5 md:px-6 py-2.5 md:py-3 border border-white rounded-lg font-medium hover:bg-white hover:text-[#007bff] transition-all text-sm text-center">
                                 Business Plans
                             </Link>
                         </div>

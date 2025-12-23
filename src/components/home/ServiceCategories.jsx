@@ -70,14 +70,14 @@ const categories = [
 
 const ServiceCategories = () => {
     return (
-        <section className="py-16 px-4 md:px-8 lg:px-16 bg-white">
+        <section className="py-12 md:py-16 px-4 md:px-8 lg:px-16 bg-white">
             <div className="max-w-[90%] mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {categories.map((item) => (
                         <Link
                             key={item.id}
                             to={item.link}
-                            className={`relative h-40 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${item.bgClass || 'bg-gray-100'}`}
+                            className={`relative h-36 sm:h-40 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group ${item.bgClass || 'bg-gray-100'}`}
                         >
                             {/* Background Image for Image Type */}
                             {item.type === 'image' && (
@@ -98,11 +98,11 @@ const ServiceCategories = () => {
                             {item.type === 'graphic' && item.graphicElement}
 
                             {/* Text Content */}
-                            <div className="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center pr-8 text-right z-10">
-                                <span className="text-gray-600 text-lg md:text-xl font-light leading-tight">
+                            <div className="absolute inset-y-0 right-0 w-1/2 flex flex-col justify-center pr-4 sm:pr-6 md:pr-8 text-right z-10">
+                                <span className="text-gray-600 text-base sm:text-lg md:text-xl font-light leading-tight">
                                     {item.titleLine1}
                                 </span>
-                                <span className="text-gray-900 text-xl md:text-2xl font-bold leading-tight">
+                                <span className="text-gray-900 text-lg sm:text-xl md:text-2xl font-bold leading-tight">
                                     {item.titleLine2}
                                 </span>
                             </div>

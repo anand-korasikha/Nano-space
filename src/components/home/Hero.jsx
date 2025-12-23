@@ -18,19 +18,19 @@ const Hero = ({ pageType = 'home' }) => {
     }, [pageType, heroImages.length]);
 
     return (
-        <div className="relative min-h-[90vh] flex flex-col lg:flex-row bg-white overflow-hidden pt-16">
+        <div className="relative min-h-[auto] md:min-h-[90vh] flex flex-col lg:flex-row bg-white overflow-hidden pt-16 md:pt-20">
             {/* Left Column: Content */}
-            <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-center px-6 md:px-12 lg:px-20 py-12 lg:py-0 z-10">
+            <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-6 sm:py-8 md:py-12 lg:py-0 z-10">
                 <div className="max-w-3xl">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4 md:mb-6">
                         {content.title.line1} <br />
                         <span className="text-blue-600">{content.title.line2}</span> {content.title.line3}
                     </h1>
 
                     {/* Search/Dropdown Filters (Visual Only) */}
-                    <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                        <div className="relative flex-1 max-w-xs">
-                            <select className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                    <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-10">
+                        <div className="relative flex-1 sm:max-w-xs">
+                            <select className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm md:text-base py-2 sm:py-2.5 md:py-3 px-3 md:px-4 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
                                 <option>{content.searchPlaceholder.type}</option>
                                 {content.typeOptions.map((option, index) => (
                                     <option key={index}>{option}</option>
@@ -41,8 +41,8 @@ const Hero = ({ pageType = 'home' }) => {
                             </div>
                         </div>
 
-                        <div className="relative flex-1 max-w-xs">
-                            <select className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
+                        <div className="relative flex-1 sm:max-w-xs">
+                            <select className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-700 text-sm md:text-base py-2 sm:py-2.5 md:py-3 px-3 md:px-4 pr-8 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer">
                                 <option>{content.searchPlaceholder.city}</option>
                                 {content.cityOptions.map((city, index) => (
                                     <option key={index}>{city}</option>
@@ -53,20 +53,20 @@ const Hero = ({ pageType = 'home' }) => {
                             </div>
                         </div>
 
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/30">
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm md:text-base py-2 sm:py-2.5 md:py-3 px-6 md:px-8 rounded-xl transition-colors shadow-lg shadow-blue-500/30 w-full sm:w-auto">
                             {content.searchButton}
                         </button>
                     </div>
 
-                    <div className="mb-4">
-                        <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{content.popularCitiesLabel}</p>
+                    <div className="mb-3 sm:mb-4">
+                        <p className="text-xs md:text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2 sm:mb-3 md:mb-4">{content.popularCitiesLabel}</p>
                         <CityGrid currentPage={pageType} />
                     </div>
                 </div>
             </div>
 
             {/* Right Column: Image */}
-            <div className="w-full lg:w-[45%] xl:w-[40%] relative min-h-[400px] lg:min-h-full">
+            <div className="w-full lg:w-[45%] xl:w-[40%] relative min-h-[250px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-full">
                 <div
                     className="absolute inset-0 bg-gray-100 lg:rounded-l-[3rem] overflow-hidden"
                     style={{

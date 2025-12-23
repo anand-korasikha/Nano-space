@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import mobile responsive styles */
+@import './styles/mobile-responsive.css';
+
+
 :root {
   --bg-primary: #ffffff;
   --bg-card: #f3f4f6;
@@ -77,6 +81,25 @@ h6 {
 @layer utilities {
   .animate-marquee {
     animation: marquee 25s linear infinite;
+  }
+
+  /* Faster animation on mobile for better UX */
+  @media (max-width: 768px) {
+    .animate-marquee {
+      animation: marquee 20s linear infinite;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .animate-marquee {
+      animation: marquee 18s linear infinite;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .animate-marquee {
+      animation: marquee 15s linear infinite;
+    }
   }
 }
 

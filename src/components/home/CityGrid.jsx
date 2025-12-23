@@ -40,15 +40,16 @@ const CityGrid = ({ currentPage = 'home' }) => {
 
     return (
         <>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 md:gap-3">
+            {/* 3 cities per row on mobile, 6 on desktop */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
                 {cities.map((city, index) => (
                     <button
                         key={city}
                         onClick={() => setSelectedCity(city)}
-                        className="group flex flex-col items-center justify-center gap-2 aspect-square rounded-full border border-gray-100 hover:border-blue-200 hover:bg-white hover:shadow-lg transition-all duration-300"
+                        className="group flex flex-col items-center justify-start gap-1.5 transition-all duration-300 w-full max-w-[80px] mx-auto"
                         title={city}
                     >
-                        {/* City Icon */}
+                        {/* Small Perfect Circle Background with City Icon */}
                         <div className="city-icon-container">
                             <img
                                 src={getCityIconPath(city)}
@@ -56,7 +57,8 @@ const CityGrid = ({ currentPage = 'home' }) => {
                                 className="city-icon"
                             />
                         </div>
-                        <span className="text-[10px] md:text-xs font-medium text-gray-500 group-hover:text-blue-600 transition-colors truncate w-full px-2 text-center">
+                        {/* City Name */}
+                        <span className="text-[11px] sm:text-xs md:text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors text-center w-full">
                             {city}
                         </span>
                     </button>
