@@ -4,6 +4,7 @@
 
 /* Import mobile responsive styles */
 @import './styles/mobile-responsive.css';
+@import './styles/mobile-fixes-2025.css';
 
 
 :root {
