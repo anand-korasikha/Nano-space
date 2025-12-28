@@ -1,7 +1,15 @@
 /* ============================================
    CITY GRID - MOBILE RESPONSIVE
-   Perfect circles, 3 per row on mobile
+   Perfect circles, 4 per row on mobile
    ============================================ */
+
+/* Force 4 columns grid layout - Override Tailwind if needed */
+.grid.grid-cols-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.5rem;
+}
+
 
 /* City Icon Container - Perfect Circle */
 .city-icon-container {
