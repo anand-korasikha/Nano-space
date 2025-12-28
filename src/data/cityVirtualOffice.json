@@ -1,0 +1,2140 @@
+{
+    "hyderabad": {
+        "name": "Hyderabad",
+        "title": "Virtual Office in Hyderabad",
+        "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Hyderabad with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Hitech City",
+            "Gachibowli",
+            "Madhapur",
+            "Banjara Hills",
+            "Jubilee Hills",
+            "Kondapur",
+            "Financial District",
+            "Kukatpally"
+        ],
+        "microlocations": [
+            "Hitech City",
+            "Gachibowli",
+            "Madhapur",
+            "Banjara Hills",
+            "Jubilee Hills",
+            "Kondapur",
+            "Financial District",
+            "Kukatpally",
+            "Begumpet",
+            "Ameerpet",
+            "Somajiguda",
+            "Secunderabad"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Rajapushpa Summit",
+                "location": "Rajapushpa Summit, Hitech City, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "450 Seats",
+                "cabins": "10 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Gachibowli",
+                "location": "Nanakramguda, Gachibowli, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "380 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Madhapur",
+                "location": "Kavuri Hills, Madhapur, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "320 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Financial District",
+                "location": "Nanakramguda, Financial District, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "400 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Banjara Hills",
+                "location": "Road No 10, Banjara Hills, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "280 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Kondapur",
+                "location": "Apurupa Silpa Arcade, Kondapur, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "350 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ],
+        "plans": [
+            {
+                "id": 1,
+                "title": "Company Registration",
+                "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Hassle-free company setup with expert guidance",
+                    "Get a professional business address for registration",
+                    "Fast & seamless documentation for smooth approval"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 2,
+                "title": "GST Registration",
+                "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Get a GST approved virtual office address",
+                    "Quick & easy GST registration with minimal paperwork",
+                    "Support for multi-state GST registration"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 3,
+                "title": "Business Address",
+                "image": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Premium virtual office address in prime locations",
+                    "Enhance credibility with a registered business address",
+                    "Ideal for startups, freelancers & remote businesses"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            }
+        ]
+    },
+    "gurgaon": {
+        "name": "Gurgaon",
+        "title": "Virtual Office in Gurgaon",
+        "heroImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Gurgaon with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Golf Course Road",
+            "MG Road Gurgaon",
+            "Sector 44 Gurgaon",
+            "Huda City Centre",
+            "Udyog Vihar",
+            "Cyber Hub",
+            "Unitech Cyber Park",
+            "Sohna Road"
+        ],
+        "microlocations": [
+            "Golf Course Road",
+            "MG Road Gurgaon",
+            "Sector 44 Gurgaon",
+            "Huda City Centre",
+            "Udyog Vihar",
+            "Cyber Hub",
+            "Unitech Cyber Park",
+            "Sohna Road",
+            "Sector 32",
+            "DLF Phase 1",
+            "DLF Phase 2",
+            "DLF Phase 3"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "The Executive Center One Horizon",
+                "location": "One Horizon Center, Golf Course Road",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "iKeva Coworking Spaces in Gurgaon",
+                "location": "Vipul Agora Mall, MG Road, Gurgaon",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.2,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "Awfis Spazedge Spaces in Sector 47",
+                "location": "Spazedge Commercial Complex, Sector 47, Gurgaon",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Urban Cyber Center",
+                "location": "Urban Cyber, Golf Course Road, Gurgaon",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "iKeva Coworking Magenta Mayank",
+                "location": "Magenta Mayank Towers, Sector 44, Gurgaon",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.2,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Hwork LLC",
+                "location": "Vipul Agora Mall, MG Road, Gurgaon",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.1,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ],
+        "locations": [
+            {
+                "id": 1,
+                "name": "Virtual Office in Golf Course Road",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 999/month"
+            },
+            {
+                "id": 2,
+                "name": "Virtual Office in MG Road Gurgaon",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 849/month"
+            },
+            {
+                "id": 3,
+                "name": "Virtual Office in Sector 44 Gurgaon",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 699/month"
+            },
+            {
+                "id": 4,
+                "name": "Virtual Office in Huda City Centre",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 999/month"
+            },
+            {
+                "id": 5,
+                "name": "Virtual Office in Cyber City",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 1199/month"
+            }
+        ],
+        "plans": [
+            {
+                "id": 1,
+                "title": "Company Registration",
+                "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Hassle-free company setup with expert guidance",
+                    "Get a professional business address for registration",
+                    "Fast & seamless documentation for smooth approval"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 2,
+                "title": "GST Registration",
+                "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Get a GST approved virtual office address",
+                    "Quick & easy GST registration with minimal paperwork",
+                    "Support for multi-state GST registration"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 3,
+                "title": "Business Address",
+                "image": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Premium virtual office address in prime locations",
+                    "Enhance credibility with a registered business address",
+                    "Ideal for startups, freelancers & remote businesses"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            }
+        ]
+    },
+    "bangalore": {
+        "name": "Bangalore",
+        "title": "Virtual Office in Bangalore",
+        "heroImage": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Bangalore with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Koramangala",
+            "Indiranagar",
+            "Whitefield",
+            "HSR Layout",
+            "Electronic City",
+            "MG Road",
+            "Marathahalli",
+            "Jayanagar"
+        ],
+        "microlocations": [
+            "Koramangala",
+            "Indiranagar",
+            "Whitefield",
+            "HSR Layout",
+            "Electronic City",
+            "MG Road",
+            "Marathahalli",
+            "Jayanagar",
+            "BTM Layout",
+            "Bellandur",
+            "Sarjapur Road",
+            "Outer Ring Road"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Prestige Central",
+                "location": "Prestige Central, MG Road, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.9,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "500 Seats",
+                "cabins": "12 Cabins",
+                "meetingRooms": "10 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Koramangala",
+                "location": "80 Feet Road, Koramangala, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "420 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Indiranagar",
+                "location": "CMH Road, Indiranagar, Bangalore",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "360 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Whitefield",
+                "location": "ITPL Main Road, Whitefield, Bangalore",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "480 Seats",
+                "cabins": "11 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus HSR Layout",
+                "location": "Outer Ring Road, HSR Layout, Bangalore",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Electronic City",
+                "location": "Phase 1, Electronic City, Bangalore",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "390 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            }
+        ],
+        "locations": [
+            {
+                "id": 1,
+                "name": "Virtual Office in Koramangala",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 899/month"
+            },
+            {
+                "id": 2,
+                "name": "Virtual Office in Indiranagar",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 799/month"
+            },
+            {
+                "id": 3,
+                "name": "Virtual Office in Whitefield",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 749/month"
+            },
+            {
+                "id": 4,
+                "name": "Virtual Office in Electronic City",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 699/month"
+            },
+            {
+                "id": 5,
+                "name": "Virtual Office in MG Road",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "startingPrice": "₹ 1099/month"
+            }
+        ],
+        "plans": [
+            {
+                "id": 1,
+                "title": "Company Registration",
+                "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Hassle-free company setup with expert guidance",
+                    "Get a professional business address for registration",
+                    "Fast & seamless documentation for smooth approval"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 2,
+                "title": "GST Registration",
+                "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Get a GST approved virtual office address",
+                    "Quick & easy GST registration with minimal paperwork",
+                    "Support for multi-state GST registration"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            },
+            {
+                "id": 3,
+                "title": "Business Address",
+                "image": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "features": [
+                    "Premium virtual office address in prime locations",
+                    "Enhance credibility with a registered business address",
+                    "Ideal for startups, freelancers & remote businesses"
+                ],
+                "documentsLink": "#documents",
+                "quoteLink": "#contact"
+            }
+        ]
+    },
+    "noida": {
+        "name": "Noida",
+        "title": "Virtual Office in Noida",
+        "heroImage": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Noida with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Sector 62",
+            "Sector 63",
+            "Sector 18",
+            "Sector 16",
+            "Film City",
+            "Greater Noida",
+            "Noida Extension",
+            "Sector 142"
+        ],
+        "microlocations": [
+            "Sector 62",
+            "Sector 63",
+            "Sector 18",
+            "Sector 16",
+            "Film City",
+            "Greater Noida",
+            "Noida Extension",
+            "Sector 142",
+            "Sector 15",
+            "Sector 58",
+            "Sector 135",
+            "Knowledge Park"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Sector 62",
+                "location": "Stellar IT Park, Sector 62, Noida",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "380 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Sector 63",
+                "location": "H Block, Sector 63, Noida",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "320 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Film City",
+                "location": "Sector 16A, Film City, Noida",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Sector 18",
+                "location": "Atta Market, Sector 18, Noida",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "360 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Greater Noida",
+                "location": "Gamma 1, Greater Noida",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "280 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Sector 142",
+                "location": "Advant IT Park, Sector 142, Noida",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.2,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ]
+    },
+    "pune": {
+        "name": "Pune",
+        "title": "Virtual Office in Pune",
+        "heroImage": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Pune with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Hinjewadi",
+            "Baner",
+            "Viman Nagar",
+            "Kharadi",
+            "Wakad",
+            "Aundh",
+            "Magarpatta",
+            "Koregaon Park"
+        ],
+        "microlocations": [
+            "Hinjewadi",
+            "Baner",
+            "Viman Nagar",
+            "Kharadi",
+            "Wakad",
+            "Aundh",
+            "Magarpatta",
+            "Koregaon Park",
+            "Pimpri",
+            "Chinchwad",
+            "Hadapsar",
+            "Shivaji Nagar"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Hinjewadi",
+                "location": "Rajiv Gandhi Infotech Park, Hinjewadi, Pune",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "420 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Baner",
+                "location": "Baner Road, Baner, Pune",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "350 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Viman Nagar",
+                "location": "Viman Nagar, Pune",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "310 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Kharadi",
+                "location": "EON Free Zone, Kharadi, Pune",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "450 Seats",
+                "cabins": "10 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Magarpatta",
+                "location": "Magarpatta City, Hadapsar, Pune",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "290 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Wakad",
+                "location": "Hinjewadi Road, Wakad, Pune",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "330 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ]
+    },
+    "delhi": {
+        "name": "Delhi",
+        "title": "Virtual Office in Delhi",
+        "heroImage": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Delhi with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Connaught Place",
+            "Nehru Place",
+            "Saket",
+            "Dwarka",
+            "Lajpat Nagar",
+            "Karol Bagh",
+            "Rajouri Garden",
+            "Janakpuri"
+        ],
+        "microlocations": [
+            "Connaught Place",
+            "Nehru Place",
+            "Saket",
+            "Dwarka",
+            "Lajpat Nagar",
+            "Karol Bagh",
+            "Rajouri Garden",
+            "Janakpuri",
+            "Pitampura",
+            "Rohini",
+            "Preet Vihar",
+            "Mayur Vihar"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Connaught Place",
+                "location": "Connaught Place, New Delhi",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.9,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "500 Seats",
+                "cabins": "12 Cabins",
+                "meetingRooms": "10 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Nehru Place",
+                "location": "Nehru Place, New Delhi",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "380 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Saket",
+                "location": "District Center, Saket, Delhi",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "340 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Dwarka",
+                "location": "Sector 21, Dwarka, Delhi",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "320 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Karol Bagh",
+                "location": "Karol Bagh, New Delhi",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "290 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Rajouri Garden",
+                "location": "Rajouri Garden, Delhi",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "310 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    },
+    "mumbai": {
+        "name": "Mumbai",
+        "title": "Virtual Office in Mumbai",
+        "heroImage": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Mumbai with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Andheri",
+            "BKC",
+            "Lower Parel",
+            "Powai",
+            "Goregaon",
+            "Malad",
+            "Worli",
+            "Nariman Point"
+        ],
+        "microlocations": [
+            "Andheri East",
+            "Andheri West",
+            "BKC",
+            "Lower Parel",
+            "Powai",
+            "Goregaon",
+            "Malad",
+            "Worli",
+            "Nariman Point",
+            "Fort",
+            "Churchgate",
+            "Bandra"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork BKC",
+                "location": "Bandra Kurla Complex, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.9,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "550 Seats",
+                "cabins": "15 Cabins",
+                "meetingRooms": "12 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Andheri",
+                "location": "Andheri East, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "420 Seats",
+                "cabins": "10 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Lower Parel",
+                "location": "Lower Parel, Mumbai",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "380 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Powai",
+                "location": "Hiranandani, Powai, Mumbai",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "340 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Nariman Point",
+                "location": "Nariman Point, Mumbai",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Goregaon",
+                "location": "Goregaon East, Mumbai",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "320 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ]
+    },
+    "chennai": {
+        "name": "Chennai",
+        "title": "Virtual Office in Chennai",
+        "heroImage": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Chennai with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "OMR",
+            "Velachery",
+            "Guindy",
+            "T Nagar",
+            "Anna Nagar",
+            "Adyar",
+            "Porur",
+            "Tambaram"
+        ],
+        "microlocations": [
+            "OMR",
+            "Velachery",
+            "Guindy",
+            "T Nagar",
+            "Anna Nagar",
+            "Adyar",
+            "Porur",
+            "Tambaram",
+            "Nungambakkam",
+            "Egmore",
+            "Mylapore",
+            "Perungudi"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork OMR",
+                "location": "Old Mahabalipuram Road, Chennai",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "460 Seats",
+                "cabins": "11 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Guindy",
+                "location": "Guindy, Chennai",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "360 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard T Nagar",
+                "location": "T Nagar, Chennai",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "310 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Velachery",
+                "location": "Velachery, Chennai",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "390 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Anna Nagar",
+                "location": "Anna Nagar, Chennai",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "280 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Porur",
+                "location": "Porur, Chennai",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "320 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            }
+        ]
+    },
+    "jaipur": {
+        "name": "Jaipur",
+        "title": "Virtual Office in Jaipur",
+        "heroImage": "https://images.unsplash.com/photo-1599661046289-e31897846e41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Jaipur with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Malviya Nagar",
+            "C Scheme",
+            "Vaishali Nagar",
+            "Mansarovar",
+            "Jagatpura",
+            "Tonk Road",
+            "MI Road",
+            "Raja Park"
+        ],
+        "microlocations": [
+            "Malviya Nagar",
+            "C Scheme",
+            "Vaishali Nagar",
+            "Mansarovar",
+            "Jagatpura",
+            "Tonk Road",
+            "MI Road",
+            "Raja Park",
+            "Ajmer Road",
+            "Sitapura",
+            "Jhotwara",
+            "Sodala"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Malviya Nagar",
+                "location": "Malviya Nagar, Jaipur",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "350 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis C Scheme",
+                "location": "C Scheme, Jaipur",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Vaishali Nagar",
+                "location": "Vaishali Nagar, Jaipur",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "280 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Mansarovar",
+                "location": "Mansarovar, Jaipur",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "330 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus MI Road",
+                "location": "MI Road, Jaipur",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "260 Seats",
+                "cabins": "4 Cabins",
+                "meetingRooms": "3 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Jagatpura",
+                "location": "Jagatpura, Jaipur",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.2,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "290 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            }
+        ]
+    },
+    "kolkata": {
+        "name": "Kolkata",
+        "title": "Virtual Office in Kolkata",
+        "heroImage": "https://images.unsplash.com/photo-1558431382-27e303142255?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Kolkata with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Salt Lake",
+            "Park Street",
+            "Rajarhat",
+            "New Town",
+            "Ballygunge",
+            "Alipore",
+            "Howrah",
+            "Dum Dum"
+        ],
+        "microlocations": [
+            "Salt Lake Sector V",
+            "Park Street",
+            "Rajarhat",
+            "New Town",
+            "Ballygunge",
+            "Alipore",
+            "Howrah",
+            "Dum Dum",
+            "Esplanade",
+            "Gariahat",
+            "Behala",
+            "Jadavpur"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Salt Lake",
+                "location": "Sector V, Salt Lake, Kolkata",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "440 Seats",
+                "cabins": "10 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Park Street",
+                "location": "Park Street, Kolkata",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "370 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Rajarhat",
+                "location": "New Town, Rajarhat, Kolkata",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "330 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Ballygunge",
+                "location": "Ballygunge, Kolkata",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Alipore",
+                "location": "Alipore, Kolkata",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "270 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Howrah",
+                "location": "Howrah, Kolkata",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "290 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    },
+    "ahmedabad": {
+        "name": "Ahmedabad",
+        "title": "Virtual Office in Ahmedabad",
+        "heroImage": "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Ahmedabad with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "SG Highway",
+            "Prahlad Nagar",
+            "Satellite",
+            "Vastrapur",
+            "Navrangpura",
+            "CG Road",
+            "Bodakdev",
+            "Ashram Road"
+        ],
+        "microlocations": [
+            "SG Highway",
+            "Prahlad Nagar",
+            "Satellite",
+            "Vastrapur",
+            "Navrangpura",
+            "CG Road",
+            "Bodakdev",
+            "Ashram Road",
+            "Maninagar",
+            "Paldi",
+            "Ambawadi",
+            "Thaltej"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork SG Highway",
+                "location": "SG Highway, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "410 Seats",
+                "cabins": "9 Cabins",
+                "meetingRooms": "8 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Prahlad Nagar",
+                "location": "Prahlad Nagar, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "350 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Satellite",
+                "location": "Satellite, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "320 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Vastrapur",
+                "location": "Vastrapur, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "380 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus CG Road",
+                "location": "CG Road, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "290 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Bodakdev",
+                "location": "Bodakdev, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "310 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    },
+    "chandigarh": {
+        "name": "Chandigarh",
+        "title": "Virtual Office in Chandigarh",
+        "heroImage": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Chandigarh with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Sector 17",
+            "Sector 35",
+            "Sector 8",
+            "Sector 22",
+            "Industrial Area",
+            "Elante Mall",
+            "Panchkula",
+            "Mohali"
+        ],
+        "microlocations": [
+            "Sector 17",
+            "Sector 35",
+            "Sector 8",
+            "Sector 22",
+            "Industrial Area Phase 1",
+            "Industrial Area Phase 2",
+            "Elante Mall",
+            "Panchkula",
+            "Mohali",
+            "Sector 43",
+            "Sector 26",
+            "Zirakpur"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Sector 17",
+                "location": "Sector 17, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "380 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Sector 35",
+                "location": "Sector 35, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "330 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Sector 8",
+                "location": "Sector 8, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Industrial Area",
+                "location": "Industrial Area Phase 1, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "360 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Elante Mall",
+                "location": "Elante Mall, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "270 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Mohali",
+                "location": "Mohali, Chandigarh",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "290 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    },
+    "kochi": {
+        "name": "Kochi",
+        "title": "Virtual Office in Kochi",
+        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Kochi with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Kakkanad",
+            "Edappally",
+            "MG Road",
+            "Kaloor",
+            "Palarivattom",
+            "Vyttila",
+            "Infopark",
+            "Marine Drive"
+        ],
+        "microlocations": [
+            "Kakkanad",
+            "Edappally",
+            "MG Road",
+            "Kaloor",
+            "Palarivattom",
+            "Vyttila",
+            "Infopark",
+            "Marine Drive",
+            "Ernakulam",
+            "Fort Kochi",
+            "Aluva",
+            "Thrippunithura"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Infopark",
+                "location": "Infopark, Kakkanad, Kochi",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.8,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "430 Seats",
+                "cabins": "10 Cabins",
+                "meetingRooms": "9 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis Edappally",
+                "location": "Edappally, Kochi",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "360 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard MG Road",
+                "location": "MG Road, Kochi",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "320 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Kaloor",
+                "location": "Kaloor, Kochi",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "290 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus Marine Drive",
+                "location": "Marine Drive, Kochi",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "270 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Vyttila",
+                "location": "Vyttila, Kochi",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    },
+    "indore": {
+        "name": "Indore",
+        "title": "Virtual Office in Indore",
+        "heroImage": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "description": "Get your virtual office address in Indore with complete business solutions",
+        "phone": "9311328049",
+        "email": "virtual@nanospace.com",
+        "features": [
+            {
+                "icon": "MapPin",
+                "title": "Business Address",
+                "description": "Premium business address in prime locations"
+            },
+            {
+                "icon": "FileText",
+                "title": "GST Registration",
+                "description": "Quick GST registration assistance"
+            },
+            {
+                "icon": "Building",
+                "title": "Company Registration",
+                "description": "Complete company registration support"
+            },
+            {
+                "icon": "Clock",
+                "title": "Documents in 24 hr",
+                "description": "Fast document processing services"
+            }
+        ],
+        "popularLocations": [
+            "Vijay Nagar",
+            "MG Road",
+            "Sapna Sangeeta",
+            "Palasia",
+            "Scheme 54",
+            "AB Road",
+            "Rau",
+            "Bhawarkua"
+        ],
+        "microlocations": [
+            "Vijay Nagar",
+            "MG Road",
+            "Sapna Sangeeta",
+            "Palasia",
+            "Scheme 54",
+            "AB Road",
+            "Rau",
+            "Bhawarkua",
+            "Rajendra Nagar",
+            "Treasure Island",
+            "Geeta Bhawan",
+            "Sudama Nagar"
+        ],
+        "officeSpaces": [
+            {
+                "id": 1,
+                "name": "WeWork Vijay Nagar",
+                "location": "Vijay Nagar, Indore",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.6,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "370 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 2,
+                "name": "Awfis MG Road",
+                "location": "MG Road, Indore",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.4,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "320 Seats",
+                "cabins": "7 Cabins",
+                "meetingRooms": "6 Meeting Rooms"
+            },
+            {
+                "id": 3,
+                "name": "91Springboard Palasia",
+                "location": "Palasia, Indore",
+                "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.5,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "290 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            },
+            {
+                "id": 4,
+                "name": "IndiQube Scheme 54",
+                "location": "Scheme 54, Indore",
+                "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.7,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "340 Seats",
+                "cabins": "8 Cabins",
+                "meetingRooms": "7 Meeting Rooms"
+            },
+            {
+                "id": 5,
+                "name": "Regus AB Road",
+                "location": "AB Road, Indore",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.3,
+                "amenities": [
+                    "Wi-Fi & LAN Connectivity",
+                    "Housekeeping Services"
+                ],
+                "seats": "270 Seats",
+                "cabins": "5 Cabins",
+                "meetingRooms": "4 Meeting Rooms"
+            },
+            {
+                "id": 6,
+                "name": "Smartworks Bhawarkua",
+                "location": "Bhawarkua, Indore",
+                "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "rating": 4.2,
+                "amenities": [
+                    "Super High-Speed Wifi",
+                    "Cafeteria/Food Court"
+                ],
+                "seats": "300 Seats",
+                "cabins": "6 Cabins",
+                "meetingRooms": "5 Meeting Rooms"
+            }
+        ]
+    }
+}

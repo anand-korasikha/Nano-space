@@ -1,0 +1,130 @@
+/* ============================================
+   CITY GRID - MOBILE RESPONSIVE
+   Perfect circles, 3 per row on mobile
+   ============================================ */
+
+/* City Icon Container - Perfect Circle */
+.city-icon-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e5e7eb;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+/* City Icon Image */
+.city-icon {
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.group:hover .city-icon-container {
+    background: #d1d5db;
+    transform: scale(1.05);
+}
+
+.group:hover .city-icon {
+    transform: scale(1.1);
+}
+
+/* ============================================
+   TABLET (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+    .city-icon-container {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        min-height: 56px;
+        max-width: 56px;
+        max-height: 56px;
+    }
+
+    .city-icon {
+        width: 34px;
+        height: 34px;
+        max-width: 34px;
+        max-height: 34px;
+    }
+}
+
+/* ============================================
+   MOBILE (≤ 640px)
+   3 cities per row
+   ============================================ */
+@media (max-width: 640px) {
+    .city-icon-container {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        min-height: 52px;
+        max-width: 52px;
+        max-height: 52px;
+        background: #e5e7eb;
+    }
+
+    .city-icon {
+        width: 32px;
+        height: 32px;
+        max-width: 32px;
+        max-height: 32px;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (≤ 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    .city-icon-container {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+    .city-icon {
+        width: 30px;
+        height: 30px;
+        max-width: 30px;
+        max-height: 30px;
+    }
+}
+
+/* ============================================
+   EXTRA SMALL (≤ 375px)
+   iPhone SE and similar
+   ============================================ */
+@media (max-width: 375px) {
+    .city-icon-container {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        max-width: 48px;
+        max-height: 48px;
+    }
+
+    .city-icon {
+        width: 28px;
+        height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+    }
+}

@@ -1,0 +1,499 @@
+{
+    "hyderabad": {
+        "cityName": "Hyderabad",
+        "spaces": [
+            {
+                "name": "Awfis Sreshta Marvel",
+                "location": "Gachibowli, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10999",
+                "period": "month"
+            },
+            {
+                "name": "The Headquarters Orbit",
+                "location": "Hitec City, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9999",
+                "period": "month"
+            },
+            {
+                "name": "WeWork Rajapushpa Summit",
+                "location": "Financial District, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹17999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Cyber Towers",
+                "location": "Madhapur, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11999",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Kondapur",
+                "location": "Kondapur, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹12999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard Banjara Hills",
+                "location": "Banjara Hills, Hyderabad",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹13999",
+                "period": "month"
+            }
+        ]
+    },
+    "bangalore": {
+        "cityName": "Bangalore",
+        "spaces": [
+            {
+                "name": "91Springboard Koramangala",
+                "location": "Koramangala, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹12999",
+                "period": "month"
+            },
+            {
+                "name": "WeWork Prestige Central",
+                "location": "MG Road, Bangalore",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹15999",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks RMZ Infinity",
+                "location": "Old Madras Road, Bangalore",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹13999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Prestige Tech Park",
+                "location": "Marathahalli, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Whitefield",
+                "location": "Whitefield, Bangalore",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹14999",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Zeta",
+                "location": "Bellandur, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹12999",
+                "period": "month"
+            }
+        ]
+    },
+    "mumbai": {
+        "cityName": "Mumbai",
+        "spaces": [
+            {
+                "name": "WeWork Oberoi Commerz",
+                "location": "Goregaon, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹18999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Naman Chambers",
+                "location": "BKC, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹16999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Powai",
+                "location": "Powai, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹14999",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Lower Parel",
+                "location": "Lower Parel, Mumbai",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹17999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard Andheri",
+                "location": "Andheri, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹15999",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Nesco",
+                "location": "Goregaon, Mumbai",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹16999",
+                "period": "month"
+            }
+        ]
+    },
+    "noida": {
+        "cityName": "Noida",
+        "spaces": [
+            {
+                "name": "WeWork Galaxy Blue Sapphire",
+                "location": "Sector 4, Noida",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Logix City Center",
+                "location": "Sector 32, Noida",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Advant",
+                "location": "Sector 142, Noida",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹12999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard Sector 1",
+                "location": "Sector 1, Noida",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9999",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Sector 62",
+                "location": "Sector 62, Noida",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11499",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Spectrum",
+                "location": "Sector 75, Noida",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10499",
+                "period": "month"
+            }
+        ]
+    },
+    "pune": {
+        "cityName": "Pune",
+        "spaces": [
+            {
+                "name": "WeWork Baner",
+                "location": "Baner, Pune",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Hinjewadi",
+                "location": "Hinjewadi, Pune",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Viman Nagar",
+                "location": "Viman Nagar, Pune",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard Koregaon Park",
+                "location": "Koregaon Park, Pune",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10499",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Magarpatta",
+                "location": "Magarpatta, Pune",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11499",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Kharadi",
+                "location": "Kharadi, Pune",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10999",
+                "period": "month"
+            }
+        ]
+    },
+    "ahmedabad": {
+        "cityName": "Ahmedabad",
+        "spaces": [
+            {
+                "name": "WeWork Navrangpura",
+                "location": "Navrangpura, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Prahlad Nagar",
+                "location": "Prahlad Nagar, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹8999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Iscon",
+                "location": "Iscon, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard SG Highway",
+                "location": "SG Highway, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9499",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Satellite",
+                "location": "Satellite, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹10499",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Bodakdev",
+                "location": "Bodakdev, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹9999",
+                "period": "month"
+            }
+        ]
+    },
+    "delhi": {
+        "cityName": "Delhi",
+        "spaces": [
+            {
+                "name": "WeWork Connaught Place",
+                "location": "Connaught Place, Delhi",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹14999",
+                "period": "month"
+            },
+            {
+                "name": "Awfis Nehru Place",
+                "location": "Nehru Place, Delhi",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹12999",
+                "period": "month"
+            },
+            {
+                "name": "Regus Aerocity",
+                "location": "Aerocity, Delhi",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹15999",
+                "period": "month"
+            },
+            {
+                "name": "91Springboard Okhla",
+                "location": "Okhla, Delhi",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹11999",
+                "period": "month"
+            },
+            {
+                "name": "Cowrks Saket",
+                "location": "Saket, Delhi",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹13999",
+                "period": "month"
+            },
+            {
+                "name": "IndiQube Hauz Khas",
+                "location": "Hauz Khas, Delhi",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar"
+                ],
+                "price": "₹13499",
+                "period": "month"
+            }
+        ]
+    }
+}
