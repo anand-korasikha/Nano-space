@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 const logo = '/images/Logo.png';
 import './Header.css';
 import './Logo.css';
 import CityDropdown from './CityDropdown';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 
 const Header = () => {
+    const { user, logout, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
     const [isCoworkingDropdownOpen, setIsCoworkingDropdownOpen] = useState(false);
     const [isColivingDropdownOpen, setIsColivingDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -200,13 +203,35 @@ const Header = () => {
 
                 {/* Actions Section - Desktop Only */}
                 <div className="header-right">
-                    <Link to="/login" className="book-now-btn" onClick={closeMobileMenu}>
-                        <span>List My Space</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </Link>
+                    {isAuthenticated() ? (
+                        <div className="user-menu">
+                            <button
+                                className="user-profile-btn"
+                                onClick={() => navigate(`/dashboard/${user.role}`)}
+                            >
+                                <User size={18} />
+                                <span>{user.name}</span>
+                            </button>
+                            <button
+                                className="logout-btn"
+                                onClick={() => {
+                                    logout();
+                                    navigate('/');
+                                    closeMobileMenu();
+                                }}
+                            >
+                                <LogOut size={18} />
+                            </button>
+                        </div>
+                    ) : (
+                        <Link to="/login" className="book-now-btn" onClick={closeMobileMenu}>
+                            <span>List My Space</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </Link>
+                    )}
                 </div>
 
             </div>

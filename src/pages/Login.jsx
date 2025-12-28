@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Login.css';
 
 const Login = () => {
@@ -7,20 +9,45 @@ const Login = () => {
         email: '',
         password: '',
         name: '',
-        phone: ''
+        phone: '',
+        role: 'customer'
     });
+    const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { login, signup } = useAuth();
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
+        setError('');
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle login/signup logic here
-        console.log('Form submitted:', formData);
+        setError('');
+
+        try {
+            if (isLogin) {
+                // Login
+                const user = login(formData);
+
+                // Redirect to intended page or dashboard
+                const from = location.state?.from?.pathname || `/dashboard/${user.role}`;
+                navigate(from, { replace: true });
+            } else {
+                // Signup
+                const user = signup(formData);
+
+                // Redirect to dashboard after signup
+                navigate(`/dashboard/${user.role}`, { replace: true });
+            }
+        } catch (err) {
+            setError(err.message || 'Authentication failed. Please try again.');
+        }
     };
 
     return (
@@ -29,8 +56,14 @@ const Login = () => {
                 <div className="login-card">
                     <div className="login-header">
                         <h1>{isLogin ? 'Welcome Back' : 'Create Account'}</h1>
-                        <p>{isLogin ? 'Login to list your space' : 'Sign up to get started'}</p>
+                        <p>{isLogin ? 'Login to access your dashboard' : 'Sign up to get started'}</p>
                     </div>
+
+                    {error && (
+                        <div className="error-message">
+                            {error}
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="login-form">
                         {!isLogin && (
@@ -76,6 +109,23 @@ const Login = () => {
                             </div>
                         )}
 
+                        {!isLogin && (
+                            <div className="form-group">
+                                <label htmlFor="role">I am a</label>
+                                <select
+                                    id="role"
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                    required={!isLogin}
+                                >
+                                    <option value="customer">Customer - Looking for spaces</option>
+                                    <option value="owner">Owner - Want to list my property</option>
+                                    <option value="admin">Admin - Platform administrator</option>
+                                </select>
+                            </div>
+                        )}
+
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
                             <input
@@ -109,7 +159,7 @@ const Login = () => {
                     </div>
 
                     <div className="social-login">
-                        <button className="social-btn google-btn">
+                        <button className="social-btn google-btn" type="button">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />

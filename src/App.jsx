@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/common/ProtectedRoute';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Coworking from './pages/Coworking';
@@ -13,26 +15,57 @@ import HotelRooms from './pages/HotelRooms';
 import EventSpaces from './pages/EventSpaces';
 import PartyHalls from './pages/PartyHalls';
 import PrivateTheatres from './pages/PrivateTheatres';
+import CustomerDashboard from './pages/CustomerDashboard';
+import OwnerDashboard from './pages/OwnerDashboard';
+import AdminDashboard from './pages/AdminDashboard';
 import './styles/responsive.css';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="coworking" element={<Coworking />} />
-        <Route path="coworking/:cityName" element={<CityCoworking />} />
-        <Route path="coliving" element={<Coliving />} />
-        <Route path="virtual-office" element={<VirtualOffice />} />
-        <Route path="virtual-office/:cityName" element={<CityVirtualOffice />} />
-        <Route path="business-plans" element={<BusinessPlans />} />
-        <Route path="hotel-rooms" element={<HotelRooms />} />
-        <Route path="event-spaces" element={<EventSpaces />} />
-        <Route path="party-halls" element={<PartyHalls />} />
-        <Route path="private-theatres" element={<PrivateTheatres />} />
-        <Route path="login" element={<Login />} />
-      </Route>
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="coworking" element={<Coworking />} />
+          <Route path="coworking/:cityName" element={<CityCoworking />} />
+          <Route path="coliving" element={<Coliving />} />
+          <Route path="virtual-office" element={<VirtualOffice />} />
+          <Route path="virtual-office/:cityName" element={<CityVirtualOffice />} />
+          <Route path="business-plans" element={<BusinessPlans />} />
+          <Route path="hotel-rooms" element={<HotelRooms />} />
+          <Route path="event-spaces" element={<EventSpaces />} />
+          <Route path="party-halls" element={<PartyHalls />} />
+          <Route path="private-theatres" element={<PrivateTheatres />} />
+          <Route path="login" element={<Login />} />
+
+          {/* Protected Dashboard Routes */}
+          <Route
+            path="dashboard/customer"
+            element={
+              <ProtectedRoute requiredRole="customer">
+                <CustomerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="dashboard/owner"
+            element={
+              <ProtectedRoute requiredRole="owner">
+                <OwnerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="dashboard/admin"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
+    </AuthProvider>
   );
 }
 

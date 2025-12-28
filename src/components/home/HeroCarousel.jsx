@@ -23,7 +23,7 @@ const HeroCarousel = () => {
         {
             id: 'coworking',
             title: 'Coworking',
-            image: '/images/hero/home-1.jpg',
+            image: '/images/hero/hero1.webp',
             icon: <Briefcase className="w-5 h-5" />,
             color: 'text-blue-600',
             titleColor: 'text-blue-600',
