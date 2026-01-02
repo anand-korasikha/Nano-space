@@ -7,7 +7,31 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
     const [isPaused, setIsPaused] = useState(false);
 
     const cityData = topSpacesData[city.toLowerCase()] || topSpacesData.hyderabad;
-    const cardsPerView = 3;
+
+    // Responsive cardsPerView
+    const [cardsPerView, setCardsPerView] = useState(3);
+
+    useEffect(() => {
+        const updateCardsPerView = () => {
+            if (window.innerWidth < 640) {
+                setCardsPerView(1);
+            } else if (window.innerWidth < 1024) {
+                setCardsPerView(2);
+            } else {
+                setCardsPerView(3);
+            }
+        };
+
+        // Initial call
+        updateCardsPerView();
+
+        // Event listener
+        window.addEventListener('resize', updateCardsPerView);
+
+        // Cleanup
+        return () => window.removeEventListener('resize', updateCardsPerView);
+    }, []);
+
     const totalSlides = Math.ceil(cityData.spaces.length / cardsPerView);
 
     // Auto-play carousel (forward or reverse based on prop)
@@ -68,7 +92,7 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                     {/* Left Arrow */}
                     <button
                         onClick={goToPrevious}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Previous slide"
                     >
                         <ChevronLeft size={24} className="text-gray-800" />
@@ -77,26 +101,26 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                     {/* Right Arrow */}
                     <button
                         onClick={goToNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Next slide"
                     >
                         <ChevronRight size={24} className="text-gray-800" />
                     </button>
 
                     {/* Spaces Carousel */}
-                    <div className="overflow-hidden px-16">
+                    <div className="overflow-hidden px-0 md:px-16">
                         <div
-                            className="flex transition-transform duration-500 ease-in-out gap-6"
+                            className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-6"
                             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-6 min-w-full">
+                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
                                     {cityData.spaces
                                         .slice(slideIndex * cardsPerView, (slideIndex + 1) * cardsPerView)
                                         .map((space, index) => (
                                             <div
                                                 key={index}
-                                                className="flex-1 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                                                className="w-full md:flex-1 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
                                             >
                                                 {/* Space Image */}
                                                 <div className="relative h-48 overflow-hidden">
@@ -142,8 +166,9 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                                                                 <span className="text-sm text-gray-500 font-normal">/{space.period}</span>
                                                             </p>
                                                         </div>
-                                                        <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors">
-                                                            Explore More →
+                                                        <button className="text-blue-600 hover:text-blue-700 font-semibold transition-colors md:text-sm text-xs md:px-0 px-2 md:py-0 py-1">
+                                                            <span className="hidden md:inline">Explore More →</span>
+                                                            <span className="md:hidden">→</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -152,21 +177,6 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                                 </div>
                             ))}
                         </div>
-                    </div>
-
-                    {/* Dot Indicators */}
-                    <div className="flex justify-center gap-2 mt-8">
-                        {Array.from({ length: totalSlides }).map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`transition-all duration-300 rounded-full ${index === currentIndex
-                                    ? 'bg-yellow-400 w-8 h-2.5'
-                                    : 'bg-gray-300 hover:bg-gray-400 w-2.5 h-2.5'
-                                    }`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>

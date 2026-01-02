@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import faqData from '../../data/faq.json';
 
-const CoworkingFAQ = ({ pageType = 'coworking' }) => {
+const CoworkingFAQ = ({ pageType = 'coworking', faqs: customFaqs }) => {
     const [openIndex, setOpenIndex] = useState(null);
 
-    // Get FAQs based on page type
-    const faqs = faqData[pageType] || faqData.coworking;
+    // Get FAQs based on page type or use custom FAQs
+    const faqs = customFaqs || faqData[pageType] || faqData.coworking;
 
     const toggleFAQ = (index) => {
         setOpenIndex(openIndex === index ? null : index);

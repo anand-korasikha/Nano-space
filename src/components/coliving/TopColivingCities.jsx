@@ -3,9 +3,10 @@ import { MapPin, Phone } from 'lucide-react';
 
 const TopColivingCities = () => {
     // Hero city - Hyderabad (large left card - HIGHLIGHTED)
+    // Hero city - Hyderabad (large left card - HIGHLIGHTED)
     const heroCity = {
         name: 'Hyderabad',
-        image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+        image: 'images/hero/coliving-1.jpg'
     };
 
     // Grid cities in exact order from reference image
@@ -14,27 +15,27 @@ const TopColivingCities = () => {
     const gridCities = [
         {
             name: 'Bangalore',
-            image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/coliving-2.jpg'
         },
         {
             name: 'Gurugram',
-            image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/coliving-3.jpg'
         },
         {
             name: 'Noida',
-            image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/coliving-4.jpg'
         },
         {
             name: 'Delhi',
-            image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/coliving-5.jpg'
         },
         {
             name: 'Pune',
-            image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/home-1.jpg'
         },
         {
             name: 'Mumbai',
-            image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+            image: 'images/hero/home-2.jpg'
         }
     ];
 

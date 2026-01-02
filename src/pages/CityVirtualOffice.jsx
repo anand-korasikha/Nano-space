@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, FileText, Building, Clock, Phone, Mail, ChevronDown, Star, Wifi, Users, Video } from 'lucide-react';
 import cityData from '../data/cityVirtualOffice.json';
+import { getApprovedPropertiesByType } from '../services/propertyService';
 import VirtualOfficeHelpCards from '../components/virtualoffice/VirtualOfficeHelpCards';
 import BusinessNeedsSection from '../components/virtualoffice/BusinessNeedsSection';
 import ExploreLocationsSection from '../components/virtualoffice/ExploreLocationsSection';
@@ -25,7 +26,34 @@ const CityVirtualOffice = () => {
         // Load city data from JSON
         const cityKey = cityName?.toLowerCase();
         if (cityKey && cityData[cityKey]) {
-            setCity(cityData[cityKey]);
+            const data = cityData[cityKey];
+
+            // Get approved properties from localStorage
+            const approvedProperties = getApprovedPropertiesByType('Virtual Office', cityKey);
+
+            // Merge approved properties with existing office spaces
+            const mergedOfficeSpaces = [
+                ...(data.officeSpaces || []),
+                ...approvedProperties.map(prop => ({
+                    id: prop.id,
+                    name: prop.name,
+                    location: prop.location,
+                    image: prop.image,
+                    rating: prop.rating || 0,
+                    price: prop.price,
+                    period: prop.period,
+                    badge: prop.badge,
+                    amenities: prop.amenities,
+                    seats: '10-20 Seats',
+                    cabins: '2-3 Cabins',
+                    meetingRooms: '1-2 Rooms'
+                }))
+            ];
+
+            setCity({
+                ...data,
+                officeSpaces: mergedOfficeSpaces
+            });
         } else {
             // Redirect to virtual office page if city not found
             navigate('/virtual-office');

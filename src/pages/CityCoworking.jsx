@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cityCoworkingData from '../data/cityCoworking.json';
+import { getApprovedPropertiesByType } from '../services/propertyService';
 import OfficeSolutions from '../components/coworking/OfficeSolutions';
 import PopularCoworkingSpaces from '../components/coworking/PopularCoworkingSpaces';
 import DiscoverWorkspace from '../components/coworking/DiscoverWorkspace';
@@ -28,7 +29,29 @@ const CityCoworking = () => {
         const data = cityCoworkingData[normalizedCityName];
 
         if (data) {
-            setCityData(data);
+            // Get approved properties from localStorage
+            const approvedProperties = getApprovedPropertiesByType('Coworking', normalizedCityName);
+
+            // Merge approved properties with existing spaces
+            const mergedSpaces = [
+                ...data.spaces,
+                ...approvedProperties.map(prop => ({
+                    id: prop.id,
+                    name: prop.name,
+                    location: prop.location,
+                    image: prop.image,
+                    rating: prop.rating || 0,
+                    price: prop.price,
+                    period: prop.period,
+                    badge: prop.badge,
+                    amenities: prop.amenities
+                }))
+            ];
+
+            setCityData({
+                ...data,
+                spaces: mergedSpaces
+            });
         } else {
             // Redirect to main coworking page if city not found
             navigate('/coworking');

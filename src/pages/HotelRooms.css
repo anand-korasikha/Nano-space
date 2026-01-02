@@ -513,3 +513,21 @@
         height: 200px;
     }
 }
+
+/* Mobile: One card at a time carousel */
+@media (max-width: 768px) {
+    .hotels-carousel {
+        display: flex !important;
+        flex-direction: row !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto !important;
+    }
+
+    .hotel-card {
+        min-width: calc(100vw - 4rem) !important;
+        max-width: calc(100vw - 4rem) !important;
+        scroll-snap-align: center;
+        flex-shrink: 0 !important;
+    }
+}

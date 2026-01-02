@@ -4,6 +4,18 @@ import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 const PremiumColiving = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [cardsPerView, setCardsPerView] = useState(3);
+
+    useEffect(() => {
+        const updateCardsPerView = () => {
+            if (window.innerWidth < 640) setCardsPerView(1);
+            else if (window.innerWidth < 1024) setCardsPerView(2);
+            else setCardsPerView(3);
+        };
+        updateCardsPerView();
+        window.addEventListener('resize', updateCardsPerView);
+        return () => window.removeEventListener('resize', updateCardsPerView);
+    }, []);
 
     const premiumSpaces = [
         {
@@ -40,7 +52,6 @@ const PremiumColiving = () => {
         }
     ];
 
-    const cardsPerView = 3;
     const totalSlides = Math.ceil(premiumSpaces.length / cardsPerView);
 
     // Auto-play carousel
@@ -85,7 +96,7 @@ const PremiumColiving = () => {
                     {/* Left Arrow */}
                     <button
                         onClick={goToPrevious}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2.5 md:p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2.5 md:p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Previous slide"
                     >
                         <ChevronLeft size={20} className="text-gray-800" />
@@ -94,26 +105,26 @@ const PremiumColiving = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={goToNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2.5 md:p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2.5 md:p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Next slide"
                     >
                         <ChevronRight size={20} className="text-gray-800" />
                     </button>
 
                     {/* Spaces Carousel */}
-                    <div className="overflow-hidden px-10 md:px-14">
+                    <div className="overflow-hidden px-0 md:px-14">
                         <div
-                            className="flex transition-transform duration-500 ease-in-out gap-4 md:gap-6"
+                            className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-6"
                             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-4 md:gap-6 min-w-full">
+                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
                                     {premiumSpaces
                                         .slice(slideIndex * cardsPerView, (slideIndex + 1) * cardsPerView)
                                         .map((space) => (
                                             <div
                                                 key={space.id}
-                                                className="flex-1 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group cursor-pointer"
+                                                className="w-full md:flex-1 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group cursor-pointer"
                                             >
                                                 {/* Space Image */}
                                                 <div className="relative h-44 md:h-52 overflow-hidden">

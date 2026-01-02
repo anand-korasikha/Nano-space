@@ -80,7 +80,12 @@ const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
 
     const scroll = (direction) => {
         if (carouselRef.current) {
-            const scrollAmount = 320; // Card width + gap
+            // Calculate scroll amount based on viewport width for mobile
+            const isMobile = window.innerWidth <= 768;
+            const scrollAmount = isMobile
+                ? window.innerWidth - 64 // calc(100vw - 4rem) for mobile
+                : 320; // Card width + gap for desktop
+
             const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
             carouselRef.current.scrollTo({
                 left: newScrollLeft,

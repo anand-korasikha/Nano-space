@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from '../components/home/Hero';
+import LatestProperties from '../components/home/LatestProperties';
 import ServiceCategories from '../components/home/ServiceCategories';
 import PlatformStats from '../components/home/PlatformStats';
 import TopCoworking from '../components/home/TopCoworking';
@@ -17,6 +18,7 @@ const Home = () => {
     return (
         <div>
             <Hero />
+            <LatestProperties />
             <ServiceCategories />
             <PlatformStats />
             <TopCoworking />

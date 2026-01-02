@@ -88,17 +88,19 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
 
                     {/* Trusted Companies */}
                     <div className="enquiry-trusted-section">
-                        <h3 className="trusted-title">Trusted by top companies</h3>
+                        <h3 className="trusted-title">Trusted by  Clients</h3>
                         <div className="trusted-logos">
-                            <img src="/images/logos/inox.png" alt="INOX" />
-                            <img src="/images/logos/kotak.png" alt="Kotak" />
-                            <img src="/images/logos/razorpay.png" alt="Razorpay" />
-                            <img src="/images/logos/doubtnut.png" alt="Doubtnut" />
-                            <img src="/images/logos/credable.png" alt="Credable" />
-                            <img src="/images/logos/acciojob.png" alt="AccioJob" />
-                            <img src="/images/logos/purple.png" alt="Purple" />
-                            <img src="/images/logos/classplus.png" alt="Classplus" />
-                            <img src="/images/logos/other.png" alt="Other" />
+                            <img src="images/clients/img1.png" alt="Client 1" />
+                            <img src="images/clients/img2.png" alt="Client 2" />
+                            <img src="images/clients/img3.png" alt="Client 3" />
+                            <img src="images/clients/img4.png" alt="Client 4" />
+                            <img src="images/clients/img5.png" alt="Client 5" />
+                            <img src="images/clients/img6.png" alt="Client 6" />
+                            <img src="images/clients/img7.png" alt="Client 7" />
+                            <img src="images/clients/img8.png" alt="Client 8" />
+                            <img src="images/clients/img9.png" alt="Client 9" />
+                            <img src="images/clients/img10.png" alt="Client 10" />
+                            <img src="images/clients/img11.png" alt="Client 11" />
                         </div>
                     </div>
                 </div>

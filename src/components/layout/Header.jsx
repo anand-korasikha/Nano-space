@@ -198,6 +198,44 @@ const Header = () => {
 
                     </ul>
 
+                    {/* Mobile Actions - Visible only on Mobile */}
+                    <div className="mobile-actions">
+                        {isAuthenticated() ? (
+                            <>
+                                <button
+                                    className="user-profile-btn"
+                                    onClick={() => {
+                                        navigate(`/dashboard/${user.role}`);
+                                        closeMobileMenu();
+                                    }}
+                                >
+                                    <User size={18} />
+                                    <span>{user.name}</span>
+                                </button>
+                                <button
+                                    className="logout-btn"
+                                    onClick={() => {
+                                        logout();
+                                        navigate('/');
+                                        closeMobileMenu();
+                                    }}
+                                    style={{ width: '100%', borderRadius: '50px', justifyContent: 'center', gap: '0.5rem' }}
+                                >
+                                    <LogOut size={18} />
+                                    <span>Logout</span>
+                                </button>
+                            </>
+                        ) : (
+                            <Link to="/login" className="book-now-btn" onClick={closeMobileMenu}>
+                                <span>List My Space</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </Link>
+                        )}
+                    </div>
+
 
                 </nav>
 

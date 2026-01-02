@@ -6,6 +6,26 @@ const CoworkingPartners = () => {
     const [currentSpaceIndex, setCurrentSpaceIndex] = useState(0);
     const [isPausedLogos, setIsPausedLogos] = useState(false);
     const [isPausedSpaces, setIsPausedSpaces] = useState(false);
+    const [logosPerView, setLogosPerView] = useState(5);
+    const [spacesPerView, setSpacesPerView] = useState(3);
+
+    useEffect(() => {
+        const updateCardsPerView = () => {
+            if (window.innerWidth < 640) {
+                setLogosPerView(2);
+                setSpacesPerView(1);
+            } else if (window.innerWidth < 1024) {
+                setLogosPerView(3);
+                setSpacesPerView(2);
+            } else {
+                setLogosPerView(5);
+                setSpacesPerView(3);
+            }
+        };
+        updateCardsPerView();
+        window.addEventListener('resize', updateCardsPerView);
+        return () => window.removeEventListener('resize', updateCardsPerView);
+    }, []);
 
     // Partner logos
     const partners = [
@@ -59,8 +79,6 @@ const CoworkingPartners = () => {
         }
     ];
 
-    const logosPerView = 5;
-    const spacesPerView = 3;
     const totalLogoSlides = Math.ceil(partners.length / logosPerView);
     const totalSpaceSlides = Math.ceil(featuredSpaces.length / spacesPerView);
 
@@ -128,7 +146,7 @@ const CoworkingPartners = () => {
                     {/* Left Arrow */}
                     <button
                         onClick={previousLogoSlide}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Previous logos"
                     >
                         <ChevronLeft size={20} className="text-gray-800" />
@@ -137,20 +155,20 @@ const CoworkingPartners = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={nextLogoSlide}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-2 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Next logos"
                     >
                         <ChevronRight size={20} className="text-gray-800" />
                     </button>
 
                     {/* Logos Container */}
-                    <div className="overflow-hidden px-12">
+                    <div className="overflow-hidden px-0 md:px-12">
                         <div
                             className="flex transition-transform duration-500 ease-in-out"
                             style={{ transform: `translateX(-${currentLogoIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalLogoSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-8 min-w-full justify-center">
+                                <div key={slideIndex} className="flex gap-4 md:gap-8 min-w-full justify-center">
                                     {partners
                                         .slice(slideIndex * logosPerView, (slideIndex + 1) * logosPerView)
                                         .map((partner, index) => (
@@ -169,21 +187,6 @@ const CoworkingPartners = () => {
                             ))}
                         </div>
                     </div>
-
-                    {/* Dots for Logos */}
-                    <div className="flex justify-center gap-2 mt-6">
-                        {Array.from({ length: totalLogoSlides }).map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToLogoSlide(index)}
-                                className={`transition-all duration-300 rounded-full ${index === currentLogoIndex
-                                    ? 'bg-yellow-400 w-8 h-2.5'
-                                    : 'bg-gray-300 hover:bg-gray-400 w-2.5 h-2.5'
-                                    }`}
-                                aria-label={`Go to logo slide ${index + 1}`}
-                            />
-                        ))}
-                    </div>
                 </div>
 
                 {/* Featured Spaces Carousel */}
@@ -195,7 +198,7 @@ const CoworkingPartners = () => {
                     {/* Left Arrow */}
                     <button
                         onClick={previousSpaceSlide}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Previous spaces"
                     >
                         <ChevronLeft size={24} className="text-gray-800" />
@@ -204,26 +207,26 @@ const CoworkingPartners = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={nextSpaceSlide}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Next spaces"
                     >
                         <ChevronRight size={24} className="text-gray-800" />
                     </button>
 
                     {/* Spaces Container */}
-                    <div className="overflow-hidden px-16">
+                    <div className="overflow-hidden px-0 md:px-16">
                         <div
-                            className="flex transition-transform duration-500 ease-in-out gap-6"
+                            className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-6"
                             style={{ transform: `translateX(-${currentSpaceIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalSpaceSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-6 min-w-full">
+                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
                                     {featuredSpaces
                                         .slice(slideIndex * spacesPerView, (slideIndex + 1) * spacesPerView)
                                         .map((space, index) => (
                                             <div
                                                 key={index}
-                                                className="flex-1 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group"
+                                                className="w-full md:flex-1 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group"
                                             >
                                                 {/* Exclusive Badge */}
                                                 {space.exclusive && (
@@ -252,21 +255,6 @@ const CoworkingPartners = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
-
-                    {/* Dots for Spaces */}
-                    <div className="flex justify-center gap-2 mt-8">
-                        {Array.from({ length: totalSpaceSlides }).map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSpaceSlide(index)}
-                                className={`transition-all duration-300 rounded-full ${index === currentSpaceIndex
-                                    ? 'bg-yellow-400 w-8 h-2.5'
-                                    : 'bg-gray-300 hover:bg-gray-400 w-2.5 h-2.5'
-                                    }`}
-                                aria-label={`Go to space slide ${index + 1}`}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>

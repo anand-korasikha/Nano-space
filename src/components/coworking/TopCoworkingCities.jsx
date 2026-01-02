@@ -4,6 +4,18 @@ import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 const TopCoworkingCities = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [cardsPerView, setCardsPerView] = useState(3);
+
+    useEffect(() => {
+        const updateCardsPerView = () => {
+            if (window.innerWidth < 640) setCardsPerView(1);
+            else if (window.innerWidth < 1024) setCardsPerView(2);
+            else setCardsPerView(3);
+        };
+        updateCardsPerView();
+        window.addEventListener('resize', updateCardsPerView);
+        return () => window.removeEventListener('resize', updateCardsPerView);
+    }, []);
 
     const cities = [
         {
@@ -59,10 +71,10 @@ const TopCoworkingCities = () => {
         setCurrentIndex((prev) => (prev + 1) % cities.length);
     };
 
-    // Calculate visible cities (show 3 at a time)
+    // Calculate visible cities based on responsive cardsPerView
     const getVisibleCities = () => {
         const visible = [];
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < cardsPerView; i++) {
             const index = (currentIndex + i) % cities.length;
             visible.push({ ...cities[index], originalIndex: index });
         }
@@ -89,7 +101,7 @@ const TopCoworkingCities = () => {
                     {/* Left Arrow */}
                     <button
                         onClick={goToPrevious}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Previous slide"
                     >
                         <ChevronLeft size={24} className="text-gray-800" />
@@ -98,20 +110,22 @@ const TopCoworkingCities = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={goToNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hidden md:block"
                         aria-label="Next slide"
                     >
                         <ChevronRight size={24} className="text-gray-800" />
                     </button>
 
                     {/* Cities Carousel */}
-                    <div className="flex justify-center items-center gap-6 px-16">
+                    <div className="flex justify-center items-center gap-0 md:gap-6 px-0 md:px-16">
                         {getVisibleCities().map((city, idx) => (
                             <div
                                 key={`${city.name}-${idx}`}
-                                className={`relative rounded-3xl overflow-hidden group cursor-pointer transition-all duration-500 ${idx === 0
-                                    ? 'w-[450px] h-[320px]' // First card (large)
-                                    : 'w-[280px] h-[280px] hover:w-[450px] hover:h-[320px]' // Other cards (taller, expand on hover)
+                                className={`relative rounded-3xl overflow-hidden group cursor-pointer transition-all duration-500 ${cardsPerView === 1
+                                    ? 'w-full h-[320px]'
+                                    : idx === 0
+                                        ? 'w-[450px] h-[320px]'
+                                        : 'w-[280px] h-[280px] hover:w-[450px] hover:h-[320px]'
                                     }`}
                             >
                                 {/* Background Image */}
@@ -135,21 +149,6 @@ const TopCoworkingCities = () => {
                                 {/* Hover Border Effect */}
                                 <div className="absolute inset-0 border-4 border-transparent group-hover:border-yellow-400 transition-all duration-300 rounded-3xl pointer-events-none"></div>
                             </div>
-                        ))}
-                    </div>
-
-                    {/* Dots Indicator */}
-                    <div className="flex justify-center gap-2 mt-8">
-                        {cities.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentIndex
-                                    ? 'bg-yellow-400 w-8'
-                                    : 'bg-gray-300 hover:bg-gray-400'
-                                    }`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
                         ))}
                     </div>
                 </div>

@@ -1,24 +1,19 @@
 import React from 'react';
 
 const companies = [
-    { name: 'INOX', color: 'text-blue-900' },
-    { name: 'Kotak', color: 'text-red-600' },
-    { name: 'Razorpay', color: 'text-blue-500' },
-    { name: 'Doubtnut', color: 'text-orange-500' },
-    { name: 'Credable', color: 'text-yellow-600' },
-    { name: 'AccioJob', color: 'text-blue-700' },
-    { name: 'Purple', color: 'text-purple-600' },
-    { name: 'Classplus', color: 'text-blue-400' },
-    { name: 'Hector', color: 'text-orange-600' },
-    { name: 'Atlas Law', color: 'text-gray-800' },
-    { name: 'Fyp', color: 'text-red-500' },
-    { name: 'Easebuzz', color: 'text-indigo-600' },
-    { name: 'Zingbus', color: 'text-purple-500' },
-    { name: 'BluOne', color: 'text-blue-600' },
-    { name: 'Bricz', color: 'text-indigo-800' },
-    { name: 'Dahua', color: 'text-red-700' },
-    { name: 'Devtown', color: 'text-blue-500' },
-    { name: 'Flash', color: 'text-yellow-500' },
+    { name: 'INOX', image: 'images/clients/img1.png' },
+    { name: 'Kotak', image: 'images/clients/img2.png' },
+    { name: 'Razorpay', image: 'images/clients/img3.png' },
+    { name: 'Doubtnut', image: 'images/clients/img4.png' },
+    { name: 'Credable', image: 'images/clients/img5.png' },
+    { name: 'AccioJob', image: 'images/clients/img6.png' },
+    { name: 'Purple', image: 'images/clients/img7.png' },
+    { name: 'Classplus', image: 'images/clients/img8.png' },
+    { name: 'Hector', image: 'images/clients/img9.png' },
+    { name: 'Atlas Law', image: 'images/clients/img10.png' },
+    { name: 'Fyp', image: 'images/clients/img11.png' },
+    { name: 'Easebuzz', image: 'images/clients/img12.png' },
+
 ];
 
 const TrustedCompanies = () => {
@@ -38,12 +33,14 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 gap-y-8 sm:gap-y-12">
+                <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
                     {companies.map((company, index) => (
-                        <div key={index} className="flex items-center justify-center p-2 sm:p-4 group cursor-pointer">
-                            <h3 className={`text-lg sm:text-xl md:text-2xl font-bold ${company.color} opacity-70 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-105`}>
-                                {company.name}
-                            </h3>
+                        <div key={index} className="flex items-center justify-center p-2 sm:p-3 group cursor-pointer bg-gray-50 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300">
+                            <img
+                                src={company.image}
+                                alt={company.name}
+                                className="w-full h-10 sm:h-12 md:h-16 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105"
+                            />
                         </div>
                     ))}
                 </div>

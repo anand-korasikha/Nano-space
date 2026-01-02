@@ -2,6 +2,15 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
+// Default admin credentials
+const DEFAULT_ADMIN = {
+    email: 'admin@nanospace.com',
+    password: 'Admin@123',
+    name: 'Admin',
+    role: 'admin',
+    phone: '+91-9876543210'
+};
+
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if (!context) {
@@ -29,24 +38,77 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (userData) => {
-        // In production, this would validate credentials with backend
-        const userWithRole = {
+        // Check if logging in as default admin
+        if (userData.email === DEFAULT_ADMIN.email) {
+            if (userData.password !== DEFAULT_ADMIN.password) {
+                throw new Error('Invalid email or password');
+            }
+
+            const adminUser = {
+                id: 'admin-001',
+                email: DEFAULT_ADMIN.email,
+                name: DEFAULT_ADMIN.name,
+                role: DEFAULT_ADMIN.role,
+                phone: DEFAULT_ADMIN.phone,
+                createdAt: new Date().toISOString()
+            };
+
+            setUser(adminUser);
+            localStorage.setItem('nanospace_user', JSON.stringify(adminUser));
+            return adminUser;
+        }
+
+        // For other users, check if they exist in localStorage
+        const storedUsers = JSON.parse(localStorage.getItem('nanospace_users') || '[]');
+        const existingUser = storedUsers.find(u => u.email === userData.email);
+
+        if (existingUser) {
+            if (existingUser.password !== userData.password) {
+                throw new Error('Invalid email or password');
+            }
+
+            const { password, ...userWithoutPassword } = existingUser;
+            setUser(userWithoutPassword);
+            localStorage.setItem('nanospace_user', JSON.stringify(userWithoutPassword));
+            return userWithoutPassword;
+        }
+
+        // If user doesn't exist, throw error
+        throw new Error('User not found. Please sign up first.');
+    };
+
+    const signup = (userData) => {
+        // Check if email already exists
+        const storedUsers = JSON.parse(localStorage.getItem('nanospace_users') || '[]');
+
+        if (userData.email === DEFAULT_ADMIN.email) {
+            throw new Error('This email is reserved. Please use a different email.');
+        }
+
+        if (storedUsers.some(u => u.email === userData.email)) {
+            throw new Error('Email already registered. Please login instead.');
+        }
+
+        // Create new user
+        const newUser = {
             id: Date.now().toString(),
             email: userData.email,
+            password: userData.password,
             name: userData.name || userData.email.split('@')[0],
-            role: userData.role || 'customer', // customer, owner, admin
+            role: userData.role || 'customer',
             phone: userData.phone || '',
             createdAt: new Date().toISOString()
         };
 
-        setUser(userWithRole);
-        localStorage.setItem('nanospace_user', JSON.stringify(userWithRole));
-        return userWithRole;
-    };
+        // Store user in users array
+        storedUsers.push(newUser);
+        localStorage.setItem('nanospace_users', JSON.stringify(storedUsers));
 
-    const signup = (userData) => {
-        // In production, this would create user in backend
-        return login(userData);
+        // Login the user (without password in session)
+        const { password, ...userWithoutPassword } = newUser;
+        setUser(userWithoutPassword);
+        localStorage.setItem('nanospace_user', JSON.stringify(userWithoutPassword));
+        return userWithoutPassword;
     };
 
     const logout = () => {

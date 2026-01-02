@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 const ExploreLocationsSection = ({ city }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerView, setItemsPerView] = useState(4);
+
+    useEffect(() => {
+        const updateItemsPerView = () => {
+            if (window.innerWidth < 640) setItemsPerView(1);
+            else if (window.innerWidth < 768) setItemsPerView(2);
+            else if (window.innerWidth < 1024) setItemsPerView(3);
+            else setItemsPerView(4);
+        };
+        updateItemsPerView();
+        window.addEventListener('resize', updateItemsPerView);
+        return () => window.removeEventListener('resize', updateItemsPerView);
+    }, []);
 
     // Default locations if not provided in city data
     const defaultLocations = [
@@ -33,7 +46,6 @@ const ExploreLocationsSection = ({ city }) => {
     ];
 
     const locations = city?.locations || defaultLocations;
-    const itemsPerView = 4;
     const maxIndex = Math.max(0, locations.length - itemsPerView);
 
     const handlePrev = () => {
@@ -79,7 +91,7 @@ const ExploreLocationsSection = ({ city }) => {
                             <button
                                 onClick={handlePrev}
                                 disabled={currentIndex === 0}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hidden md:flex"
                                 aria-label="Previous"
                             >
                                 <ChevronLeft size={24} className="text-gray-700" />
@@ -87,7 +99,7 @@ const ExploreLocationsSection = ({ city }) => {
                             <button
                                 onClick={handleNext}
                                 disabled={currentIndex >= maxIndex}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hidden md:flex"
                                 aria-label="Next"
                             >
                                 <ChevronRight size={24} className="text-gray-700" />
@@ -153,5 +165,4 @@ const ExploreLocationsSection = ({ city }) => {
         </section>
     );
 };
-
 export default ExploreLocationsSection;

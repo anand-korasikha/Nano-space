@@ -121,7 +121,7 @@ const Login = () => {
                                 >
                                     <option value="customer">Customer - Looking for spaces</option>
                                     <option value="owner">Owner - Want to list my property</option>
-                                    <option value="admin">Admin - Platform administrator</option>
+
                                 </select>
                             </div>
                         )}

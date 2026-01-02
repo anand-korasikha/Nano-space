@@ -51,26 +51,27 @@ const CoworkingFeatures = () => {
     return (
         <section className="py-16 bg-white">
             <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                {/* Features Grid - 6 cards in 2 rows */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
+                {/* Features Grid - Card View */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
                             <div
                                 key={index}
-                                className="flex flex-col items-start"
+                                className="relative flex flex-col items-start p-5 md:p-6 bg-white border-2 border-transparent rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden"
+                                style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6) border-box' }}
                             >
                                 {/* Icon */}
-                                <div className="mb-4">
+                                <div className="mb-4 p-3 bg-orange-50 rounded-lg group-hover:bg-orange-100 group-hover:scale-110 transition-all duration-300">
                                     <Icon
-                                        size={40}
+                                        size={32}
                                         style={{ color: feature.color }}
                                         strokeWidth={1.5}
                                     />
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-2">
                                     {feature.title}
                                 </h3>
 

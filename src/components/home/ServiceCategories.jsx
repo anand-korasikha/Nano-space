@@ -71,7 +71,6 @@ const categories = [
         type: "image"
     }
 ];
-
 const ServiceCategories = () => {
     return (
         <section className="py-12 md:py-16 px-4 md:px-8 lg:px-16 bg-white">

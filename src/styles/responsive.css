@@ -326,18 +326,7 @@
    FLEXBOX - MOBILE STACK
    ======================================== */
 
-@media (max-width: 768px) {
 
-    [class*="flex"],
-    .flex {
-        flex-direction: column !important;
-    }
-
-    [class*="flex"]>* {
-        width: 100% !important;
-        margin-bottom: 1rem;
-    }
-}
 
 /* ========================================
    SPACING UTILITIES - MOBILE
