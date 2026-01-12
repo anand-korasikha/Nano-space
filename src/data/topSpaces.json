@@ -3,70 +3,59 @@
         "cityName": "Hyderabad",
         "spaces": [
             {
-                "name": "Awfis Sreshta Marvel",
-                "location": "Gachibowli, Hyderabad",
+                "name": "Nanospace - KPHB",
+                "location": "KPHB, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "amenities": [
                     "High speed WiFi",
                     "Coffee & Bar"
                 ],
-                "price": "₹10999",
-                "period": "month"
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month"
             },
             {
-                "name": "The Headquarters Orbit",
-                "location": "Hitec City, Hyderabad",
+                "name": "Nanospace - Jubilee Hills",
+                "location": "Jubilee Hills, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "amenities": [
                     "High speed WiFi",
                     "Coffee & Bar"
                 ],
-                "price": "₹9999",
-                "period": "month"
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month"
             },
             {
-                "name": "WeWork Rajapushpa Summit",
-                "location": "Financial District, Hyderabad",
+                "name": "Nanospace - Gachibowli",
+                "location": "Gachibowli, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "amenities": [
                     "High speed WiFi",
                     "Coffee & Bar"
                 ],
-                "price": "₹17999",
-                "period": "month"
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month"
             },
             {
-                "name": "Regus Cyber Towers",
-                "location": "Madhapur, Hyderabad",
+                "name": "Nanospace - Banjara Hills",
+                "location": "Banjara Hills, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "amenities": [
                     "High speed WiFi",
                     "Coffee & Bar"
                 ],
-                "price": "₹11999",
-                "period": "month"
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month"
             },
             {
-                "name": "Cowrks Kondapur",
-                "location": "Kondapur, Hyderabad",
+                "name": "Nanospace - Nanakramguda",
+                "location": "Nanakramguda, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "amenities": [
                     "High speed WiFi",
                     "Coffee & Bar"
                 ],
-                "price": "₹12999",
-                "period": "month"
-            },
-            {
-                "name": "91Springboard Banjara Hills",
-                "location": "Banjara Hills, Hyderabad",
-                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "amenities": [
-                    "High speed WiFi",
-                    "Coffee & Bar"
-                ],
-                "price": "₹13999",
-                "period": "month"
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month"
             }
         ]
     },

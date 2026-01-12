@@ -7,7 +7,7 @@ const CoworkingPartners = () => {
     const [isPausedLogos, setIsPausedLogos] = useState(false);
     const [isPausedSpaces, setIsPausedSpaces] = useState(false);
     const [logosPerView, setLogosPerView] = useState(5);
-    const [spacesPerView, setSpacesPerView] = useState(3);
+    const [spacesPerView, setSpacesPerView] = useState(4);
 
     useEffect(() => {
         const updateCardsPerView = () => {
@@ -19,7 +19,7 @@ const CoworkingPartners = () => {
                 setSpacesPerView(2);
             } else {
                 setLogosPerView(5);
-                setSpacesPerView(3);
+                setSpacesPerView(4);
             }
         };
         updateCardsPerView();
@@ -96,11 +96,11 @@ const CoworkingPartners = () => {
     useEffect(() => {
         if (!isPausedSpaces) {
             const interval = setInterval(() => {
-                setCurrentSpaceIndex((prev) => (prev + 1) % totalSpaceSlides);
-            }, 4000);
+                setCurrentSpaceIndex((prev) => prev + 1);
+            }, 3000);
             return () => clearInterval(interval);
         }
-    }, [isPausedSpaces, totalSpaceSlides]);
+    }, [isPausedSpaces]);
 
     const goToLogoSlide = (index) => {
         setCurrentLogoIndex(index);
@@ -127,19 +127,19 @@ const CoworkingPartners = () => {
     };
 
     return (
-        <section className="py-20 bg-white">
-            <div className="mx-6 md:mx-12 lg:mx-20">
+        <section className="py-4 bg-white">
+            <div className="mx-2 md:mx-4 lg:mx-8">
                 {/* Section Header */}
-                <div className="flex items-center justify-center gap-4 mb-12">
-                    <div className="w-12 h-12 bg-yellow-400 rounded-full flex-shrink-0"></div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex-shrink-0"></div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                         Our CoWorking Partners
                     </h2>
                 </div>
 
                 {/* Partner Logos Carousel */}
                 <div
-                    className="relative mb-16"
+                    className="relative mb-6"
                     onMouseEnter={() => setIsPausedLogos(true)}
                     onMouseLeave={() => setIsPausedLogos(false)}
                 >
@@ -162,24 +162,24 @@ const CoworkingPartners = () => {
                     </button>
 
                     {/* Logos Container */}
-                    <div className="overflow-hidden px-0 md:px-12">
+                    <div className="overflow-hidden px-0 md:px-8">
                         <div
                             className="flex transition-transform duration-500 ease-in-out"
                             style={{ transform: `translateX(-${currentLogoIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalLogoSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-4 md:gap-8 min-w-full justify-center">
+                                <div key={slideIndex} className="flex gap-2 md:gap-4 min-w-full justify-center">
                                     {partners
                                         .slice(slideIndex * logosPerView, (slideIndex + 1) * logosPerView)
                                         .map((partner, index) => (
                                             <div
                                                 key={index}
-                                                className="flex-shrink-0 bg-white p-4 rounded-lg hover:shadow-md transition-shadow duration-300"
+                                                className="flex-shrink-0 bg-white p-2 rounded-lg hover:shadow-md transition-shadow duration-300"
                                             >
                                                 <img
                                                     src={partner.logo}
                                                     alt={partner.name}
-                                                    className="h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                                    className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                                                 />
                                             </div>
                                         ))}
@@ -214,46 +214,49 @@ const CoworkingPartners = () => {
                     </button>
 
                     {/* Spaces Container */}
-                    <div className="overflow-hidden px-0 md:px-16">
+                    <div className="overflow-hidden">
                         <div
-                            className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-6"
-                            style={{ transform: `translateX(-${currentSpaceIndex * 100}%)` }}
+                            className="flex transition-transform duration-700 ease-linear"
+                            style={{ 
+                                transform: `translateX(-${(currentSpaceIndex % featuredSpaces.length) * (100 / spacesPerView)}%)`,
+                                gap: spacesPerView > 1 ? '12px' : '0px'
+                            }}
                         >
-                            {Array.from({ length: totalSpaceSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
-                                    {featuredSpaces
-                                        .slice(slideIndex * spacesPerView, (slideIndex + 1) * spacesPerView)
-                                        .map((space, index) => (
+                            {[...featuredSpaces, ...featuredSpaces, ...featuredSpaces, ...featuredSpaces, ...featuredSpaces].map((space, index) => (
+                                <div
+                                    key={index}
+                                    className="flex-shrink-0"
+                                    style={{ width: spacesPerView > 1 ? `calc((100% - ${(spacesPerView - 1) * 12}px) / ${spacesPerView})` : '100%' }}
+                                >
                                             <div
                                                 key={index}
-                                                className="w-full md:flex-1 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group"
+                                                className="w-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group h-[240px]"
                                             >
                                                 {/* Exclusive Badge */}
                                                 {space.exclusive && (
-                                                    <div className="absolute top-4 left-4 z-10 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-semibold">
+                                                    <div className="absolute top-2 left-2 z-10 bg-yellow-400 text-gray-900 px-3 py-0.5 rounded-full text-xs font-semibold shadow-lg">
                                                         NanoSpace Exclusive
                                                     </div>
                                                 )}
 
                                                 {/* Space Image */}
-                                                <div className="relative h-64 overflow-hidden">
+                                                <div className="relative h-full overflow-hidden">
                                                     <img
                                                         src={space.image}
                                                         alt={space.name}
                                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                                     />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                                                 </div>
 
                                                 {/* Space Info */}
-                                                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                                    <h3 className="text-2xl font-bold mb-1">{space.name}</h3>
-                                                    <p className="text-sm text-gray-200">{space.location}</p>
+                                                <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                                                    <h3 className="text-lg font-bold mb-0.5">{space.name}</h3>
+                                                    <p className="text-xs text-gray-200">{space.location}</p>
                                                 </div>
                                             </div>
-                                        ))}
-                                </div>
-                            ))}
+                                        </div>
+                                    ))}
                         </div>
                     </div>
                 </div>

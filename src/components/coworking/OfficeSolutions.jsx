@@ -45,7 +45,7 @@ const OfficeSolutions = ({ cityName }) => {
             <section className="office-solutions-section">
                 <div className="office-solutions-container">
                     <h2 className="office-solutions-title">
-                        Find Your Perfect Office Solution
+                        Find Your Perfect Office Solution in {cityName}
                     </h2>
 
                     <div className="office-solutions-grid">

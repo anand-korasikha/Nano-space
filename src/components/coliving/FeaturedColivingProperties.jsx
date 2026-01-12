@@ -2,7 +2,9 @@ import React from 'react';
 import { MapPin, Star } from 'lucide-react';
 import './FeaturedColivingProperties.css';
 
-const FeaturedColivingProperties = ({ spaces, title = "Featured Coliving Spaces", onViewNumber }) => {
+const FeaturedColivingProperties = ({ spaces, title, cityName, onViewNumber }) => {
+    const displayTitle = title || (cityName ? `Featured Coliving Spaces in ${cityName}` : "Featured Coliving Spaces");
+
     if (!spaces || spaces.length === 0) {
         return null;
     }
@@ -10,7 +12,7 @@ const FeaturedColivingProperties = ({ spaces, title = "Featured Coliving Spaces"
     return (
         <section className="featured-coliving-section">
             <div className="featured-coliving-container">
-                <h2 className="featured-title">{title}</h2>
+                <h2 className="featured-title">{displayTitle}</h2>
 
                 <div className="featured-grid">
                     {spaces.map((space) => (
@@ -60,7 +62,7 @@ const FeaturedColivingProperties = ({ spaces, title = "Featured Coliving Spaces"
                                         className="featured-view-btn"
                                         onClick={() => onViewNumber && onViewNumber(space)}
                                     >
-                                        View Number
+                                        Get Quote
                                     </button>
                                 </div>
                             </div>

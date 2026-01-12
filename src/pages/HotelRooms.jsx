@@ -66,9 +66,37 @@ const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
     const carouselRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if mobile
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Reverse the hotels array if reverse prop is true
     const displayHotels = reverse ? [...hotels].reverse() : hotels;
+
+    // Auto-scroll for mobile continuous flow
+    React.useEffect(() => {
+        if (isMobile) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prev) => {
+                    if (reverse) {
+                        return prev - 1;
+                    } else {
+                        return prev + 1;
+                    }
+                });
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [isMobile, reverse]);
 
     const checkScrollButtons = () => {
         if (carouselRef.current) {
@@ -83,7 +111,7 @@ const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
             // Calculate scroll amount based on viewport width for mobile
             const isMobile = window.innerWidth <= 768;
             const scrollAmount = isMobile
-                ? window.innerWidth - 64 // calc(100vw - 4rem) for mobile
+                ? window.innerWidth - 32 // calc(100vw - 2rem) for mobile
                 : 320; // Card width + gap for desktop
 
             const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
@@ -100,7 +128,7 @@ const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
             <h2 className="city-title">Hotels in {cityName}</h2>
 
             <div className="carousel-container">
-                {canScrollLeft && (
+                {!isMobile && canScrollLeft && (
                     <button
                         className="carousel-nav-btn left"
                         onClick={() => scroll('left')}
@@ -110,17 +138,37 @@ const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
                     </button>
                 )}
 
-                <div
-                    className="hotels-carousel"
-                    ref={carouselRef}
-                    onScroll={checkScrollButtons}
-                >
-                    {displayHotels.map((hotel) => (
-                        <HotelCard key={hotel.id} hotel={hotel} />
-                    ))}
-                </div>
+                {isMobile ? (
+                    <div className="hotels-carousel-mobile">
+                        <div
+                            className="hotels-carousel-track"
+                            style={{
+                                transform: reverse 
+                                    ? `translateX(${((currentIndex % displayHotels.length) * 100)}%)`
+                                    : `translateX(-${((currentIndex % displayHotels.length) * 100)}%)`,
+                                transition: 'transform 700ms linear'
+                            }}
+                        >
+                            {[...displayHotels, ...displayHotels, ...displayHotels].map((hotel, index) => (
+                                <div key={`${hotel.id}-${index}`} className="hotel-card-wrapper">
+                                    <HotelCard hotel={hotel} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <div
+                        className="hotels-carousel"
+                        ref={carouselRef}
+                        onScroll={checkScrollButtons}
+                    >
+                        {displayHotels.map((hotel) => (
+                            <HotelCard key={hotel.id} hotel={hotel} />
+                        ))}
+                    </div>
+                )}
 
-                {canScrollRight && (
+                {!isMobile && canScrollRight && (
                     <button
                         className="carousel-nav-btn right"
                         onClick={() => scroll('right')}

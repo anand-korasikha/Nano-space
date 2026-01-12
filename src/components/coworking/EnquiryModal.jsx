@@ -90,17 +90,17 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
                     <div className="enquiry-trusted-section">
                         <h3 className="trusted-title">Trusted by  Clients</h3>
                         <div className="trusted-logos">
-                            <img src="images/clients/img1.png" alt="Client 1" />
-                            <img src="images/clients/img2.png" alt="Client 2" />
-                            <img src="images/clients/img3.png" alt="Client 3" />
-                            <img src="images/clients/img4.png" alt="Client 4" />
-                            <img src="images/clients/img5.png" alt="Client 5" />
-                            <img src="images/clients/img6.png" alt="Client 6" />
-                            <img src="images/clients/img7.png" alt="Client 7" />
-                            <img src="images/clients/img8.png" alt="Client 8" />
-                            <img src="images/clients/img9.png" alt="Client 9" />
-                            <img src="images/clients/img10.png" alt="Client 10" />
-                            <img src="images/clients/img11.png" alt="Client 11" />
+                            <img src="/images/clients/img1.png" alt="Client 1" />
+                            <img src="/images/clients/img2.png" alt="Client 2" />
+                            <img src="/images/clients/img3.png" alt="Client 3" />
+                            <img src="/images/clients/img4.png" alt="Client 4" />
+                            <img src="/images/clients/img5.png" alt="Client 5" />
+                            <img src="/images/clients/img6.png" alt="Client 6" />
+                            <img src="/images/clients/img7.png" alt="Client 7" />
+                            <img src="/images/clients/img8.png" alt="Client 8" />
+                            <img src="/images/clients/img9.png" alt="Client 9" />
+                            <img src="/images/clients/img10.png" alt="Client 10" />
+                            <img src="/images/clients/img11.png" alt="Client 11" />
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
 
                         {/* Contact Expert */}
                         <div className="enquiry-contact-expert">
-                            <img src="/images/expert.jpg" alt="Space Expert" className="expert-image" />
+                            <img src="/images/Logo.png" alt="Nano Space" className="expert-image" />
                             <div className="expert-info">
                                 <p className="expert-text">Connect with our space expert</p>
                                 <a href="mailto:hello@nanospace.com" className="expert-email">

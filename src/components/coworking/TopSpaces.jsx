@@ -9,7 +9,7 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
     const cityData = topSpacesData[city.toLowerCase()] || topSpacesData.hyderabad;
 
     // Responsive cardsPerView
-    const [cardsPerView, setCardsPerView] = useState(3);
+    const [cardsPerView, setCardsPerView] = useState(4);
 
     useEffect(() => {
         const updateCardsPerView = () => {
@@ -18,7 +18,7 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
             } else if (window.innerWidth < 1024) {
                 setCardsPerView(2);
             } else {
-                setCardsPerView(3);
+                setCardsPerView(4);
             }
         };
 
@@ -38,16 +38,11 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
     useEffect(() => {
         if (!isPaused) {
             const interval = setInterval(() => {
-                if (reverse) {
-                    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-                } else {
-                    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-                }
-            }, 4000); // Change slide every 4 seconds
-
+                setCurrentIndex((prev) => prev + 1);
+            }, 3000);
             return () => clearInterval(interval);
         }
-    }, [isPaused, totalSlides, reverse]);
+    }, [isPaused]);
 
     const goToSlide = (index) => {
         setCurrentIndex(index);
@@ -73,12 +68,12 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
     };
 
     return (
-        <section className="py-20 bg-white">
-            <div className="mx-6 md:mx-12 lg:mx-20">
+        <section className="py-4 bg-white">
+            <div className="mx-2 md:mx-4 lg:mx-8">
                 {/* Section Header */}
-                <div className="flex items-center justify-center gap-4 mb-12">
-                    <div className="w-12 h-12 bg-yellow-400 rounded-full flex-shrink-0"></div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex-shrink-0"></div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                         Top Spaces in {cityData.cityName}
                     </h2>
                 </div>
@@ -108,22 +103,27 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                     </button>
 
                     {/* Spaces Carousel */}
-                    <div className="overflow-hidden px-0 md:px-16">
+                    <div className="overflow-hidden">
                         <div
-                            className="flex transition-transform duration-500 ease-in-out gap-0 md:gap-6"
-                            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                            className="flex transition-transform duration-700 ease-linear"
+                            style={{ 
+                                transform: `translateX(-${(currentIndex % cityData.spaces.length) * (100 / cardsPerView)}%)`,
+                                gap: cardsPerView > 1 ? '12px' : '0px'
+                            }}
                         >
-                            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
-                                    {cityData.spaces
-                                        .slice(slideIndex * cardsPerView, (slideIndex + 1) * cardsPerView)
-                                        .map((space, index) => (
+                            {/* Render cards multiple times for infinite scroll */}
+                            {[...cityData.spaces, ...cityData.spaces, ...cityData.spaces, ...cityData.spaces, ...cityData.spaces].map((space, index) => (
+                                <div
+                                    key={index}
+                                    className="flex-shrink-0"
+                                    style={{ width: cardsPerView > 1 ? `calc((100% - ${(cardsPerView - 1) * 12}px) / ${cardsPerView})` : '100%' }}
+                                >
                                             <div
                                                 key={index}
-                                                className="w-full md:flex-1 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                                                className="w-full bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200 flex flex-col h-[340px]"
                                             >
                                                 {/* Space Image */}
-                                                <div className="relative h-48 overflow-hidden">
+                                                <div className="relative h-36 flex-shrink-0 overflow-hidden">
                                                     <img
                                                         src={space.image}
                                                         alt={space.name}
@@ -132,38 +132,38 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                                                 </div>
 
                                                 {/* Space Details */}
-                                                <div className="p-6">
+                                                <div className="p-3 flex flex-col flex-grow">
                                                     {/* Space Name */}
-                                                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                                    <h3 className="text-base font-bold text-gray-900 mb-1.5 line-clamp-1">
                                                         {space.name}
                                                     </h3>
 
                                                     {/* Location */}
-                                                    <div className="flex items-center gap-2 text-gray-600 mb-4">
-                                                        <MapPin size={16} className="flex-shrink-0" />
-                                                        <span className="text-sm">{space.location}</span>
+                                                    <div className="flex items-center gap-1.5 text-gray-600 mb-2">
+                                                        <MapPin size={12} className="flex-shrink-0" />
+                                                        <span className="text-xs line-clamp-1">{space.location}</span>
                                                     </div>
 
                                                     {/* Amenities */}
-                                                    <div className="space-y-2 mb-4">
-                                                        {space.amenities.map((amenity, idx) => {
+                                                    <div className="space-y-1 mb-2 flex-grow">
+                                                        {space.amenities.slice(0, 2).map((amenity, idx) => {
                                                             const Icon = amenityIcons[amenity] || Wifi;
                                                             return (
-                                                                <div key={idx} className="flex items-center gap-2 text-gray-700">
-                                                                    <Icon size={16} className="text-yellow-500" />
-                                                                    <span className="text-sm">{amenity}</span>
+                                                                <div key={idx} className="flex items-center gap-1.5 text-gray-700">
+                                                                    <Icon size={12} className="text-yellow-500 flex-shrink-0" />
+                                                                    <span className="text-xs">{amenity}</span>
                                                                 </div>
                                                             );
                                                         })}
                                                     </div>
 
                                                     {/* Price and CTA */}
-                                                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                                    <div className="flex items-center justify-between pt-2 border-t border-gray-100 mt-auto">
                                                         <div>
-                                                            <p className="text-sm text-gray-500">Starting</p>
-                                                            <p className="text-xl font-bold text-blue-600">
+                                                            <p className="text-xs text-gray-500">Starting</p>
+                                                            <p className="text-lg font-bold text-blue-600">
                                                                 {space.price}
-                                                                <span className="text-sm text-gray-500 font-normal">/{space.period}</span>
+                                                                <span className="text-xs text-gray-500 font-normal">/{space.period}</span>
                                                             </p>
                                                         </div>
                                                         <button className="text-blue-600 hover:text-blue-700 font-semibold transition-colors md:text-sm text-xs md:px-0 px-2 md:py-0 py-1">
@@ -173,9 +173,8 @@ const TopSpaces = ({ city = 'hyderabad', reverse = false }) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))}
-                                </div>
-                            ))}
+                                        </div>
+                                    ))}
                         </div>
                     </div>
                 </div>

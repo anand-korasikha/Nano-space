@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #e5e7eb;
+    background: #ffe5e5;
     transition: all 0.3s ease;
     flex-shrink: 0;
     margin: 0 auto;
@@ -42,7 +42,7 @@
 
 /* Hover Effects */
 .group:hover .city-icon-container {
-    background: #d1d5db;
+    background: #5881da;
     transform: scale(1.05);
 }
 
@@ -83,7 +83,7 @@
         min-height: 52px;
         max-width: 52px;
         max-height: 52px;
-        background: #e5e7eb;
+        background: #ffe5e5;
     }
 
     .city-icon {

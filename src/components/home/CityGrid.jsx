@@ -3,7 +3,7 @@ import ServiceModal from './ServiceModal';
 import './CityGrid.css';
 
 // City icon mapping - maps city names to their SVG file paths
-const cityIconMap = {
+export const cityIconMap = {
     'Bangalore': '/svg/Bangalore (1).svg',
     'Mumbai': '/svg/Mumbai.svg',
     'Delhi': '/svg/Delhi 1.svg',
@@ -15,8 +15,6 @@ const cityIconMap = {
     'Jaipur': '/svg/jaipur.svg',
     'Surat': '/svg/Surat.svg',
     'Lucknow': '/svg/lucknow.svg',
-    'Indore': '/svg/indore.svg',
-    'Chandigarh': '/svg/chandigarh.svg',
     'Kochi': '/svg/kochi.svg',
     'Coimbatore': '/svg/coimbatore.svg',
     'Noida': '/svg/noida.svg',
@@ -26,12 +24,11 @@ const cityIconMap = {
 
 const cities = [
     'Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Chennai', 'Pune',
-    'Kolkata', 'Ahmedabad', 'Jaipur', 'Surat', 'Lucknow', 'Indore',
-    'Chandigarh', 'Kochi', 'Coimbatore', 'Noida', 'Gurgaon', 'Goa'
+    'Kolkata', 'Ahmedabad', 'Jaipur', 'Surat', 'Lucknow', 'Kochi',
+    'Coimbatore', 'Noida', 'Gurgaon', 'Goa'
 ];
 
-const CityGrid = ({ currentPage = 'home' }) => {
-    const [selectedCity, setSelectedCity] = useState(null);
+const CityGrid = ({ currentPage = 'home', onCitySelect }) => {
 
     // Helper function to get icon path
     const getCityIconPath = (cityName) => {
@@ -45,7 +42,7 @@ const CityGrid = ({ currentPage = 'home' }) => {
                 {cities.map((city, index) => (
                     <button
                         key={city}
-                        onClick={() => setSelectedCity(city)}
+                        onClick={() => onCitySelect && onCitySelect(city)}
                         className="group flex flex-col items-center justify-start gap-1.5 transition-all duration-300 w-full max-w-[80px] mx-auto"
                         title={city}
                     >
@@ -65,13 +62,6 @@ const CityGrid = ({ currentPage = 'home' }) => {
                 ))}
             </div>
 
-            <ServiceModal
-                isOpen={!!selectedCity}
-                cityName={selectedCity}
-                cityIconPath={selectedCity ? getCityIconPath(selectedCity) : ''}
-                currentPage={currentPage}
-                onClose={() => setSelectedCity(null)}
-            />
         </>
     );
 };

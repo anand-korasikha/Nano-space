@@ -41,7 +41,7 @@ const ColivingPropertyGrid = ({ spaces, onViewNumber }) => {
                                         className="property-grid-view-btn"
                                         onClick={() => onViewNumber && onViewNumber(space)}
                                     >
-                                        View Number
+                                        Get Qoute
                                     </button>
                                 </div>
                             </div>

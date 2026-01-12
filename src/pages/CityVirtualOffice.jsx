@@ -541,7 +541,7 @@ const CityVirtualOffice = () => {
             <EnquiryModal
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
-                officeType="Virtual Office"
+                officeType={`Virtual Office in ${city.name}`}
                 officeImage={selectedOffice?.image}
             />
         </div>

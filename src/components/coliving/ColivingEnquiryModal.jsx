@@ -165,7 +165,7 @@ const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
 
                         {/* Contact Expert */}
                         <div className="coliving-contact-expert">
-                            <img src="/images/expert.jpg" alt="Space Expert" className="expert-image" />
+                            <img src="/images/Logo.png" alt="Nano Space" className="expert-image" />
                             <div className="expert-info">
                                 <p className="expert-text">Connect with our space expert</p>
                                 <a href="mailto:hello@Nanospace.com" className="expert-email">

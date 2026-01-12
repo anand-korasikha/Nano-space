@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import CityGrid from './CityGrid';
+import CityGrid, { cityIconMap } from './CityGrid';
 import heroContentData from '../../data/heroContent.json';
 import HeroCarousel from './HeroCarousel';
+import ServiceModal from './ServiceModal';
 
 const Hero = ({ pageType = 'home' }) => {
     const content = heroContentData[pageType] || heroContentData.home;
+    const [selectedCity, setSelectedCity] = useState(null);
+
+    // Helper function to get icon path
+    const getCityIconPath = (cityName) => {
+        return cityIconMap[cityName] || '/svg/default-city.svg';
+    };
 
     return (
         <div className="relative min-h-[auto] md:min-h-[90vh] flex flex-col lg:flex-row bg-white overflow-hidden">
@@ -49,7 +56,10 @@ const Hero = ({ pageType = 'home' }) => {
 
                     <div className="mb-3 sm:mb-4">
                         <p className="text-xs md:text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2 sm:mb-3 md:mb-4">{content.popularCitiesLabel}</p>
-                        <CityGrid currentPage={pageType} />
+                        <CityGrid
+                            currentPage={pageType}
+                            onCitySelect={(city) => setSelectedCity(city)}
+                        />
                     </div>
                 </div>
             </div>
@@ -58,6 +68,14 @@ const Hero = ({ pageType = 'home' }) => {
             <div className="w-full lg:w-[45%] xl:w-[40%] flex items-center justify-center p-4 sm:p-8 lg:p-0">
                 <HeroCarousel />
             </div>
+
+            <ServiceModal
+                isOpen={!!selectedCity}
+                cityName={selectedCity}
+                cityIconPath={selectedCity ? getCityIconPath(selectedCity) : ''}
+                currentPage={pageType}
+                onClose={() => setSelectedCity(null)}
+            />
         </div>
     );
 };

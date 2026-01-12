@@ -183,8 +183,8 @@
 }
 
 .price-value {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 15px !important;
+    font-weight: 600 !important;
     margin-bottom: 0.25rem;
 }
 

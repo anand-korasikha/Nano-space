@@ -23,7 +23,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {new Date().getFullYear()} Nanospace. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Nanospace. All rights reserved and Developed By APTITPS</p>
             </div>
         </footer>
     );

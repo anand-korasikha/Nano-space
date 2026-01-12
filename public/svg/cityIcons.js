@@ -11,8 +11,6 @@ export const cityIconMap = {
     'Jaipur': '/svg/jaipur.svg',
     'Surat': '/svg/surat.svg', // Add if exists
     'Lucknow': '/svg/lucknow.svg', // Add if exists
-    'Indore': '/svg/indore.svg',
-    'Chandigarh': '/svg/chandigarh.svg',
     'Kochi': '/svg/kochi.svg',
     'Coimbatore': '/svg/coimbatore.svg',
     'Noida': '/svg/noida.svg',

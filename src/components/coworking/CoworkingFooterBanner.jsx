@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
-const CoworkingFooterBanner = () => {
+const CoworkingFooterBanner = ({ cityName }) => {
     return (
         <section className="bg-gradient-to-r from-yellow-400 to-orange-400 py-12">
             <div className="mx-6 md:mx-12 lg:mx-20">
@@ -15,13 +15,13 @@ const CoworkingFooterBanner = () => {
                                 <h3 className="text-3xl font-bold text-gray-900">NANOSPACE</h3>
                             </div>
                             <p className="text-gray-800 font-medium mb-3">
-                                Fynd the right space, Globally!
+                                Fynd the right space {cityName && `in ${cityName}`}, Globally!
                             </p>
                         </div>
 
                         {/* Description */}
                         <p className="text-gray-800 mb-4 leading-relaxed max-w-2xl">
-                            NanoSpace is India's #1 online platform for searching and booking Coworking, Coliving, Private Offices & Virtual Offices across India.
+                            NanoSpace is India's #1 online platform for searching and booking Coworking, Coliving, Private Offices & Virtual Offices across {cityName || 'India'}.
                             Choose from 100,000+ verified fully furnished spaces to Work & Live.
                         </p>
                         <p className="text-gray-800 font-medium mb-6">

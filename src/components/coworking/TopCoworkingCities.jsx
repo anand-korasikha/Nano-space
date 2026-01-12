@@ -4,13 +4,13 @@ import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 const TopCoworkingCities = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [cardsPerView, setCardsPerView] = useState(3);
+    const [cardsPerView, setCardsPerView] = useState(4);
 
     useEffect(() => {
         const updateCardsPerView = () => {
             if (window.innerWidth < 640) setCardsPerView(1);
             else if (window.innerWidth < 1024) setCardsPerView(2);
-            else setCardsPerView(3);
+            else setCardsPerView(4);
         };
         updateCardsPerView();
         window.addEventListener('resize', updateCardsPerView);
@@ -52,12 +52,11 @@ const TopCoworkingCities = () => {
     useEffect(() => {
         if (!isPaused) {
             const interval = setInterval(() => {
-                setCurrentIndex((prev) => (prev + 1) % cities.length);
-            }, 3000); // Change slide every 3 seconds
-
+                setCurrentIndex((prev) => prev + 1);
+            }, 3000);
             return () => clearInterval(interval);
         }
-    }, [isPaused, cities.length]);
+    }, [isPaused]);
 
     const goToSlide = (index) => {
         setCurrentIndex(index);
@@ -82,12 +81,12 @@ const TopCoworkingCities = () => {
     };
 
     return (
-        <section className="py-20 bg-gray-50">
-            <div className="mx-6 md:mx-12 lg:mx-20">
+        <section className="py-4 bg-gray-50">
+            <div className="mx-2 md:mx-4 lg:mx-8">
                 {/* Section Header */}
-                <div className="flex items-center justify-center gap-4 mb-12">
-                    <div className="w-12 h-12 bg-yellow-400 rounded-full flex-shrink-0"></div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex-shrink-0"></div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                         Top Coworking Cities in India
                     </h2>
                 </div>
@@ -117,16 +116,21 @@ const TopCoworkingCities = () => {
                     </button>
 
                     {/* Cities Carousel */}
-                    <div className="flex justify-center items-center gap-0 md:gap-6 px-0 md:px-16">
-                        {getVisibleCities().map((city, idx) => (
+                    <div className="overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-700 ease-linear"
+                            style={{ 
+                                transform: `translateX(-${(currentIndex % cities.length) * (100 / cardsPerView)}%)`,
+                                gap: cardsPerView > 1 ? '12px' : '0px'
+                            }}
+                        >
+                            {[...cities, ...cities, ...cities, ...cities, ...cities].map((city, idx) => (
                             <div
                                 key={`${city.name}-${idx}`}
-                                className={`relative rounded-3xl overflow-hidden group cursor-pointer transition-all duration-500 ${cardsPerView === 1
-                                    ? 'w-full h-[320px]'
-                                    : idx === 0
-                                        ? 'w-[450px] h-[320px]'
-                                        : 'w-[280px] h-[280px] hover:w-[450px] hover:h-[320px]'
-                                    }`}
+                                className="flex-shrink-0"
+                                style={{ width: cardsPerView > 1 ? `calc((100% - ${(cardsPerView - 1) * 12}px) / ${cardsPerView})` : '100%' }}
+                            >
+                                <div className="relative rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 h-[240px]">
                             >
                                 {/* Background Image */}
                                 <img
@@ -139,17 +143,19 @@ const TopCoworkingCities = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
 
                                 {/* City Name */}
-                                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                                    <div className="flex items-center gap-2 text-white">
-                                        <MapPin size={20} strokeWidth={2.5} className="flex-shrink-0" />
-                                        <span className="text-lg font-bold tracking-wide">{city.name}</span>
+                                <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                                    <div className="flex items-center gap-1.5 text-white">
+                                        <MapPin size={16} strokeWidth={2.5} className="flex-shrink-0" />
+                                        <span className="text-sm font-bold tracking-wide">{city.name}</span>
                                     </div>
                                 </div>
 
                                 {/* Hover Border Effect */}
-                                <div className="absolute inset-0 border-4 border-transparent group-hover:border-yellow-400 transition-all duration-300 rounded-3xl pointer-events-none"></div>
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-400 transition-all duration-300 rounded-2xl pointer-events-none"></div>
+                                </div>
                             </div>
                         ))}
+                        </div>
                     </div>
                 </div>
             </div>

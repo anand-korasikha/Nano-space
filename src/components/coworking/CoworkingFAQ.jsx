@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import faqData from '../../data/faq.json';
 
-const CoworkingFAQ = ({ pageType = 'coworking', faqs: customFaqs }) => {
+const CoworkingFAQ = ({ pageType = 'coworking', faqs: customFaqs, cityName }) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     // Get FAQs based on page type or use custom FAQs
@@ -19,7 +19,7 @@ const CoworkingFAQ = ({ pageType = 'coworking', faqs: customFaqs }) => {
                 <div className="flex items-center justify-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-yellow-400 rounded-full flex-shrink-0"></div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                        Frequently Asked Questions
+                        Frequently Asked Questions {cityName && `in ${cityName}`}
                     </h2>
                 </div>
 

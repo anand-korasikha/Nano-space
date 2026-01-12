@@ -210,7 +210,7 @@ const CityColiving = () => {
                                                 className="get-quote-btn"
                                                 onClick={() => handleGetQuoteClick(space)}
                                             >
-                                                View Number
+                                                Get Quote
                                             </button>
                                         </div>
                                     </div>
@@ -237,6 +237,7 @@ const CityColiving = () => {
             <FeaturedColivingProperties
                 spaces={cityData.spaces.slice(0, 8)}
                 title={cityData.featuredSection?.title}
+                cityName={cityData.cityName}
                 onViewNumber={handleGetQuoteClick}
             />
 
@@ -256,11 +257,12 @@ const CityColiving = () => {
                 <CoworkingFAQ
                     pageType="coliving"
                     faqs={cityData.faqs}
+                    cityName={cityData.cityName}
                 />
             )}
 
             {/* Footer Banner */}
-            <CoworkingFooterBanner />
+            <CoworkingFooterBanner cityName={cityData.cityName} />
 
             {/* Coliving Enquiry Modal */}
             <ColivingEnquiryModal

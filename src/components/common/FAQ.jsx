@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import faqData from '../../data/faqData.json';
 import './FAQ.css';
 
-const FAQ = ({ category = 'coworking' }) => {
+const FAQ = ({ category = 'coworking', cityName }) => {
     const [openIndex, setOpenIndex] = useState(null);
 
     // Get FAQs for the specified category
@@ -22,9 +22,11 @@ const FAQ = ({ category = 'coworking' }) => {
             <div className="faq-container">
                 {/* Section Header */}
                 <div className="faq-header">
-                    <h2 className="faq-title">Frequently Asked Questions</h2>
+                    <h2 className="faq-title">
+                        Frequently Asked Questions {cityName && `about ${category} in ${cityName}`}
+                    </h2>
                     <p className="faq-subtitle">
-                        Find answers to common questions about our services
+                        Find answers to common questions about our services {cityName && `in ${cityName}`}
                     </p>
                 </div>
 

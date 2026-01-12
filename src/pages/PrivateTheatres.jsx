@@ -37,19 +37,20 @@ const PrivateTheatres = () => {
                 <div className="theatres-container">
 
                     {/* Hyderabad Private Theatres */}
-                    <CityTheatresSection
+                    <CityTheatresCarousel
                         cityName="Hyderabad"
                         theatres={privateTheatresData.hyderabad}
                     />
 
                     {/* Bangalore Private Theatres */}
-                    <CityTheatresSection
+                    <CityTheatresCarousel
                         cityName="Bangalore"
                         theatres={privateTheatresData.bangalore}
+                        reverse={true}
                     />
 
                     {/* Chennai Private Theatres */}
-                    <CityTheatresSection
+                    <CityTheatresCarousel
                         cityName="Chennai"
                         theatres={privateTheatresData.chennai}
                     />
@@ -59,15 +60,126 @@ const PrivateTheatres = () => {
     );
 };
 
-const CityTheatresSection = ({ cityName, theatres }) => {
+const CityTheatresCarousel = ({ cityName, theatres, reverse = false }) => {
+    const carouselRef = React.useRef(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if mobile
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Reverse the theatres array if reverse prop is true
+    const displayTheatres = reverse ? [...theatres].reverse() : theatres;
+
+    // Auto-scroll for mobile continuous flow
+    React.useEffect(() => {
+        if (isMobile) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prev) => {
+                    if (reverse) {
+                        return prev - 1;
+                    } else {
+                        return prev + 1;
+                    }
+                });
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [isMobile, reverse]);
+
+    const checkScrollButtons = () => {
+        if (carouselRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+            setCanScrollLeft(scrollLeft > 0);
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+        }
+    };
+
+    const scroll = (direction) => {
+        if (carouselRef.current) {
+            const isMobile = window.innerWidth <= 768;
+            const scrollAmount = isMobile
+                ? window.innerWidth - 32
+                : 320;
+
+            const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+            carouselRef.current.scrollTo({
+                left: newScrollLeft,
+                behavior: 'smooth'
+            });
+            setTimeout(checkScrollButtons, 300);
+        }
+    };
+
+    React.useEffect(() => {
+        checkScrollButtons();
+        window.addEventListener('resize', checkScrollButtons);
+        return () => window.removeEventListener('resize', checkScrollButtons);
+    }, []);
+
     return (
-        <div className="city-section">
+        <div className={`city-section ${reverse ? 'reverse' : ''}`}>
             <h2 className="city-title">Private Theatres in {cityName}</h2>
 
-            <div className="theatres-grid">
-                {theatres.map((theatre) => (
-                    <TheatreCard key={theatre.id} theatre={theatre} />
-                ))}
+            <div className="carousel-container">
+                {!isMobile && canScrollLeft && (
+                    <button
+                        className="carousel-nav-btn left"
+                        onClick={() => scroll('left')}
+                        aria-label="Scroll left"
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+                )}
+
+                {isMobile ? (
+                    <div className="theatres-carousel-mobile">
+                        <div
+                            className="theatres-carousel-track"
+                            style={{
+                                transform: reverse 
+                                    ? `translateX(${((currentIndex % displayTheatres.length) * 100)}%)`
+                                    : `translateX(-${((currentIndex % displayTheatres.length) * 100)}%)`,
+                                transition: 'transform 700ms linear'
+                            }}
+                        >
+                            {[...displayTheatres, ...displayTheatres, ...displayTheatres].map((theatre, index) => (
+                                <div key={`${theatre.id}-${index}`} className="theatre-card-wrapper">
+                                    <TheatreCard theatre={theatre} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <div
+                        className="theatres-carousel"
+                        ref={carouselRef}
+                        onScroll={checkScrollButtons}
+                    >
+                        {displayTheatres.map((theatre) => (
+                            <TheatreCard key={theatre.id} theatre={theatre} />
+                        ))}
+                    </div>
+                )}
+
+                {!isMobile && canScrollRight && (
+                    <button
+                        className="carousel-nav-btn right"
+                        onClick={() => scroll('right')}
+                        aria-label="Scroll right"
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+                )}
             </div>
         </div>
     );

@@ -66,9 +66,37 @@ const CityEventSpacesCarousel = ({ cityName, venues, reverse = false }) => {
     const carouselRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Check if mobile
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Reverse the venues array if reverse prop is true
     const displayVenues = reverse ? [...venues].reverse() : venues;
+
+    // Auto-scroll for mobile continuous flow
+    React.useEffect(() => {
+        if (isMobile) {
+            const interval = setInterval(() => {
+                setCurrentIndex((prev) => {
+                    if (reverse) {
+                        return prev - 1;
+                    } else {
+                        return prev + 1;
+                    }
+                });
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [isMobile, reverse]);
 
     const checkScrollButtons = () => {
         if (carouselRef.current) {
@@ -80,11 +108,10 @@ const CityEventSpacesCarousel = ({ cityName, venues, reverse = false }) => {
 
     const scroll = (direction) => {
         if (carouselRef.current) {
-            // Calculate scroll amount based on viewport width for mobile
             const isMobile = window.innerWidth <= 768;
             const scrollAmount = isMobile
-                ? window.innerWidth - 64 // calc(100vw - 4rem) for mobile
-                : 320; // Card width + gap for desktop
+                ? window.innerWidth - 32
+                : 320;
 
             const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
             carouselRef.current.scrollTo({
@@ -100,7 +127,7 @@ const CityEventSpacesCarousel = ({ cityName, venues, reverse = false }) => {
             <h2 className="city-title">Event Spaces in {cityName}</h2>
 
             <div className="carousel-container">
-                {canScrollLeft && (
+                {!isMobile && canScrollLeft && (
                     <button
                         className="carousel-nav-btn left"
                         onClick={() => scroll('left')}
@@ -110,17 +137,37 @@ const CityEventSpacesCarousel = ({ cityName, venues, reverse = false }) => {
                     </button>
                 )}
 
-                <div
-                    className="venues-carousel"
-                    ref={carouselRef}
-                    onScroll={checkScrollButtons}
-                >
-                    {displayVenues.map((venue) => (
-                        <VenueCard key={venue.id} venue={venue} />
-                    ))}
-                </div>
+                {isMobile ? (
+                    <div className="venues-carousel-mobile">
+                        <div
+                            className="venues-carousel-track"
+                            style={{
+                                transform: reverse 
+                                    ? `translateX(${((currentIndex % displayVenues.length) * 100)}%)`
+                                    : `translateX(-${((currentIndex % displayVenues.length) * 100)}%)`,
+                                transition: 'transform 700ms linear'
+                            }}
+                        >
+                            {[...displayVenues, ...displayVenues, ...displayVenues].map((venue, index) => (
+                                <div key={`${venue.id}-${index}`} className="venue-card-wrapper">
+                                    <VenueCard venue={venue} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <div
+                        className="venues-carousel"
+                        ref={carouselRef}
+                        onScroll={checkScrollButtons}
+                    >
+                        {displayVenues.map((venue) => (
+                            <VenueCard key={venue.id} venue={venue} />
+                        ))}
+                    </div>
+                )}
 
-                {canScrollRight && (
+                {!isMobile && canScrollRight && (
                     <button
                         className="carousel-nav-btn right"
                         onClick={() => scroll('right')}

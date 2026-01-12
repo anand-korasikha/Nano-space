@@ -222,7 +222,7 @@ const CityCoworking = () => {
             <TopLocations cityName={cityData.cityName} />
 
             {/* FAQ Section */}
-            <FAQ category="coworking" />
+            <FAQ category="coworking" cityName={cityData.cityName} />
 
             {/* Enquiry Modal */}
             <EnquiryModal

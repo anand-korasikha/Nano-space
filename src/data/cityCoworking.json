@@ -2,132 +2,88 @@
     "hyderabad": {
         "cityName": "Hyderabad",
         "heroImage": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-        "description": "Find premium coworking spaces in Hyderabad's tech hubs including Gachibowli, HITEC City, and Financial District",
+        "description": "Nanospace offers premium coworking solutions in Hyderabad starting at ₹7,500/seat and ₹37,509/cabin per month across prime locations.",
         "popularLocations": [
-            "Gachibowli",
-            "Hitec City",
-            "Madhapur",
-            "Kondapur",
-            "Banjara Hills",
-            "Kukatpally",
-            "Secunderabad",
-            "Ameerpet",
+            "KPHB",
             "Jubilee Hills",
-            "Kokapet",
-            "Miyapur",
-            "Moosarambagh"
+            "Gachibowli",
+            "Banjara Hills",
+            "Nanakramguda"
         ],
         "spaces": [
             {
                 "id": 1,
-                "name": "Awfis Sreshta Marvel",
-                "location": "Gachibowli, Hyderabad",
+                "name": "Nanospace - KPHB",
+                "location": "KPHB, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.3,
-                "price": "₹10,999",
-                "period": "month",
-                "badge": "Premium",
+                "rating": 4.9,
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "badge": "Nanospace",
                 "amenities": [
                     "High speed WiFi",
-                    "Coffee & Bar"
+                    "Coffee & Bar",
+                    "Private Cabins"
                 ]
             },
             {
                 "id": 2,
-                "name": "The Headquarters Orbit",
-                "location": "Hitec City, Hyderabad",
+                "name": "Nanospace - Jubilee Hills",
+                "location": "Jubilee Hills, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
                 "rating": 5.0,
-                "price": "₹15,000",
-                "period": "month",
-                "badge": "Premium",
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "badge": "Nanospace",
                 "amenities": [
                     "High speed WiFi",
-                    "Coffee & Bar"
+                    "Coffee & Bar",
+                    "Conference Rooms"
                 ]
             },
             {
                 "id": 3,
-                "name": "WeWork Rajapushpa Summit",
-                "location": "Financial District, Hyderabad",
+                "name": "Nanospace - Gachibowli",
+                "location": "Gachibowli, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.4,
-                "price": "₹17,999",
-                "period": "month",
-                "badge": "Premium",
+                "rating": 4.8,
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "badge": "Nanospace",
                 "amenities": [
                     "High speed WiFi",
-                    "Coffee & Bar"
+                    "Coffee & Bar",
+                    "24/7 Access"
                 ]
             },
             {
                 "id": 4,
-                "name": "InDesk",
-                "location": "Hitec City, Hyderabad",
+                "name": "Nanospace - Banjara Hills",
+                "location": "Banjara Hills, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.5,
-                "price": "₹6,000",
-                "period": "month",
-                "badge": "Popular",
+                "rating": 4.9,
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "badge": "Nanospace",
                 "amenities": [
                     "High speed WiFi",
-                    "Coffee & Bar"
+                    "Coffee & Bar",
+                    "Premium Lounge"
                 ]
             },
             {
                 "id": 5,
-                "name": "Picxalin Spaces",
-                "location": "Hitec City, Hyderabad",
+                "name": "Nanospace - Nanakramguda",
+                "location": "Nanakramguda, Hyderabad",
                 "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.2,
-                "price": "₹10,999",
-                "period": "month",
-                "badge": "Premium",
+                "rating": 4.7,
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "badge": "Nanospace",
                 "amenities": [
                     "High speed WiFi",
-                    "Coffee & Bar"
-                ]
-            },
-            {
-                "id": 6,
-                "name": "iKubeQube Labs",
-                "location": "Begumpet, Hyderabad",
-                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.8,
-                "price": "₹10,999",
-                "period": "month",
-                "badge": "Premium",
-                "amenities": [
-                    "High speed WiFi",
-                    "Coffee & Bar"
-                ]
-            },
-            {
-                "id": 7,
-                "name": "Smartworks Raheja Mindspace",
-                "location": "Hitec City, Hyderabad",
-                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.2,
-                "price": "₹8,999",
-                "period": "month",
-                "badge": "Popular",
-                "amenities": [
-                    "High speed WiFi",
-                    "Coffee & Bar"
-                ]
-            },
-            {
-                "id": 8,
-                "name": "91Springboard",
-                "location": "Hitec City, Hyderabad",
-                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                "rating": 4.4,
-                "price": "₹9,999",
-                "period": "month",
-                "badge": "Premium",
-                "amenities": [
-                    "High speed WiFi",
-                    "Coffee & Bar"
+                    "Coffee & Bar",
+                    "Modern Infrastructure"
                 ]
             }
         ]

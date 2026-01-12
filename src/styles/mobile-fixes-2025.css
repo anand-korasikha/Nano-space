@@ -173,12 +173,11 @@
 }
 
 /* Navigation Arrows on Cards */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
 
-    .image-nav-btn,
-    .carousel-nav-btn {
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 0.875rem !important;
+    /* Hide carousel flow buttons and image nav buttons on mobile/tablet */
+    .carousel-nav-btn,
+    .image-nav-btn {
+        display: none !important;
     }
 }
