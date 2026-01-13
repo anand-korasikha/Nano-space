@@ -19,6 +19,13 @@
                 "name": "Nova by Union Living",
                 "location": "DLF Phase 2, Gachibowli",
                 "image": "images/hero/coliving-2.jpg",
+                "images": [
+                    "images/hero/coliving-2.jpg",
+                    "images/hero/coliving-3.jpg",
+                    "images/hero/coliving-4.jpg",
+                    "images/hero/coliving-5.jpg"
+                ],
+                "description": "Premium coliving space in the heart of Gachibowli's IT corridor. Nova offers modern amenities, comfortable living spaces, and a vibrant community perfect for young professionals.",
                 "rating": 4.8,
                 "price": "₹34,999",
                 "period": "month",
@@ -36,6 +43,13 @@
                 "name": "Cozy Homes",
                 "location": "Sector 55, Hitec City",
                 "image": "images/hero/coliving-3.jpg",
+                "images": [
+                    "images/hero/coliving-3.jpg",
+                    "images/hero/coliving-4.jpg",
+                    "images/hero/coliving-5.jpg",
+                    "images/hero/home-1.jpg"
+                ],
+                "description": "Affordable and comfortable coliving in Hitec City. Perfect for students and young professionals looking for a budget-friendly option with essential amenities.",
                 "rating": 4.8,
                 "price": "₹13,999",
                 "period": "month",
@@ -51,6 +65,13 @@
                 "name": "Kommune",
                 "location": "Sector 43, Madhapur",
                 "image": "images/hero/coliving-4.jpg",
+                "images": [
+                    "images/hero/coliving-4.jpg",
+                    "images/hero/coliving-5.jpg",
+                    "images/hero/home-1.jpg",
+                    "images/hero/home-2.jpg"
+                ],
+                "description": "Modern coliving space in Madhapur with a focus on community living. Features spacious rooms, common areas, and regular community events.",
                 "rating": 4.5,
                 "price": "₹17,000",
                 "period": "month",
@@ -67,6 +88,13 @@
                 "name": "RentDoor 3031",
                 "location": "Sector 46, Kondapur",
                 "image": "images/hero/coliving-5.jpg",
+                "images": [
+                    "images/hero/coliving-5.jpg",
+                    "images/hero/home-1.jpg",
+                    "images/hero/home-2.jpg",
+                    "images/hero/coliving-1.jpg"
+                ],
+                "description": "Luxury coliving experience in Kondapur with premium amenities including gym access. Ideal for professionals seeking upscale accommodation.",
                 "rating": 4.0,
                 "price": "₹45,000",
                 "period": "month",
@@ -84,6 +112,13 @@
                 "name": "PLH Homes",
                 "location": "Sector 45, Gachibowli",
                 "image": "images/hero/home-1.jpg",
+                "images": [
+                    "images/hero/home-1.jpg",
+                    "images/hero/home-2.jpg",
+                    "images/hero/coliving-1.jpg",
+                    "images/hero/coliving-2.jpg"
+                ],
+                "description": "Well-maintained coliving space in Gachibowli offering double occupancy rooms. Great for those looking to share and save on accommodation costs.",
                 "rating": 4.5,
                 "price": "₹15,000",
                 "period": "month",
@@ -99,6 +134,13 @@
                 "name": "Covie 108",
                 "location": "Medicity, Gachibowli",
                 "image": "images/hero/home-2.jpg",
+                "images": [
+                    "images/hero/home-2.jpg",
+                    "images/hero/coliving-1.jpg",
+                    "images/hero/coliving-2.jpg",
+                    "images/hero/coliving-3.jpg"
+                ],
+                "description": "Comfortable single occupancy coliving near Medicity. Features include daily meals, housekeeping, and high-speed WiFi for remote workers.",
                 "rating": 4.3,
                 "price": "₹17,000",
                 "period": "month",

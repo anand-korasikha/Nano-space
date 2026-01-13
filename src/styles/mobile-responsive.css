@@ -837,17 +837,16 @@
    ============================================ */
 
 @media (max-width: 768px) {
+
     /* Ensure carousel dots are visible and touchable on mobile */
     .flex.justify-center button[aria-label*="slide"] {
         min-width: 8px !important;
         min-height: 8px !important;
         touch-action: manipulation;
     }
-    
+
     /* Add padding for better touch targets */
     .flex.justify-center[class*="gap"] {
         padding: 0.5rem 0;
     }
 }
- 
- 

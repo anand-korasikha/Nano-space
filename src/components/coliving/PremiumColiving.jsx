@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 
 const PremiumColiving = () => {
+    const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [cardsPerView, setCardsPerView] = useState(3);
@@ -148,12 +150,18 @@ const PremiumColiving = () => {
                                                         <span className="text-xs md:text-sm">{space.location}</span>
                                                     </div>
 
-                                                    {/* Price */}
-                                                    <div className="pt-3 border-t border-gray-100">
+                                                    {/* Price and CTA */}
+                                                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
                                                         <p className="text-lg md:text-xl font-bold text-blue-600">
                                                             {space.price}
                                                             <span className="text-xs md:text-sm text-gray-500 font-normal"> / {space.period}</span>
                                                         </p>
+                                                        <button
+                                                            className="text-blue-600 hover:text-blue-700 font-semibold transition-colors text-sm"
+                                                            onClick={() => navigate(`/coliving/space/bangalore/${space.id}`)}
+                                                        >
+                                                            Explore More →
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

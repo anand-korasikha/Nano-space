@@ -7,8 +7,10 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Coworking from './pages/Coworking';
 import CityCoworking from './pages/CityCoworking';
+import CoworkingSpaceDetails from './components/coworking/CoworkingSpaceDetails';
 import Coliving from './pages/Coliving';
 import CityColiving from './pages/CityColiving';
+import ColivingSpaceDetails from './components/coliving/ColivingSpaceDetails';
 import VirtualOffice from './pages/VirtualOffice';
 import CityVirtualOffice from './pages/CityVirtualOffice';
 import BusinessPlans from './pages/BusinessPlans';
@@ -23,6 +25,7 @@ import OwnerDashboard from './pages/OwnerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import './styles/responsive.css';
 
+
 function App() {
   return (
     <AuthProvider>
@@ -32,8 +35,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="coworking" element={<Coworking />} />
           <Route path="coworking/:cityName" element={<CityCoworking />} />
+          <Route path="coworking/space/:city/:spaceId" element={<CoworkingSpaceDetails />} />
           <Route path="coliving" element={<Coliving />} />
           <Route path="coliving/:cityName" element={<CityColiving />} />
+          <Route path="coliving/space/:city/:spaceId" element={<ColivingSpaceDetails />} />
           <Route path="virtual-office" element={<VirtualOffice />} />
           <Route path="virtual-office/:cityName" element={<CityVirtualOffice />} />
           <Route path="business-plans" element={<BusinessPlans />} />
