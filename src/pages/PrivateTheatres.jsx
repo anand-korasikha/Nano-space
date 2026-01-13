@@ -256,10 +256,12 @@ const TheatreCard = ({ theatre }) => {
                 </div>
 
                 <div className="theatre-pricing">
-                    {theatre.memberPrice && (
+                    {theatre.memberPrice ? (
                         <div className="member-price-badge">
                             <span>💎 Member Price available</span>
                         </div>
+                    ) : (
+                        <div style={{ minHeight: '2rem', marginBottom: '0.75rem' }}></div>
                     )}
 
                     {theatre.discount && (

@@ -200,7 +200,7 @@
     cursor: pointer;
     min-width: 300px;
     max-width: 300px;
-    height: 440px;
+    height: 520px;
     display: flex;
     flex-direction: column;
 }
@@ -329,7 +329,7 @@
     color: #1a1a1a;
     margin-bottom: 0.5rem;
     line-height: 1.4;
-    height: 2.8em;
+    min-height: 2.8em;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -395,6 +395,7 @@
     padding-top: 1rem;
     position: relative;
     margin-top: auto;
+    min-height: 140px;
 }
 
 .member-price-badge {
@@ -406,8 +407,7 @@
     font-weight: 600;
     margin-bottom: 0.75rem;
     display: inline-block;
-    height: 1.8em;
-    line-height: 1;
+    min-height: 2rem;
 }
 
 .discount-badge {
@@ -533,8 +533,7 @@
         width: 100%;
         min-width: 100%;
         max-width: 100%;
-        min-height: 420px;
-        height: auto;
+        height: 520px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -571,8 +570,7 @@
         min-width: calc(100vw - 2rem);
         max-width: calc(100vw - 2rem);
         width: calc(100vw - 2rem);
-        height: auto;
-        min-height: 420px;
+        height: 520px;
         scroll-snap-align: center;
         flex-shrink: 0;
     }
@@ -641,7 +639,7 @@
         min-width: calc(100vw - 1.5rem);
         max-width: calc(100vw - 1.5rem);
         width: calc(100vw - 1.5rem);
-        min-height: 400px;
+        height: 520px;
     }
 
     .theatre-image-container {
