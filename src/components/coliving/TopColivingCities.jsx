@@ -6,7 +6,7 @@ const TopColivingCities = () => {
     // Hero city - Hyderabad (large left card - HIGHLIGHTED)
     const heroCity = {
         name: 'Hyderabad',
-        image: 'images/hero/coliving-1.jpg'
+        image: '/images/hero/coliving-1.jpg'
     };
 
     // Grid cities in exact order from reference image
@@ -15,27 +15,27 @@ const TopColivingCities = () => {
     const gridCities = [
         {
             name: 'Bangalore',
-            image: 'images/hero/coliving-2.jpg'
+            image: '/images/latestimg/top11.webp'
         },
         {
             name: 'Gurugram',
-            image: 'images/hero/coliving-3.jpg'
+            image: '/images/hero/coliving-3.jpg'
         },
         {
             name: 'Noida',
-            image: 'images/hero/coliving-4.jpg'
+            image: '/images/hero/coliving-4.jpg'
         },
         {
             name: 'Delhi',
-            image: 'images/hero/coliving-5.jpg'
+            image: '/images/latestimg/top10.webp'
         },
         {
             name: 'Pune',
-            image: 'images/hero/home-1.jpg'
+            image: '/images/latestimg/top9.webp'
         },
         {
             name: 'Mumbai',
-            image: 'images/hero/home-2.jpg'
+            image: '/images/latestimg/top8.webp'
         }
     ];
 

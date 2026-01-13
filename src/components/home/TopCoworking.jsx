@@ -4,49 +4,49 @@ const cities = [
     {
         name: 'Gurugram',
         tagline: 'Millennium City',
-        image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/gurugram.webp',
         id: 1
     },
     {
         name: 'Hyderabad',
         tagline: 'A City of Pearls',
-        image: 'https://images.unsplash.com/photo-1572455857216-db59286d9a0d?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/hyderabad.webp',
         id: 2
     },
     {
         name: 'Bangalore',
         tagline: "India's Silicon Valley",
-        image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/bangalore.webp',
         id: 3
     },
     {
         name: 'Mumbai',
         tagline: 'A City of Dreams',
-        image: 'https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/mumbai.webp',
         id: 4
     },
     {
         name: 'Pune',
         tagline: 'Queen of the Deccan',
-        image: 'https://images.unsplash.com/photo-1565538059080-b74a5892e622?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/pune.webp',
         id: 5
     },
     {
         name: 'Delhi',
         tagline: 'The Nation Capital',
-        image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/delhi.webp',
         id: 6
     },
     {
         name: 'Noida',
         tagline: 'The Hitech City',
-        image: 'https://images.unsplash.com/photo-1570155308259-f40381fa5b18?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/noida.webp',
         id: 7
     },
     {
         name: 'Lucknow',
         tagline: 'The City of Nawabs',
-        image: 'https://images.unsplash.com/photo-1591465243170-179344449830?auto=format&fit=crop&w=600&q=80',
+        image: '/images/topcoworking/lucknow.webp',
         id: 8
     }
 ];

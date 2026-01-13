@@ -20,31 +20,31 @@ const TopCoworkingCities = () => {
     const cities = [
         {
             name: "Hyderabad",
-            image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top1.webp"
         },
         {
             name: "Bangalore",
-            image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top2.webp"
         },
         {
             name: "Mumbai",
-            image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top3.webp"
         },
         {
             name: "Gurugram",
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top4.webp"
         },
         {
             name: "Pune",
-            image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top5.webp"
         },
         {
             name: "Delhi",
-            image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top6.webp"
         },
         {
             name: "Ahmedabad",
-            image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+            image: "/images/latestimg/top7.webp"
         }
     ];
 
@@ -119,42 +119,42 @@ const TopCoworkingCities = () => {
                     <div className="overflow-hidden">
                         <div
                             className="flex transition-transform duration-700 ease-linear"
-                            style={{ 
+                            style={{
                                 transform: `translateX(-${(currentIndex % cities.length) * (100 / cardsPerView)}%)`,
                                 gap: cardsPerView > 1 ? '12px' : '0px'
                             }}
                         >
                             {[...cities, ...cities, ...cities, ...cities, ...cities].map((city, idx) => (
-                            <div
-                                key={`${city.name}-${idx}`}
-                                className="flex-shrink-0"
-                                style={{ width: cardsPerView > 1 ? `calc((100% - ${(cardsPerView - 1) * 12}px) / ${cardsPerView})` : '100%' }}
+                                <div
+                                    key={`${city.name}-${idx}`}
+                                    className="flex-shrink-0"
+                                    style={{ width: cardsPerView > 1 ? `calc((100% - ${(cardsPerView - 1) * 12}px) / ${cardsPerView})` : '100%' }}
+                                >
+                                    <div className="relative rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 h-[240px]">
                             >
-                                <div className="relative rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 h-[240px]">
-                            >
-                                {/* Background Image */}
-                                <img
-                                    src={city.image}
-                                    alt={`${city.name} coworking spaces`}
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
+                                        {/* Background Image */}
+                                        <img
+                                            src={city.image}
+                                            alt={`${city.name} coworking spaces`}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
 
-                                {/* Dark Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
+                                        {/* Dark Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300"></div>
 
-                                {/* City Name */}
-                                <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                                    <div className="flex items-center gap-1.5 text-white">
-                                        <MapPin size={16} strokeWidth={2.5} className="flex-shrink-0" />
-                                        <span className="text-sm font-bold tracking-wide">{city.name}</span>
+                                        {/* City Name */}
+                                        <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                                            <div className="flex items-center gap-1.5 text-white">
+                                                <MapPin size={16} strokeWidth={2.5} className="flex-shrink-0" />
+                                                <span className="text-sm font-bold tracking-wide">{city.name}</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Hover Border Effect */}
+                                        <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-400 transition-all duration-300 rounded-2xl pointer-events-none"></div>
                                     </div>
                                 </div>
-
-                                {/* Hover Border Effect */}
-                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-400 transition-all duration-300 rounded-2xl pointer-events-none"></div>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -51,6 +51,22 @@ const PremiumColiving = () => {
             price: '₹17,000',
             period: 'month',
             image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+        },
+        {
+            id: 5,
+            name: 'Setti Anant',
+            location: 'Whitefield, Bangalore',
+            price: '₹16,500',
+            period: 'month',
+            image: '/images/latestimg/top19.webp'
+        },
+        {
+            id: 6,
+            name: 'Setti Ashray',
+            location: 'Koramangala, Bangalore',
+            price: '₹18,000',
+            period: 'month',
+            image: '/images/latestimg/top20.webp'
         }
     ];
 
@@ -120,13 +136,16 @@ const PremiumColiving = () => {
                             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div key={slideIndex} className="flex gap-0 md:gap-6 min-w-full">
+                                <div
+                                    key={slideIndex}
+                                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-6 min-w-full"
+                                >
                                     {premiumSpaces
                                         .slice(slideIndex * cardsPerView, (slideIndex + 1) * cardsPerView)
                                         .map((space) => (
                                             <div
                                                 key={space.id}
-                                                className="w-full md:flex-1 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group cursor-pointer"
+                                                className="w-full bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group cursor-pointer"
                                             >
                                                 {/* Space Image */}
                                                 <div className="relative h-44 md:h-52 overflow-hidden">
