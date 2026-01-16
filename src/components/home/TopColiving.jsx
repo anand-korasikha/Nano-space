@@ -4,49 +4,49 @@ const colivingCities = [
     {
         name: 'Gurugram',
         tagline: 'Millennium City',
-        image: 'https://images.unsplash.com/photo-1596276122653-651a3898309f?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top15.webp',
         id: 1
     },
     {
         name: 'Bangalore',
         tagline: "India's Silicon Valley",
-        image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top16.webp',
         id: 2
     },
     {
         name: 'Mumbai',
         tagline: 'A City of Dreams',
-        image: 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top17.webp',
         id: 3
     },
     {
         name: 'Hyderabad',
         tagline: 'A City of Pearls',
-        image: 'https://images.unsplash.com/photo-1594191349377-bb894a4c57fb?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top18.webp',
         id: 4
     },
     {
         name: 'Pune',
         tagline: 'Queen of the Deccan',
-        image: 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top19.webp',
         id: 5
     },
     {
         name: 'Delhi',
         tagline: 'The Nation Capital',
-        image: 'https://images.unsplash.com/photo-1570155308259-f40381fa5b18?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top20.webp',
         id: 6
     },
     {
         name: 'Noida',
         tagline: 'The Hitech City',
-        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top21.webp',
         id: 7
     },
     {
         name: 'Ahmedabad',
         tagline: 'The Hitech City',
-        image: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=600&q=80',
+        image: '/images/latestimg/top22.webp',
         id: 8
     }
 ];
