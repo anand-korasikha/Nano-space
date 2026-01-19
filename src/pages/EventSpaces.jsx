@@ -142,7 +142,7 @@ const CityEventSpacesCarousel = ({ cityName, venues, reverse = false }) => {
                         <div
                             className="venues-carousel-track"
                             style={{
-                                transform: reverse 
+                                transform: reverse
                                     ? `translateX(${((currentIndex % displayVenues.length) * 100)}%)`
                                     : `translateX(-${((currentIndex % displayVenues.length) * 100)}%)`,
                                 transition: 'transform 700ms linear'

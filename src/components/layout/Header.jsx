@@ -12,21 +12,39 @@ const Header = () => {
     const navigate = useNavigate();
     const [isCoworkingDropdownOpen, setIsCoworkingDropdownOpen] = useState(false);
     const [isColivingDropdownOpen, setIsColivingDropdownOpen] = useState(false);
+    const [isEventSpacesDropdownOpen, setIsEventSpacesDropdownOpen] = useState(false);
+    const [isOurServicesDropdownOpen, setIsOurServicesDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false);
         setIsCoworkingDropdownOpen(false);
         setIsColivingDropdownOpen(false);
+        setIsEventSpacesDropdownOpen(false);
+        setIsOurServicesDropdownOpen(false);
     };
 
     const toggleMobileDropdown = (dropdown) => {
         if (dropdown === 'coworking') {
             setIsCoworkingDropdownOpen(!isCoworkingDropdownOpen);
             setIsColivingDropdownOpen(false);
+            setIsEventSpacesDropdownOpen(false);
+            setIsOurServicesDropdownOpen(false);
         } else if (dropdown === 'coliving') {
             setIsColivingDropdownOpen(!isColivingDropdownOpen);
             setIsCoworkingDropdownOpen(false);
+            setIsEventSpacesDropdownOpen(false);
+            setIsOurServicesDropdownOpen(false);
+        } else if (dropdown === 'events') {
+            setIsEventSpacesDropdownOpen(!isEventSpacesDropdownOpen);
+            setIsCoworkingDropdownOpen(false);
+            setIsColivingDropdownOpen(false);
+            setIsOurServicesDropdownOpen(false);
+        } else if (dropdown === 'services') {
+            setIsOurServicesDropdownOpen(!isOurServicesDropdownOpen);
+            setIsCoworkingDropdownOpen(false);
+            setIsColivingDropdownOpen(false);
+            setIsEventSpacesDropdownOpen(false);
         }
     };
 
@@ -168,32 +186,125 @@ const Header = () => {
                                 Hotel Rooms
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to="/event-spaces"
-                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                                onClick={closeMobileMenu}
-                            >
-                                Event Spaces
-                            </NavLink>
+
+                        {/* Event Spaces with Dropdown */}
+                        <li
+                            className="nav-item-dropdown"
+                            onMouseEnter={() => window.innerWidth > 768 && setIsEventSpacesDropdownOpen(true)}
+                            onMouseLeave={() => window.innerWidth > 768 && setIsEventSpacesDropdownOpen(false)}
+                        >
+                            <div className="nav-link-wrapper">
+                                <NavLink
+                                    to="/event-spaces"
+                                    className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                                    onClick={(e) => {
+                                        if (window.innerWidth <= 768) {
+                                            e.preventDefault();
+                                            toggleMobileDropdown('events');
+                                        } else {
+                                            setIsEventSpacesDropdownOpen(false);
+                                            closeMobileMenu();
+                                        }
+                                    }}
+                                >
+                                    Event Spaces
+                                    <svg
+                                        className="dropdown-arrow"
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 12 12"
+                                        fill="none"
+                                        style={{
+                                            marginLeft: '6px',
+                                            transform: isEventSpacesDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                            transition: 'transform 0.2s ease'
+                                        }}
+                                    >
+                                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </NavLink>
+                            </div>
+
+                            {isEventSpacesDropdownOpen && (
+                                <ul className="simple-dropdown-menu">
+                                    <li>
+                                        <NavLink
+                                            to="/party-halls"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            Party Halls
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/private-theatres"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            Private Theatres
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
-                        <li>
-                            <NavLink
-                                to="/party-halls"
-                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                                onClick={closeMobileMenu}
-                            >
-                                Party Halls
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/private-theatres"
-                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                                onClick={closeMobileMenu}
-                            >
-                                Private Theatres
-                            </NavLink>
+
+                        {/* Our Services Dropdown */}
+                        <li
+                            className="nav-item-dropdown"
+                            onMouseEnter={() => window.innerWidth > 768 && setIsOurServicesDropdownOpen(true)}
+                            onMouseLeave={() => window.innerWidth > 768 && setIsOurServicesDropdownOpen(false)}
+                        >
+                            <div className="nav-link-wrapper">
+                                <div
+                                    className={`nav-link ${isOurServicesDropdownOpen ? 'active' : ''}`}
+                                    onClick={() => {
+                                        if (window.innerWidth <= 768) {
+                                            toggleMobileDropdown('services');
+                                        }
+                                    }}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Our Services
+                                    <svg
+                                        className="dropdown-arrow"
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 12 12"
+                                        fill="none"
+                                        style={{
+                                            marginLeft: '6px',
+                                            transform: isOurServicesDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                            transition: 'transform 0.2s ease'
+                                        }}
+                                    >
+                                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            {isOurServicesDropdownOpen && (
+                                <ul className="simple-dropdown-menu">
+                                    <li>
+                                        <NavLink
+                                            to="/sell"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            Sell
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/buy"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            Buy
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
 
                     </ul>
