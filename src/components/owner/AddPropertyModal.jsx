@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import LocationPicker from '../common/LocationPicker';
 import './AddPropertyModal.css';
 
 const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
@@ -12,12 +13,13 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
         amenities: '',
         price: '',
         period: 'month',
-        image: '',
-        badge: 'Popular'
+        images: [], // Changed from single image to array of images
+        badge: 'Popular',
+        mapLocation: null
     });
 
     const [errors, setErrors] = useState({});
-    const [imagePreview, setImagePreview] = useState(null);
+    const [imagePreviews, setImagePreviews] = useState([]); // Changed to array
 
     const propertyTypes = ['Coworking', 'Coliving', 'Virtual Office'];
     const cities = [
@@ -43,13 +45,30 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
     };
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
+        const files = Array.from(e.target.files);
+
+        if (files.length === 0) return;
+
+        // Check if adding these files would exceed 4 images
+        const currentImageCount = imagePreviews.length;
+        const totalImages = currentImageCount + files.length;
+
+        if (totalImages > 4) {
+            setErrors(prev => ({
+                ...prev,
+                images: `You can only upload 4 images. You have ${currentImageCount} and are trying to add ${files.length} more.`
+            }));
+            return;
+        }
+
+        // Validate each file
+        const validFiles = [];
+        for (let file of files) {
             // Validate file type
             if (!file.type.startsWith('image/')) {
                 setErrors(prev => ({
                     ...prev,
-                    image: 'Please select a valid image file'
+                    images: 'Please select valid image files only'
                 }));
                 return;
             }
@@ -58,41 +77,57 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
             if (file.size > 5 * 1024 * 1024) {
                 setErrors(prev => ({
                     ...prev,
-                    image: 'Image size should be less than 5MB'
+                    images: 'Each image size should be less than 5MB'
                 }));
                 return;
             }
 
-            // Clear previous errors
-            setErrors(prev => ({
-                ...prev,
-                image: ''
-            }));
+            validFiles.push(file);
+        }
 
-            // Create preview
+        // Clear previous errors
+        setErrors(prev => ({
+            ...prev,
+            images: ''
+        }));
+
+        // Process all valid files
+        const newPreviews = [];
+        const newImages = [];
+        let processedCount = 0;
+
+        validFiles.forEach((file) => {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreview(reader.result);
-                setFormData(prev => ({
-                    ...prev,
-                    image: reader.result // Store base64 string
-                }));
+                newPreviews.push(reader.result);
+                newImages.push(reader.result);
+                processedCount++;
+
+                // Once all files are processed, update state
+                if (processedCount === validFiles.length) {
+                    setImagePreviews(prev => [...prev, ...newPreviews]);
+                    setFormData(prev => ({
+                        ...prev,
+                        images: [...prev.images, ...newImages]
+                    }));
+                }
             };
             reader.readAsDataURL(file);
-        }
+        });
     };
 
-    const removeImage = () => {
-        setImagePreview(null);
+    const removeImage = (index) => {
+        setImagePreviews(prev => prev.filter((_, i) => i !== index));
         setFormData(prev => ({
             ...prev,
-            image: ''
+            images: prev.images.filter((_, i) => i !== index)
         }));
-        // Reset file input
-        const fileInput = document.getElementById('image');
-        if (fileInput) {
-            fileInput.value = '';
-        }
+
+        // Clear error if exists
+        setErrors(prev => ({
+            ...prev,
+            images: ''
+        }));
     };
 
     const validateForm = () => {
@@ -122,8 +157,13 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
             newErrors.price = 'Price is required';
         }
 
-        if (!formData.image) {
-            newErrors.image = 'Property image is required';
+        // Validate exactly 4 images
+        if (!formData.images || formData.images.length === 0) {
+            newErrors.images = 'Please upload exactly 4 property images';
+        } else if (formData.images.length < 4) {
+            newErrors.images = `Please upload ${4 - formData.images.length} more image(s). You need exactly 4 images.`;
+        } else if (formData.images.length > 4) {
+            newErrors.images = 'You can only upload 4 images. Please remove extra images.';
         }
 
         setErrors(newErrors);
@@ -161,11 +201,12 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
             amenities: '',
             price: '',
             period: 'month',
-            image: '',
-            badge: 'Popular'
+            images: [], // Reset to empty array
+            badge: 'Popular',
+            mapLocation: null
         });
         setErrors({});
-        setImagePreview(null);
+        setImagePreviews([]); // Reset to empty array
     };
 
     if (!isOpen) return null;
@@ -267,6 +308,13 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                         {errors.amenities && <span className="error-text">{errors.amenities}</span>}
                     </div>
 
+                    {/* Map Location Picker */}
+                    <LocationPicker
+                        value={formData.mapLocation}
+                        onChange={(location) => setFormData(prev => ({ ...prev, mapLocation: location }))}
+                        defaultCenter={[17.385044, 78.486671]} // Hyderabad coordinates
+                    />
+
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="price">Price *</label>
@@ -311,31 +359,55 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="image">Property Image *</label>
+                        <div className="label-with-progress">
+                            <label htmlFor="images">Property Images * (Exactly 4 required)</label>
+                            <span className="upload-progress">
+                                {imagePreviews.length}/4 images uploaded
+                            </span>
+                        </div>
+
                         <input
                             type="file"
-                            id="image"
-                            name="image"
+                            id="images"
+                            name="images"
                             accept="image/*"
+                            multiple
                             onChange={handleImageChange}
                             className="file-input"
+                            disabled={imagePreviews.length >= 4}
                         />
-                        {errors.image && <span className="error-text">{errors.image}</span>}
-                        <small className="form-hint">Upload an image (max 5MB, JPG/PNG)</small>
+                        {errors.images && <span className="error-text">{errors.images}</span>}
+                        <small className="form-hint">
+                            Upload 4 images (max 5MB each, JPG/PNG).
+                            {imagePreviews.length < 4 && ` ${4 - imagePreviews.length} more needed.`}
+                        </small>
 
-                        {/* Image Preview */}
-                        {imagePreview && (
-                            <div className="image-preview-container">
-                                <img src={imagePreview} alt="Preview" className="image-preview" />
-                                <button
-                                    type="button"
-                                    className="remove-image-btn"
-                                    onClick={removeImage}
-                                >
-                                    Remove Image
-                                </button>
-                            </div>
-                        )}
+                        {/* Image Upload Grid - 2x2 layout */}
+                        <div className="image-upload-grid">
+                            {[0, 1, 2, 3].map((index) => (
+                                <div key={index} className={`image-slot ${imagePreviews[index] ? 'filled' : 'empty'}`}>
+                                    {imagePreviews[index] ? (
+                                        <>
+                                            <img src={imagePreviews[index]} alt={`Preview ${index + 1}`} className="image-preview" />
+                                            <button
+                                                type="button"
+                                                className="remove-image-btn"
+                                                onClick={() => removeImage(index)}
+                                                title="Remove image"
+                                            >
+                                                <X size={16} />
+                                            </button>
+                                            <span className="image-number">{index + 1}</span>
+                                        </>
+                                    ) : (
+                                        <div className="image-placeholder">
+                                            <span className="placeholder-icon">📷</span>
+                                            <span className="placeholder-text">Image {index + 1}</span>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="form-actions">

@@ -44,9 +44,9 @@ const TopLocations = ({ cityName }) => {
                             {/* Content */}
                             <div className="top-location-content">
                                 <h3 className="top-location-title">{location.title}</h3>
-                                <button className="top-location-btn">
+                                <span className="top-location-btn">
                                     Explore Spaces
-                                </button>
+                                </span>
                             </div>
                         </Link>
                     ))}

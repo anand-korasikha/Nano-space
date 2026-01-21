@@ -278,7 +278,7 @@
     gap: 0.5rem;
     color: #666;
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .latest-property-location svg {
@@ -286,25 +286,14 @@
     color: #667eea;
 }
 
-.latest-property-city {
-    display: inline-block;
-    padding: 0.35rem 0.75rem;
-    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-    border: 1px solid #667eea30;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #667eea;
-    margin-bottom: 1rem;
-}
 
 /* Amenities Section */
 .latest-property-amenities {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid #f0f0f0;
     min-height: 70px;
     /* Reserve consistent space for amenities */
@@ -340,17 +329,12 @@
     height: fit-content;
 }
 
-.latest-property-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
 .latest-property-price {
     display: flex;
     align-items: baseline;
     gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
 }
 
 .price-amount {
@@ -387,7 +371,8 @@
     justify-content: center;
     gap: 0.5rem;
     margin-top: auto;
-    /* Push button to bottom */
+    margin-bottom: 0.5rem;
+    /* Push button to bottom with spacing */
 }
 
 .latest-view-btn:hover {
@@ -441,5 +426,114 @@
 
     .scroll-hint {
         font-size: 0.9rem;
+    }
+}
+
+/* Carousel Navigation Styles */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #667eea;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+}
+
+.latest-property-card:hover .carousel-btn {
+    opacity: 1;
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-prev {
+    left: 0.75rem;
+}
+
+.carousel-next {
+    right: 0.75rem;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.carousel-dot.active {
+    background: white;
+    width: 24px;
+    border-radius: 10px;
+}
+
+/* Mobile Carousel Adjustments */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.25rem;
+        opacity: 1;
+        /* Always show on mobile */
+    }
+
+    .carousel-prev {
+        left: 0.5rem;
+    }
+
+    .carousel-next {
+        right: 0.5rem;
+    }
+
+    .carousel-dots {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .carousel-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .carousel-dot.active {
+        width: 18px;
     }
 }

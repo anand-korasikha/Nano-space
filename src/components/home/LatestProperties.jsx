@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getApprovedProperties } from '../../services/propertyService';
 import { MapPin, Star, ArrowRight, Wifi, Coffee, Users, Home, Utensils, Car, Dumbbell } from 'lucide-react';
+import MapPreview from '../common/MapPreview';
 import './LatestProperties.css';
 
 const LatestProperties = () => {
     const navigate = useNavigate();
     const [latestProperties, setLatestProperties] = useState([]);
+    const [currentImageIndices, setCurrentImageIndices] = useState({}); // Track current image for each property
 
     useEffect(() => {
         // Get all approved properties and sort by approval date
@@ -16,6 +18,13 @@ const LatestProperties = () => {
             .slice(0, 8); // Show latest 8 properties
 
         setLatestProperties(sorted);
+
+        // Initialize carousel indices for each property
+        const initialIndices = {};
+        sorted.forEach(property => {
+            initialIndices[property.id] = 0;
+        });
+        setCurrentImageIndices(initialIndices);
     }, []);
 
     const getAmenityIcon = (amenity) => {
@@ -42,6 +51,46 @@ const LatestProperties = () => {
     const handlePropertyClick = (property) => {
         // Navigate to property details page
         navigate(`/property/${property.id}`);
+    };
+
+    // Get images array with backward compatibility
+    const getPropertyImages = (property) => {
+        // If property has images array, use it
+        if (property.images && Array.isArray(property.images) && property.images.length > 0) {
+            return property.images;
+        }
+        // Fallback to single image for old properties
+        if (property.image) {
+            return [property.image];
+        }
+        return [];
+    };
+
+    // Navigate to next image in carousel
+    const handleNextImage = (e, propertyId, totalImages) => {
+        e.stopPropagation(); // Prevent card click
+        setCurrentImageIndices(prev => ({
+            ...prev,
+            [propertyId]: (prev[propertyId] + 1) % totalImages
+        }));
+    };
+
+    // Navigate to previous image in carousel
+    const handlePrevImage = (e, propertyId, totalImages) => {
+        e.stopPropagation(); // Prevent card click
+        setCurrentImageIndices(prev => ({
+            ...prev,
+            [propertyId]: (prev[propertyId] - 1 + totalImages) % totalImages
+        }));
+    };
+
+    // Jump to specific image
+    const handleDotClick = (e, propertyId, index) => {
+        e.stopPropagation(); // Prevent card click
+        setCurrentImageIndices(prev => ({
+            ...prev,
+            [propertyId]: index
+        }));
     };
 
     if (latestProperties.length === 0) {
@@ -72,29 +121,73 @@ const LatestProperties = () => {
                                 className="latest-property-card"
                                 onClick={() => handlePropertyClick(property)}
                             >
-                                {/* Property Image */}
+                                {/* Property Image Carousel */}
                                 <div className="latest-property-image">
-                                    {/* NEW Badge - Top Left */}
-                                    <div className="latest-badge-new">NEW</div>
+                                    {(() => {
+                                        const images = getPropertyImages(property);
+                                        const currentIndex = currentImageIndices[property.id] || 0;
 
-                                    {/* Property Badge - Top Right */}
-                                    {property.badge && (
-                                        <div className={`latest-badge-property ${property.badge.toLowerCase()}`}>
-                                            <span className="badge-icon">★</span>
-                                            {property.badge}
-                                        </div>
-                                    )}
+                                        if (images.length === 0) return null;
 
-                                    <img
-                                        src={property.image}
-                                        alt={property.name}
-                                        loading="lazy"
-                                    />
+                                        return (
+                                            <>
+                                                {/* NEW Badge - Top Left */}
+                                                <div className="latest-badge-new">NEW</div>
 
-                                    {/* Type Badge - Bottom Right */}
-                                    <div className="latest-property-type-badge">
-                                        {property.type}
-                                    </div>
+                                                {/* Property Badge - Top Right */}
+                                                {property.badge && (
+                                                    <div className={`latest-badge-property ${property.badge.toLowerCase()}`}>
+                                                        <span className="badge-icon">★</span>
+                                                        {property.badge}
+                                                    </div>
+                                                )}
+
+                                                {/* Carousel Image */}
+                                                <img
+                                                    src={images[currentIndex]}
+                                                    alt={`${property.name} - Image ${currentIndex + 1}`}
+                                                    loading="lazy"
+                                                />
+
+                                                {/* Carousel Navigation - Only show if multiple images */}
+                                                {images.length > 1 && (
+                                                    <>
+                                                        <button
+                                                            className="carousel-btn carousel-prev"
+                                                            onClick={(e) => handlePrevImage(e, property.id, images.length)}
+                                                            aria-label="Previous image"
+                                                        >
+                                                            ‹
+                                                        </button>
+                                                        <button
+                                                            className="carousel-btn carousel-next"
+                                                            onClick={(e) => handleNextImage(e, property.id, images.length)}
+                                                            aria-label="Next image"
+                                                        >
+                                                            ›
+                                                        </button>
+
+                                                        {/* Carousel Dots */}
+                                                        <div className="carousel-dots">
+                                                            {images.map((_, index) => (
+                                                                <button
+                                                                    key={index}
+                                                                    className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
+                                                                    onClick={(e) => handleDotClick(e, property.id, index)}
+                                                                    aria-label={`Go to image ${index + 1}`}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </>
+                                                )}
+
+                                                {/* Type Badge - Bottom Right */}
+                                                <div className="latest-property-type-badge">
+                                                    {property.type}
+                                                </div>
+                                            </>
+                                        );
+                                    })()}
                                 </div>
 
                                 {/* Property Details */}
@@ -103,11 +196,7 @@ const LatestProperties = () => {
 
                                     <div className="latest-property-location">
                                         <MapPin size={14} />
-                                        <span>{property.location}</span>
-                                    </div>
-
-                                    <div className="latest-property-city">
-                                        📍 {property.city}
+                                        <span>{property.location}, {property.city}</span>
                                     </div>
 
                                     {/* Amenities */}
@@ -127,18 +216,19 @@ const LatestProperties = () => {
                                         </div>
                                     )}
 
-                                    <div className="latest-property-footer">
-                                        <div className="latest-property-price">
-                                            <span className="price-amount">{property.price}</span>
-                                            <span className="price-period">/{property.period}</span>
-                                        </div>
+                                    {/* Map Preview */}
+                                    {property.mapLocation && (
+                                        <MapPreview
+                                            latitude={property.mapLocation.lat}
+                                            longitude={property.mapLocation.lng}
+                                            address={property.mapLocation.address}
+                                            propertyName={property.name}
+                                        />
+                                    )}
 
-                                        {property.rating > 0 && (
-                                            <div className="latest-property-rating">
-                                                <Star size={14} fill="#FFD700" color="#FFD700" />
-                                                <span>{property.rating}</span>
-                                            </div>
-                                        )}
+                                    <div className="latest-property-price">
+                                        <span className="price-amount">{property.price}</span>
+                                        <span className="price-period">/{property.period}</span>
                                     </div>
 
                                     <button className="latest-view-btn">

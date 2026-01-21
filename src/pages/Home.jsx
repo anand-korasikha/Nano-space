@@ -6,12 +6,12 @@ import PlatformStats from '../components/home/PlatformStats';
 import TopCoworking from '../components/home/TopCoworking';
 import FeaturedCoworking from '../components/home/FeaturedCoworking';
 import TopColiving from '../components/home/TopColiving';
-import FeaturedColiving from '../components/home/FeaturedColiving';
+// import FeaturedColiving from '../components/home/FeaturedColiving';
 import WhatYouGet from '../components/home/WhatYouGet';
 import SpaceSearch from '../components/home/SpaceSearch';
 import TrustedCompanies from '../components/home/TrustedCompanies';
 import ListSpace from '../components/home/ListSpace';
-import MediaMentions from '../components/home/MediaMentions';
+// import MediaMentions from '../components/home/MediaMentions';
 import FounderNote from '../components/home/FounderNote';
 
 const Home = () => {
@@ -24,12 +24,12 @@ const Home = () => {
             <TopCoworking />
             <FeaturedCoworking />
             <TopColiving />
-            <FeaturedColiving />
+            {/* <FeaturedColiving /> */}
             <WhatYouGet />
             <SpaceSearch />
             <TrustedCompanies />
             <ListSpace />
-            <MediaMentions />
+            {/* <MediaMentions /> */}
             <FounderNote />
         </div>
     );
