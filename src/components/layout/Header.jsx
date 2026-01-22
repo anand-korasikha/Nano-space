@@ -265,7 +265,7 @@ const Header = () => {
                                     }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    Our Services
+                                    Other Services
                                     <svg
                                         className="dropdown-arrow"
                                         width="12"
@@ -287,11 +287,67 @@ const Header = () => {
                                 <ul className="simple-dropdown-menu">
                                     <li>
                                         <NavLink
+                                            to="/other-services"
+                                            className="dropdown-item featured"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            🌟 View All Services
+                                        </NavLink>
+                                    </li>
+                                    <li className="dropdown-divider"></li>
+                                    <li>
+                                        <NavLink
+                                            to="/services/it-development"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            💻 IT Development
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/services/digital-marketing"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            📱 Digital Marketing
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/services/advocates-lawyers"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            ⚖️ Advocates / Lawyers
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/services/chartered-accountants"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            📊 Chartered Accountants
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/services/mentors-trainers"
+                                            className="dropdown-item"
+                                            onClick={closeMobileMenu}
+                                        >
+                                            🎓 Mentors / Trainers
+                                        </NavLink>
+                                    </li>
+                                    <li className="dropdown-divider"></li>
+                                    <li>
+                                        <NavLink
                                             to="/sell"
                                             className="dropdown-item"
                                             onClick={closeMobileMenu}
                                         >
-                                            Sell
+                                            Sell Property
                                         </NavLink>
                                     </li>
                                     <li>
@@ -300,7 +356,7 @@ const Header = () => {
                                             className="dropdown-item"
                                             onClick={closeMobileMenu}
                                         >
-                                            Buy
+                                            Buy Property
                                         </NavLink>
                                     </li>
                                 </ul>

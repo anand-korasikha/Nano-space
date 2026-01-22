@@ -244,6 +244,23 @@
     padding-left: 1.75rem;
 }
 
+.dropdown-divider {
+    height: 1px;
+    background: var(--glass-border);
+    margin: 0.5rem 0;
+}
+
+.dropdown-item.featured {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    color: #667eea;
+    font-weight: 700;
+}
+
+.dropdown-item.featured:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    color: #764ba2;
+}
+
 @keyframes dropdownFadeIn {
     from {
         opacity: 0;

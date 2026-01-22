@@ -22,6 +22,8 @@ import PrivateTheatres from './pages/PrivateTheatres';
 import PropertyDetails from './pages/PropertyDetails';
 import Sell from './pages/Sell';
 import Buy from './pages/Buy';
+import OtherServices from './pages/OtherServices';
+import ServiceCategory from './pages/ServiceCategory';
 import CustomerDashboard from './pages/CustomerDashboard';
 import OwnerDashboard from './pages/OwnerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
@@ -51,6 +53,8 @@ function App() {
           <Route path="property/:propertyId" element={<PropertyDetails />} />
           <Route path="sell" element={<Sell />} />
           <Route path="buy" element={<Buy />} />
+          <Route path="other-services" element={<OtherServices />} />
+          <Route path="services/:category" element={<ServiceCategory />} />
           <Route path="login" element={<Login />} />
 
           {/* Protected Dashboard Routes */}
