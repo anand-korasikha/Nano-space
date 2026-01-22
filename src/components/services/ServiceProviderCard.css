@@ -12,8 +12,8 @@
 
 .service-provider-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: #ff4757;
+    box-shadow: 0 12px 40px rgba(0, 51, 204, 0.15);
+    border-color: #0033cc;
 }
 
 .provider-header {
@@ -27,7 +27,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+    background: linear-gradient(135deg, #0033cc 0%, #4a90e2 100%);
     color: white;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@
     font-size: 1.25rem;
     font-weight: 700;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 51, 204, 0.3);
 }
 
 .provider-info {
@@ -55,7 +55,7 @@
 
 .provider-expertise {
     font-size: 0.95rem;
-    color: #ff4757;
+    color: #ee2121;
     font-weight: 600;
     margin: 0;
 }
@@ -80,7 +80,7 @@
 
 .provider-experience svg,
 .provider-location svg {
-    color: #ff4757;
+    color: #0033cc;
     flex-shrink: 0;
 }
 
@@ -99,19 +99,19 @@
     margin-bottom: 1.5rem;
 }
 
-.specialization-tag {
-    background: linear-gradient(135deg, rgba(255, 71, 87, 0.1) 0%, rgba(255, 107, 129, 0.1) 100%);
-    color: #ff4757;
+.specialization_tag {
+    background: linear-gradient(135deg, rgba(0, 51, 204, 0.08) 0%, rgba(0, 51, 204, 0.12) 100%);
+    color: #0033cc;
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
-    border: 1px solid rgba(255, 71, 87, 0.2);
+    border: 1px solid rgba(0, 51, 204, 0.15);
     transition: all 0.2s ease;
 }
 
 .specialization-tag:hover {
-    background: linear-gradient(135deg, rgba(255, 71, 87, 0.2) 0%, rgba(255, 107, 129, 0.2) 100%);
+    background: linear-gradient(135deg, rgba(0, 51, 204, 0.15) 0%, rgba(0, 51, 204, 0.2) 100%);
     transform: scale(1.05);
 }
 
@@ -137,25 +137,25 @@
 }
 
 .phone-btn {
-    background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+    background: linear-gradient(135deg, #0033cc 0%, #4a90e2 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 51, 204, 0.3);
 }
 
 .phone-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 51, 204, 0.4);
 }
 
 .email-btn {
-    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
+    background: linear-gradient(135deg, #ee2121 0%, #ff5252 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+    box-shadow: 0 4px 12px rgba(238, 33, 33, 0.3);
 }
 
 .email-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+    box-shadow: 0 6px 20px rgba(238, 33, 33, 0.4);
 }
 
 /* Responsive Design */

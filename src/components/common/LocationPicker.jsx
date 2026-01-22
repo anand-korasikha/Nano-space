@@ -88,11 +88,25 @@ const LocationPicker = ({ value, onChange, defaultCenter = [17.385044, 78.486671
         }
 
         setIsSearching(true);
+        // Hyderabad viewbox: min lon, min lat, max lon, max lat
+        const viewbox = '78.2397,17.1843,78.6146,17.5855';
+
         try {
-            const response = await fetch(
-                `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=5&countrycodes=in`
+            // First attempt with optimized parameters
+            let response = await fetch(
+                `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=10&countrycodes=in&viewbox=${viewbox}&bounded=0&addressdetails=1`
             );
-            const data = await response.json();
+            let data = await response.json();
+
+            // If no results and it doesn't already contain Hyderabad, try with " Hyderabad" suffix
+            if (data.length === 0 && !query.toLowerCase().includes('hyderabad')) {
+                const fallbackQuery = `${query} Hyderabad`;
+                response = await fetch(
+                    `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fallbackQuery)}&limit=10&countrycodes=in&viewbox=${viewbox}&bounded=0&addressdetails=1`
+                );
+                data = await response.json();
+            }
+
             setSearchResults(data);
             setShowResults(true);
         } catch (error) {
@@ -192,18 +206,24 @@ const LocationPicker = ({ value, onChange, defaultCenter = [17.385044, 78.486671
                 </div>
 
                 {/* Search Results Dropdown */}
-                {showResults && searchResults.length > 0 && (
+                {showResults && (
                     <div className="search-results">
-                        {searchResults.map((result, index) => (
-                            <div
-                                key={index}
-                                className="search-result-item"
-                                onClick={() => handleResultSelect(result)}
-                            >
-                                <MapPin size={16} />
-                                <span>{result.display_name}</span>
+                        {searchResults.length > 0 ? (
+                            searchResults.map((result, index) => (
+                                <div
+                                    key={index}
+                                    className="search-result-item"
+                                    onClick={() => handleResultSelect(result)}
+                                >
+                                    <MapPin size={16} />
+                                    <span>{result.display_name}</span>
+                                </div>
+                            ))
+                        ) : searchQuery.length >= 3 && !isSearching && (
+                            <div className="search-no-results">
+                                No locations found for "{searchQuery}". Try adding "Hyderabad" or check the spelling.
                             </div>
-                        ))}
+                        )}
                     </div>
                 )}
 

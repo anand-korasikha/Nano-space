@@ -142,11 +142,16 @@
     line-height: 1.4;
 }
 
-.search-loading {
+.search-loading,
+.search-no-results {
     padding: 1rem;
     text-align: center;
     color: #666;
     font-size: 0.9rem;
+}
+
+.search-no-results {
+    color: #f5576c;
 }
 
 /* Map Container */
