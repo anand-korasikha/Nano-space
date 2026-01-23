@@ -1,10 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Info, Home } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './HotelRooms.css';
 import hotelsData from '../data/hotelsData.json';
+import BookingModal from '../components/BookingModal';
 
 const HotelRooms = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedHotel, setSelectedHotel] = useState(null);
+
+    const handleBookNow = (hotel) => {
+        setSelectedHotel(hotel);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedHotel(null);
+    };
+
     return (
         <>
             {/* Hero Section with Image */}
@@ -40,153 +54,65 @@ const HotelRooms = () => {
                     <CityHotelsCarousel
                         cityName="Hyderabad"
                         hotels={hotelsData.hyderabad}
-                        reverse={false}
+                        onBookNow={handleBookNow}
                     />
 
                     {/* Bangalore Hotels */}
                     <CityHotelsCarousel
                         cityName="Bangalore"
                         hotels={hotelsData.bangalore}
-                        reverse={true}
+                        onBookNow={handleBookNow}
                     />
 
                     {/* Chennai Hotels */}
                     <CityHotelsCarousel
                         cityName="Chennai"
                         hotels={hotelsData.chennai}
-                        reverse={false}
+                        onBookNow={handleBookNow}
                     />
                 </div>
             </div>
+
+            {/* Booking Modal */}
+            <BookingModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                hotel={selectedHotel}
+            />
         </>
     );
 };
 
-const CityHotelsCarousel = ({ cityName, hotels, reverse = false }) => {
-    const carouselRef = useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
-
-    // Check if mobile
-    React.useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    // Reverse the hotels array if reverse prop is true
-    const displayHotels = reverse ? [...hotels].reverse() : hotels;
-
-    // Auto-scroll for mobile continuous flow
-    React.useEffect(() => {
-        if (isMobile) {
-            const interval = setInterval(() => {
-                setCurrentIndex((prev) => {
-                    if (reverse) {
-                        return prev - 1;
-                    } else {
-                        return prev + 1;
-                    }
-                });
-            }, 3000);
-            return () => clearInterval(interval);
-        }
-    }, [isMobile, reverse]);
-
-    const checkScrollButtons = () => {
-        if (carouselRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-            setCanScrollLeft(scrollLeft > 0);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-        }
-    };
-
-    const scroll = (direction) => {
-        if (carouselRef.current) {
-            // Calculate scroll amount based on viewport width for mobile
-            const isMobile = window.innerWidth <= 768;
-            const scrollAmount = isMobile
-                ? window.innerWidth - 32 // calc(100vw - 2rem) for mobile
-                : 320; // Card width + gap for desktop
-
-            const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
-            carouselRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth'
-            });
-            setTimeout(checkScrollButtons, 300);
-        }
-    };
-
+const CityHotelsCarousel = ({ cityName, hotels, onBookNow }) => {
     return (
-        <div className={`city-section ${reverse ? 'reverse' : ''}`}>
+        <div className="city-section">
             <h2 className="city-title">Hotels in {cityName}</h2>
-
-            <div className="carousel-container">
-                {!isMobile && canScrollLeft && (
-                    <button
-                        className="carousel-nav-btn left"
-                        onClick={() => scroll('left')}
-                        aria-label="Scroll left"
-                    >
-                        <ChevronLeft size={24} />
-                    </button>
-                )}
-
-                {isMobile ? (
-                    <div className="hotels-carousel-mobile">
-                        <div
-                            className="hotels-carousel-track"
-                            style={{
-                                transform: reverse 
-                                    ? `translateX(${((currentIndex % displayHotels.length) * 100)}%)`
-                                    : `translateX(-${((currentIndex % displayHotels.length) * 100)}%)`,
-                                transition: 'transform 700ms linear'
-                            }}
-                        >
-                            {[...displayHotels, ...displayHotels, ...displayHotels].map((hotel, index) => (
-                                <div key={`${hotel.id}-${index}`} className="hotel-card-wrapper">
-                                    <HotelCard hotel={hotel} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : (
-                    <div
-                        className="hotels-carousel"
-                        ref={carouselRef}
-                        onScroll={checkScrollButtons}
-                    >
-                        {displayHotels.map((hotel) => (
-                            <HotelCard key={hotel.id} hotel={hotel} />
-                        ))}
-                    </div>
-                )}
-
-                {!isMobile && canScrollRight && (
-                    <button
-                        className="carousel-nav-btn right"
-                        onClick={() => scroll('right')}
-                        aria-label="Scroll right"
-                    >
-                        <ChevronRight size={24} />
-                    </button>
-                )}
+            <div className="hotels-grid">
+                {hotels.map((hotel) => (
+                    <HotelCard key={hotel.id} hotel={hotel} onBookNow={onBookNow} />
+                ))}
             </div>
         </div>
     );
 };
 
-const HotelCard = ({ hotel }) => {
+const HotelCard = ({ hotel, onBookNow }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    useEffect(() => {
+        let interval;
+        if (!isHovered && hotel.images && hotel.images.length > 1) {
+            interval = setInterval(() => {
+                setCurrentImageIndex((prev) => (prev === hotel.images.length - 1 ? 0 : prev + 1));
+            }, 3000);
+        }
+        return () => clearInterval(interval);
+    }, [isHovered, hotel.images]);
 
     const nextImage = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         setCurrentImageIndex((prev) =>
             prev === hotel.images.length - 1 ? 0 : prev + 1
         );
@@ -194,22 +120,41 @@ const HotelCard = ({ hotel }) => {
 
     const prevImage = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         setCurrentImageIndex((prev) =>
             prev === 0 ? hotel.images.length - 1 : prev - 1
         );
     };
 
+    // Calculate savings
+    const savings = hotel.originalPrice - hotel.price;
+    const savingsPercentage = hotel.discount || Math.round((savings / hotel.originalPrice) * 100);
+
     return (
-        <div className="hotel-card">
+        <div
+            className="hotel-card"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <div className="hotel-image-container">
                 {hotel.badge && (
-                    <div className="hotel-badge">{hotel.badge}</div>
+                    <div className={`hotel-badge ${hotel.badge.toLowerCase().replace(' ', '-')}`}>
+                        {hotel.badge}
+                    </div>
                 )}
-                <img
-                    src={hotel.images[currentImageIndex]}
-                    alt={hotel.name}
-                    className="hotel-image"
-                />
+                <div
+                    className="hotel-image-slider"
+                    style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                >
+                    {hotel.images.map((image, i) => (
+                        <img
+                            key={i}
+                            src={image}
+                            alt={`${hotel.name} - ${i + 1}`}
+                            className="hotel-image"
+                        />
+                    ))}
+                </div>
                 <button className="image-nav-btn prev-btn" onClick={prevImage}>
                     <ChevronLeft size={20} />
                 </button>
@@ -221,51 +166,87 @@ const HotelCard = ({ hotel }) => {
                         <span
                             key={index}
                             className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setCurrentImageIndex(index);
+                            }}
                         />
                     ))}
                 </div>
             </div>
 
             <div className="hotel-content">
+                {/* Hotel Name */}
                 <h3 className="hotel-name">{hotel.name}</h3>
 
-                <div className="hotel-stars">
-                    {[...Array(hotel.stars)].map((_, i) => (
-                        <Star key={i} size={14} fill="#FFB800" color="#FFB800" />
-                    ))}
-                </div>
-
-                <div className="hotel-location">{hotel.location}</div>
-
-                <div className="hotel-rating">
-                    <span className="rating-score">{hotel.rating}/10</span>
-                    <span className="rating-text">{hotel.ratingText}</span>
+                {/* Rating Section */}
+                <div className="hotel-rating-section">
+                    <div className="hotel-stars">
+                        {[...Array(hotel.stars)].map((_, i) => (
+                            <Star key={i} size={14} fill="#FFB800" color="#FFB800" />
+                        ))}
+                    </div>
+                    <div className="rating-badge">
+                        <span className="rating-score">{hotel.rating}/10</span>
+                        <span className="rating-text">{hotel.ratingText}</span>
+                    </div>
                     <span className="rating-reviews">({hotel.reviews} review{hotel.reviews > 1 ? 's' : ''})</span>
                 </div>
 
-                <div className="hotel-pricing">
+                {/* Location */}
+                <div className="hotel-location">
+                    📍 {hotel.location}
+                </div>
+
+                {/* Amenities */}
+                <div className="hotel-amenities">
+                    <span className="amenity">✅ Free cancellation</span>
+                    <span className="amenity">🚗 Parking</span>
+                    <span className="amenity">📶 Free WiFi</span>
+                </div>
+
+                {/* Divider */}
+                <div className="hotel-divider"></div>
+
+                {/* Pricing Section */}
+                <div className="hotel-pricing-section">
                     {hotel.memberPrice && (
-                        <div className="member-price-badge">
-                            <span>💎 Member Price available</span>
+                        <div className="member-exclusive-badge">
+                            🔒 VIP Member Exclusive
                         </div>
                     )}
 
-                    {hotel.discount && (
-                        <div className="discount-badge">{hotel.discount}% off</div>
-                    )}
-
-                    <div className="price-container">
-                        <div className="current-price">
-                            ₹{hotel.price.toLocaleString('en-IN')}
-                            <Info size={14} className="info-icon" />
+                    <div className="price-breakdown">
+                        <div className="price-row">
+                            <span className="price-label">Original Price:</span>
+                            <span className="original-price">₹{hotel.originalPrice.toLocaleString('en-IN')}</span>
                         </div>
-                        <div className="original-price">₹{hotel.originalPrice.toLocaleString('en-IN')}</div>
+                        <div className="price-row highlight">
+                            <span className="price-label">{hotel.memberPrice ? 'Member Price:' : 'Discounted Price:'}</span>
+                            <span className="current-price">₹{hotel.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <div className="price-row savings">
+                            <span className="price-label">You Save:</span>
+                            <span className="savings-amount">
+                                {savingsPercentage}% off (₹{savings.toLocaleString('en-IN')})
+                            </span>
+                        </div>
                     </div>
 
-                    <div className="total-price">
-                        ₹{hotel.totalPrice.toLocaleString('en-IN')} total
+                    <div className="total-price-section">
+                        <span className="total-label">Total with taxes:</span>
+                        <span className="total-price">₹{hotel.totalPrice.toLocaleString('en-IN')}</span>
                     </div>
-                    <div className="price-note">includes taxes & fees</div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="hotel-actions">
+                    <button className="btn-primary" onClick={() => onBookNow(hotel)}>
+                        Book Now - ₹{hotel.price.toLocaleString('en-IN')}/night
+                    </button>
+                    <button className="btn-secondary">
+                        View Details
+                    </button>
                 </div>
             </div>
         </div>

@@ -14,9 +14,9 @@
             "discount": 44,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800"
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&auto=format&fit=crop"
             ],
             "badge": "Premium",
             "capacity": "5000 people"
@@ -35,9 +35,9 @@
             "discount": 50,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&auto=format&fit=crop"
             ],
             "capacity": "3000 people"
         },
@@ -55,9 +55,9 @@
             "discount": 49,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800",
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&auto=format&fit=crop"
             ],
             "badge": "VIP Access",
             "capacity": "2500 people"
@@ -76,9 +76,9 @@
             "discount": 50,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&auto=format&fit=crop"
             ],
             "capacity": "1500 people"
         }
@@ -98,9 +98,9 @@
             "discount": 51,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800"
+                "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&auto=format&fit=crop"
             ],
             "badge": "Premium",
             "capacity": "4000 people"
@@ -119,9 +119,9 @@
             "discount": 49,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop"
             ],
             "capacity": "2000 people"
         },
@@ -139,9 +139,9 @@
             "discount": 49,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800",
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop"
             ],
             "badge": "Luxury",
             "capacity": "1800 people"
@@ -160,9 +160,9 @@
             "discount": 50,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&auto=format&fit=crop"
             ],
             "capacity": "2200 people"
         }
@@ -182,9 +182,9 @@
             "discount": 52,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800"
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&auto=format&fit=crop"
             ],
             "badge": "Premium",
             "capacity": "3500 people"
@@ -203,9 +203,9 @@
             "discount": 51,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop"
             ],
             "capacity": "2500 people"
         },
@@ -223,9 +223,9 @@
             "discount": 51,
             "memberPrice": true,
             "images": [
-                "https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800",
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+                "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop"
             ],
             "badge": "VIP Access",
             "capacity": "1600 people"
@@ -244,9 +244,9 @@
             "discount": 52,
             "memberPrice": false,
             "images": [
-                "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800",
-                "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-                "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=800"
+                "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&auto=format&fit=crop"
             ],
             "capacity": "1400 people"
         }
