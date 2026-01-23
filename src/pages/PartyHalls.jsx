@@ -3,8 +3,22 @@ import { ChevronLeft, ChevronRight, Star, Info, Home, Users } from 'lucide-react
 import { Link } from 'react-router-dom';
 import './PartyHalls.css';
 import partyHallsData from '../data/partyHallsData.json';
+import BookingModal from '../components/BookingModal';
 
 const PartyHalls = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedVenue, setSelectedVenue] = useState(null);
+
+    const handleBookNow = (venue) => {
+        setSelectedVenue(venue);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedVenue(null);
+    };
+
     return (
         <>
             {/* Hero Section with Image */}
@@ -34,6 +48,12 @@ const PartyHalls = () => {
             </div>
 
             <div className="party-halls-page">
+                <BookingModal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                    hotel={selectedVenue}
+                    bookingType="party-hall"
+                />
                 <div className="party-halls-container">
 
                     {/* Hyderabad Party Halls */}
@@ -41,6 +61,7 @@ const PartyHalls = () => {
                         cityName="Hyderabad"
                         venues={partyHallsData.hyderabad}
                         reverse={false}
+                        onBookNow={handleBookNow}
                     />
 
                     {/* Bangalore Party Halls */}
@@ -48,6 +69,7 @@ const PartyHalls = () => {
                         cityName="Bangalore"
                         venues={partyHallsData.bangalore}
                         reverse={true}
+                        onBookNow={handleBookNow}
                     />
 
                     {/* Chennai Party Halls */}
@@ -55,6 +77,7 @@ const PartyHalls = () => {
                         cityName="Chennai"
                         venues={partyHallsData.chennai}
                         reverse={false}
+                        onBookNow={handleBookNow}
                     />
                 </div>
             </div>
@@ -62,7 +85,7 @@ const PartyHalls = () => {
     );
 };
 
-const CityPartyHallsCarousel = ({ cityName, venues, reverse = false }) => {
+const CityPartyHallsCarousel = ({ cityName, venues, reverse = false, onBookNow }) => {
     const carouselRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
@@ -150,7 +173,7 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false }) => {
                         >
                             {[...displayVenues, ...displayVenues, ...displayVenues].map((venue, index) => (
                                 <div key={`${venue.id}-${index}`} className="hall-card-wrapper">
-                                    <HallCard venue={venue} />
+                                    <HallCard venue={venue} onBookNow={onBookNow} />
                                 </div>
                             ))}
                         </div>
@@ -162,7 +185,7 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false }) => {
                         onScroll={checkScrollButtons}
                     >
                         {displayVenues.map((venue) => (
-                            <HallCard key={venue.id} venue={venue} />
+                            <HallCard key={venue.id} venue={venue} onBookNow={onBookNow} />
                         ))}
                     </div>
                 )}
@@ -181,11 +204,24 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false }) => {
     );
 };
 
-const HallCard = ({ venue }) => {
+const HallCard = ({ venue, onBookNow }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    // Auto-scroll images
+    React.useEffect(() => {
+        if (!isHovered) {
+            const interval = setInterval(() => {
+                setCurrentImageIndex((prev) =>
+                    prev === venue.images.length - 1 ? 0 : prev + 1
+                );
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [isHovered, venue.images.length]);
 
     const nextImage = (e) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         setCurrentImageIndex((prev) =>
             prev === venue.images.length - 1 ? 0 : prev + 1
         );
@@ -198,12 +234,23 @@ const HallCard = ({ venue }) => {
         );
     };
 
+    // Calculate details for display
+    const savingAmount = venue.totalPrice && venue.price ? venue.totalPrice - venue.price : 0;
+    // Assuming originalPrice is higher than price, let's derive savings if not explicit
+    const derivedSavings = venue.originalPrice ? venue.originalPrice - venue.price : 0;
+
     return (
-        <div className="hall-card">
+        <div
+            className={`party-hall-card ${venue.memberPrice ? 'premium-featured' : ''}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {venue.memberPrice && (
+                <div className="card-badge">Premium</div>
+            )}
+
+            {/* Image Slider Section reused as the top media part */}
             <div className="hall-image-container">
-                {venue.badge && (
-                    <div className="hall-badge">{venue.badge}</div>
-                )}
                 <img
                     src={venue.images[currentImageIndex]}
                     alt={venue.name}
@@ -226,52 +273,64 @@ const HallCard = ({ venue }) => {
             </div>
 
             <div className="hall-content">
-                <h3 className="hall-name">{venue.name}</h3>
-
-                <div className="hall-stars">
-                    {[...Array(venue.stars)].map((_, i) => (
-                        <Star key={i} size={14} fill="#FFB800" color="#FFB800" />
-                    ))}
+                <div className="card-header">
+                    <h3 className="hall-name">{venue.name}</h3>
+                    <div className="rating-badge">
+                        <span className="stars">
+                            {[...Array(venue.stars)].map((_, i) => (
+                                <Star key={i} size={12} fill="#FFB800" color="#FFB800" />
+                            ))}
+                        </span>
+                        <span className="rating-score">{venue.rating}/10</span>
+                        <span className="rating-label">{venue.ratingText}</span>
+                    </div>
                 </div>
 
-                <div className="hall-location">{venue.location}</div>
+                <div className="location-section">
+                    <span className="location-icon">📍</span>
+                    <span className="location">{venue.location}</span>
+                    {venue.capacity && (
+                        <span className="guest-capacity">• {venue.capacity}</span>
+                    )}
+                </div>
 
-                {venue.capacity && (
-                    <div className="hall-capacity">
-                        <Users size={16} />
-                        <span>{venue.capacity}</span>
+                <div className="review-summary">
+                    <span className="review-count">({venue.reviews} reviews)</span>
+                    <button className="review-btn">Read Reviews</button>
+                </div>
+
+                <div className="discount-highlight">
+                    {venue.discount && <span className="discount-percent">{venue.discount}% OFF</span>}
+                    {venue.memberPrice && <span className="member-badge">Member Price available</span>}
+                </div>
+
+                <div className="pricing-section">
+                    {venue.originalPrice && <div className="original-price">₹{venue.originalPrice.toLocaleString('en-IN')}</div>}
+                    <div className="current-price">₹{venue.price.toLocaleString('en-IN')}</div>
+                    <div className="price-label">per booking</div>
+                </div>
+
+                <div className="total-section">
+                    <span className="total-label">Total (incl. taxes & fees):</span>
+                    <span className="total-price">₹{venue.totalPrice.toLocaleString('en-IN')}</span>
+                </div>
+
+                {derivedSavings > 0 && (
+                    <div className="comparison-savings">
+                        You save: <strong>₹{derivedSavings.toLocaleString('en-IN')}</strong>
                     </div>
                 )}
 
-                <div className="hall-rating">
-                    <span className="rating-score">{venue.rating}/10</span>
-                    <span className="rating-text">{venue.ratingText}</span>
-                    <span className="rating-reviews">({venue.reviews} review{venue.reviews > 1 ? 's' : ''})</span>
-                </div>
+                <button className="cta-button" onClick={() => onBookNow(venue)}>
+                    Book Now →
+                </button>
 
-                <div className="hall-pricing">
-                    {venue.memberPrice && (
-                        <div className="member-price-badge">
-                            <span>💎 Member Price available</span>
-                        </div>
-                    )}
-
-                    {venue.discount && (
-                        <div className="discount-badge">{venue.discount}% off</div>
-                    )}
-
-                    <div className="price-container">
-                        <div className="current-price">
-                            ₹{venue.price.toLocaleString('en-IN')}
-                            <Info size={14} className="info-icon" />
-                        </div>
-                        <div className="original-price">₹{venue.originalPrice.toLocaleString('en-IN')}</div>
+                <div className="card-footer">
+                    <span className="free-cancellation">Free cancellation</span>
+                    <div className="verified-badge-container">
+                        <img src="/svg/quality-assurance.svg" alt="Verified" className="verified-icon" />
+                        <span className="verified-text">Verified venue</span>
                     </div>
-
-                    <div className="total-price">
-                        ₹{venue.totalPrice.toLocaleString('en-IN')} total
-                    </div>
-                    <div className="price-note">includes taxes & fees</div>
                 </div>
             </div>
         </div>

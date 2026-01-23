@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { X, Calendar, Users, Phone, Mail, User } from 'lucide-react';
 import './BookingModal.css';
 
-const BookingModal = ({ isOpen, onClose, hotel }) => {
+const BookingModal = ({ isOpen, onClose, hotel, bookingType = 'hotel' }) => {
+    const isPartyHall = bookingType === 'party-hall';
+
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -27,13 +29,19 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission
-        console.log('Booking Data:', { ...formData, hotel: hotel.name });
-        alert(`Booking request submitted for ${hotel.name}!\nCheck-in: ${formData.checkIn}\nCheck-out: ${formData.checkOut}`);
+        console.log('Booking Data:', { ...formData, hotel: hotel.name, type: bookingType });
+        const dateMsg = isPartyHall
+            ? `Event Date: ${formData.checkIn}`
+            : `Check-in: ${formData.checkIn}\nCheck-out: ${formData.checkOut}`;
+
+        alert(`Booking request submitted for ${hotel.name}!\n${dateMsg}`);
         onClose();
     };
 
-    // Calculate number of nights
+    // Calculate number of nights (only for hotels)
     const calculateNights = () => {
+        if (isPartyHall) return 1;
+
         if (formData.checkIn && formData.checkOut) {
             const checkIn = new Date(formData.checkIn);
             const checkOut = new Date(formData.checkOut);
@@ -44,7 +52,17 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
     };
 
     const nights = calculateNights();
-    const totalPrice = nights * hotel.price;
+    const totalPrice = isPartyHall ? hotel.totalPrice : nights * hotel.price; // Use totalPrice directly for Party Halls if available, else standard calc
+
+    // For Party Halls, we might want to use the total price displayed on the card which includes taxes
+    // But existing logic for hotels calculates base * nights. 
+    // Let's assume for Party Hall, the price passed in 'hotel' object is the base price.
+    // However, in PartyHalls.jsx, we see `price` and `totalPrice`. 
+    // Let's use `hotel.totalPrice` for the final amount if it exists and isPartyHall, otherwise calculate.
+
+    // Simplification for display:
+    const displayBasePrice = isPartyHall ? hotel.price : hotel.price;
+    const finalTotal = isPartyHall ? hotel.totalPrice : (nights > 0 ? hotel.totalPrice * nights : 0);
 
     return (
         <div className="modal-overlay" onClick={onClose}>
@@ -52,7 +70,7 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
                 {/* Modal Header */}
                 <div className="modal-header">
                     <div className="modal-header-content">
-                        <h2>Complete Your Booking</h2>
+                        <h2>{isPartyHall ? 'Book Party Hall' : 'Complete Your Booking'}</h2>
                         <p className="modal-hotel-name">{hotel.name}</p>
                     </div>
                     <button className="modal-close-btn" onClick={onClose}>
@@ -123,10 +141,10 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
                             <h3 className="section-title">Booking Details</h3>
 
                             <div className="form-row">
-                                <div className="form-group">
+                                <div className="form-group" style={{ width: isPartyHall ? '100%' : '' }}>
                                     <label htmlFor="checkIn">
                                         <Calendar size={18} />
-                                        Check-in Date *
+                                        {isPartyHall ? 'Event Date *' : 'Check-in Date *'}
                                     </label>
                                     <input
                                         type="date"
@@ -139,57 +157,74 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
                                     />
                                 </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="checkOut">
-                                        <Calendar size={18} />
-                                        Check-out Date *
-                                    </label>
-                                    <input
-                                        type="date"
-                                        id="checkOut"
-                                        name="checkOut"
-                                        value={formData.checkOut}
-                                        onChange={handleChange}
-                                        min={formData.checkIn || new Date().toISOString().split('T')[0]}
-                                        required
-                                    />
-                                </div>
+                                {!isPartyHall && (
+                                    <div className="form-group">
+                                        <label htmlFor="checkOut">
+                                            <Calendar size={18} />
+                                            Check-out Date *
+                                        </label>
+                                        <input
+                                            type="date"
+                                            id="checkOut"
+                                            name="checkOut"
+                                            value={formData.checkOut}
+                                            onChange={handleChange}
+                                            min={formData.checkIn || new Date().toISOString().split('T')[0]}
+                                            required
+                                        />
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-row">
                                 <div className="form-group">
                                     <label htmlFor="adults">
                                         <Users size={18} />
-                                        Adults
+                                        {isPartyHall ? 'Guests' : 'Adults'}
                                     </label>
-                                    <select
-                                        id="adults"
-                                        name="adults"
-                                        value={formData.adults}
-                                        onChange={handleChange}
-                                    >
-                                        {[1, 2, 3, 4, 5, 6].map(num => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
+                                    {isPartyHall ? (
+                                        <input
+                                            type="number"
+                                            name="adults"
+                                            id="adults"
+                                            value={formData.adults}
+                                            onChange={handleChange}
+                                            min="1"
+                                            placeholder="Number of guests"
+                                            required
+                                        />
+                                    ) : (
+                                        <select
+                                            id="adults"
+                                            name="adults"
+                                            value={formData.adults}
+                                            onChange={handleChange}
+                                        >
+                                            {[1, 2, 3, 4, 5, 6].map(num => (
+                                                <option key={num} value={num}>{num}</option>
+                                            ))}
+                                        </select>
+                                    )}
                                 </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="children">
-                                        <Users size={18} />
-                                        Children
-                                    </label>
-                                    <select
-                                        id="children"
-                                        name="children"
-                                        value={formData.children}
-                                        onChange={handleChange}
-                                    >
-                                        {[0, 1, 2, 3, 4].map(num => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
-                                </div>
+                                {!isPartyHall && (
+                                    <div className="form-group">
+                                        <label htmlFor="children">
+                                            <Users size={18} />
+                                            Children
+                                        </label>
+                                        <select
+                                            id="children"
+                                            name="children"
+                                            value={formData.children}
+                                            onChange={handleChange}
+                                        >
+                                            {[0, 1, 2, 3, 4].map(num => (
+                                                <option key={num} value={num}>{num}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="form-group">
@@ -211,17 +246,26 @@ const BookingModal = ({ isOpen, onClose, hotel }) => {
                         <div className="price-summary">
                             <h3 className="section-title">Price Summary</h3>
                             <div className="summary-row">
-                                <span>₹{hotel.price.toLocaleString('en-IN')} × {nights} night{nights !== 1 ? 's' : ''}</span>
-                                <span className="summary-price">₹{totalPrice.toLocaleString('en-IN')}</span>
+                                {isPartyHall ? (
+                                    <span>Base Price</span>
+                                ) : (
+                                    <span>₹{hotel.price.toLocaleString('en-IN')} × {nights} night{nights !== 1 ? 's' : ''}</span>
+                                )}
+                                <span className="summary-price">₹{(isPartyHall ? hotel.price : (nights * hotel.price)).toLocaleString('en-IN')}</span>
                             </div>
                             <div className="summary-row">
                                 <span>Taxes & Fees</span>
-                                <span className="summary-price">₹{(hotel.totalPrice - hotel.price).toLocaleString('en-IN')}</span>
+                                <span className="summary-price">
+                                    ₹{(isPartyHall
+                                        ? (hotel.totalPrice - hotel.price)
+                                        : (nights > 0 ? (hotel.totalPrice - hotel.price) * nights : 0)
+                                    ).toLocaleString('en-IN')}
+                                </span>
                             </div>
                             <div className="summary-divider"></div>
                             <div className="summary-row total">
                                 <span>Total Amount</span>
-                                <span className="summary-total">₹{(nights > 0 ? hotel.totalPrice * nights : 0).toLocaleString('en-IN')}</span>
+                                <span className="summary-total">₹{(isPartyHall ? hotel.totalPrice : (nights > 0 ? hotel.totalPrice * nights : 0)).toLocaleString('en-IN')}</span>
                             </div>
                         </div>
 
