@@ -1,0 +1,28 @@
+# Nano Space Backend - Python Dependencies
+
+# Flask Framework
+Flask==3.0.0
+Flask-CORS==4.0.0
+Flask-SQLAlchemy==3.1.1
+Flask-JWT-Extended==4.6.0
+Flask-Mail==0.9.1
+
+# Database
+SQLAlchemy==2.0.23
+
+# Security
+Werkzeug==3.0.1
+PyJWT==2.8.0
+
+# Email & SMS
+# twilio==8.10.0  # Uncomment for SMS functionality
+
+# File Upload & Validation
+python-multipart==0.0.6
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Development Tools
+pytest==7.4.3
+pytest-flask==1.3.0
