@@ -2,50 +2,85 @@ import React from 'react';
 
 const companies = [
     { name: 'INOX', image: 'images/clients/img1.png' },
-    { name: 'Kotak', image: 'images/clients/img2.png' },
-    { name: 'Razorpay', image: 'images/clients/img3.png' },
-    { name: 'Doubtnut', image: 'images/clients/img4.png' },
+    { name: 'OYO', image: 'images/clients/img2.png' },
+    { name: 'SDS', image: 'images/clients/img3.png' },
+    { name: 'Buttlework', image: 'images/clients/img4.png' },
     { name: 'Credable', image: 'images/clients/img5.png' },
-    { name: 'AccioJob', image: 'images/clients/img6.png' },
-    { name: 'Purple', image: 'images/clients/img7.png' },
-    { name: 'Classplus', image: 'images/clients/img8.png' },
-    { name: 'Hector', image: 'images/clients/img9.png' },
-    { name: 'Atlas Law', image: 'images/clients/img10.png' },
-    { name: 'Fyp', image: 'images/clients/img11.png' },
-    { name: 'Easebuzz', image: 'images/clients/img12.png' },
-
+    { name: 'Topper', image: 'images/clients/img6.png' },
+    { name: 'Swiggy', image: 'images/clients/img7.png' },
+    { name: 'Viacom', image: 'images/clients/img8.png' },
+    { name: 'Matrimony', image: 'images/clients/img9.png' },
+    { name: 'WHO', image: 'images/clients/img10.png' },
+    { name: 'OLO', image: 'images/clients/img11.png' },
+    { name: 'Novicom', image: 'images/clients/img12.png' },
 ];
 
 const TrustedCompanies = () => {
     return (
-        <section className="py-12 md:py-16 bg-white">
-            <div className="max-w-[90%] mx-auto px-4 md:px-0">
+        <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
-                <div className="text-center mb-10 md:mb-16 relative">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block relative z-10">
-                        <span className="relative">
-                            <span className="absolute -left-3 sm:-left-4 -top-3 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-60"></span>
-                            Trusted
-                        </span> By Top Companies
-                    </h2>
-                    <div className="w-20 md:w-24 h-1 bg-blue-500 mx-auto mt-3 md:mt-4 rounded-full"></div>
+                <div className="text-center mb-12 md:mb-16">
+                    <div className="inline-block">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+                            Trusted By{' '}
+                            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                                Top Companies
+                            </span>
+                        </h2>
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
+                    </div>
+                    <p className="text-gray-600 mt-4 text-base md:text-lg max-w-2xl mx-auto">
+                        Join 500+ leading companies that trust us for their workspace solutions
+                    </p>
                 </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
+                {/* Logos Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
                     {companies.map((company, index) => (
-                        <div key={index} className="flex items-center justify-center p-2 sm:p-3 group cursor-pointer bg-gray-50 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300">
+                        <div
+                            key={index}
+                            className="group flex items-center justify-center p-4"
+                            style={{
+                                animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`
+                            }}
+                        >
+                            {/* Logo */}
                             <img
                                 src={company.image}
                                 alt={company.name}
-                                className="w-full h-10 sm:h-12 md:h-16 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105"
+                                className="w-full h-12 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
                             />
                         </div>
                     ))}
                 </div>
 
+                {/* Bottom CTA */}
+                <div className="text-center mt-12 md:mt-16">
+                    <p className="text-gray-700 font-medium text-base md:text-lg mb-4">
+                        Ready to join these industry leaders?
+                    </p>
+                    <button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-1">
+                        Get Started Today
+                    </button>
+                </div>
+
             </div>
+
+            {/* Keyframe animation */}
+            <style jsx>{`
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `}</style>
         </section>
     );
 };
