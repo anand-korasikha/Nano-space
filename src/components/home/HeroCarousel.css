@@ -1,60 +1,104 @@
-/* HeroCarousel.css */
+/* HeroCarousel.css - Enhanced Version */
 
-.hero-carousel-container {
+/* ============================================================================
+   CONTAINER & LAYOUT - Optimized for Space
+   ============================================================================ */
+
+.hero-carousel-container-enhanced {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
+  overflow: visible;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 @media (min-width: 640px) {
-  .hero-carousel-container {
-    height: 400px;
+  .hero-carousel-container-enhanced {
+    height: 460px;
+    padding: 1.25rem 1.25rem 0 1.25rem;
   }
 }
 
-/* Background Decorative Arcs */
+@media (min-width: 768px) {
+  .hero-carousel-container-enhanced {
+    height: 520px;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+}
+
+/* ============================================================================
+   BACKGROUND DECORATIVE ELEMENTS
+   ============================================================================ */
+
 .bg-arc-outer {
   position: absolute;
-  width: 140%;
-  height: 140%;
-  top: -10%;
+  width: 115%;
+  height: 115%;
+  top: -7.5%;
   border-radius: 9999px;
-  border-width: 1px;
-  border-color: rgba(253, 164, 175, 0.6);
-  /* rose-300 */
-  opacity: 0.6;
+  border-width: 4px;
+  border-color: rgba(255, 107, 107, 0.8);
+  opacity: 0.9;
 }
 
 .bg-arc-inner {
   position: absolute;
-  width: 110%;
-  height: 110%;
-  top: -5%;
+  width: 95%;
+  height: 95%;
+  top: -2.5%;
   border-radius: 9999px;
-  border-width: 1px;
-  border-color: rgba(147, 197, 253, 0.6);
-  /* blue-300 */
-  opacity: 0.6;
+  border-width: 4px;
+  border-color: rgba(59, 130, 246, 0.8);
+  opacity: 0.9;
 }
 
-/* Sparkles/Stars */
+@keyframes arcPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes arcRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================================
+   SPARKLES/STARS
+   ============================================================================ */
+
 .star-icon {
   position: absolute;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  filter: drop-shadow(0 0 8px currentColor);
 }
 
 .star-red-large {
-  top: 0;
+  top: 5%;
   right: 20%;
   color: #ef4444;
 }
 
 .star-red-small {
-  top: 8%;
+  top: 12%;
   right: 15%;
   color: #ef4444;
   animation-delay: 150ms;
@@ -74,140 +118,175 @@
   animation-delay: 500ms;
 }
 
-/* Cards Container */
-.cards-wrapper {
+/* ============================================================================
+   CARDS CONTAINER
+   ============================================================================ */
+
+.cards-wrapper-enhanced {
   position: relative;
-  width: 160px;
-  aspect-ratio: 0.75;
+  width: 180px;
+  aspect-ratio: 0.7;
+  perspective: 1200px;
 }
 
 @media (min-width: 640px) {
-  .cards-wrapper {
-    width: 260px;
+  .cards-wrapper-enhanced {
+    width: 240px;
   }
 }
 
 @media (min-width: 768px) {
-  .cards-wrapper {
-    width: 290px;
+  .cards-wrapper-enhanced {
+    width: 300px;
   }
 }
 
-/* Base Card Style */
-.carousel-card {
+/* ============================================================================
+   CARD BASE STYLES
+   ============================================================================ */
+
+.carousel-card-enhanced {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 1rem;
-  /* rounded-2xl */
+  border-radius: 1.5rem;
   background-color: white;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  /* shadow-xl */
+  box-shadow: none;
   overflow: hidden;
-  border-width: 4px;
-  border-color: #e5e7eb;
-  /* gray-200 */
   cursor: pointer;
-  transition: all 700ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
 }
 
-/* Card States */
-.card-center {
+/* ============================================================================
+   CARD POSITIONS & STATES
+   ============================================================================ */
+
+/* Center Card (Active) */
+.card-center-enhanced {
   z-index: 30;
-  transform: scale(1) translateX(0) rotate(0);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  /* shadow-2xl */
+  transform: scale(1) translateX(0) translateZ(0) rotateY(0deg);
+  box-shadow: none;
 }
 
-.card-center:hover {
-  transform: scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+.card-center-enhanced:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: none;
 }
 
-/* Mobile: Smaller transforms */
-.card-right {
+/* Right Card */
+.card-right-enhanced {
   z-index: 20;
-  transform: scale(0.85) translateX(45%) rotate(12deg);
+  transform: scale(0.88) translateX(50%) translateZ(-100px) rotateY(-15deg);
   opacity: 0.85;
 }
 
-.card-right:hover {
-  transform: scale(0.85) translateX(40%) rotate(8deg);
+.card-right-enhanced:hover {
+  transform: scale(0.88) translateX(45%) translateZ(-80px) rotateY(-10deg);
   opacity: 1;
   z-index: 25;
 }
 
-.card-left {
+/* Left Card */
+.card-left-enhanced {
   z-index: 10;
-  transform: scale(0.85) translateX(-45%) rotate(-12deg);
+  transform: scale(0.88) translateX(-50%) translateZ(-100px) rotateY(15deg);
   opacity: 0.85;
 }
 
-.card-left:hover {
-  transform: scale(0.85) translateX(-40%) rotate(-8deg);
+.card-left-enhanced:hover {
+  transform: scale(0.88) translateX(-45%) translateZ(-80px) rotateY(10deg);
   opacity: 1;
   z-index: 25;
 }
 
-/* Tablet and Desktop: Larger transforms */
+/* Tablet and Desktop: Enhanced transforms */
 @media (min-width: 640px) {
-  .card-right {
-    transform: scale(0.9) translateX(60%) rotate(15deg);
+  .card-right-enhanced {
+    transform: scale(0.9) translateX(65%) translateZ(-120px) rotateY(-18deg);
     opacity: 0.9;
   }
 
-  .card-right:hover {
-    transform: scale(0.9) translateX(55%) rotate(10deg);
+  .card-right-enhanced:hover {
+    transform: scale(0.9) translateX(60%) translateZ(-100px) rotateY(-12deg);
   }
 
-  .card-left {
-    transform: scale(0.9) translateX(-60%) rotate(-15deg);
+  .card-left-enhanced {
+    transform: scale(0.9) translateX(-65%) translateZ(-120px) rotateY(18deg);
     opacity: 0.9;
   }
 
-  .card-left:hover {
-    transform: scale(0.9) translateX(-55%) rotate(-10deg);
+  .card-left-enhanced:hover {
+    transform: scale(0.9) translateX(-60%) translateZ(-100px) rotateY(12deg);
   }
 }
 
-/* Card Content */
-.card-header {
-  height: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: white;
+/* ============================================================================
+   CARD CONTENT
+   ============================================================================ */
+
+.card-content-enhanced {
   position: relative;
-  z-index: 10;
-}
-
-.card-image-container {
-  height: 80%;
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-bottom-left-radius: 1rem;
-  /* rounded-b-xl */
-  border-bottom-right-radius: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.card-image {
+.card-image-wrapper-enhanced {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-image-enhanced {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  transition: transform 700ms ease-out;
+  transition: transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.carousel-card:hover .card-image {
-  transform: scale(1.1);
+.carousel-card-enhanced:hover .card-image-enhanced {
+  transform: scale(1.08);
 }
 
-/* Utility Animations */
+/* ============================================================================
+   CARD INFO OVERLAY
+   ============================================================================ */
+
+.card-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+  transform: translateY(0);
+  transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Card Details (Hidden by default, shown on center card) */
+.card-details {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.card-center-enhanced .card-details {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 500px;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
 @keyframes pulse {
 
   0%,
@@ -216,6 +295,93 @@
   }
 
   50% {
-    opacity: .5;
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 480px) {
+  .hero-carousel-container-enhanced {
+    height: 350px;
+    padding: 1rem;
+  }
+
+  .cards-wrapper-enhanced {
+    width: 180px;
+  }
+
+  .card-info-overlay {
+    padding: 1rem;
+  }
+
+  .card-details h3 {
+    font-size: 1.125rem;
+  }
+
+  .card-details p {
+    font-size: 0.875rem;
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+.carousel-card-enhanced:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+}
+
+.carousel-card-enhanced:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================================================ */
+
+.carousel-card-enhanced,
+.card-image-enhanced,
+.card-info-overlay,
+.card-details {
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+
+  .carousel-card-enhanced,
+  .card-image-enhanced,
+  .card-info-overlay,
+  .card-details,
+  .star-icon {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

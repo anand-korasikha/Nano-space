@@ -1,0 +1,96 @@
+/* Carousel Bubbles Container - Only behind carousel */
+.carousel-bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.carousel-bubbles-container .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Bubble base styles */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: bubbleFloat 15s infinite linear;
+}
+
+/* Red bubble */
+.particle-red {
+    background: radial-gradient(circle at 30% 30%, rgba(239, 68, 68, 0.6), rgba(220, 38, 38, 0.3) 40%, rgba(239, 68, 68, 0.1));
+    box-shadow:
+        inset 0 -10px 20px rgba(239, 68, 68, 0.4),
+        0 5px 15px rgba(239, 68, 68, 0.3);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* Light Red bubble */
+.particle-light-red {
+    background: radial-gradient(circle at 30% 30%, rgba(252, 165, 165, 0.5), rgba(248, 113, 113, 0.3) 40%, rgba(252, 165, 165, 0.1));
+    box-shadow:
+        inset 0 -10px 20px rgba(252, 165, 165, 0.4),
+        0 5px 15px rgba(248, 113, 113, 0.2);
+    border: 1px solid rgba(252, 165, 165, 0.4);
+}
+
+/* Blue bubble */
+.particle-blue {
+    background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.6), rgba(37, 99, 235, 0.3) 40%, rgba(59, 130, 246, 0.1));
+    box-shadow:
+        inset 0 -10px 20px rgba(59, 130, 246, 0.4),
+        0 5px 15px rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+/* Light Blue bubble */
+.particle-light-blue {
+    background: radial-gradient(circle at 30% 30%, rgba(147, 197, 253, 0.5), rgba(96, 165, 250, 0.3) 40%, rgba(147, 197, 253, 0.1));
+    box-shadow:
+        inset 0 -10px 20px rgba(147, 197, 253, 0.4),
+        0 5px 15px rgba(96, 165, 250, 0.2);
+    border: 1px solid rgba(147, 197, 253, 0.4);
+}
+
+/* Bubble float animation - Bottom to Top */
+@keyframes bubbleFloat {
+    0% {
+        transform: translateY(120%) translateX(0) scale(0);
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 0.8;
+        transform: translateY(100%) translateX(0) scale(0.3);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(90%) translateX(10px) scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(50%) translateX(30px) scale(0.8);
+    }
+
+    90% {
+        opacity: 0.8;
+        transform: translateY(10%) translateX(50px) scale(1);
+    }
+
+    100% {
+        transform: translateY(-10%) translateX(60px) scale(1);
+        opacity: 0;
+    }
+}
