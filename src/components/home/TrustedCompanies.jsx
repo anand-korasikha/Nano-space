@@ -37,7 +37,7 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Logos Grid */}
-                <div className="trusted-logos-grid grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 md:gap-8">
+                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 md:gap-8">
                     {companies.map((company, index) => (
                         <div
                             key={index}
@@ -50,7 +50,7 @@ const TrustedCompanies = () => {
                             <img
                                 src={company.image}
                                 alt={company.name}
-                                className="h-6 sm:h-8 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                                className="h-4 sm:h-6 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
                             />
                         </div>
                     ))}
