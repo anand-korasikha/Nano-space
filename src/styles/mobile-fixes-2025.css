@@ -115,9 +115,9 @@
 @media (max-width: 640px) {
 
     /* Force proper mobile grids */
-    .grid-cols-3:not(.grid.grid-cols-4),
-    .grid-cols-4:not(.grid.grid-cols-4),
-    .grid-cols-6:not(.grid.grid-cols-4) {
+    .grid-cols-3:not(.grid.grid-cols-4):not(.trusted-logos-grid),
+    .grid-cols-4:not(.grid.grid-cols-4):not(.trusted-logos-grid),
+    .grid-cols-6:not(.grid.grid-cols-4):not(.trusted-logos-grid) {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 
