@@ -75,6 +75,20 @@ const ServiceCategories = () => {
     return (
         <section className="py-12 md:py-16 px-4 md:px-8 lg:px-16 bg-white">
             <div className="max-w-[90%] mx-auto">
+                {/* Section Header */}
+                <div className="text-center mb-8 md:mb-12 relative">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold inline-block relative z-10 text-gray-900">
+                        <span className="relative">
+                            <span className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-full -z-10 opacity-70"></span>
+                            Our
+                        </span> Services
+                    </h2>
+                    <div className="w-16 md:w-24 h-1.5 bg-blue-600 mx-auto mt-4 rounded-full shadow-sm"></div>
+                    <p className="text-gray-500 mt-4 text-sm sm:text-base max-w-xl mx-auto">
+                        Explore our comprehensive range of flexible workspace and living solutions
+                    </p>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                     {categories.map((item) => (
                         <Link

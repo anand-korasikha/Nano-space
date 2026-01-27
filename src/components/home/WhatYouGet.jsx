@@ -73,14 +73,17 @@ const WhatYouGet = () => {
                 {/* Right Column: Content */}
                 <div className="w-full lg:w-1/2">
                     {/* Header */}
-                    <div className="mb-8 md:mb-12 relative lg:text-left text-center">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold inline-block relative z-10">
+                    <div className="mb-10 lg:mb-16 relative lg:text-left text-center">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold inline-block relative z-10 text-gray-900">
                             <span className="relative">
-                                <span className="absolute -left-3 sm:-left-4 -top-3 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-60"></span>
+                                <span className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-70"></span>
                                 What
                             </span> You Get From Us
                         </h2>
-                        <div className="w-20 md:w-24 h-1 bg-blue-500 mt-3 md:mt-4 rounded-full mx-auto lg:mx-0"></div>
+                        <div className="w-16 md:w-24 h-1.5 bg-blue-600 mt-4 rounded-full shadow-sm mx-auto lg:mx-0"></div>
+                        <p className="text-gray-500 mt-6 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
+                            Experience the Nanospace advantage with our premium perks and dedicated support
+                        </p>
                     </div>
 
                     {/* Benefits List */}

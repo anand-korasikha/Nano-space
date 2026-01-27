@@ -4,7 +4,7 @@ import LatestProperties from '../components/home/LatestProperties';
 import ServiceCategories from '../components/home/ServiceCategories';
 import PlatformStats from '../components/home/PlatformStats';
 import TopCoworking from '../components/home/TopCoworking';
-import FeaturedCoworking from '../components/home/FeaturedCoworking';
+// import FeaturedCoworking from '../components/home/FeaturedCoworking';
 import TopColiving from '../components/home/TopColiving';
 // import FeaturedColiving from '../components/home/FeaturedColiving';
 import WhatYouGet from '../components/home/WhatYouGet';
@@ -22,7 +22,7 @@ const Home = () => {
             <ServiceCategories />
             <PlatformStats />
             <TopCoworking />
-            <FeaturedCoworking />
+            {/* <FeaturedCoworking /> */}
             <TopColiving />
             {/* <FeaturedColiving /> */}
             <WhatYouGet />

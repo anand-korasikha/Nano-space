@@ -250,13 +250,16 @@
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
     border: none;
-    padding: 0.65rem 1.5rem;
+    padding: 0.75rem 1.75rem;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+    white-space: nowrap;
+    min-width: fit-content;
+    flex-shrink: 0;
 }
 
 .get-quote-btn:hover {

@@ -79,11 +79,13 @@ const HeroCarousel = () => {
         }
     };
 
-    const handlePrevious = () => {
+    const handlePrevious = (e) => {
+        e.stopPropagation();
         setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
     };
 
-    const handleNext = () => {
+    const handleNext = (e) => {
+        e.stopPropagation();
         setActiveIndex((prev) => (prev + 1) % cards.length);
     };
 
@@ -133,7 +135,7 @@ const HeroCarousel = () => {
             {/* Navigation Arrows */}
             <button
                 onClick={handlePrevious}
-                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hover:scale-110 group"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full nav-arrow transition-all duration-300 hover:scale-110 group"
                 aria-label="Previous"
             >
                 <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700 group-hover:text-blue-600 transition-colors" />
@@ -141,7 +143,7 @@ const HeroCarousel = () => {
 
             <button
                 onClick={handleNext}
-                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full p-2 md:p-3 transition-all duration-300 hover:scale-110 group"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white shadow-lg rounded-full nav-arrow transition-all duration-300 hover:scale-110 group"
                 aria-label="Next"
             >
                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700 group-hover:text-blue-600 transition-colors" />
@@ -203,8 +205,11 @@ const HeroCarousel = () => {
                 {cards.map((_, index) => (
                     <button
                         key={index}
-                        onClick={() => setActiveIndex(index)}
-                        className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveIndex(index);
+                        }}
+                        className={`h-2 rounded-full dot-indicator transition-all duration-300 ${index === activeIndex
                             ? 'w-8 bg-blue-600'
                             : 'w-2 bg-gray-300 hover:bg-gray-400'
                             }`}

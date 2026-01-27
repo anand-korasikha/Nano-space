@@ -3,8 +3,13 @@
 /* Red color for first line */
 .hero-word-1 {
     color: #ef4444;
-    /* Red */
-    display: inline-block;
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .hero-word-1 {
+        display: inline;
+    }
 }
 
 /* Blue and Red gradient for middle line */
@@ -24,14 +29,27 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientShift 3s ease infinite;
-    display: inline-block;
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .hero-gradient-bounce {
+        display: inline;
+        background-size: 100% auto;
+        /* Simplify on mobile */
+    }
 }
 
 /* Blue color for last word */
 .hero-word-3 {
     color: #3b82f6;
-    /* Blue */
-    display: inline-block;
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .hero-word-3 {
+        display: inline;
+    }
 }
 
 /* Smooth gradient shift animation */

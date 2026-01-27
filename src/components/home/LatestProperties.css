@@ -73,6 +73,9 @@
     padding: 0 2rem 1.5rem 2rem;
     scrollbar-width: thin;
     scrollbar-color: #667eea #f0f0f0;
+    scroll-snap-type: x mandatory;
+    /* Added for snap behavior */
+    -webkit-overflow-scrolling: touch;
 }
 
 .latest-properties-scroll::-webkit-scrollbar {
@@ -267,6 +270,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     line-clamp: 2;
+    /* Added for standard compatibility */
     overflow: hidden;
     min-height: 2.6rem;
     /* Reserve space for 2 lines */
@@ -412,8 +416,9 @@
 @media (max-width: 768px) {
     .latest-properties-header {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        align-items: center;
+        text-align: center;
+        gap: 1.25rem;
     }
 
     .latest-properties-title {
@@ -426,6 +431,21 @@
 
     .scroll-hint {
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .latest-properties-title {
+        font-size: 1.75rem;
+    }
+
+    .latest-properties-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .new-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -508,9 +528,24 @@
 
 /* Mobile Carousel Adjustments */
 @media (max-width: 768px) {
+    .latest-property-card {
+        flex: 0 0 calc(100vw - 3rem);
+        /* Show one card clearly */
+        height: auto;
+        min-height: 500px;
+        scroll-snap-align: center;
+        margin-right: 0.5rem;
+    }
+
+    .latest-properties-track {
+        gap: 1rem;
+    }
+
     .carousel-btn {
-        width: 32px;
-        height: 32px;
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        min-height: 32px !important;
         font-size: 1.25rem;
         opacity: 1;
         /* Always show on mobile */
@@ -526,14 +561,25 @@
 
     .carousel-dots {
         padding: 0.3rem 0.6rem;
+        bottom: 0.5rem;
     }
 
     .carousel-dot {
-        width: 6px;
-        height: 6px;
+        width: 6px !important;
+        height: 6px !important;
+        min-width: 6px !important;
+        min-height: 6px !important;
+        padding: 0 !important;
+        margin: 0 2px;
     }
 
     .carousel-dot.active {
-        width: 18px;
+        width: 18px !important;
+        border-radius: 10px;
+    }
+
+    .latest-property-amenities {
+        min-height: 60px;
+        gap: 0.35rem;
     }
 }

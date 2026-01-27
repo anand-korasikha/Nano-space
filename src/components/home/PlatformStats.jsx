@@ -115,13 +115,13 @@ const PlatformStats = () => {
                                 <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
                                 <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                                <div id="platform-stats-logos" className="flex flex-row gap-8 whitespace-nowrap animate-marquee">
+                                <div id="platform-stats-logos" className="flex flex-row gap-4 md:gap-8 whitespace-nowrap animate-marquee">
                                     {logos.map((logo, index) => (
                                         <img
                                             key={index}
                                             src={logo.image}
                                             alt={logo.name}
-                                            className="h-12 md:h-16 object-contain shrink-0 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                                            className="h-8 md:h-16 object-contain shrink-0 opacity-70 hover:opacity-100 transition-opacity duration-300"
                                         />
                                     ))}
                                 </div>
