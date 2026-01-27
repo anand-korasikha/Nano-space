@@ -172,26 +172,34 @@ const HeroCarousel = () => {
                             {/* Card Info Overlay */}
                             <div className="card-info-overlay">
                                 {/* Icon Badge */}
-                                <div className={`inline-flex items-center gap-2 ${card.bgColor} ${card.textColor} px-4 py-2 rounded-full mb-3 shadow-md`}>
-                                    {card.icon}
-                                    <span className="font-bold text-sm md:text-base">{card.title}</span>
+                                <div className={`inline-flex items-center gap-2 ${card.bgColor} ${card.textColor} px-3 py-1.5 rounded-lg mb-3 shadow-sm border border-white/50 backdrop-blur-md`}>
+                                    {React.cloneElement(card.icon, { className: 'w-4 h-4 md:w-5 md:h-5' })}
+                                    <span className="font-bold text-xs md:text-sm uppercase tracking-wider">{card.title}</span>
                                 </div>
 
                                 {/* Title & Description (Visible on Active Card) */}
                                 <div className="card-details">
-                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{card.subtitle}</h3>
-                                    <p className="text-white/90 text-sm md:text-base mb-4">{card.description}</p>
+                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">{card.subtitle}</h3>
+                                    <p className="text-white/80 text-xs md:text-sm mb-4 line-clamp-2 md:line-clamp-none">{card.description}</p>
 
                                     {/* Features */}
-                                    <div className="flex flex-wrap gap-2 mb-4">
+                                    <div className="flex flex-wrap gap-2 mb-5">
                                         {card.features.map((feature, idx) => (
                                             <span
                                                 key={idx}
-                                                className="text-xs bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full"
+                                                className="text-[10px] md:text-xs bg-black/30 backdrop-blur-md text-white/90 px-3 py-1 rounded-md border border-white/10"
                                             >
                                                 {feature}
                                             </span>
                                         ))}
+                                    </div>
+
+                                    {/* CTA Button */}
+                                    <div className="pt-2">
+                                        <div className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-bold shadow-lg transform active:scale-95 transition-all">
+                                            Explore Now
+                                            <ChevronRight className="w-4 h-4" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -8,6 +8,7 @@
   position: relative;
   width: 100%;
   height: 400px;
+  /* Increased from 320px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +20,7 @@
 
 @media (min-width: 640px) {
   .hero-carousel-container-enhanced {
-    height: 460px;
+    height: 480px;
     padding: 1.25rem 1.25rem 0 1.25rem;
   }
 }
@@ -149,7 +150,9 @@
 .cards-wrapper-enhanced {
   position: relative;
   width: 210px;
-  aspect-ratio: 0.7;
+  /* Increased from 180px */
+  aspect-ratio: 0.8;
+  /* Slightly taller aspect ratio for better image coverage */
   perspective: 1200px;
 }
 
@@ -176,8 +179,9 @@
   width: 100%;
   height: 100%;
   border-radius: 1.5rem;
-  background-color: white;
-  box-shadow: none;
+  background-color: #1a1a1a;
+  /* Dark background to prevent white flash */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   cursor: pointer;
   transition: all 800ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -197,15 +201,15 @@
 /* Right Card */
 .card-right-enhanced {
   z-index: 20;
-  transform: scale(0.8) translateX(40%) translateZ(-50px);
-  opacity: 0.7;
+  transform: scale(0.75) translateX(45%) translateZ(-80px) rotateY(-10deg);
+  opacity: 0.6;
 }
 
 /* Left Card */
 .card-left-enhanced {
   z-index: 20;
-  transform: scale(0.8) translateX(-40%) translateZ(-50px);
-  opacity: 0.7;
+  transform: scale(0.75) translateX(-45%) translateZ(-80px) rotateY(10deg);
+  opacity: 0.6;
 }
 
 /* Tablet and Desktop: Enhanced transforms */
@@ -259,10 +263,12 @@
 }
 
 .card-image-wrapper-enhanced {
-  position: relative;
+  position: absolute;
+  inset: 0 !important;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .card-image-enhanced {
@@ -285,10 +291,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+  padding: 1.25rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
   transform: translateY(0);
   transition: all 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+  /* Ensure content is above image */
 }
 
 /* Card Details (Hidden by default, shown on center card) */
@@ -304,6 +312,7 @@
   opacity: 1;
   transform: translateY(0);
   max-height: 500px;
+  transition-delay: 150ms;
 }
 
 /* ============================================================================
@@ -350,36 +359,39 @@
 
 @media (max-width: 480px) {
   .hero-carousel-container-enhanced {
-    height: 380px;
+    height: 420px;
     padding: 0.5rem;
   }
 
   .cards-wrapper-enhanced {
-    width: 210px;
+    width: 280px;
+    /* Significance increase for mobile */
+    aspect-ratio: 0.85;
   }
 
   .card-info-overlay {
     padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
   }
 
   .card-details h3 {
-    font-size: 1.125rem;
-    margin-bottom: 0.35rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
   }
 
   .card-details p {
-    font-size: 0.85rem;
-    margin-bottom: 0.65rem;
-    line-height: 1.3;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
 
   .card-details .flex-wrap {
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 
   .card-details .flex-wrap span {
-    padding: 0.2rem 0.5rem;
-    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+    font-size: 0.65rem;
   }
 }
 
