@@ -37,11 +37,11 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Logos Grid */}
-                <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+                <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 md:gap-8">
                     {companies.map((company, index) => (
                         <div
                             key={index}
-                            className="group flex items-center justify-center p-4"
+                            className="group flex items-center justify-center p-3 sm:p-4 bg-white rounded-xl shadow-sm border border-gray-100/50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
                             style={{
                                 animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`
                             }}
@@ -50,7 +50,7 @@ const TrustedCompanies = () => {
                             <img
                                 src={company.image}
                                 alt={company.name}
-                                className="h-8 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                                className="h-6 sm:h-8 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
                             />
                         </div>
                     ))}
