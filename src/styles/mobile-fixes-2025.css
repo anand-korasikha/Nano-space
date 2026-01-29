@@ -185,3 +185,21 @@
         display: none !important;
     }
 }
+
+/* Service Modal Grid Fix */
+@media (max-width: 640px) {
+    .service-modal-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        display: grid !important;
+        gap: 1.5rem 1rem !important;
+    }
+
+    .service-modal-grid div.rounded-full {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .service-modal-grid span {
+        font-size: 12px !important;
+    }
+}

@@ -54,16 +54,15 @@ const WhatYouGet = () => {
 
 
                 {/* Left Column: Image Area */}
-                <div className="w-full lg:w-1/2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[500px] flex items-center justify-center">
+                <div className="w-full lg:w-1/2 relative flex items-center justify-center">
                     {/* Background decorations for image */}
-                    <div className="absolute left-[-30px] sm:left-[-50px] top-[10%] w-48 sm:w-64 h-48 sm:h-64 bg-[#FFF8C5] rounded-full -z-10"></div>
-                    <div className="absolute right-[10%] bottom-[-20px] w-16 sm:w-24 h-16 sm:h-24 bg-[#FFF8C5] rounded-full -z-10"></div>
-                    <div className="absolute right-[20%] top-[-20px] sm:top-[-30px] w-3 sm:w-4 h-24 sm:h-32 bg-[#FFF8C5] transform rotate-45 -z-10 rounded-full hidden sm:block"></div>
+                    <div className="absolute left-[-20px] sm:left-[-50px] top-[10%] w-32 sm:w-64 h-32 sm:h-64 bg-[#FFF8C5] rounded-full -z-10 opacity-60"></div>
+                    <div className="absolute right-[5%] bottom-[5%] w-12 sm:w-24 h-12 sm:h-24 bg-[#FFF8C5] rounded-full -z-10 opacity-50"></div>
 
-                    {/* Main Image Masked */}
-                    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-r-[80px] sm:rounded-r-[120px] md:rounded-r-[150px] overflow-hidden shadow-xl md:shadow-2xl">
+                    {/* Main Image Masked - Fixed Height/Aspect on mobile to ensure coverage */}
+                    <div className="relative w-full h-[250px] sm:h-[400px] lg:h-[500px] rounded-2xl sm:rounded-r-[120px] md:rounded-r-[150px] overflow-hidden shadow-xl md:shadow-2xl border-4 border-white">
                         <img
-                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
                             alt="Office Collaboration"
                             className="w-full h-full object-cover"
                         />
@@ -71,29 +70,29 @@ const WhatYouGet = () => {
                 </div>
 
                 {/* Right Column: Content */}
-                <div className="w-full lg:w-1/2">
+                <div className="w-full lg:w-1/2 pt-6 lg:pt-0">
                     {/* Header */}
-                    <div className="mb-10 lg:mb-16 relative lg:text-left text-center">
+                    <div className="mb-8 lg:mb-16 relative lg:text-left text-center">
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold inline-block relative z-10 text-gray-900">
                             <span className="relative">
                                 <span className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-70"></span>
                                 What
                             </span> You Get From Us
                         </h2>
-                        <div className="w-16 md:w-24 h-1.5 bg-blue-600 mt-4 rounded-full shadow-sm mx-auto lg:mx-0"></div>
-                        <p className="text-gray-500 mt-6 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
+                        <div className="w-16 md:w-24 h-1.5 bg-blue-600 mt-3 rounded-full shadow-sm mx-auto lg:mx-0"></div>
+                        <p className="text-gray-500 mt-4 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
                             Experience the Nanospace advantage with our premium perks and dedicated support
                         </p>
                     </div>
 
                     {/* Benefits List */}
-                    <div className="space-y-5 md:space-y-8">
+                    <div className="space-y-4 md:space-y-8">
                         {benefits.map((item, index) => (
                             <div key={index} className="flex items-center gap-4 md:gap-6 group">
-                                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg md:rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center group-hover:shadow-md group-hover:bg-yellow-50 transition-all duration-300 flex-shrink-0">
+                                <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg md:rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center group-hover:shadow-md group-hover:bg-yellow-50 transition-all duration-300 flex-shrink-0">
                                     {item.icon}
                                 </div>
-                                <p className="text-base sm:text-lg text-gray-700 font-medium group-hover:text-gray-900 transition-colors">
+                                <p className="text-[14px] sm:text-lg text-gray-700 font-medium group-hover:text-gray-900 transition-colors">
                                     {item.text}
                                 </p>
                             </div>

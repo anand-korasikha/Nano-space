@@ -67,15 +67,17 @@ const BookingModal = ({ isOpen, onClose, hotel, bookingType = 'hotel' }) => {
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                {/* Close Button - Positioned absolutely */}
+                <button className="modal-close-btn" onClick={onClose}>
+                    <X size={24} />
+                </button>
+
                 {/* Modal Header */}
                 <div className="modal-header">
                     <div className="modal-header-content">
                         <h2>{isPartyHall ? 'Book Party Hall' : 'Complete Your Booking'}</h2>
                         <p className="modal-hotel-name">{hotel.name}</p>
                     </div>
-                    <button className="modal-close-btn" onClick={onClose}>
-                        <X size={24} />
-                    </button>
                 </div>
 
                 {/* Modal Body */}

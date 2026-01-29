@@ -26,6 +26,7 @@
 }
 
 .modal-content {
+    position: relative;
     background: white;
     border-radius: 16px;
     width: 100%;
@@ -52,13 +53,18 @@
 
 /* Modal Header */
 .modal-header {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     padding: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+}
+
+.modal-header-content {
+    text-align: center;
 }
 
 .modal-header-content h2 {
@@ -74,7 +80,10 @@
 }
 
 .modal-close-btn {
-    background: rgba(255, 255, 255, 0.2);
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background: transparent;
     border: none;
     width: 36px;
     height: 36px;
@@ -85,10 +94,11 @@
     cursor: pointer;
     transition: all 0.3s ease;
     color: white;
+    z-index: 10;
 }
 
 .modal-close-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     transform: rotate(90deg);
 }
 
@@ -263,8 +273,18 @@
         padding: 1.25rem;
     }
 
+    .modal-header-content {
+        text-align: center;
+        width: 100%;
+    }
+
     .modal-header-content h2 {
         font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .modal-hotel-name {
+        text-align: center;
     }
 
     .modal-body {

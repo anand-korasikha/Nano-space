@@ -68,10 +68,11 @@ const Hero = ({ pageType = 'home' }) => {
                     <div className="max-w-3xl">
                         {/* Title with Enhanced Typography and Bounce Animation */}
                         <div className="mb-6 lg:mb-8 text-center lg:text-left">
-                            <h1 className="text-[2.15rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-3 tracking-tight">
+                            <h1 className="text-[2.15rem] leading-[1.2] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-3 tracking-tight">
                                 <span className="hero-word-1">{content.title.line1}</span>
                                 <br />
-                                <span className="hero-gradient-bounce">{content.title.line2.trim()}</span><span className="hero-word-3">{content.title.line3.trim()}</span>
+                                <span className="hero-gradient-bounce">{content.title.line2.trim()} </span>
+                                <span className="hero-word-3">{content.title.line3.trim()}</span>
                             </h1>
                             <p className="text-gray-600 text-sm md:text-lg max-w-2xl mx-auto lg:mx-0">
                                 Discover premium workspaces across India's top business hubs

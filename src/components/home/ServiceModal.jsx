@@ -1,50 +1,70 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ServiceModal.css';
 
 const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath, currentPage = 'home' }) => {
     if (!isOpen) return null;
 
-    // Normalize city name for URL (lowercase)
-    const cityUrlName = cityName?.toLowerCase();
+    const cityUrlName = cityName.toLowerCase().replace(/\s+/g, '-');
 
     const services = [
         {
-            name: 'Coworking Space',
+            name: 'Coworking',
+            name2: 'Space',
             path: `/coworking/${cityUrlName}`,
-            bgColor: 'bg-[#FFF8E7]', // Creamy yellow
+            bgColor: 'bg-[#FFF8E7]',
             icon: (
-                <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 28H28" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
+                    <rect x="14" y="16" width="12" height="12" rx="1" fill="#FEF3C7" stroke="#333" strokeWidth="1.5" />
+                    <path d="M10 28V24H14M30 28V24H26" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
+                    <circle cx="20" cy="12" r="2" fill="#333" />
+                    <path d="M16 12H24" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M14 20H26" stroke="#FDE68A" strokeWidth="2" strokeLinecap="round" />
                 </svg>
             )
         },
         {
-            name: 'Coliving Space',
+            name: 'Coliving',
+            name2: 'Space',
             path: `/coliving/${cityUrlName}`,
-            bgColor: 'bg-[#EAF6FF]', // Light blue
+            bgColor: 'bg-[#EAF6FF]',
             icon: (
-                <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 28V14C8 12.8954 8.89543 12 10 12H30C31.1046 12 32 12.8954 32 14V28" stroke="#333" strokeWidth="1.5" />
+                    <path d="M8 20H32" stroke="#333" strokeWidth="1.5" />
+                    <rect x="12" y="16" width="6" height="4" rx="1" fill="#BFDBFE" stroke="#333" strokeWidth="1.2" />
+                    <rect x="22" y="16" width="6" height="4" rx="1" fill="#BFDBFE" stroke="#333" strokeWidth="1.2" />
+                    <path d="M10 24H30" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" />
                 </svg>
             )
         },
         {
-            name: 'Virtual Office',
+            name: 'Virtual',
+            name2: 'Office',
             path: `/virtual-office/${cityUrlName}`,
             bgColor: 'bg-[#FFF8E7]',
             icon: (
-                <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="12" y="18" width="16" height="10" rx="1" fill="#FEF3C7" stroke="#333" strokeWidth="1.5" />
+                    <path d="M16 22H24" stroke="#333" strokeWidth="1" />
+                    <circle cx="20" cy="14" r="3" stroke="#333" strokeWidth="1.5" />
+                    <path d="M14 28L12 30H28L26 28" stroke="#333" strokeWidth="1.5" />
+                    <path d="M24 22H25" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" />
                 </svg>
             )
         },
         {
-            name: 'Office Space',
+            name: 'Office',
+            name2: 'Space',
             path: '/business-plans',
             bgColor: 'bg-[#FFF8E7]',
             icon: (
-                <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="14" width="20" height="14" rx="1" stroke="#333" strokeWidth="1.5" />
+                    <path d="M14 14V12C14 10.8954 14.8954 10 16 10H24C25.1046 10 26 10.8954 26 12V14" stroke="#333" strokeWidth="1.5" />
+                    <circle cx="20" cy="21" r="2" fill="#FDE68A" stroke="#333" strokeWidth="1" />
+                    <path d="M10 20H30" stroke="#333" strokeWidth="1" />
                 </svg>
             )
         },
@@ -54,74 +74,84 @@ const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath, currentPage = '
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/60 backdrop-blur-[2px] transition-opacity"
+                className="absolute inset-0 bg-black/50 backdrop-blur-[2px] transition-opacity"
                 onClick={onClose}
             />
 
-            {/* Modal Container to handle absolute icon positioning */}
-            <div className="relative w-full max-w-2xl transform transition-all animate-fadeIn" style={{ marginTop: '30px' }}>
+            {/* Modal Card */}
+            <div className="relative bg-white rounded-[24px] sm:rounded-[32px] shadow-2xl w-[94%] sm:max-w-xl transform transition-all animate-fadeIn overflow-visible border border-gray-100">
 
-                {/* Floating Top Icon - Placed outside the scrollable area to prevent clipping */}
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-[#FFF8E7] p-4 rounded-full shadow-lg border-4 border-white z-[110]">
-                    {cityIconPath ? (
+                {/* Floating City Icon */}
+                {cityIconPath && (
+                    <div className="absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 bg-white w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center rounded-full shadow-lg border-[4px] sm:border-[6px] border-white z-20">
+                        <div className="absolute inset-0 bg-[#FFF8E7] rounded-full scale-90"></div>
                         <img
                             src={cityIconPath}
                             alt={`${cityName} icon`}
-                            className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
+                            className="relative w-8 h-8 sm:w-12 sm:h-12 object-contain z-10"
                         />
-                    ) : (
-                        <svg className="w-14 h-14 sm:w-16 sm:h-16 text-black" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 21H21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M5 21V7C5 5.89543 5.89543 5 7 5H17C18.1046 5 19 5.89543 19 7V21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M9 9H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M9 13H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M9 17H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    )}
-                </div>
+                        <div className="absolute inset-0 pointer-events-none opacity-20 z-10">
+                            <svg viewBox="0 0 100 100" className="w-full h-full">
+                                <circle cx="20" cy="30" r="1.5" fill="#3B82F6" />
+                                <circle cx="80" cy="40" r="2" fill="#3B82F6" />
+                                <circle cx="30" cy="70" r="1.5" fill="#3B82F6" />
+                            </svg>
+                        </div>
+                    </div>
+                )}
 
-                {/* Close Button - Placed high to avoid overlap */}
+                {/* Close Button - Optimized for corner placement */}
                 <button
                     onClick={onClose}
-                    className="absolute -top-6 -right-2 sm:right-0 p-2 text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors z-[120]"
+                    className="absolute top-2 right-2 sm:top-5 sm:right-5 text-gray-500 hover:text-gray-800 transition-all p-2 hover:bg-gray-100 rounded-full z-[100]"
+                    aria-label="Close modal"
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
 
-                {/* Scrollable Modal Content */}
-                <div className="bg-white rounded-3xl shadow-2xl overflow-y-auto max-h-[85vh] p-6 pt-16 sm:pt-20">
-                    {/* Header Text */}
-                    <div className="text-center mb-10">
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2 uppercase tracking-tight">
-                            Spaces in <span className="text-blue-600">{cityName}</span>
-                        </h3>
-                        <p className="text-gray-500 font-semibold text-xs sm:text-sm md:text-base px-6 leading-relaxed">
-                            Choose from 100,000+ Sanitized and Verified Spaces
-                        </p>
-                    </div>
+                {/* Header Section */}
+                <div className="text-center px-4 sm:px-6 pt-10 sm:pt-16 pb-3 sm:pb-8">
+                    <h2 className="text-lg sm:text-2xl font-bold text-gray-900 mb-1 tracking-tight">
+                        Find the Best Spaces in <span className="text-blue-600 uppercase whitespace-nowrap">{cityName}</span>
+                    </h2>
+                    <p className="text-blue-500 font-semibold text-[10px] sm:text-base px-2">
+                        Choose from 100,000+ Sanitized and Verified Spaces
+                    </p>
+                </div>
 
-                    {/* Services Grid */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 justify-items-center mb-4">
+                {/* Body Section */}
+                <div className="px-2 sm:px-8 pb-5 sm:pb-12">
+                    {/* Using flex-wrap with explicit 50% width to force 2x2 on mobile regardless of screen width */}
+                    <div className="flex flex-wrap justify-between gap-y-6 sm:flex-nowrap sm:gap-x-4">
                         {services.map((service) => (
                             <Link
                                 key={service.name}
                                 to={service.path}
                                 onClick={onClose}
-                                className="group flex flex-col items-center gap-3 text-center w-full"
+                                className="group flex flex-col items-center w-1/2 sm:w-1/4 transition-all hover:-translate-y-1 active:scale-95 px-1"
                             >
-                                {/* Circular Icon Container */}
-                                <div className={`${service.bgColor} w-20 h-20 sm:w-28 sm:h-28 rounded-full flex items-center justify-center transition-transform transform group-hover:scale-105 shadow-sm border border-transparent group-hover:border-blue-100`}>
-                                    {React.cloneElement(service.icon, { className: "w-8 h-8 sm:w-10 sm:h-10 text-gray-800" })}
+                                {/* Icon Container - Sized to ensure 2x2 fits easily */}
+                                <div className={`${service.bgColor} w-14 h-14 sm:w-28 sm:h-28 rounded-full flex items-center justify-center transition-all group-hover:shadow-md mb-1.5`}>
+                                    <div className="transform group-hover:scale-110 transition-transform duration-300 flex items-center justify-center w-[70%] h-[70%]">
+                                        {React.cloneElement(service.icon, {
+                                            width: "100%",
+                                            height: "100%",
+                                            strokeWidth: 1.5
+                                        })}
+                                    </div>
                                 </div>
 
                                 {/* Label */}
-                                <span className="font-bold text-gray-800 text-xs sm:text-sm md:text-base leading-tight">
-                                    {service.name.split(' ').map((word, i) => (
-                                        <span key={i} className="block">{word}</span>
-                                    ))}
-                                </span>
+                                <div className="text-center">
+                                    <div className="font-bold text-gray-800 text-[11px] sm:text-base leading-tight">
+                                        {service.name}
+                                    </div>
+                                    <div className="font-bold text-gray-800 text-[11px] sm:text-base leading-tight">
+                                        {service.name2}
+                                    </div>
+                                </div>
                             </Link>
                         ))}
                     </div>
