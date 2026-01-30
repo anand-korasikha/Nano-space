@@ -13,7 +13,7 @@ import CityColiving from './pages/CityColiving';
 import ColivingSpaceDetails from './components/coliving/ColivingSpaceDetails';
 import VirtualOffice from './pages/VirtualOffice';
 import CityVirtualOffice from './pages/CityVirtualOffice';
-import BusinessPlans from './pages/BusinessPlans';
+import OfficeSpaces from './pages/OfficeSpaces';
 import Login from './pages/Login';
 import HotelRooms from './pages/HotelRooms';
 import EventSpaces from './pages/EventSpaces';
@@ -45,7 +45,8 @@ function App() {
           <Route path="coliving/space/:city/:spaceId" element={<ColivingSpaceDetails />} />
           <Route path="virtual-office" element={<VirtualOffice />} />
           <Route path="virtual-office/:cityName" element={<CityVirtualOffice />} />
-          <Route path="business-plans" element={<BusinessPlans />} />
+          <Route path="business-plans/:cityName" element={<OfficeSpaces />} />
+          <Route path="business-plans" element={<OfficeSpaces />} />
           <Route path="hotel-rooms" element={<HotelRooms />} />
           <Route path="event-spaces" element={<EventSpaces />} />
           <Route path="party-halls" element={<PartyHalls />} />

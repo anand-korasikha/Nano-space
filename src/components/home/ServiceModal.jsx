@@ -57,7 +57,7 @@ const ServiceModal = ({ isOpen, onClose, cityName, cityIconPath, currentPage = '
         {
             name: 'Office',
             name2: 'Space',
-            path: '/business-plans',
+            path: `/business-plans/${cityUrlName}`,
             bgColor: 'bg-[#FFF8E7]',
             icon: (
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">

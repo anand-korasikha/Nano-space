@@ -15,7 +15,7 @@ export const cityIconMap = {
     'Coimbatore': '/svg/coimbatore.svg',
     'Noida': '/svg/noida.svg',
     'Gurgaon': '/svg/Gurugram.svg',
-
+    'Goa': '/svg/goa.svg',
     'Bhubaneswar': '/svg/bhubaneswar.svg'
 };
 

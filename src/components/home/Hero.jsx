@@ -104,11 +104,11 @@ const Hero = ({ pageType = 'home' }) => {
 
                                 {/* City Selector */}
                                 <div className="relative flex-1">
-                                    <MapPin className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                                     <select
                                         value={searchCity}
                                         onChange={(e) => setSearchCity(e.target.value)}
-                                        className="w-full appearance-none bg-white border border-gray-300 text-gray-700 text-sm py-2 pl-9 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all shadow-sm"
+                                        className="w-full appearance-none bg-white border border-gray-300 text-gray-700 text-sm py-2 pl-10 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all shadow-sm"
                                     >
                                         <option value="">{content.searchPlaceholder.city}</option>
                                         {content.cityOptions.map((city, index) => (
