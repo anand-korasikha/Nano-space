@@ -4,6 +4,7 @@ import { Check, Wifi, Monitor, Users, Printer, Coffee, Car } from 'lucide-react'
 import cityOfficeSpacesData from '../data/cityOfficeSpaces.json';
 import { getCityIcon } from '../assets/icons/cityIcons';
 import BookingModal from '../components/BookingModal';
+import TrustedCompanies from '../components/home/TrustedCompanies';
 import './OfficeSpaces.css';
 
 const OfficeSpaces = () => {
@@ -219,6 +220,195 @@ const OfficeSpaces = () => {
                 </div>
             </section>
 
+            {/* One-Stop Destination Section */}
+            <section className="office-solutions-hero">
+                <div className="solutions-container">
+                    {/* Main Heading */}
+                    <header className="solutions-hero-header">
+                        <div className="solutions-badge">One-Stop Destination for all Office Space Solutions</div>
+                        <p className="solutions-subtitle">Explore Coworking, Private/Customized Offices, and Virtual office solutions</p>
+                    </header>
+
+                    {/* Services Grid */}
+                    <div className="services-showcase-grid">
+                        <div className="service-showcase-item">
+                            <div className="service-image-wrapper">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+                                    alt="Fixed Desks"
+                                />
+                            </div>
+                            <div className="service-content">
+                                <h3>Fixed Desks</h3>
+                                <p>Your dedicated desk, personalized for productivity</p>
+                            </div>
+                        </div>
+
+                        <div className="service-showcase-item">
+                            <div className="service-image-wrapper">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80"
+                                    alt="Private Cabins"
+                                />
+                            </div>
+                            <div className="service-content">
+                                <h3>Private Cabins</h3>
+                                <p>Secluded productivity in your own private cabin</p>
+                            </div>
+                        </div>
+
+                        <div className="service-showcase-item">
+                            <div className="service-image-wrapper">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80"
+                                    alt="Customized Offices"
+                                />
+                            </div>
+                            <div className="service-content">
+                                <h3>Customized Offices</h3>
+                                <p>Tailored spaces, designed for your unique vision</p>
+                            </div>
+                        </div>
+
+                        <div className="service-showcase-item">
+                            <div className="service-image-wrapper">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&q=80"
+                                    alt="Virtual Office"
+                                />
+                            </div>
+                            <div className="service-content">
+                                <h3>Virtual Office</h3>
+                                <p>Elevate your business presence with a virtual office</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Office Space with Nanospace Benefits Section */}
+            <section className="Nanospace-benefits-section">
+                <div className="benefits-container">
+                    <h2 className="benefits-main-title">Office Space with Nanospace</h2>
+
+                    <div className="benefits-grid">
+                        <article className="benefit-card">
+                            <div className="benefit-icon-wrapper">
+                                <Monitor size={32} strokeWidth={2} />
+                            </div>
+                            <div className="benefit-content">
+                                <h3 className="benefit-title">Fully-Furnished Spaces</h3>
+                                <p className="benefit-description">
+                                    Get access to <strong>100,000+</strong> fully-furnished office spaces with easy availability and convenience anytime and anywhere.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article className="benefit-card">
+                            <div className="benefit-icon-wrapper">
+                                <Check size={32} strokeWidth={2} />
+                            </div>
+                            <div className="benefit-content">
+                                <h3 className="benefit-title">Verified Office Spaces</h3>
+                                <p className="benefit-description">
+                                    Nanospace has the largest collection of verified and approved spaces with flexible lease terms.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article className="benefit-card">
+                            <div className="benefit-icon-wrapper">
+                                <Users size={32} strokeWidth={2} />
+                            </div>
+                            <div className="benefit-content">
+                                <h3 className="benefit-title">100% Offline Support</h3>
+                                <p className="benefit-description">
+                                    We provide complete offline support from choosing the best space, scheduling site visits, bookings, and after sales.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact Form Section */}
+            <section className="contact-form-section">
+                <div className="contact-form-container">
+                    <div className="contact-form-content">
+                        {/* Left Side - Image */}
+                        <div className="contact-form-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+                                alt="Office Space"
+                            />
+                        </div>
+
+                        {/* Right Side - Form */}
+                        <div className="contact-form-wrapper">
+                            <div className="form-header">
+                                <h2 className="form-main-title">
+                                    Interested in Office Space for Rent in {cityData.cityName}
+                                </h2>
+                                <div className="title-underline"></div>
+                            </div>
+
+                            <p className="form-subtitle">Connect with our office space expert Now!</p>
+
+                            <form className="contact-form" onSubmit={handleSubmit}>
+                                <div className="form-field">
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Name*"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="form-field">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email*"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="form-field">
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Phone*"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                <p className="privacy-text">
+                                    Please visit the <a href="/privacy-policy">privacy policy</a> to understand how Cofynd handles your personal data.
+                                </p>
+
+                                <div className="form-cta-buttons">
+                                    <button type="submit" className="btn-enquire-primary">
+                                        Enquire Now
+                                    </button>
+                                    <a href="tel:9940591963" className="btn-call-secondary">
+                                        Call Now: 9940591963
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Trusted Companies Section */}
+            <TrustedCompanies />
+
             {selectedLocation && (
                 <BookingModal
                     isOpen={isModalOpen}
@@ -232,3 +422,5 @@ const OfficeSpaces = () => {
 };
 
 export default OfficeSpaces;
+
+

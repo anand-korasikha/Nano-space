@@ -1,18 +1,18 @@
 import React from 'react';
 
 const companies = [
-    { name: 'INOX', image: 'images/clients/img1.png' },
-    { name: 'OYO', image: 'images/clients/img2.png' },
-    { name: 'SDS', image: 'images/clients/img3.png' },
-    { name: 'Buttlework', image: 'images/clients/img4.png' },
-    { name: 'Credable', image: 'images/clients/img5.png' },
-    { name: 'Topper', image: 'images/clients/img6.png' },
-    { name: 'Swiggy', image: 'images/clients/img7.png' },
-    { name: 'Viacom', image: 'images/clients/img8.png' },
-    { name: 'Matrimony', image: 'images/clients/img9.png' },
-    { name: 'WHO', image: 'images/clients/img10.png' },
-    { name: 'OLO', image: 'images/clients/img11.png' },
-    { name: 'Novicom', image: 'images/clients/img12.png' },
+    { name: 'INOX', image: '/images/clients/img1.png' },
+    { name: 'OYO', image: '/images/clients/img2.png' },
+    { name: 'SDS', image: '/images/clients/img3.png' },
+    { name: 'Buttlework', image: '/images/clients/img4.png' },
+    { name: 'Credable', image: '/images/clients/img5.png' },
+    { name: 'Topper', image: '/images/clients/img6.png' },
+    { name: 'Swiggy', image: '/images/clients/img7.png' },
+    { name: 'Viacom', image: '/images/clients/img8.png' },
+    { name: 'Matrimony', image: '/images/clients/img9.png' },
+    { name: 'WHO', image: '/images/clients/img10.png' },
+    { name: 'OLO', image: '/images/clients/img11.png' },
+    { name: 'Novicom', image: '/images/clients/img12.png' },
 ];
 
 const TrustedCompanies = () => {
@@ -37,7 +37,7 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Logos Grid */}
-                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 md:gap-8">
+                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-4">
                     {companies.map((company, index) => (
                         <div
                             key={index}
