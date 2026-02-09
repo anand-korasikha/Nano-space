@@ -6,6 +6,7 @@ import { getCityIcon } from '../assets/icons/cityIcons';
 import BookingModal from '../components/BookingModal';
 import TrustedCompanies from '../components/home/TrustedCompanies';
 import './OfficeSpaces.css';
+import './NewHeroSection.css';
 
 const OfficeSpaces = () => {
     const { cityName } = useParams();
@@ -57,94 +58,70 @@ const OfficeSpaces = () => {
 
     return (
         <div className="office-spaces-page">
-            {/* Hero Section */}
+            {/* NEW Hero Section - Mobile First */}
             <section
-                className="hero-container"
+                className="new-hero-section"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${cityData.heroImage})`
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${cityData.heroImage})`
                 }}
             >
-                <div className="hero-content-split">
-                    {/* Left Side: Content & Features */}
-                    <div className="hero-content-left">
-                        <h1 className="hero-main-title">
-                            Choose from 1,000+ Office Space For Rent in <span className="highlight-city">{cityData.cityName}</span>
+                <div className="new-hero-content">
+                    {/* Hero Text Content */}
+                    <div className="new-hero-text">
+                        <h1 className="new-hero-heading">
+                            Choose from 1,000+ Office Space For Rent in <span className="city-highlight">{cityData.cityName}</span>
                         </h1>
-                        <div className="hero-locations-wrapper">
-                            <div className="city-main-icon">
+
+                        <div className="new-hero-location">
+                            <div className="location-icon">
                                 {getCityIcon(cityData.cityName)}
                             </div>
-                            <p className="hero-locations-text">
-                                {cityData.locationsText}
-                            </p>
+                            <p className="location-text">{cityData.locationsText}</p>
                         </div>
 
-                        <div className="hero-features-grid">
-                            <div className="features-column">
-                                {firstHalfFeatures.map((feature, index) => (
-                                    <div key={index} className="hero-feature-item">
-                                        <div className="check-icon-wrapper">
-                                            <Check size={14} strokeWidth={3} />
-                                        </div>
-                                        <span>{feature}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="features-column">
-                                {secondHalfFeatures.map((feature, index) => (
-                                    <div key={index} className="hero-feature-item">
-                                        <div className="check-icon-wrapper">
-                                            <Check size={14} strokeWidth={3} />
-                                        </div>
-                                        <span>{feature}</span>
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="new-hero-features">
+                            {cityData.features.map((feature, index) => (
+                                <div key={index} className="new-feature-item">
+                                    <Check size={16} strokeWidth={3} className="feature-check" />
+                                    <span>{feature}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Right Side: Enquiry Form Card */}
-                    <div className="hero-form-card">
-                        <div className="form-card-header">
+                    {/* Enquiry Form Card */}
+                    <div className="new-hero-form">
+                        <div className="new-form-header">
                             <h2>Fully Furnished Office Space For Rent In {cityData.cityName}</h2>
                             <p>Our Office Space Expert will connect with you with the best options</p>
                         </div>
 
-                        <form className="hero-card-form" onSubmit={handleSubmit}>
-                            <div className="card-form-group">
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Name*"
-                                    className="card-input"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="card-form-group">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Email*"
-                                    className="card-input"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="card-form-group">
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="Phone*"
-                                    className="card-input"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <button type="submit" className="btn-card-enquire">Enquire Now</button>
+                        <form className="new-enquiry-form" onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name*"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email*"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Phone*"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                required
+                            />
+                            <button type="submit">Enquire Now</button>
                         </form>
                     </div>
                 </div>

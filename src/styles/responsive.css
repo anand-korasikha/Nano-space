@@ -307,8 +307,8 @@
 
     [class*="hero"],
     .hero {
-        min-height: 400px !important;
-        padding: 2rem 1rem !important;
+        min-height: 150px !important;
+        padding: 0.5rem 0.5rem !important;
     }
 
     [class*="hero"] h1,

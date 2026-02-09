@@ -18,7 +18,7 @@ const CoworkingFeatures = () => {
         },
         {
             icon: Users,
-            title: "Comfy Workstation",
+            title: "Comfy Workstatio",
             description: "Connect with other people and share your skills for better and quick growth.",
             color: "#F59E0B"
         },
