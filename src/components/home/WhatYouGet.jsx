@@ -7,7 +7,7 @@ const benefits = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
         ),
-        text: 'Exclusive pricing for Nanospace members'
+        text: 'Exclusive Member Pricing for Nano Space Customers'
     },
     {
         icon: (
@@ -15,7 +15,7 @@ const benefits = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         ),
-        text: 'Verified Spaces and Trusted Partners'
+        text: 'Verified Locations and Trusted Industry Partners'
     },
     {
         icon: (
@@ -23,7 +23,7 @@ const benefits = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         ),
-        text: 'No booking service fee'
+        text: 'No Hidden Booking Service Charges'
     },
     {
         icon: (
@@ -31,7 +31,7 @@ const benefits = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
         ),
-        text: '100% offline support'
+        text: 'Dedicated Offline Support Service'
     },
     {
         icon: (
@@ -39,7 +39,7 @@ const benefits = [
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
             </svg>
         ),
-        text: 'Exclusive Brand Coupon Codes'
+        text: 'Exclusive Brand Promotion Coupon Codes'
     }
 ];
 
@@ -77,7 +77,7 @@ const WhatYouGet = () => {
                             <span className="relative">
                                 <span className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-70"></span>
                                 What
-                            </span> You Get From Us
+                            </span> You Receive from Us
                         </h2>
                         <div className="w-16 md:w-24 h-1.5 bg-blue-600 mt-3 rounded-full shadow-sm mx-auto lg:mx-0"></div>
                         <p className="text-gray-500 mt-4 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">

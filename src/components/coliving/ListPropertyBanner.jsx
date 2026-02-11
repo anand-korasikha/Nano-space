@@ -11,7 +11,7 @@ const ListPropertyBanner = () => {
                         <div className="flex-1 text-center lg:text-left">
                             {/* Heading */}
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-                                List Your Vacant Space with NanoSpace and Start Earning
+                                Lis Your Vacant Space with NanoSpace and Start Earning
                             </h2>
 
                             {/* Description */}

@@ -75,7 +75,7 @@ const Hero = ({ pageType = 'home' }) => {
                                 <span className="hero-word-3">{content.title.line3.trim()}</span>
                             </h1>
                             <p className="text-gray-600 text-sm md:text-lg max-w-2xl mx-auto lg:mx-0">
-                                Discover premium workspaces across India's top business hubs
+                                Unlock premium workspaces across India’s fastest-growing business hubs
                             </p>
                         </div>
 

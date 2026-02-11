@@ -16,20 +16,20 @@ const FounderNote = () => {
 
                 {/* Header */}
                 <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                    What's the Nanospace Desk?
+                    What is the Nano Space Desk?
                 </h2>
 
                 {/* Text Content */}
                 <p className="text-gray-600 mb-2 leading-relaxed text-lg">
-                    Nanospace is helping professionals find their perfect WorkSpace, Living Space & Everything in between.
+                    Nano Space empowers professionals to discover the ideal workspace, living space, and everything that connects the two.
                 </p>
                 <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                    As we grow, we think of ourselves as creating a shared Ecosystem, one that lets the Nanospace community Breathe, Connect and Climb to their highest in life.
+                    As we continue to grow, we envision Nano Space as a thriving shared ecosystem. The one that enables our community to breathe freely, connect meaningfully, and rise toward their highest potential in life
                 </p>
 
                 {/* Signature */}
                 <div className="text-blue-600 font-semibold text-xl">
-                    Atul Gupta, Founder & CEO
+                    Rafi, Founder & CEO
                 </div>
 
             </div>

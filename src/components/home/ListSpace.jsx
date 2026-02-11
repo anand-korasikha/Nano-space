@@ -11,10 +11,10 @@ const ListSpace = () => {
                     {/* Left Side: Content */}
                     <div className="w-full md:w-1/2 relative z-10">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                            List Your Vacant Space with Nanospace and Start Earning
+                            Showcase Your Vacant Property with Nano Space and Start Earning
                         </h2>
                         <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                            List for free and leave rest on our experts. Stay organized, manage leads, and track your bookings - all in one place.
+                            List at no cost and rely on our experts completely. Stay organized, manage leads, and track your bookings – all in one place
                         </p>
 
                         <button className="px-8 py-3 bg-white border border-blue-500 text-blue-500 font-medium rounded-lg hover:bg-blue-50 transition-colors shadow-sm">

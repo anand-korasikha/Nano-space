@@ -73,7 +73,7 @@ const PlatformStats = () => {
                     {/* Top Content */}
                     <div className="text-white mb-4 md:mb-6 md:pl-6 pt-2">
                         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-3 md:mb-4">
-                            Boost your <span className="font-bold">Revenue, Visibility & Leads</span> with NanoSpace Plans
+                            Elevate your  <span className="font-bold">Revenue, Visibility & Leads Through</span> Nano Space Plans
                         </h2>
                         <h3 className="text-base sm:text-lg md:text-xl text-blue-50 mb-4 md:mb-5 font-light leading-relaxed">
                             India's <span className="font-bold">#1 online platform</span> for Coworking & Coliving Spaces

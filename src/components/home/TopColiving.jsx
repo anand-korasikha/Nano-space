@@ -61,12 +61,12 @@ const TopColiving = () => {
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold inline-block relative z-10 text-gray-900">
                         <span className="relative">
                             <span className="absolute -left-2 sm:-left-4 -top-2 sm:-top-4 w-10 sm:w-12 h-10 sm:h-12 bg-yellow-200 rounded-full -z-10 opacity-70"></span>
-                            Top
-                        </span> Coliving in India
+                            India's
+                        </span> Best Coliving in India
                     </h2>
                     <div className="w-16 md:w-24 h-1.5 bg-blue-600 mx-auto mt-4 rounded-full shadow-sm"></div>
                     <p className="text-gray-500 mt-4 text-sm sm:text-base max-w-xl mx-auto">
-                        Discover vibrant shared living communities in India's most popular cities
+                        Discover thriving shared living communities in India’s popular cities
                     </p>
                 </div>
 

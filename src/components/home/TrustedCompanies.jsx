@@ -24,20 +24,20 @@ const TrustedCompanies = () => {
                 <div className="text-center mb-12 md:mb-16">
                     <div className="inline-block">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-                            Trusted By{' '}
+                            Backed By{' '}
                             <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-                                Top Companies
+                                Leading Companies
                             </span>
                         </h2>
                         <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
                     </div>
                     <p className="text-gray-600 mt-4 text-base md:text-lg max-w-2xl mx-auto">
-                        Join 500+ leading companies that trust us for their workspace solutions
+                        Work with 500+ trusted companies for their workspace solutions
                     </p>
                 </div>
 
                 {/* Logos Grid */}
-                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-4">
+                <div className="trusted-logos-grid grid grid-cols-6 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-2">
                     {companies.map((company, index) => (
                         <div
                             key={index}

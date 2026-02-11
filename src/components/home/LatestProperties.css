@@ -526,60 +526,263 @@
     border-radius: 10px;
 }
 
-/* Mobile Carousel Adjustments */
+/* Mobile Carousel Adjustments - Optimized for Best UI/UX */
 @media (max-width: 768px) {
+
+    /* Make section 100vh with optimized padding */
+    .latest-properties-section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 0 1rem 0;
+    }
+
+    .latest-properties-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 0 0.75rem;
+    }
+
+    /* Header optimizations */
+    .latest-properties-header {
+        margin-bottom: 1rem;
+        gap: 0.75rem;
+    }
+
+    .latest-properties-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+    }
+
+    .latest-properties-subtitle {
+        font-size: 0.85rem !important;
+        line-height: 1.4;
+    }
+
+    .new-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        gap: 0.4rem;
+    }
+
+    .pulse-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* Scroll container optimization */
+    .latest-properties-scroll {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin: 0 -0.75rem;
+        padding: 0 0.75rem 0.75rem 0.75rem;
+    }
+
+    /* Card optimizations - Perfect single card view */
     .latest-property-card {
-        flex: 0 0 calc(100vw - 3rem);
-        /* Show one card clearly */
+        flex: 0 0 calc(100vw - 1.5rem);
+        /* Show one card at a time with minimal margins */
         height: auto;
-        min-height: 500px;
+        min-height: auto;
+        max-height: calc(100vh - 280px);
+        /* Ensure card fits within viewport */
         scroll-snap-align: center;
-        margin-right: 0.5rem;
+        margin-right: 0;
+        border-radius: 12px;
     }
 
+    /* Image optimizations */
+    .latest-property-image {
+        height: 180px;
+        /* Compact image height */
+    }
+
+    /* Badge optimizations */
+    .latest-badge-new {
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+
+    .latest-badge-property {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.7rem;
+        gap: 0.3rem;
+    }
+
+    .latest-property-type-badge {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        border-radius: 15px;
+    }
+
+    /* Content optimizations */
+    .latest-property-content {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .latest-property-name {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem;
+        min-height: 2.4rem;
+        line-height: 1.3;
+    }
+
+    .latest-property-location {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .latest-property-location svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Amenities optimizations */
+    .latest-property-amenities {
+        min-height: auto;
+        max-height: 60px;
+        gap: 0.4rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        overflow: hidden;
+    }
+
+    .amenity-item {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        gap: 0.3rem;
+    }
+
+    .amenity-item svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .amenity-more {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    /* Price optimizations */
+    .latest-property-price {
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .price-amount {
+        font-size: 1.1rem !important;
+    }
+
+    .price-period {
+        font-size: 0.75rem !important;
+    }
+
+    /* Button optimizations */
+    .latest-view-btn {
+        padding: 0.65rem;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        gap: 0.4rem;
+    }
+
+    .latest-view-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Track optimizations */
     .latest-properties-track {
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
+    /* Carousel controls - Optimized for mobile */
     .carousel-btn {
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 32px !important;
-        min-height: 32px !important;
-        font-size: 1.25rem;
-        opacity: 1;
-        /* Always show on mobile */
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+        font-size: 1.1rem;
+        opacity: 0.9;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .carousel-prev {
-        left: 0.5rem;
+        left: 0.4rem;
     }
 
     .carousel-next {
-        right: 0.5rem;
+        right: 0.4rem;
     }
 
     .carousel-dots {
-        padding: 0.3rem 0.6rem;
-        bottom: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        bottom: 0.4rem;
+        gap: 0.4rem;
     }
 
     .carousel-dot {
-        width: 6px !important;
-        height: 6px !important;
-        min-width: 6px !important;
-        min-height: 6px !important;
+        width: 5px !important;
+        height: 5px !important;
+        min-width: 5px !important;
+        min-height: 5px !important;
         padding: 0 !important;
-        margin: 0 2px;
+        margin: 0;
     }
 
     .carousel-dot.active {
-        width: 18px !important;
-        border-radius: 10px;
+        width: 16px !important;
+        border-radius: 8px;
     }
 
-    .latest-property-amenities {
-        min-height: 60px;
-        gap: 0.35rem;
+    /* Scroll indicators optimization */
+    .scroll-indicators {
+        margin-top: 0.75rem;
+        padding: 0 0.5rem;
+    }
+
+    .scroll-hint {
+        font-size: 0.8rem;
+        gap: 0.4rem;
+    }
+
+    .scroll-hint svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 375px) {
+    .latest-properties-section {
+        padding: 1rem 0 0.75rem 0;
+    }
+
+    .latest-properties-title {
+        font-size: 1.35rem !important;
+    }
+
+    .latest-property-card {
+        max-height: calc(100vh - 260px);
+    }
+
+    .latest-property-image {
+        height: 160px;
+    }
+
+    .latest-property-content {
+        padding: 0.85rem;
     }
 }
