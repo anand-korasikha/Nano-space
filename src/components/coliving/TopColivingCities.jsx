@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 const TopColivingCities = () => {
     // Hero city - Hyderabad (large left card - HIGHLIGHTED)
@@ -39,9 +39,6 @@ const TopColivingCities = () => {
         }
     ];
 
-    const handlePhoneClick = () => {
-        window.location.href = 'tel:+911234567890'; // Replace with actual phone number
-    };
 
     return (
         <section className="relative py-12 md:py-16 bg-white overflow-hidden">
@@ -117,18 +114,6 @@ const TopColivingCities = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Floating Action Button (FAB) - Phone Icon */}
-            <button
-                onClick={handlePhoneClick}
-                className="fixed bottom-8 right-8 z-50 w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center group"
-                aria-label="Call for inquiry"
-            >
-                <Phone size={24} className="group-hover:rotate-12 transition-transform duration-300" strokeWidth={2.5} />
-
-                {/* Ripple Effect */}
-                <span className="absolute inset-0 rounded-full bg-blue-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></span>
-            </button>
         </section>
     );
 };

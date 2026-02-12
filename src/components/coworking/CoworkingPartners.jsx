@@ -29,14 +29,14 @@ const CoworkingPartners = () => {
 
     // Partner logos
     const partners = [
-        { name: 'Unispace', logo: 'https://via.placeholder.com/150x60/6366f1/ffffff?text=Unispace' },
-        { name: 'Indiqube', logo: 'https://via.placeholder.com/150x60/1f2937/fbbf24?text=Indiqube' },
-        { name: 'Attic', logo: 'https://via.placeholder.com/150x60/4f46e5/ffffff?text=Attic' },
-        { name: 'Red Brick', logo: 'https://via.placeholder.com/150x60/dc2626/ffffff?text=Red+Brick' },
-        { name: 'CoFiez', logo: 'https://via.placeholder.com/150x60/7c3aed/ffffff?text=CoFiez' },
-        { name: '2Gethr', logo: 'https://via.placeholder.com/150x60/f59e0b/ffffff?text=2Gethr' },
-        { name: 'WeWork', logo: 'https://via.placeholder.com/150x60/000000/ffffff?text=WeWork' },
-        { name: 'Awfis', logo: 'https://via.placeholder.com/150x60/0891b2/ffffff?text=Awfis' }
+        { name: 'Client 1', logo: '/images/clients/img9.png' },
+        { name: 'Client 2', logo: '/images/clients/img10.png' },
+        { name: 'Client 3', logo: '/images/clients/img11.png' },
+        { name: 'Client 4', logo: '/images/clients/img12.png' },
+        { name: 'Client 5', logo: '/images/clients/img5.png' },
+        { name: 'Client 6', logo: '/images/clients/img6.png' },
+        { name: 'Client 7', logo: '/images/clients/img3.png' },
+        { name: 'Client 8', logo: '/images/clients/img4.png' }
     ];
 
     // Featured spaces
@@ -179,7 +179,7 @@ const CoworkingPartners = () => {
                                                 <img
                                                     src={partner.logo}
                                                     alt={partner.name}
-                                                    className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                                    className="h-10 w-auto object-contain"
                                                 />
                                             </div>
                                         ))}
@@ -217,7 +217,7 @@ const CoworkingPartners = () => {
                     <div className="overflow-hidden">
                         <div
                             className="flex transition-transform duration-700 ease-linear"
-                            style={{ 
+                            style={{
                                 transform: `translateX(-${(currentSpaceIndex % featuredSpaces.length) * (100 / spacesPerView)}%)`,
                                 gap: spacesPerView > 1 ? '12px' : '0px'
                             }}
@@ -228,35 +228,35 @@ const CoworkingPartners = () => {
                                     className="flex-shrink-0"
                                     style={{ width: spacesPerView > 1 ? `calc((100% - ${(spacesPerView - 1) * 12}px) / ${spacesPerView})` : '100%' }}
                                 >
-                                            <div
-                                                key={index}
-                                                className="w-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group h-[240px]"
-                                            >
-                                                {/* Exclusive Badge */}
-                                                {space.exclusive && (
-                                                    <div className="absolute top-2 left-2 z-10 bg-yellow-400 text-gray-900 px-3 py-0.5 rounded-full text-xs font-semibold shadow-lg">
-                                                        NanoSpace Exclusive
-                                                    </div>
-                                                )}
-
-                                                {/* Space Image */}
-                                                <div className="relative h-full overflow-hidden">
-                                                    <img
-                                                        src={space.image}
-                                                        alt={space.name}
-                                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                                                </div>
-
-                                                {/* Space Info */}
-                                                <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                                                    <h3 className="text-lg font-bold mb-0.5">{space.name}</h3>
-                                                    <p className="text-xs text-gray-200">{space.location}</p>
-                                                </div>
+                                    <div
+                                        key={index}
+                                        className="w-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative group h-[240px]"
+                                    >
+                                        {/* Exclusive Badge */}
+                                        {space.exclusive && (
+                                            <div className="absolute top-2 left-2 z-10 bg-yellow-400 text-gray-900 px-3 py-0.5 rounded-full text-xs font-semibold shadow-lg">
+                                                NanoSpace Exclusive
                                             </div>
+                                        )}
+
+                                        {/* Space Image */}
+                                        <div className="relative h-full overflow-hidden">
+                                            <img
+                                                src={space.image}
+                                                alt={space.name}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                                         </div>
-                                    ))}
+
+                                        {/* Space Info */}
+                                        <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                                            <h3 className="text-lg font-bold mb-0.5">{space.name}</h3>
+                                            <p className="text-xs text-gray-200">{space.location}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -223,7 +223,7 @@ const PremiumColiving = () => {
 
                             {/* Tagline */}
                             <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800">
-                                Where Luxury Meets Community
+                                Where Comfort Meets Community
                             </p>
                         </div>
                     </div>

@@ -9,10 +9,10 @@ const FindOfficeSpace = () => {
                     {/* Content */}
                     <div className="relative z-10 max-w-3xl">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Find your Office Space with NanoSpace
+                            Find ideal Office Space with Nano Space
                         </h2>
                         <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                            Just drop us an email with your Office Space requirements - Number of Seat, Location, Start Date... and our team will connect back with you within 24 Hrs with the best possible options.
+                            Simply send us an email with your Office Space details Number of Seats Location Start Date and our experts will reach back to you within 24 Hrs with best available possible options.
                         </p>
 
                         {/* Email Link */}

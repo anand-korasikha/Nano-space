@@ -41,16 +41,16 @@ const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
                     {/* Brand Logos Background */}
                     <div className="brand-logos-background">
                         <div className="brand-logo brand-logo-1">
-                            <img src="/images/clients/img1.png" alt="Brand" />
+                            <img src="/images/clients/img9.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-2">
-                            <img src="/images/clients/img2.png" alt="Brand" />
+                            <img src="/images/clients/img10.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-3">
-                            <img src="/images/clients/img3.png" alt="Brand" />
+                            <img src="/images/clients/img11.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-4">
-                            <img src="/images/clients/img4.png" alt="Brand" />
+                            <img src="/images/clients/img12.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-5">
                             <img src="/images/clients/img5.png" alt="Brand" />
@@ -59,10 +59,10 @@ const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
                             <img src="/images/clients/img6.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-7">
-                            <img src="/images/clients/img7.png" alt="Brand" />
+                            <img src="/images/clients/img3.png" alt="Brand" />
                         </div>
                         <div className="brand-logo brand-logo-8">
-                            <img src="/images/clients/img8.png" alt="Brand" />
+                            <img src="/images/clients/img4.png" alt="Brand" />
                         </div>
                     </div>
 

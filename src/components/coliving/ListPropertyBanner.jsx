@@ -11,12 +11,12 @@ const ListPropertyBanner = () => {
                         <div className="flex-1 text-center lg:text-left">
                             {/* Heading */}
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
-                                Lis Your Vacant Space with NanoSpace and Start Earning
+                                Promote Your Available Space with Nano Space and Start Earning
                             </h2>
 
                             {/* Description */}
                             <p className="text-sm md:text-base text-gray-700 mb-5 md:mb-6 max-w-2xl mx-auto lg:mx-0">
-                                List for free and leave rest on our experts. Stay organized, manage leads, and track your bookings - all in one place.
+                                List for free and trust our experts completely. Stay organized, manage leads, and track your bookings all in one place
                             </p>
 
                             {/* CTA Button */}

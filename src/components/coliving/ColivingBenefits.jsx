@@ -4,22 +4,22 @@ const ColivingBenefits = () => {
     const benefits = [
         {
             id: 1,
-            title: 'Healthy and Tasty food',
-            description: 'Our kitchens is well equipped for your midnight snack cravings.',
+            title: 'Nutritious and Delicious Meals',
+            description: 'Our kitchens are fully equipped for your late-night snack cravings.',
             image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             position: 'left'
         },
         {
             id: 2,
-            title: 'Community Events',
-            description: 'We carry every weekend at our flagship Community Spaces.',
+            title: 'Community Gatherings',
+            description: 'We host engaging events every weekend at our flagship Community Spaces',
             image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             position: 'right'
         },
         {
             id: 3,
             title: 'Entertainment zone',
-            description: 'Dedicated Entertainment zones for the player in you.',
+            description: 'Dedicated entertainment zones designed for the gamer and performer in you.',
             image: 'https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             position: 'left'
         }
@@ -34,9 +34,10 @@ const ColivingBenefits = () => {
                         Coliving
                     </h2>
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-1">
-                        with <span className="text-blue-600">NanoSpace</span>
+                        with <span className="text-blue-600">Nano Space</span>
                     </p>
                 </div>
+
 
                 {/* Benefits Grid with Zigzag Layout */}
                 <div className="relative">
