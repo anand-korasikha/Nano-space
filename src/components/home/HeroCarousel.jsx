@@ -179,26 +179,28 @@ const HeroCarousel = () => {
 
                                 {/* Title & Description (Visible on Active Card) */}
                                 <div className="card-details">
-                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">{card.subtitle}</h3>
-                                    <p className="text-white/80 text-xs md:text-sm mb-4 line-clamp-2 md:line-clamp-none">{card.description}</p>
+                                    <div className="text-container-fluid">
+                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">{card.subtitle}</h3>
+                                        <p className="text-white/80 text-xs md:text-sm mb-4 line-clamp-2 md:line-clamp-none">{card.description}</p>
 
-                                    {/* Features */}
-                                    <div className="flex flex-wrap gap-2 mb-5">
-                                        {card.features.map((feature, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="text-[10px] md:text-xs bg-black/30 backdrop-blur-md text-white/90 px-3 py-1 rounded-md border border-white/10"
-                                            >
-                                                {feature}
-                                            </span>
-                                        ))}
-                                    </div>
+                                        {/* Features */}
+                                        <div className="flex flex-wrap gap-2 mb-5">
+                                            {card.features.map((feature, idx) => (
+                                                <span
+                                                    key={idx}
+                                                    className="text-[10px] md:text-xs bg-black/30 backdrop-blur-md text-white/90 px-3 py-1 rounded-md border border-white/10"
+                                                >
+                                                    {feature}
+                                                </span>
+                                            ))}
+                                        </div>
 
-                                    {/* CTA Button */}
-                                    <div className="pt-2">
-                                        <div className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-bold shadow-lg transform active:scale-95 transition-all">
-                                            Explore Now
-                                            <ChevronRight className="w-4 h-4" />
+                                        {/* CTA Button */}
+                                        <div className="pt-2">
+                                            <div className="inline-flex items-center gap-2 bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-bold shadow-lg transform active:scale-95 transition-all">
+                                                Explore Now
+                                                <ChevronRight className="w-4 h-4" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
