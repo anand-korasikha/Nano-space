@@ -64,7 +64,7 @@ const Hero = ({ pageType = 'home' }) => {
 
             <div className="relative min-h-[auto] md:min-h-[100vh] flex flex-col lg:flex-row overflow-visible bg-transparent">
                 {/* Left Column: Enhanced Content */}
-                <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-start pt-[80px] lg:pt-[1.5rem] px-4 sm:px-6 md:px-10 lg:px-16 pb-8 lg:pb-0 z-10">
+                <div className="w-full lg:w-[55%] xl:w-[60%] flex flex-col justify-start pt-[1.5rem] px-4 sm:px-6 md:px-10 lg:px-16 pb-8 lg:pb-0 z-10">
                     <div className="max-w-3xl">
                         {/* Title with Enhanced Typography and Bounce Animation */}
                         <div className="mb-6 lg:mb-8 text-center lg:text-left">
