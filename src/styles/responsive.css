@@ -258,8 +258,8 @@ img {
 /* Small Mobile */
 @media (max-width: 250px) {
 
-    [class*="-image"],
-    [class*="-img"] {
+    [class*="-image"]:not(.logo-img),
+    [class*="-img"]:not(.logo-img) {
         height: auto !important;
         min-height: 200px;
         max-height: 200px;
@@ -270,8 +270,8 @@ img {
 /* Mobile */
 @media (min-width: 376px) and (max-width: 640px) {
 
-    [class*="-image"],
-    [class*="-img"] {
+    [class*="-image"]:not(.logo-img),
+    [class*="-img"]:not(.logo-img) {
         height: auto !important;
         min-height: 220px;
         max-height: 220px;
@@ -282,8 +282,8 @@ img {
 /* Tablet */
 @media (min-width: 641px) and (max-width: 768px) {
 
-    [class*="-image"],
-    [class*="-img"] {
+    [class*="-image"]:not(.logo-img),
+    [class*="-img"]:not(.logo-img) {
         height: auto !important;
         min-height: 250px;
         max-height: 250px;

@@ -10,8 +10,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px 40px;
+    padding: 100px 5%;
     position: relative;
+    overflow: hidden;
 }
 
 .new-hero-content {
@@ -221,28 +222,31 @@
 @media (max-width: 480px) {
     .new-hero-section {
         min-height: auto;
-        padding: 2px 5px;
+        padding: 80px 20px 40px;
         background-attachment: scroll;
     }
 
     .new-hero-content {
-        gap: 20px;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px;
+        text-align: center;
     }
 
     .new-hero-text {
-        gap: 12px;
+        align-items: center;
+        gap: 15px;
     }
 
-    .new-hero-heading {
-        font-size: 1.6rem;
-    }
-
-    .location-text {
-        font-size: 0.9rem;
+    .new-hero-location {
+        justify-content: center;
+        width: 100%;
     }
 
     .new-hero-features {
-        gap: 8px;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
     }
 
     .new-feature-item span {
