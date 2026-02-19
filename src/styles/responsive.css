@@ -443,8 +443,8 @@ img {
 
     [class*="hero"],
     .hero {
-        min-height: 500px !important;
-        padding: 2rem 1rem !important;
+        min-height: 10px !important;
+        padding: 1rem 1rem !important;
     }
 
     [class*="hero"] h1,
