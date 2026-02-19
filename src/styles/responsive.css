@@ -52,8 +52,34 @@
    GRID LAYOUTS - RESPONSIVE
    ======================================== */
 
-/* 4-column grids → 2 columns on tablet → 1 column on mobile */
-@media (max-width: 900px) {
+/* Large Desktop - 4 columns */
+@media (min-width: 1441px) {
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Desktop - 3 columns for 4-col grids */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Large Tablet - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    [class*="-grid"],
+    .grid,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 481px) and (max-width: 768px) {
 
     [class*="-grid"],
     .grid {
@@ -62,7 +88,8 @@
     }
 }
 
-@media (max-width: 600px) {
+/* Mobile - 1 column */
+@media (max-width: 480px) {
 
     [class*="-grid"],
     .grid {
@@ -171,7 +198,40 @@
    CARDS - RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
+/* Small Mobile */
+@media (max-width: 375px) {
+
+    [class*="-card"],
+    .card {
+        margin-bottom: 0.75rem;
+        padding: 0.75rem !important;
+    }
+
+    [class*="-card"] img,
+    .card img {
+        max-height: 180px;
+        object-fit: cover;
+    }
+}
+
+/* Mobile */
+@media (min-width: 376px) and (max-width: 640px) {
+
+    [class*="-card"],
+    .card {
+        margin-bottom: 0.875rem;
+        padding: 1rem !important;
+    }
+
+    [class*="-card"] img,
+    .card img {
+        max-height: 200px;
+        object-fit: cover;
+    }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
 
     [class*="-card"],
     .card {
@@ -180,7 +240,8 @@
 
     [class*="-card"] img,
     .card img {
-        max-height: 200px;
+        max-height: 220px;
+        object-fit: cover;
     }
 }
 
@@ -188,18 +249,45 @@
    IMAGES - RESPONSIVE
    ======================================== */
 
-@media (max-width: 768px) {
-    img {
-        max-width: 100%;
-        height: auto;
+/* All screens - base responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Small Mobile */
+@media (max-width: 375px) {
+
+    [class*="-image"],
+    [class*="-img"] {
+        height: auto !important;
+        min-height: 200px;
+        max-height: 200px;
+        object-fit: cover;
     }
+}
+
+/* Mobile */
+@media (min-width: 376px) and (max-width: 640px) {
+
+    [class*="-image"],
+    [class*="-img"] {
+        height: auto !important;
+        min-height: 220px;
+        max-height: 220px;
+        object-fit: cover;
+    }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 768px) {
 
     [class*="-image"],
     [class*="-img"] {
         height: auto !important;
         min-height: 250px;
         max-height: 250px;
-
+        object-fit: cover;
     }
 }
 
@@ -207,6 +295,7 @@
    FORMS - MOBILE FRIENDLY
    ======================================== */
 
+/* All mobile devices */
 @media (max-width: 768px) {
 
     input,
@@ -214,12 +303,36 @@
     select {
         font-size: 16px !important;
         /* Prevents zoom on iOS */
-        padding: 0.75rem !important;
+        padding: 0.875rem !important;
         width: 100%;
+        border-radius: 8px;
     }
 
     form {
         width: 100%;
+    }
+
+    /* Form groups */
+    .form-group,
+    [class*="-form-group"] {
+        margin-bottom: 1rem;
+    }
+
+    /* Labels */
+    label {
+        font-size: 0.9375rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+}
+
+/* Small mobile - extra spacing */
+@media (max-width: 480px) {
+
+    input,
+    textarea,
+    select {
+        padding: 1rem !important;
     }
 }
 
@@ -304,17 +417,60 @@
    HERO SECTIONS - MOBILE
    ======================================== */
 
-@media (max-width: 768px) {
+/* Small Mobile - 375px and below */
+@media (max-width: 375px) {
 
     [class*="hero"],
     .hero {
-        min-height: 150px !important;
-        padding: 0.5rem 0.5rem !important;
+        min-height: 450px !important;
+        padding: 1.5rem 0.75rem !important;
     }
 
     [class*="hero"] h1,
     .hero h1 {
-        font-size: 1.875rem !important;
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Mobile - 376px to 640px */
+@media (min-width: 376px) and (max-width: 640px) {
+
+    [class*="hero"],
+    .hero {
+        min-height: 500px !important;
+        padding: 2rem 1rem !important;
+    }
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 0.9375rem !important;
+    }
+}
+
+/* Tablet - 641px to 768px */
+@media (min-width: 641px) and (max-width: 768px) {
+
+    [class*="hero"],
+    .hero {
+        min-height: 550px !important;
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 2rem !important;
     }
 
     [class*="hero"] p,
@@ -327,6 +483,15 @@
    FLEXBOX - MOBILE STACK
    ======================================== */
 
+@media (max-width: 768px) {
+    .flex-row-desktop {
+        flex-direction: column !important;
+    }
+
+    .flex-wrap-mobile {
+        flex-wrap: wrap !important;
+    }
+}
 
 
 /* ========================================
@@ -462,6 +627,14 @@
 
     .city-grid {
         grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
     }
 }
 
@@ -477,6 +650,90 @@
     img,
     video {
         will-change: transform;
+    }
+}
+
+/* ========================================
+   SEARCH FORMS - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .search-form,
+    [class*=\"search-form\"] {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .search-input,
+    [class*=\"search-input\"] {
+        width: 100% !important;
+    }
+
+    .search-button,
+    [class*=\"search-button\"] {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   CAROUSEL - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .carousel-dots,
+    [class*=\"carousel-dots\"] {
+        gap: 0.5rem !important;
+    }
+
+    .carousel-dot {
+        width: 8px !important;
+        height: 8px !important;
+    }
+
+    .carousel-arrow,
+    [class*=\"carousel-arrow\"] {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* ========================================
+   ADDITIONAL COMPONENT FIXES
+   ======================================== */
+
+/* Property Cards */
+@media (max-width: 768px) {
+
+    .property-card,
+    [class*=\"property-card\"] {
+        width: 100% !important;
+    }
+}
+
+/* Badges and Tags */
+@media (max-width: 480px) {
+
+    .badge,
+    .tag,
+    [class*=\"-badge\"],
+    [class*=\"-tag\"] {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Spacing Adjustments for Small Screens */
+@media (max-width: 375px) {
+    section {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
 }
 

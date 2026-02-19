@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getApprovedProperties } from '../../services/propertyService';
 import { MapPin, Star, ArrowRight, Wifi, Coffee, Users, Home, Utensils, Car, Dumbbell } from 'lucide-react';
-import MapPreview from '../common/MapPreview';
 import './LatestProperties.css';
 
 const LatestProperties = () => {
@@ -203,9 +202,8 @@ const LatestProperties = () => {
                                     {property.amenities && property.amenities.length > 0 && (
                                         <div className="latest-property-amenities">
                                             {property.amenities.slice(0, 3).map((amenity, index) => (
-                                                <div key={index} className="amenity-item">
+                                                <div key={index} className="amenity-item" title={amenity}>
                                                     {getAmenityIcon(amenity)}
-                                                    <span>{amenity}</span>
                                                 </div>
                                             ))}
                                             {property.amenities.length > 3 && (
@@ -216,15 +214,7 @@ const LatestProperties = () => {
                                         </div>
                                     )}
 
-                                    {/* Map Preview */}
-                                    {property.mapLocation && (
-                                        <MapPreview
-                                            latitude={property.mapLocation.lat}
-                                            longitude={property.mapLocation.lng}
-                                            address={property.mapLocation.address}
-                                            propertyName={property.name}
-                                        />
-                                    )}
+
 
                                     <div className="latest-property-price">
                                         <span className="price-amount">{property.price}</span>
