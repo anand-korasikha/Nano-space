@@ -37,7 +37,7 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Logos Grid */}
-                <div className="trusted-logos-grid grid grid-cols-6 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-2">
+                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-2">
                     {companies.map((company, index) => (
                         <div
                             key={index}

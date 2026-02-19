@@ -15,32 +15,57 @@
             {
                 "id": "wifi",
                 "title": "High Speed WiFi",
-                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work.",
+                "features": [
+                    "High-Speed WiFi, HDTVs everything you need to do your best work."
+                ],
+                "accentTag": "up to 1 Gbps"
             },
             {
                 "id": "workstation",
                 "title": "Comfy Workstation",
-                "description": "Connect with other people and share your skills for better and quick growth."
+                "description": "Connect with other people and share your skills for better and quick growth.",
+                "features": [
+                    "Connect with other people and share your skills for better and quick growth."
+                ],
+                "accentTag": "collaborative vibe"
             },
             {
                 "id": "meeting",
                 "title": "Meeting Rooms",
-                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms.",
+                "features": [
+                    "Come up with great ideas and engage in valuable discussions in meeting rooms."
+                ],
+                "accentTag": "4K screens & whiteboards"
             },
             {
                 "id": "printer",
                 "title": "Printer",
-                "description": "Printing and scanning facilities available without any extra cost."
+                "description": "Printing and scanning facilities available without any extra cost.",
+                "features": [
+                    "Printing and scanning facilities available without any extra cost."
+                ],
+                "accentTag": "wireless & duplex"
             },
             {
                 "id": "pantry",
                 "title": "Pantry",
-                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating.",
+                "features": [
+                    "Lounge, kitchen, breakout rooms, and more.",
+                    "Mix of both work tables and lounge seating."
+                ],
+                "accentTag": "free espresso · kombucha"
             },
             {
                 "id": "parking",
                 "title": "Parking",
-                "description": "Avoid morning hassle with easy and convenient parking area availability."
+                "description": "Avoid morning hassle with easy and convenient parking area availability.",
+                "features": [
+                    "Avoid morning hassle with easy and convenient parking area availability."
+                ],
+                "accentTag": "EV charging · bike racks"
             }
         ],
         "topLocations": [

@@ -261,8 +261,8 @@ img {
     [class*="-image"],
     [class*="-img"] {
         height: auto !important;
-        min-height: 150px;
-        max-height: 150px;
+        min-height: 200px;
+        max-height: 200px;
         object-fit: cover;
     }
 }
@@ -422,7 +422,7 @@ img {
 
     [class*="hero"],
     .hero {
-        min-height: 450px !important;
+        min-height: 10px !important;
         padding: 1.5rem 0.75rem !important;
     }
 

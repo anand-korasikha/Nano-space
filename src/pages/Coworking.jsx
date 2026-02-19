@@ -10,7 +10,7 @@ import CoworkingContactForm from '../components/coworking/CoworkingContactForm';
 import TrustedCompanies from '../components/home/TrustedCompanies';
 import FounderNote from '../components/home/FounderNote';
 import CoworkingFAQ from '../components/coworking/CoworkingFAQ';
-import CoworkingFooterBanner from '../components/coworking/CoworkingFooterBanner';
+// import CoworkingFooterBanner from '../components/coworking/CoworkingFooterBanner';
 
 
 const Coworking = () => {
@@ -32,7 +32,7 @@ const Coworking = () => {
             <TrustedCompanies />
             <FounderNote />
             <CoworkingFAQ />
-            <CoworkingFooterBanner />
+            {/* <CoworkingFooterBanner /> */}
 
         </>
     );

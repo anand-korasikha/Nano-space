@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Check, Wifi, Monitor, Users, Printer, Coffee, Car } from 'lucide-react';
+import { Check, ChevronRight, Monitor, Users } from 'lucide-react';
 import cityOfficeSpacesData from '../data/cityOfficeSpaces.json';
 import { getCityIcon } from '../assets/icons/cityIcons';
 import BookingModal from '../components/BookingModal';
@@ -164,35 +164,76 @@ const OfficeSpaces = () => {
                 </div>
             </section>
 
-            {/* Amenities Section */}
+            {/* Amenities Section - Redesigned Premium View */}
             <section className="amenities-section">
                 <div className="amenities-wrapper">
-                    <div className="locations-header-container">
-                        <div className="title-decoration-wrapper">
-                            <div className="yellow-glow-circle"></div>
-                            <h2 className="locations-section-title">Premium Office Space Amenities</h2>
+                    <div className="section-header">
+                        <h2>
+                            <i className="fas fa-building"></i>
+                            Premium Office Space
+                            <i className="fas fa-crown" style={{ fontSize: '2rem', marginLeft: '10px' }}></i>
+                        </h2>
+                        <div className="subhead">
+                            <i className="fas fa-map-pin" style={{ marginRight: '8px' }}></i>
+                            {cityData.cityName} · all locations · exclusive benefits
                         </div>
-                        <div className="blue-title-underline"></div>
-                        <p className="amenities-subtitle">Enjoy exclusive benefits across all the office space in {cityData.cityName} locations</p>
                     </div>
 
                     <div className="amenities-grid">
                         {cityData.amenities?.map((amenity) => (
-                            <div key={amenity.id} className="amenity-item">
-                                <div className="amenity-icon-box">
-                                    {amenity.id === 'wifi' && <Wifi size={24} />}
-                                    {amenity.id === 'workstation' && <Monitor size={24} />}
-                                    {amenity.id === 'meeting' && <Users size={24} />}
-                                    {amenity.id === 'printer' && <Printer size={24} />}
-                                    {amenity.id === 'pantry' && <Coffee size={24} />}
-                                    {amenity.id === 'parking' && <Car size={24} />}
+                            <div key={amenity.id} className="amenity-card">
+                                <div className="card-header">
+                                    <div className="icon-wrapper">
+                                        {amenity.id === 'wifi' && <i className="fas fa-wifi"></i>}
+                                        {amenity.id === 'workstation' && <i className="fas fa-laptop"></i>}
+                                        {amenity.id === 'meeting' && <i className="fas fa-users"></i>}
+                                        {amenity.id === 'printer' && <i className="fas fa-print"></i>}
+                                        {amenity.id === 'pantry' && <i className="fas fa-mug-saucer"></i>}
+                                        {amenity.id === 'parking' && <i className="fas fa-square-parking"></i>}
+                                    </div>
+                                    <h3>{amenity.title}</h3>
                                 </div>
-                                <div className="amenity-text">
-                                    <h4>{amenity.title}</h4>
-                                    <p>{amenity.description}</p>
+                                <ul className="feature-list">
+                                    {(amenity.features || [amenity.description]).map((feature, idx) => (
+                                        <li key={idx}>
+                                            <i className={
+                                                amenity.id === 'wifi' ? "fas fa-circle-check" :
+                                                    amenity.id === 'pantry' ? (idx === 0 ? "fas fa-utensils" : "fas fa-couch") :
+                                                        amenity.id === 'workstation' ? "fas fa-user-group" :
+                                                            amenity.id === 'meeting' ? "fas fa-lightbulb" :
+                                                                amenity.id === 'printer' ? "fas fa-file-lines" :
+                                                                    "fas fa-car"
+                                            }></i>
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="accent-tag">
+                                    <i className={
+                                        amenity.id === 'wifi' ? "fas fa-bolt" :
+                                            amenity.id === 'workstation' ? "fas fa-handshake" :
+                                                amenity.id === 'meeting' ? "fas fa-video" :
+                                                    amenity.id === 'printer' ? "fas fa-cloud" :
+                                                        amenity.id === 'pantry' ? "fas fa-coffee" :
+                                                            "fas fa-bicycle"
+                                    }></i>
+                                    {amenity.accentTag || (
+                                        amenity.id === 'wifi' ? "up to 1 Gbps" :
+                                            amenity.id === 'workstation' ? "collaborative vibe" :
+                                                amenity.id === 'meeting' ? "4K screens & whiteboards" :
+                                                    amenity.id === 'printer' ? "wireless & duplex" :
+                                                        amenity.id === 'pantry' ? "free espresso · kombucha" :
+                                                            "EV charging · bike racks"
+                                    )}
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    <div className="subtle-note">
+                        <i className="fas fa-star"></i>
+                        Enjoy exclusive benefits across all office spaces in {cityData.cityName} locations
+                        <i className="fas fa-location-dot" style={{ marginLeft: '8px' }}></i>
                     </div>
                 </div>
             </section>
