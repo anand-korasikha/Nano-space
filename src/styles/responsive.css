@@ -256,13 +256,13 @@ img {
 }
 
 /* Small Mobile */
-@media (max-width: 375px) {
+@media (max-width: 250px) {
 
     [class*="-image"],
     [class*="-img"] {
         height: auto !important;
-        min-height: 200px;
-        max-height: 200px;
+        min-height: 150px;
+        max-height: 150px;
         object-fit: cover;
     }
 }

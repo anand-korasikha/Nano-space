@@ -491,13 +491,21 @@
     }
 }
 
+@media (max-width: 768px) {
+    .logo-img {
+        max-height: 44px;
+        width: auto;
+    }
+}
+
 @media (max-width: 480px) {
     .header-container {
         padding: 0 0.75rem;
     }
 
     .logo-img {
-        max-height: 40px;
+        max-height: 38px;
+        width: auto;
     }
 
     .nav-link {

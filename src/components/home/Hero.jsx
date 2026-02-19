@@ -187,7 +187,7 @@ const Hero = ({ pageType = 'home' }) => {
                 </div>
 
                 {/* Right Column: Hero Carousel - Optimized Size */}
-                <div className="w-full lg:w-[45%] xl:w-[40%] flex items-start justify-center pt-[3.75rem] pr-6 pb-6 px-2 sm:px-4 lg:px-6 relative">
+                <div className="w-full lg:w-[45%] xl:w-[40%] flex items-start justify-center pt-[3.75rem] pb-6 lg:pr-6 lg:px-6 relative overflow-x-hidden">
                     {/* Bubbles only in carousel area */}
                     <div className="carousel-bubbles-container">
                         <div className="floating-particles" ref={(ref) => {
