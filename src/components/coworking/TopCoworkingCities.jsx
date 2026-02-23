@@ -131,7 +131,6 @@ const TopCoworkingCities = () => {
                                     style={{ width: cardsPerView > 1 ? `calc((100% - ${(cardsPerView - 1) * 12}px) / ${cardsPerView})` : '100%' }}
                                 >
                                     <div className="relative rounded-2xl overflow-hidden group cursor-pointer transition-all duration-500 h-[240px]">
-                            >
                                         {/* Background Image */}
                                         <img
                                             src={city.image}
