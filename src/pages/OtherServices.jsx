@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Check, Shield } from 'lucide-react';
 import servicesData from '../data/servicesData.json';
@@ -7,6 +7,31 @@ import './OtherServices.css';
 const OtherServices = () => {
     // State for interactive card system
     const [activeCard, setActiveCard] = useState('unified');
+    const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+    const [activeValueIndex, setActiveValueIndex] = useState(0);
+
+    const categoryGridRef = useRef(null);
+    const valueGridRef = useRef(null);
+
+    const handleScroll = (ref, setIndex) => {
+        if (!ref.current) return;
+        const scrollPosition = ref.current.scrollLeft;
+        const containerWidth = ref.current.offsetWidth;
+        // On mobile, cardWidth is 88% of viewport width and gap is 20px (1.25rem)
+        const approxCardWidth = containerWidth * 0.88 + 20;
+        const index = Math.round(scrollPosition / approxCardWidth);
+        setIndex(index);
+    };
+
+    const scrollToCard = (ref, index) => {
+        if (!ref.current) return;
+        const containerWidth = ref.current.offsetWidth;
+        const approxCardWidth = containerWidth * 0.88 + 20;
+        ref.current.scrollTo({
+            left: index * approxCardWidth,
+            behavior: 'smooth'
+        });
+    };
 
     // Card data with testimonials
     const cardData = {
@@ -119,9 +144,13 @@ const OtherServices = () => {
                         Explore our comprehensive range of professional services
                     </p>
 
-                    <div className="service-categories-grid">
+                    <div
+                        className="service-categories-grid"
+                        ref={categoryGridRef}
+                        onScroll={() => handleScroll(categoryGridRef, setActiveCategoryIndex)}
+                    >
                         {servicesData.categories.map((category) => {
-                            const colors = categoryColors[category.slug];
+                            const colors = categoryColors[category.slug] || { primary: '#667eea', gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' };
                             const maxVisibleServices = 4;
                             const hasMore = category.subcategories.length > maxVisibleServices;
 
@@ -135,19 +164,12 @@ const OtherServices = () => {
                                         '--category-gradient': colors.gradient
                                     }}
                                 >
-                                    {/* Category Header */}
                                     <div className="category-header">
                                         <div className="category-icon">{category.icon}</div>
                                         <h3 className="category-name">{category.name}</h3>
                                     </div>
-
-                                    {/* Divider */}
                                     <div className="category-divider"></div>
-
-                                    {/* Description */}
                                     <p className="category-description">{category.description}</p>
-
-                                    {/* Service List with Checkmarks */}
                                     <div className="service-list">
                                         {category.subcategories.slice(0, maxVisibleServices).map((service, index) => (
                                             <div key={index} className="service-item">
@@ -161,14 +183,10 @@ const OtherServices = () => {
                                             </div>
                                         )}
                                     </div>
-
-                                    {/* Verified Badge */}
                                     <div className="verified-badge">
                                         <Shield className="shield-icon" size={18} />
-                                        <span>{category.providers.length}+ Verified Professionals</span>
+                                        <span>{category.providers.length}+ Professionals</span>
                                     </div>
-
-                                    {/* Explore Button */}
                                     <div className="explore-button">
                                         <span>Explore Services</span>
                                         <ArrowRight className="arrow-icon" size={18} />
@@ -177,6 +195,18 @@ const OtherServices = () => {
                             );
                         })}
                     </div>
+
+                    <div className="carousel-dots show-mobile">
+                        {servicesData.categories.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`carousel-dot ${activeCategoryIndex === index ? 'active' : ''}`}
+                                onClick={() => scrollToCard(categoryGridRef, index)}
+                            />
+                        ))}
+                    </div>
+
+
                 </div>
             </section>
 
@@ -253,7 +283,11 @@ const OtherServices = () => {
                     </div>
 
                     {/* Interactive Cards Grid */}
-                    <div className="value-grid">
+                    <div
+                        className="value-grid"
+                        ref={valueGridRef}
+                        onScroll={() => handleScroll(valueGridRef, setActiveValueIndex)}
+                    >
                         {/* Card 1: Unified Platform */}
                         <div
                             className="value-card"
@@ -305,6 +339,16 @@ const OtherServices = () => {
                             <h3 className="value-title">Built for All</h3>
                             <p className="value-description">Perfect for startups, SMEs, and enterprises</p>
                         </div>
+                    </div>
+
+                    <div className="carousel-dots show-mobile">
+                        {['unified', 'verified', 'direct', 'built'].map((_, index) => (
+                            <div
+                                key={index}
+                                className={`carousel-dot ${activeValueIndex === index ? 'active' : ''}`}
+                                onClick={() => scrollToCard(valueGridRef, index)}
+                            />
+                        ))}
                     </div>
 
                     {/* Interactive Detail Panel */}
