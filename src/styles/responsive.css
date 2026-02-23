@@ -363,7 +363,7 @@ img {
 
 @media (max-width: 768px) {
     nav {
-        padding: 0.5rem 1rem !important;
+        padding: 0.5rem 1rem;
     }
 
     .nav-menu {
@@ -443,8 +443,8 @@ img {
 
     [class*="hero"],
     .hero {
-        min-height: 10px !important;
-        padding: 1rem 1rem !important;
+        /* min-height: px !important;
+        padding: 1.5rem 1rem !important; */
     }
 
     [class*="hero"] h1,

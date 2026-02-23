@@ -61,22 +61,23 @@ const ServiceCategory = () => {
                     alt={categoryData.name}
                     className="service-hero-image"
                 />
+
+                {/* Breadcrumb overlaying the image */}
+                <div className="breadcrumb-container overlay-breadcrumb">
+                    <div className="breadcrumb">
+                        <Link to="/other-services" className="breadcrumb-link">
+                            <ArrowLeft size={18} />
+                            All Services
+                        </Link>
+                        <span className="breadcrumb-separator">/</span>
+                        <span className="breadcrumb-current">{categoryData.name}</span>
+                    </div>
+                </div>
+
                 <div className="service-hero-content">
                     <div className="category-icon-large">{categoryData.icon}</div>
                     <h1>{categoryData.name}</h1>
                     <p>{categoryData.description}</p>
-                </div>
-            </div>
-
-            {/* Breadcrumb */}
-            <div className="breadcrumb-container">
-                <div className="breadcrumb">
-                    <Link to="/other-services" className="breadcrumb-link">
-                        <ArrowLeft size={18} />
-                        All Services
-                    </Link>
-                    <span className="breadcrumb-separator">/</span>
-                    <span className="breadcrumb-current">{categoryData.name}</span>
                 </div>
             </div>
 
@@ -127,11 +128,13 @@ const ServiceCategory = () => {
                                             className="service-icon"
                                         />
                                     </div>
-                                    <h3 className="service-title">{service}</h3>
-                                    <p className="service-description">
-                                        {categoryData.serviceDescriptions?.[index] ||
-                                            `Professional ${service.toLowerCase()} services tailored to your business needs`}
-                                    </p>
+                                    <div className="service-card-content">
+                                        <h3 className="service-title">{service}</h3>
+                                        <p className="service-description">
+                                            {categoryData.serviceDescriptions?.[index] ||
+                                                `Professional ${service.toLowerCase()} services tailored to your business needs`}
+                                        </p>
+                                    </div>
                                 </div>
                             );
                         })}

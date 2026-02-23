@@ -593,12 +593,53 @@
         padding: 3rem 1.5rem;
     }
 
+    .service-category-card {
+        padding: 1.25rem;
+    }
+
+    .category-header {
+        margin-bottom: 10px;
+    }
+
     .category-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .category-name {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .category-divider {
+        margin-bottom: 10px;
+    }
+
+    .category-description {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        min-height: auto;
+    }
+
+    .service-list {
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .service-item {
+        font-size: 0.85rem;
+    }
+
+    .verified-badge {
+        padding: 8px 10px;
+        margin-bottom: 12px;
+    }
+
+    .verified-badge span {
+        font-size: 0.8rem;
+    }
+
+    .explore-button {
+        padding: 10px 16px;
+        font-size: 0.9rem;
     }
 }
 
@@ -612,13 +653,15 @@
     }
 
     .service-category-card {
-        padding: 20px;
+        padding: 1rem;
     }
 
     .category-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        gap: 10px;
+    }
+
+    .category-icon {
+        font-size: 1.5rem;
     }
 }
 
@@ -987,5 +1030,22 @@
     .testimonial {
         padding: 1rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .value-card {
+        padding: 1.2rem 1rem;
+    }
+
+    .value-card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .value-title {
+        font-size: 1.1rem;
+    }
+
+    .value-description {
+        font-size: 0.85rem;
     }
 }

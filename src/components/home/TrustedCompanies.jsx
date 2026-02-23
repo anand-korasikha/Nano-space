@@ -37,11 +37,11 @@ const TrustedCompanies = () => {
                 </div>
 
                 {/* Logos Grid */}
-                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-2">
+                <div className="trusted-logos-grid grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 md:gap-2 lg:gap-0">
                     {companies.map((company, index) => (
                         <div
                             key={index}
-                            className="group flex items-center justify-center p-2"
+                            className="group flex items-center justify-center p-2 lg:p-0"
                             style={{
                                 animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`
                             }}
