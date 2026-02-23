@@ -126,7 +126,7 @@ const Hero = ({ pageType = 'home' }) => {
                             {/* Search Button */}
                             <button
                                 onClick={handleSearch}
-                                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold text-sm py-2 px-5 rounded-lg transition-all shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold text-sm py-3 px-3 rounded-lg transition-all shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-2"
                             >
                                 <Search className="w-4 h-4" />
                                 {content.searchButton}

@@ -261,8 +261,8 @@
 
 @media (max-width: 768px) {
     .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem 1.5rem;
     }
 
     .footer-brand {
@@ -315,9 +315,14 @@
     }
 
     .footer-main {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 0.5rem;
         padding-bottom: 1.5rem;
+    }
+
+    .footer-brand,
+    .footer-get-in-touch {
+        grid-column: 1 / -1;
     }
 
     .footer-logo {
@@ -334,12 +339,17 @@
     }
 
     .footer-heading {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .footer-links a {
+        font-size: 0.75rem;
     }
 
     .footer-links li {
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
     }
 
     .footer-social {
