@@ -85,10 +85,11 @@ const Hero = ({ pageType = 'home' }) => {
                             <div className="flex flex-col sm:flex-row gap-2 mb-2">
                                 {/* Type Selector */}
                                 <div className="relative flex-1">
+                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                                     <select
                                         value={searchType}
                                         onChange={(e) => setSearchType(e.target.value)}
-                                        className="w-full appearance-none bg-white border border-gray-300 text-gray-700 text-sm py-2 px-3 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all shadow-sm"
+                                        className="w-full appearance-none bg-white border border-gray-300 text-gray-700 text-sm py-2 pl-10 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer transition-all shadow-sm"
                                     >
                                         <option value="">{content.searchPlaceholder.type}</option>
                                         {content.typeOptions.map((option, index) => (
