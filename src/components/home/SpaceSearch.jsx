@@ -88,7 +88,7 @@ const SpaceSearch = () => {
                     </div>
 
                     {/* Right Column: Circular Image */}
-                    <div className="w-full lg:w-2/5 mt-8 sm:mt-10 lg:mt-0 flex justify-center lg:justify-end relative">
+                    <div className="hidden lg:flex w-full lg:w-2/5 mt-8 sm:mt-10 lg:mt-0 justify-center lg:justify-end relative">
                         {/* Purple Ring Glow */}
                         <div className="relative">
                             <div className="absolute inset-0 rounded-full border-[8px] sm:border-[10px] border-[#F3E8FF] transform scale-105"></div>
