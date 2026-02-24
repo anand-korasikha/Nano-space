@@ -31,7 +31,7 @@ const ServiceCategory = () => {
     const categoryBackgrounds = {
         'it-development': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&h=400&fit=crop',
         'digital-marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=400&fit=crop',
-        'advocates-lawyers': 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&h=400&fit=crop',
+        'advocates-lawyers': 'https://images.unsplash.com/photo-1589578594227-216c645fc690?w=1600&h=400&fit=crop',
         'chartered-accountants': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=400&fit=crop',
         'mentors-trainers': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&h=400&fit=crop'
     };

@@ -11,13 +11,16 @@
     },
     "dependencies": {
         "@svg-maps/india": "^2.0.0",
+        "clsx": "^2.1.1",
+        "framer-motion": "^12.34.3",
         "leaflet": "^1.9.4",
         "lottie-react": "^2.4.1",
         "lucide-react": "^0.561.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "react-leaflet": "^5.0.0",
-        "react-router-dom": "^7.10.1"
+        "react-router-dom": "^7.10.1",
+        "tailwind-merge": "^3.5.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",
