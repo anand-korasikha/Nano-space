@@ -35,8 +35,10 @@
 @media (max-width: 640px) {
     .hero-gradient-bounce {
         display: inline;
-        background-size: 100% auto;
-        /* Simplify on mobile */
+        background-size: 200% auto;
+        /* Enabled full animation on mobile */
+        font-weight: 900;
+        /* Increased bold size */
     }
 }
 
