@@ -27,24 +27,27 @@
 
 .coliving-close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     background: white;
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    color: #333;
+    padding: 0;
 }
 
 .coliving-close-btn:hover {
     transform: scale(1.1);
+    background: #f8f9fa;
 }
 
 /* Left Section */
@@ -295,9 +298,10 @@
 }
 
 .expert-image {
-    height: 35px;
+    height: 32px;
     width: auto;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 .expert-info {
@@ -364,23 +368,110 @@
 
 @media (max-width: 600px) {
     .coliving-modal-overlay {
-        padding: 10px;
+        padding: 0;
+        align-items: flex-end;
+        /* Slide up from bottom or just full screen */
     }
 
     .coliving-modal-container {
-        border-radius: 12px;
+        border-radius: 24px 24px 0 0;
+        max-height: 92vh;
+        height: auto;
     }
 
-    .coliving-left-section,
+    .coliving-left-section {
+        padding: 40px 24px 24px;
+        min-height: auto;
+        border-radius: 24px 24px 0 0;
+    }
+
+    .brand-logos-background {
+        display: none;
+        /* Hide cluttered icons on mobile */
+    }
+
+    .professional-image {
+        max-height: 180px;
+        margin-bottom: 15px;
+    }
+
+    .professional-image-wrapper {
+        margin-bottom: 10px;
+    }
+
+    .top-brands-section {
+        text-align: center;
+    }
+
+    .star-rating {
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .star {
+        font-size: 16px;
+    }
+
+    .brands-title {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .brands-description {
+        font-size: 12px;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
     .coliving-right-section {
-        padding: 24px;
+        padding: 30px 24px 40px;
     }
 
     .coliving-form-title {
         font-size: 20px;
+        text-align: center;
+    }
+
+    .coliving-form-subtitle {
+        font-size: 13px;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     .coliving-select-row {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .coliving-input,
+    .coliving-select,
+    .country-code {
+        padding: 12px 14px;
+    }
+
+    .coliving-submit-btn {
+        padding: 16px;
+    }
+
+    .expert-image {
+        height: 24px !important;
+        width: auto !important;
+        max-width: 100px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .coliving-contact-expert {
+        padding: 12px;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .coliving-close-btn {
+        top: 12px;
+        right: 12px;
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.9);
     }
 }

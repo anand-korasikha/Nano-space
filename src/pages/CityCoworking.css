@@ -325,12 +325,18 @@
     }
 
     .location-tabs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.5rem;
     }
 
     .location-tab {
+        flex: 0 1 auto;
         text-align: center;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.75rem;
+        width: auto;
     }
 
     .space-header {

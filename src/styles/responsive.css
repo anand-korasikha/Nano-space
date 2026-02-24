@@ -189,7 +189,7 @@
     .btn,
     [class*="-btn"],
     [class*="-button"] {
-        width: 100%;
+        /* width: 100%; */
         max-width: 100%;
     }
 }
@@ -273,8 +273,8 @@ img {
     [class*="-image"]:not(.logo-img):not(.card-image-enhanced),
     [class*="-img"]:not(.logo-img):not(.card-image-enhanced) {
         height: auto !important;
-        min-height: 220px;
-        max-height: 220px;
+        /* min-height: 220px;
+        max-height: 220px; */
         object-fit: cover;
     }
 }

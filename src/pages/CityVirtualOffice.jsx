@@ -112,7 +112,7 @@ const CityVirtualOffice = () => {
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
             <section
-                className="relative h-[500px] md:h-[600px] bg-cover bg-center"
+                className="relative min-h-[600px] lg:h-[650px] bg-cover bg-center flex items-center py-12 lg:py-0"
                 style={{ backgroundImage: `url(${city.heroImage})` }}
             >
                 {/* Dark Overlay */}
@@ -133,11 +133,11 @@ const CityVirtualOffice = () => {
                                     const IconComponent = iconMap[feature.icon];
                                     return (
                                         <div key={index} className="flex items-start gap-3">
-                                            <div className="flex-shrink-0 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                                                {IconComponent && <IconComponent size={20} className="text-white" />}
+                                            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                                                {IconComponent && <IconComponent size={18} className="text-white" />}
                                             </div>
                                             <div>
-                                                <h3 className="font-semibold text-sm md:text-base">{feature.title}</h3>
+                                                <h3 className="font-semibold text-xs md:text-base">{feature.title}</h3>
                                             </div>
                                         </div>
                                     );
@@ -147,11 +147,11 @@ const CityVirtualOffice = () => {
                             {/* Popular Locations */}
                             <div className="mt-8">
                                 <h3 className="text-lg font-semibold mb-3">Popular Locations</h3>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2 md:gap-3">
                                     {city.popularLocations.slice(0, 8).map((location, index) => (
                                         <button
                                             key={index}
-                                            className="px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-sm hover:bg-white/20 transition-all duration-300"
+                                            className="px-3 md:px-4 py-1.5 md:py-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-xs md:text-sm hover:bg-white/20 transition-all duration-300"
                                         >
                                             {location}
                                         </button>
@@ -160,16 +160,16 @@ const CityVirtualOffice = () => {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex flex-wrap gap-4 mt-8">
+                            <div className="flex flex-col sm:flex-row gap-4 mt-8">
                                 <button
-                                    className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                                    className="w-full sm:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                                     onClick={() => handleGetQuoteClick()}
                                 >
                                     Get Quote
                                 </button>
                                 <a
                                     href={`tel:${city.phone}`}
-                                    className="px-8 py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
+                                    className="w-full sm:w-auto px-8 py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                                 >
                                     <Phone size={18} />
                                     {city.phone}
@@ -291,7 +291,7 @@ const CityVirtualOffice = () => {
             </section>
 
             {/* Mobile Form Section */}
-            <section className="lg:hidden py-8 bg-gray-50">
+            <section className="lg:hidden py-12 bg-gray-50 border-b border-gray-100">
                 <div className="max-w-md mx-auto px-4">
                     <div className="bg-white rounded-2xl shadow-xl p-6">
                         <div className="mb-4">
@@ -337,16 +337,18 @@ const CityVirtualOffice = () => {
                                         className="w-full px-3 py-2.5 bg-gray-100 border border-gray-200 rounded-lg text-center font-medium"
                                     />
                                 </div>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="Phone*"
-                                    value={formData.phone}
-                                    onChange={handleInputChange}
-                                    required
-                                    pattern="[0-9]{10}"
-                                    className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                />
+                                <div className="flex-1">
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Phone Number*"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        required
+                                        pattern="[0-9]{10}"
+                                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                    />
+                                </div>
                             </div>
 
                             <div className="relative">
@@ -415,16 +417,16 @@ const CityVirtualOffice = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                         {city.features.map((feature, index) => {
                             const IconComponent = iconMap[feature.icon];
                             return (
-                                <div key={index} className="text-center p-6 rounded-xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover:shadow-lg transition-all duration-300">
-                                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        {IconComponent && <IconComponent size={28} className="text-white" />}
+                                <div key={index} className="text-center p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+                                    <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-100">
+                                        {IconComponent && <IconComponent size={24} />}
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                                    <p className="text-gray-600 text-sm">{feature.description}</p>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
                                 </div>
                             );
                         })}
