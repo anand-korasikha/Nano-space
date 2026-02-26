@@ -37,7 +37,8 @@ def create_app(config_class=Config):
     
     @app.errorhandler(500)
     def internal_error(error):
-        return jsonify({'error': 'Internal server error'}), 500
+        import traceback
+        return jsonify({'error': 'Internal server error', 'message': str(error), 'trace': traceback.format_exc()}), 500
     
     # Root endpoint
     @app.route('/')
@@ -59,6 +60,7 @@ def create_app(config_class=Config):
     
     # Create database tables
     with app.app_context():
+        print(f"Using database: {app.config['SQLALCHEMY_DATABASE_URI']}")
         db.create_all()
     
     return app

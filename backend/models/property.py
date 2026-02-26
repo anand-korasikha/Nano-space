@@ -43,7 +43,18 @@ class Property(db.Model):
     # Status
     status = db.Column(db.String(20), default='pending', index=True)  # pending, approved, rejected
     rejection_reason = db.Column(db.Text)
-    
+
+    # Visibility & Promotions
+    is_featured = db.Column(db.Boolean, default=False, index=True)
+    show_on_homepage = db.Column(db.Boolean, default=False, index=True)
+    show_on_rent = db.Column(db.Boolean, default=False, index=True)
+    show_on_buy = db.Column(db.Boolean, default=False, index=True)
+
+    # Contact info (submitted by owner)
+    contact_name = db.Column(db.String(100))
+    contact_email = db.Column(db.String(120))
+    contact_phone = db.Column(db.String(20))
+
     # Timestamps
     submitted_at = db.Column(db.DateTime, default=datetime.utcnow)
     approved_at = db.Column(db.DateTime)
@@ -92,7 +103,14 @@ class Property(db.Model):
             'total_seats': self.total_seats,
             'available_seats': self.available_seats,
             'status': self.status,
+            'is_featured': self.is_featured,
+            'show_on_homepage': self.show_on_homepage,
+            'show_on_rent': self.show_on_rent,
+            'show_on_buy': self.show_on_buy,
             'rejection_reason': self.rejection_reason,
+            'contact_name': self.contact_name,
+            'contact_email': self.contact_email,
+            'contact_phone': self.contact_phone,
             'submitted_at': self.submitted_at.isoformat() if self.submitted_at else None,
             'approved_at': self.approved_at.isoformat() if self.approved_at else None,
             'created_at': self.created_at.isoformat() if self.created_at else None,

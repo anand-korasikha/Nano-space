@@ -20,6 +20,15 @@ def register():
         required_fields = ['email', 'password', 'full_name', 'role']
         if not all(field in data for field in required_fields):
             return jsonify({'error': 'Missing required fields'}), 400
+
+        import re
+        # Basic email validation
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", data['email']):
+            return jsonify({'error': 'Invalid email format'}), 400
+            
+        # Basic phone validation (if provided)
+        if data.get('phone') and not re.match(r"^\+?[\d\s-]{10,}$", data['phone']):
+            return jsonify({'error': 'Invalid phone number format'}), 400
         
         # Check if user already exists
         if User.query.filter_by(email=data['email']).first():
