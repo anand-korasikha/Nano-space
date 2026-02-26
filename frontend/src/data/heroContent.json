@@ -1,0 +1,129 @@
+{
+    "home": {
+        "title": {
+            "line1": "Find Your Ideal",
+            "line2": "Work & Live Spaces",
+            "line3": ""
+        },
+        "searchPlaceholder": {
+            "type": "What are you looking for?",
+            "city": "Select City"
+        },
+        "searchButton": "Search",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Coworking Space",
+            "Coliving Space",
+            "Virtual Office"
+        ],
+        "cityOptions": [
+            "Hyderabad",
+            "Bangalore",
+            "Mumbai",
+            "Delhi"
+        ],
+        "heroImages": [
+            "/images/hero/home-1.jpg",
+            "/images/hero/home-2.jpg",
+            "/images/hero/home-3.jpg",
+            "/images/hero/home-4.jpg",
+            "/images/hero/home-5.jpg"
+        ]
+    },
+    "coworking": {
+        "title": {
+            "line1": "Premium",
+            "line2": "Coworking",
+            "line3": "Spaces"
+        },
+        "searchPlaceholder": {
+            "type": "Select workspace type",
+            "city": "Select City"
+        },
+        "searchButton": "Find Spaces",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Hot Desk",
+            "Dedicated Desk",
+            "Private Office"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Hyderabad",
+            "Pune"
+        ],
+        "heroImages": [
+            "/images/hero/coworking-1.jpg",
+            "/images/hero/coworking-2.jpg",
+            "/images/hero/coworking-3.jpg",
+            "/images/hero/coworking-4.jpg",
+            "/images/hero/coworking-5.jpg"
+        ]
+    },
+    "coliving": {
+        "title": {
+            "line1": "Uncover",
+            "line2": "Coliving",
+            "line3": "Spaces"
+        },
+        "searchPlaceholder": {
+            "type": "Room type",
+            "city": "Select City"
+        },
+        "searchButton": "Explore",
+        "popularCitiesLabel": "Popular Cities",
+        "typeOptions": [
+            "Private Room",
+            "Shared Room",
+            "Studio Apartment"
+        ],
+        "cityOptions": [
+            "Hyderabad",
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Goa"
+        ],
+        "heroImages": [
+            "/images/hero/coliving-1.jpg",
+            "/images/hero/coliving-2.jpg",
+            "/images/hero/coliving-3.jpg",
+            "/images/hero/coliving-4.jpg",
+            "/images/hero/coliving-5.jpg"
+        ]
+    },
+    "virtualoffice": {
+        "title": {
+            "line1": "Professional",
+            "line2": "Virtual Office",
+            "line3": "Solutions"
+        },
+        "searchPlaceholder": {
+            "type": "Select service",
+            "city": "Select City"
+        },
+        "searchButton": "Get Started",
+        "popularCitiesLabel": "Available Cities",
+        "typeOptions": [
+            "Business Address",
+            "Mail Handling",
+            "Meeting Rooms"
+        ],
+        "cityOptions": [
+            "Bangalore",
+            "Mumbai",
+            "Delhi",
+            "Chennai",
+            "Kolkata"
+        ],
+        "heroImages": [
+            "/images/hero/virtualoffice-1.jpg",
+            "/images/hero/virtualoffice-2.jpg",
+            "/images/hero/virtualoffice-3.jpg",
+            "/images/hero/virtualoffice-4.jpg",
+            "/images/hero/virtualoffice-5.jpg"
+        ]
+    }
+}

@@ -1,0 +1,188 @@
+/* Top Locations Section */
+.top-locations-section {
+    padding: 80px 0;
+    background: #fef9f0;
+}
+
+.top-locations-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.top-locations-header {
+    margin-bottom: 40px;
+}
+
+.top-locations-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* Grid Layout - 5 columns */
+.top-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* Location Card */
+.top-location-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.top-location-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Image */
+.top-location-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+
+.top-location-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.top-location-card:hover .top-location-image {
+    transform: scale(1.05);
+}
+
+/* Overlay */
+.top-location-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Content */
+.top-location-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.top-location-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Explore Button */
+.top-location-btn {
+    display: inline-block;
+    background: transparent;
+    color: #0d6efd;
+    border: none;
+    padding: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.top-location-btn:hover {
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .top-locations-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .top-locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-locations-section {
+        padding: 60px 0;
+    }
+
+    .top-locations-container {
+        padding: 0 1rem;
+    }
+
+    .top-locations-header {
+        margin-bottom: 32px;
+    }
+
+    .top-locations-title {
+        font-size: 1.75rem;
+    }
+
+    .top-locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .top-location-image-wrapper {
+        height: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .top-locations-title {
+        font-size: 1.5rem;
+    }
+
+    .top-location-content {
+        padding: 12px;
+    }
+
+    .top-location-title {
+        font-size: 0.8125rem;
+    }
+
+    .top-location-btn {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-location-image-wrapper {
+        height: 100px;
+    }
+
+    .top-location-content {
+        padding: 10px;
+        gap: 8px;
+    }
+}

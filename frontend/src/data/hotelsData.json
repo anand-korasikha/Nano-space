@@ -1,0 +1,241 @@
+{
+    "hyderabad": [
+        {
+            "id": 1,
+            "name": "Hotel Grandview And Coliving",
+            "location": "Hyderabad",
+            "rating": 9.0,
+            "ratingText": "Wonderful",
+            "reviews": 2,
+            "stars": 3,
+            "price": 1359,
+            "originalPrice": 1699,
+            "totalPrice": 2854,
+            "discount": null,
+            "memberPrice": true,
+            "images": [
+                "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+                "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+                "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800"
+            ],
+            "badge": "VIP Access"
+        },
+        {
+            "id": 2,
+            "name": "Fabhotel Rk Suites",
+            "location": "Hyderabad",
+            "rating": 10,
+            "ratingText": "Exceptional",
+            "reviews": 1,
+            "stars": 3,
+            "price": 1943,
+            "originalPrice": 3666,
+            "totalPrice": 4080,
+            "discount": 47,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+                "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+                "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Treebo Address Inn Gachibowli",
+            "location": "Hyderabad",
+            "rating": 10,
+            "ratingText": "Exceptional",
+            "reviews": 6,
+            "stars": 3,
+            "price": 2304,
+            "originalPrice": 5689,
+            "totalPrice": 4838,
+            "discount": 60,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
+                "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Treebo The Living Tree Khairatabad",
+            "location": "Hyderabad",
+            "rating": 8.0,
+            "ratingText": "Very good",
+            "reviews": 1,
+            "stars": 3,
+            "price": 2603,
+            "originalPrice": 6428,
+            "totalPrice": 5467,
+            "discount": 59,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800",
+                "https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=800",
+                "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800"
+            ]
+        }
+    ],
+    "bangalore": [
+        {
+            "id": 5,
+            "name": "Lemon Tree Hotel Whitefield",
+            "location": "Bangalore",
+            "rating": 9.5,
+            "ratingText": "Exceptional",
+            "reviews": 12,
+            "stars": 3,
+            "price": 3200,
+            "originalPrice": 7500,
+            "totalPrice": 6720,
+            "discount": 57,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800",
+                "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800",
+                "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Radisson Blu Plaza Hotel",
+            "location": "Bangalore",
+            "rating": 9.8,
+            "ratingText": "Outstanding",
+            "reviews": 24,
+            "stars": 3,
+            "price": 4500,
+            "originalPrice": 9800,
+            "totalPrice": 9450,
+            "discount": 54,
+            "memberPrice": true,
+            "images": [
+                "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800",
+                "https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=800",
+                "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800"
+            ],
+            "badge": "Premium"
+        },
+        {
+            "id": 7,
+            "name": "ITC Gardenia Luxury Hotel",
+            "location": "Bangalore",
+            "rating": 9.2,
+            "ratingText": "Superb",
+            "reviews": 18,
+            "stars": 3,
+            "price": 5200,
+            "originalPrice": 11000,
+            "totalPrice": 10920,
+            "discount": 53,
+            "memberPrice": true,
+            "images": [
+                "https://images.unsplash.com/photo-1455587734955-081b22074882?w=800",
+                "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800",
+                "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800"
+            ],
+            "badge": "Luxury"
+        },
+        {
+            "id": 8,
+            "name": "The Oberoi Bangalore",
+            "location": "Bangalore",
+            "rating": 9.7,
+            "ratingText": "Exceptional",
+            "reviews": 32,
+            "stars": 3,
+            "price": 6800,
+            "originalPrice": 14500,
+            "totalPrice": 14280,
+            "discount": 53,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800",
+                "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?w=800",
+                "https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800"
+            ]
+        }
+    ],
+    "chennai": [
+        {
+            "id": 9,
+            "name": "Taj Coromandel Chennai",
+            "location": "Chennai",
+            "rating": 9.4,
+            "ratingText": "Wonderful",
+            "reviews": 28,
+            "stars": 3,
+            "price": 4200,
+            "originalPrice": 9500,
+            "totalPrice": 8820,
+            "discount": 56,
+            "memberPrice": true,
+            "images": [
+                "https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?w=800",
+                "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800",
+                "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800"
+            ],
+            "badge": "Premium"
+        },
+        {
+            "id": 10,
+            "name": "Hyatt Regency Chennai",
+            "location": "Chennai",
+            "rating": 9.1,
+            "ratingText": "Excellent",
+            "reviews": 15,
+            "stars": 3,
+            "price": 3800,
+            "originalPrice": 8200,
+            "totalPrice": 7980,
+            "discount": 54,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+                "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+                "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800"
+            ]
+        },
+        {
+            "id": 11,
+            "name": "The Leela Palace Chennai",
+            "location": "Chennai",
+            "rating": 9.6,
+            "ratingText": "Outstanding",
+            "reviews": 22,
+            "stars": 3,
+            "price": 5500,
+            "originalPrice": 12000,
+            "totalPrice": 11550,
+            "discount": 54,
+            "memberPrice": true,
+            "images": [
+                "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800",
+                "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800"
+            ],
+            "badge": "VIP Access"
+        },
+        {
+            "id": 12,
+            "name": "Radisson Blu Chennai City Centre",
+            "location": "Chennai",
+            "rating": 8.8,
+            "ratingText": "Very good",
+            "reviews": 11,
+            "stars": 3,
+            "price": 3200,
+            "originalPrice": 7100,
+            "totalPrice": 6720,
+            "discount": 55,
+            "memberPrice": false,
+            "images": [
+                "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800",
+                "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800",
+                "https://images.unsplash.com/photo-1549294413-26f195200c16?w=800"
+            ]
+        }
+    ]
+}

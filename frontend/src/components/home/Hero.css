@@ -1,0 +1,77 @@
+/* Hero Section Styles - Red and Blue Theme */
+
+/* Red color for first line */
+.hero-word-1 {
+    color: #ef4444;
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .hero-word-1 {
+        display: inline;
+    }
+}
+
+/* Blue and Red gradient for middle line */
+.hero-gradient-bounce {
+    background: linear-gradient(90deg,
+            #ef4444 0%,
+            /* Red */
+            #dc2626 25%,
+            /* Darker Red */
+            #3b82f6 75%,
+            /* Blue */
+            #2563eb 100%
+            /* Darker Blue */
+        );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+    display: inline;
+}
+
+@media (max-width: 640px) {
+    .hero-gradient-bounce {
+        display: inline;
+        background-size: 200% auto;
+        /* Enabled full animation on mobile */
+        font-weight: 900;
+        /* Increased bold size */
+    }
+}
+
+/* Blue color for last word */
+.hero-word-3 {
+    color: #3b82f6;
+    display: inline;
+    padding-left: 10px !important;
+}
+
+@media (max-width: 640px) {
+    .hero-word-3 {
+        display: inline;
+    }
+}
+
+/* Smooth gradient shift animation */
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero-gradient-bounce {
+        animation: none;
+        background: linear-gradient(90deg, #ef4444 0%, #3b82f6 100%);
+    }
+}

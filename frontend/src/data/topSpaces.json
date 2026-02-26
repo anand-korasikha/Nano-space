@@ -1,0 +1,1390 @@
+{
+    "hyderabad": {
+        "cityName": "Hyderabad",
+        "spaces": [
+            {
+                "id": "nanospace-kphb",
+                "name": "Nanospace - KPHB",
+                "location": "KPHB, Hyderabad",
+                "rating": 4.6,
+                "reviewsCount": 856,
+                "trustBadge": "Trusted by Nanospaces",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Premium coworking space in the heart of KPHB offering modern amenities and a vibrant community. Perfect for startups, freelancers, and growing teams.",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "priceDetails": {
+                    "perSeat": "₹7,500",
+                    "perCabin": "₹37,509",
+                    "period": "month"
+                }
+            },
+            {
+                "id": "nanospace-jubilee-hills",
+                "name": "Nanospace - Jubilee Hills",
+                "location": "Jubilee Hills, Hyderabad",
+                "rating": 4.7,
+                "reviewsCount": 1024,
+                "trustBadge": "Trusted by Nanospaces",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Luxurious coworking space in prestigious Jubilee Hills. Features state-of-the-art facilities and a professional environment for ambitious professionals.",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "priceDetails": {
+                    "perSeat": "₹7,500",
+                    "perCabin": "₹37,509",
+                    "period": "month"
+                }
+            },
+            {
+                "id": "nanospace-gachibowli",
+                "name": "Nanospace - Gachibowli",
+                "location": "Gachibowli, Hyderabad",
+                "rating": 4.5,
+                "reviewsCount": 742,
+                "trustBadge": "Trusted by Nanospaces",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Located in Hyderabad's IT hub, this coworking space offers excellent connectivity and modern infrastructure for tech companies and startups.",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "priceDetails": {
+                    "perSeat": "₹7,500",
+                    "perCabin": "₹37,509",
+                    "period": "month"
+                }
+            },
+            {
+                "id": "nanospace-banjara-hills",
+                "name": "Nanospace - Banjara Hills",
+                "location": "Banjara Hills, Hyderabad",
+                "rating": 4.8,
+                "reviewsCount": 1156,
+                "trustBadge": "Trusted by Nanospaces",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Premium workspace in the upscale Banjara Hills area. Ideal for established businesses and professionals seeking a prestigious address.",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "priceDetails": {
+                    "perSeat": "₹7,500",
+                    "perCabin": "₹37,509",
+                    "period": "month"
+                }
+            },
+            {
+                "id": "nanospace-nanakramguda",
+                "name": "Nanospace - Nanakramguda",
+                "location": "Nanakramguda, Hyderabad",
+                "rating": 4.4,
+                "reviewsCount": 623,
+                "trustBadge": "Trusted by Nanospaces",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Strategically located coworking space near major IT parks. Offers flexible workspace solutions with excellent amenities and community events.",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹7,500/Seat | ₹37,509/Cabin",
+                "period": "Month",
+                "priceDetails": {
+                    "perSeat": "₹7,500",
+                    "perCabin": "₹37,509",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "bangalore": {
+        "cityName": "Bangalore",
+        "spaces": [
+            {
+                "name": "91Springboard Koramangala",
+                "location": "Koramangala, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹12999",
+                "period": "month",
+                "id": "91springboard-koramangala",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Koramangala, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹12999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "WeWork Prestige Central",
+                "location": "MG Road, Bangalore",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹15999",
+                "period": "month",
+                "id": "wework-prestige-central",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in MG Road, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹15999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks RMZ Infinity",
+                "location": "Old Madras Road, Bangalore",
+                "image": "/images/latestimg/top.webp",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹13999",
+                "period": "month",
+                "id": "cowrks-rmz-infinity",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "/images/latestimg/top12.webp",
+                    "/images/latestimg/top13.webp",
+                    "/images/latestimg/top14.webp",
+                    "/images/latestimg/top15.webp"
+                ],
+                "description": "Modern coworking space in Old Madras Road, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹13999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Prestige Tech Park",
+                "location": "Marathahalli, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11999",
+                "period": "month",
+                "id": "awfis-prestige-tech-park",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Marathahalli, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Whitefield",
+                "location": "Whitefield, Bangalore",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹14999",
+                "period": "month",
+                "id": "regus-whitefield",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Whitefield, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹14999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Zeta",
+                "location": "Bellandur, Bangalore",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹12999",
+                "period": "month",
+                "id": "indiqube-zeta",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Bellandur, Bangalore offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹12999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "mumbai": {
+        "cityName": "Mumbai",
+        "spaces": [
+            {
+                "name": "WeWork Oberoi Commerz",
+                "location": "Goregaon, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹18999",
+                "period": "month",
+                "id": "wework-oberoi-commerz",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Goregaon, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹18999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Naman Chambers",
+                "location": "BKC, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹16999",
+                "period": "month",
+                "id": "awfis-naman-chambers",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in BKC, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹16999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Powai",
+                "location": "Powai, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹14999",
+                "period": "month",
+                "id": "regus-powai",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Powai, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹14999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks Lower Parel",
+                "location": "Lower Parel, Mumbai",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹17999",
+                "period": "month",
+                "id": "cowrks-lower-parel",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Lower Parel, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹17999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "91Springboard Andheri",
+                "location": "Andheri, Mumbai",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹15999",
+                "period": "month",
+                "id": "91springboard-andheri",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Andheri, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹15999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Nesco",
+                "location": "Goregaon, Mumbai",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹16999",
+                "period": "month",
+                "id": "indiqube-nesco",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Goregaon, Mumbai offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹16999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "noida": {
+        "cityName": "Noida",
+        "spaces": [
+            {
+                "name": "WeWork Galaxy Blue Sapphire",
+                "location": "Sector 4, Noida",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11999",
+                "period": "month",
+                "id": "wework-galaxy-blue-sapphire",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 4, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Logix City Center",
+                "location": "Sector 32, Noida",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10999",
+                "period": "month",
+                "id": "awfis-logix-city-center",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 32, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Advant",
+                "location": "Sector 142, Noida",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹12999",
+                "period": "month",
+                "id": "regus-advant",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 142, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹12999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "91Springboard Sector 1",
+                "location": "Sector 1, Noida",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹9999",
+                "period": "month",
+                "id": "91springboard-sector-1",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 1, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹9999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks Sector 62",
+                "location": "Sector 62, Noida",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11499",
+                "period": "month",
+                "id": "cowrks-sector-62",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 62, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Spectrum",
+                "location": "Sector 75, Noida",
+                "image": "/images/latestimg/top16.webp",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10499",
+                "period": "month",
+                "id": "indiqube-spectrum",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "/images/latestimg/top17.webp",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Sector 75, Noida offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "pune": {
+        "cityName": "Pune",
+        "spaces": [
+            {
+                "name": "WeWork Baner",
+                "location": "Baner, Pune",
+                "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10999",
+                "period": "month",
+                "id": "wework-baner",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Baner, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Hinjewadi",
+                "location": "Hinjewadi, Pune",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹9999",
+                "period": "month",
+                "id": "awfis-hinjewadi",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Hinjewadi, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹9999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Viman Nagar",
+                "location": "Viman Nagar, Pune",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11999",
+                "period": "month",
+                "id": "regus-viman-nagar",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Viman Nagar, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "91Springboard Koregaon Park",
+                "location": "Koregaon Park, Pune",
+                "image": "/images/latestimg/top18.webp",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10499",
+                "period": "month",
+                "id": "91springboard-koregaon-park",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "/images/latestimg/top19.webp",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Koregaon Park, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks Magarpatta",
+                "location": "Magarpatta, Pune",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11499",
+                "period": "month",
+                "id": "cowrks-magarpatta",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Magarpatta, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Kharadi",
+                "location": "Kharadi, Pune",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10999",
+                "period": "month",
+                "id": "indiqube-kharadi",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Kharadi, Pune offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "ahmedabad": {
+        "cityName": "Ahmedabad",
+        "spaces": [
+            {
+                "name": "WeWork Navrangpura",
+                "location": "Navrangpura, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹9999",
+                "period": "month",
+                "id": "wework-navrangpura",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Navrangpura, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹9999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Prahlad Nagar",
+                "location": "Prahlad Nagar, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹8999",
+                "period": "month",
+                "id": "awfis-prahlad-nagar",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Prahlad Nagar, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹8999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Iscon",
+                "location": "Iscon, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10999",
+                "period": "month",
+                "id": "regus-iscon",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Iscon, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "91Springboard SG Highway",
+                "location": "SG Highway, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹9499",
+                "period": "month",
+                "id": "91springboard-sg-highway",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in SG Highway, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹9499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks Satellite",
+                "location": "Satellite, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹10499",
+                "period": "month",
+                "id": "cowrks-satellite",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Satellite, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹10499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Bodakdev",
+                "location": "Bodakdev, Ahmedabad",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹9999",
+                "period": "month",
+                "id": "indiqube-bodakdev",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Bodakdev, Ahmedabad offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹9999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    },
+    "delhi": {
+        "cityName": "Delhi",
+        "spaces": [
+            {
+                "name": "WeWork Connaught Place",
+                "location": "Connaught Place, Delhi",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹14999",
+                "period": "month",
+                "id": "wework-connaught-place",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Connaught Place, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹14999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Awfis Nehru Place",
+                "location": "Nehru Place, Delhi",
+                "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹12999",
+                "period": "month",
+                "id": "awfis-nehru-place",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Nehru Place, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹12999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Regus Aerocity",
+                "location": "Aerocity, Delhi",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹15999",
+                "period": "month",
+                "id": "regus-aerocity",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Aerocity, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹15999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "91Springboard Okhla",
+                "location": "Okhla, Delhi",
+                "image": "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹11999",
+                "period": "month",
+                "id": "91springboard-okhla",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Okhla, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹11999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "Cowrks Saket",
+                "location": "Saket, Delhi",
+                "image": "/images/latestimg/top18.webp",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹13999",
+                "period": "month",
+                "id": "cowrks-saket",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "/images/latestimg/top19.webp",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Saket, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹13999",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            },
+            {
+                "name": "IndiQube Hauz Khas",
+                "location": "Hauz Khas, Delhi",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                "amenities": [
+                    "High speed WiFi",
+                    "Coffee & Bar",
+                    "Meeting Rooms",
+                    "Parking",
+                    "24/7 Access",
+                    "Air Conditioning",
+                    "Printer & Scanner",
+                    "Cafeteria"
+                ],
+                "price": "₹13499",
+                "period": "month",
+                "id": "indiqube-hauz-khas",
+                "rating": 4.5,
+                "reviewsCount": 500,
+                "trustBadge": "Trusted by Nanospaces",
+                "images": [
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                ],
+                "description": "Modern coworking space in Hauz Khas, Delhi offering premium amenities and a vibrant professional community.",
+                "priceDetails": {
+                    "perSeat": "₹13499",
+                    "perCabin": "₹45,000",
+                    "period": "month"
+                }
+            }
+        ]
+    }
+}

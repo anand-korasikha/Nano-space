@@ -1,0 +1,658 @@
+/* Private Theatres Page Styles - Grid Layout */
+
+/* Hero Section */
+.theatre-hero-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: block;
+    background: #1a1a1a;
+}
+
+.theatre-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.theatre-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.theatre-hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.theatre-hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.theatre-hero-content p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Breadcrumb */
+.breadcrumb-container {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.6rem 0;
+}
+
+.breadcrumb {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-link svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.breadcrumb-link:hover {
+    color: #764ba2;
+}
+
+.breadcrumb-separator {
+    color: #999;
+}
+
+.breadcrumb-current {
+    color: #666;
+    font-weight: 600;
+}
+
+/* Main Container */
+.private-theatres-page {
+    background: #f5f7fa;
+    min-height: 100vh;
+    padding: 3rem 0;
+}
+
+.theatres-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* City Section */
+.city-section {
+    margin-bottom: 4rem;
+}
+
+.city-section:last-child {
+    margin-bottom: 2rem;
+}
+
+.city-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+/* Carousel Layout - Replaces Grid */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    padding: 0 3rem;
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    transition: all 0.3s ease;
+    color: #667eea;
+}
+
+.carousel-nav-btn:hover {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.carousel-nav-btn.left {
+    left: 0;
+}
+
+.carousel-nav-btn.right {
+    right: 0;
+}
+
+.theatres-carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+}
+
+.theatres-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.theatres-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+/* Theatre Card */
+.theatre-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 300px;
+    max-width: 300px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+}
+
+.theatre-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container - Reduced height */
+.theatre-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.theatre-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.theatre-card:hover .theatre-image {
+    transform: scale(1.05);
+}
+
+.theatre-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.theatre-badge.premium {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #1a1a1a;
+}
+
+.theatre-badge.luxury {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+}
+
+.theatre-badge.popular {
+    background: #6c3fb5;
+    color: white;
+}
+
+.image-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+    opacity: 0;
+}
+
+.theatre-card:hover .image-nav-btn {
+    opacity: 1;
+}
+
+.image-nav-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 8px;
+}
+
+.next-btn {
+    right: 8px;
+}
+
+.image-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: white;
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* Theatre Content - Compact */
+.theatre-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.theatre-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    min-height: 2.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.theatre-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0.5rem;
+    height: 1.2em;
+}
+
+.theatre-location {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.theatre-capacity {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    height: 1.5em;
+}
+
+.theatre-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    min-height: 1.5em;
+}
+
+.rating-score {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.rating-text {
+    font-size: 0.875rem;
+    color: #1a1a1a;
+}
+
+.rating-reviews {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Pricing */
+.theatre-pricing {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+    position: relative;
+    margin-top: auto;
+    min-height: 140px;
+}
+
+.member-price-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    min-height: 2rem;
+}
+
+.discount-badge {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    background: #ef4444;
+    color: white;
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.current-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.info-icon {
+    color: #666;
+    cursor: help;
+}
+
+.original-price {
+    font-size: 0.875rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.total-price {
+    font-size: 0.875rem;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.price-note {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .theatres-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile: Continuous carousel */
+@media (max-width: 768px) {
+    .theatre-hero-section {
+        height: 200px;
+    }
+
+    .theatre-hero-content h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .theatre-hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb {
+        padding: 0 1rem;
+        font-size: 0.8rem;
+    }
+
+    .private-theatres-page {
+        padding: 1.5rem 0;
+    }
+
+    .theatres-container {
+        padding: 0;
+    }
+
+    .city-title {
+        font-size: 1.25rem;
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-container {
+        padding: 0 1rem;
+    }
+
+    .carousel-nav-btn,
+    .image-nav-btn {
+        display: none;
+    }
+
+    /* Continuous carousel for mobile */
+    .theatres-carousel-mobile {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .theatres-carousel-track {
+        display: flex;
+        will-change: transform;
+    }
+
+    .theatre-card-wrapper {
+        flex-shrink: 0;
+        width: 100%;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .theatre-card-wrapper .theatre-card {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 520px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theatre-card-wrapper .theatre-image-container {
+        height: 200px;
+        flex-shrink: 0;
+    }
+
+    .theatre-card-wrapper .theatre-content {
+        padding: 0.875rem;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .theatre-card-wrapper .theatre-pricing {
+        margin-top: auto;
+    }
+
+    .theatres-carousel {
+        display: flex;
+        flex-direction: row;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .theatre-card {
+        min-width: calc(100vw - 2rem);
+        max-width: calc(100vw - 2rem);
+        width: calc(100vw - 2rem);
+        height: 520px;
+        scroll-snap-align: center;
+        flex-shrink: 0;
+    }
+
+    .theatre-image-container {
+        height: 200px;
+        flex-shrink: 0;
+    }
+
+    .theatre-content {
+        padding: 0.875rem;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theatre-pricing {
+        margin-top: auto;
+    }
+
+    .city-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .theatres-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .theatre-hero-section {
+        height: 180px;
+    }
+
+    .theatre-hero-content {
+        padding: 0 1rem;
+    }
+
+    .theatre-hero-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .theatre-hero-content p {
+        font-size: 0.85rem;
+    }
+
+    .breadcrumb {
+        padding: 0 0.75rem;
+        font-size: 0.75rem;
+        gap: 0.25rem;
+    }
+
+    .city-title {
+        font-size: 1.15rem;
+        padding-left: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .carousel-container {
+        padding: 0 0.75rem;
+    }
+
+    .theatre-card {
+        min-width: calc(100vw - 1.5rem);
+        max-width: calc(100vw - 1.5rem);
+        width: calc(100vw - 1.5rem);
+        height: 520px;
+    }
+
+    .theatre-image-container {
+        height: 180px;
+        flex-shrink: 0;
+    }
+
+    .theatre-content {
+        padding: 0.75rem;
+        min-height: 220px;
+    }
+
+    .city-section {
+        margin-bottom: 2rem;
+    }
+}

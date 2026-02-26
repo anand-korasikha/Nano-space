@@ -1,0 +1,217 @@
+/* ========================================
+   DISCOVER WORKSPACE - HORIZONTAL BANNER
+   ======================================== */
+
+/* 1. Section Container */
+.discover-workspace-section {
+    padding: 0px;
+    background: transparent;
+}
+
+/* 2. Wrapper - Full Width */
+.discover-workspace-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. Horizontal Banner - No Rounded Corners */
+.discover-workspace-card {
+    background: linear-gradient(to right, #e3f2fd 0%, #e3f2fd 40%, transparent 70%);
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 180px;
+    position: relative;
+}
+
+/* ========================================
+   LEFT SIDE - CONTENT AREA
+   ======================================== */
+
+.discover-content-area {
+    padding: 5px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    z-index: 2;
+}
+
+/* 4. Typography Hierarchy */
+
+/* Main Heading */
+.discover-main-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Sub Heading */
+.discover-sub-heading {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 400px;
+}
+
+/* 5. Call-to-Action Button */
+.discover-enquire-btn {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+    align-self: flex-start;
+}
+
+.discover-enquire-btn:hover {
+    background: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+.discover-enquire-btn:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   RIGHT SIDE - IMAGE AREA
+   ======================================== */
+
+.discover-image-area {
+    position: relative;
+    overflow: hidden;
+    height: 180px;
+}
+
+/* 6. Image Treatment */
+.discover-workspace-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* 7. Gradient Overlay - Fade from Left */
+.discover-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right,
+            rgba(227, 242, 253, 1) 0%,
+            rgba(227, 242, 253, 0.7) 15%,
+            rgba(227, 242, 253, 0.3) 30%,
+            transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ========================================
+   8. RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    .discover-workspace-card {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .discover-content-area {
+        padding: 32px 40px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .discover-enquire-btn {
+        align-self: center;
+    }
+
+    .discover-image-area {
+        height: 200px;
+    }
+
+    .discover-image-overlay {
+        background: linear-gradient(to bottom,
+                rgba(227, 242, 253, 0.9) 0%,
+                transparent 50%);
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .discover-content-area {
+        padding: 24px 20px;
+        gap: 10px;
+    }
+
+    .discover-main-heading {
+        font-size: 1.25rem;
+    }
+
+    .discover-sub-heading {
+        font-size: 0.8125rem;
+    }
+
+    .discover-enquire-btn {
+        padding: 10px 24px;
+        font-size: 0.8125rem;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .discover-image-area {
+        height: 160px;
+    }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+    .discover-content-area {
+        padding: 20px 16px;
+    }
+
+    .discover-main-heading {
+        font-size: 1.125rem;
+    }
+
+    .discover-sub-heading {
+        font-size: 0.75rem;
+    }
+
+    .discover-image-area {
+        height: 140px;
+    }
+}
+
+/* ========================================
+   9. ACCESSIBILITY
+   ======================================== */
+
+/* Focus State */
+.discover-enquire-btn:focus {
+    outline: 2px solid rgba(13, 110, 253, 0.5);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .discover-enquire-btn {
+        transition: none;
+    }
+}

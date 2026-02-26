@@ -1,0 +1,1052 @@
+{
+    "hyderabad": {
+        "cityName": "Hyderabad",
+        "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1950&q=80",
+        "title": "Fully Furnished Office Space For Rent In Hyderabad",
+        "subTitle": "Our Office Space Expert will connect with you with the best options.",
+        "locationsText": "All prime locations of Hyderabad - Hitec City, Kondapur, Madhapur, Gachibowli, Begumpet, Ameerpet, Financial District and More ...",
+        "features": [
+            "Fully Furnished Offices",
+            "Flexible Lease Terms",
+            "Verified & Approved Spaces",
+            "Escalation Free Space Rentals"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work.",
+                "features": [
+                    "High-Speed WiFi, HDTVs everything you need to do your best work."
+                ],
+                "accentTag": "up to 1 Gbps"
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth.",
+                "features": [
+                    "Connect with other people and share your skills for better and quick growth."
+                ],
+                "accentTag": "collaborative vibe"
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms.",
+                "features": [
+                    "Come up with great ideas and engage in valuable discussions in meeting rooms."
+                ],
+                "accentTag": "4K screens & whiteboards"
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost.",
+                "features": [
+                    "Printing and scanning facilities available without any extra cost."
+                ],
+                "accentTag": "wireless & duplex"
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating.",
+                "features": [
+                    "Lounge, kitchen, breakout rooms, and more.",
+                    "Mix of both work tables and lounge seating."
+                ],
+                "accentTag": "free espresso · kombucha"
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability.",
+                "features": [
+                    "Avoid morning hassle with easy and convenient parking area availability."
+                ],
+                "accentTag": "EV charging · bike racks"
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Hitec City",
+                "price": "₹ 50,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Kondapur",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Madhapur",
+                "price": "₹ 48,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Gachibowli",
+                "price": "₹ 52,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "KPHB",
+                "price": "₹ 42,000*",
+                "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Jubilee Hills",
+                "price": "₹ 65,000*",
+                "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Banjara Hills",
+                "price": "₹ 60,000*",
+                "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Financial District",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "bangalore": {
+        "cityName": "Bangalore",
+        "heroImage": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=2000&q=80",
+        "title": "Premium Managed Office Spaces in Bangalore",
+        "subTitle": "Customized workspace solutions for startups and enterprises in India's Silicon Valley.",
+        "locationsText": "Prime locations including Koramangala, Indiranagar, Whitefield, MG Road, HSR Layout and Electronic City.",
+        "features": [
+            "Plug & Play Ready Offices",
+            "Modern IT Infrastructure",
+            "Scalable Office Designs",
+            "Comprehensive Facility Management"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Koramangala",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Indiranagar",
+                "price": "₹ 58,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Whitefield",
+                "price": "₹ 42,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "HSR Layout",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "mumbai": {
+        "cityName": "Mumbai",
+        "heroImage": "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=2000&q=80",
+        "title": "Professional Office Spaces For Rent In Mumbai",
+        "subTitle": "Establish your business in India's financial capital with our curated office options.",
+        "locationsText": "Available in BKC, Andheri, Lower Parel, Powai, Worli, and Nariman Point.",
+        "features": [
+            "Prestigious Business Addresses",
+            "High-Speed Connectivity",
+            "Flexible Agreement Terms",
+            "24/7 Access & Security"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "BKC",
+                "price": "₹ 1,20,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Andheri East",
+                "price": "₹ 65,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Lower Parel",
+                "price": "₹ 85,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Powai",
+                "price": "₹ 75,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "delhi": {
+        "cityName": "Delhi",
+        "heroImage": "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=2000&q=80",
+        "title": "Fully Optimized Office Solutions In Delhi",
+        "subTitle": "Smart office spaces designed for maximum productivity in the heart of the capital.",
+        "locationsText": "Prime spots in Connaught Place, Nehru Place, Aerocity, Okhla, and Saket.",
+        "features": [
+            "Centrally Located Hubs",
+            "Full-Service Maintenance",
+            "Corporate Meeting Rooms",
+            "Ease of Connectivity"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Connaught Place",
+                "price": "₹ 90,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Nehru Place",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Aerocity",
+                "price": "₹ 1,10,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Okhla",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "chennai": {
+        "cityName": "Chennai",
+        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=2000&q=80",
+        "title": "Strategic Office Spaces For Rent In Chennai",
+        "subTitle": "Scale your business in the major cultural and economic center of South India.",
+        "locationsText": "Key hubs in OMR, T. Nagar, Guindy, Anna Salai, and Ambattur.",
+        "features": [
+            "IT Park Compliant Spaces",
+            "Excellent Public Transport",
+            "Grade A Building Options",
+            "Sustainable Green Offices"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "OMR",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "T. Nagar",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Guindy",
+                "price": "₹ 48,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Anna Salai",
+                "price": "₹ 62,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "pune": {
+        "cityName": "Pune",
+        "heroImage": "https://images.unsplash.com/photo-1562979314-bee7453e911c?auto=format&fit=crop&w=2000&q=80",
+        "title": "Modern Office Solutions In Pune",
+        "subTitle": "Establish your presence in India's leading IT and manufacturing hub.",
+        "locationsText": "Prime areas in Hinjewadi, Baner, Kharadi, Magarpatta, and Viman Nagar.",
+        "features": [
+            "Tech-Ready Infrastructure",
+            "Vibrant Business Ecosystem",
+            "Flexible Expansion Options",
+            "Lifestyle Integrated Offices"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Hinjewadi",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Baner",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Kharadi",
+                "price": "₹ 42,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Viman Nagar",
+                "price": "₹ 48,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "kolkata": {
+        "cityName": "Kolkata",
+        "heroImage": "https://images.unsplash.com/photo-1558434088-918448995329?auto=format&fit=crop&w=2000&q=80",
+        "title": "Heritage & Modern Office Spaces In Kolkata",
+        "subTitle": "Discover the perfect blend of tradition and modern infrastructure in the City of Joy.",
+        "locationsText": "Salt Lake Sector V, Rajarhat, Park Street, Camac Street, and Dalhousie.",
+        "features": [
+            "Salt Lake IT Hub Presence",
+            "Excellent Metro Access",
+            "Historic Business Districts",
+            "Competitive Rental Rates"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Sector V",
+                "price": "₹ 32,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Park Street",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "New Town",
+                "price": "₹ 30,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Dalhousie",
+                "price": "₹ 42,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "ahmedabad": {
+        "cityName": "Ahmedabad",
+        "heroImage": "https://images.unsplash.com/photo-1594911776510-917761034f59?auto=format&fit=crop&w=2000&q=80",
+        "title": "Smart Office Solutions In Ahmedabad",
+        "subTitle": "Dynamic workspaces in India's fastest growing business ecosystem.",
+        "locationsText": "S.G. Highway, Prahlad Nagar, GIFT City, Ashram Road, and Bodakdev.",
+        "features": [
+            "GIFT City Smart Offices",
+            "Excellent Road Connectivity",
+            "Modern High-Rise Facilities",
+            "Entrepreneurial Community"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "S.G. Highway",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "GIFT City",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Prahlad Nagar",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Ashram Road",
+                "price": "₹ 38,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "gurgaon": {
+        "cityName": "Gurgaon",
+        "heroImage": "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=2000&q=80",
+        "title": "Elite Corporate Office Spaces In Gurgaon",
+        "subTitle": "Operate from Cyber City and beyond in India's leading corporate hub.",
+        "locationsText": "Cyber City, Golf Course Road, Sohna Road, and Udyog Vihar.",
+        "features": [
+            "Premium High-Rise Offices",
+            "MNC Neighborhoods",
+            "Rapid Metro Convenience",
+            "24/7 Power & Tech Support"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Cyber City",
+                "price": "₹ 85,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Golf Course Road",
+                "price": "₹ 1,10,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Sohna Road",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Udyog Vihar",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "noida": {
+        "cityName": "Noida",
+        "heroImage": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=2000&q=80",
+        "title": "Modern Tech Hub Offices In Noida",
+        "subTitle": "Efficient and scalable workspaces in the heart of NCR's IT corridor.",
+        "locationsText": "Sector 62, Sector 18, Noida Expressway, and Greater Noida.",
+        "features": [
+            "Proximity to Delhi",
+            "Large Scale Campus Offices",
+            "Affordable Tech Hubs",
+            "New Airport Accessibility"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Sector 62",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Sector 18",
+                "price": "₹ 60,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Expressway",
+                "price": "₹ 42,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Sector 125",
+                "price": "₹ 48,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "surat": {
+        "cityName": "Surat",
+        "heroImage": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=2000&q=80",
+        "title": "Business Hub Office Spaces In Surat",
+        "subTitle": "Join the thriving textile and diamond capital with modern office setups.",
+        "locationsText": "Piplod, Adajan, Vesu, Ring Road, and Varachha.",
+        "features": [
+            "Diamond Bourse Access",
+            "Vibrant Business Culture",
+            "Rapidly Developing Areas",
+            "Premium Commercial Towers"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Vesu",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Adajan",
+                "price": "₹ 32,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Piplod",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Ring Road",
+                "price": "₹ 50,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "lucknow": {
+        "cityName": "Lucknow",
+        "heroImage": "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=2000&q=80",
+        "title": "Premium Office Spaces In Lucknow",
+        "subTitle": "Heritage charm meets modern professional infrastructure in the capital of UP.",
+        "locationsText": "Gomti Nagar, Hazratganj, Indira Nagar, and Alambagh.",
+        "features": [
+            "Gomti Nagar IT City",
+            "Classic Business Districts",
+            "State Capital Advantages",
+            "Lush Professional Environs"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Gomti Nagar",
+                "price": "₹ 30,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Hazratganj",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Indira Nagar",
+                "price": "₹ 28,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Amar Shaheed Path",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "kochi": {
+        "cityName": "Kochi",
+        "heroImage": "https://images.unsplash.com/photo-1512495039889-52a3b799c9bc?auto=format&fit=crop&w=2000&q=80",
+        "title": "Coastal Tech Offices In Kochi",
+        "subTitle": "Work from Paradise with high-tech infrastructure in Kerala's business capital.",
+        "locationsText": "Kakkanad, MG Road, Ernakulam, and Edappally.",
+        "features": [
+            "Smart City Kakkanad",
+            "High-Speed Sea Port Access",
+            "Lush Scenic Workspaces",
+            "Active Tech Community"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Kakkanad",
+                "price": "₹ 25,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "MG Road",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Edappally",
+                "price": "₹ 35,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Kalamassery",
+                "price": "₹ 30,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "coimbatore": {
+        "cityName": "Coimbatore",
+        "heroImage": "https://images.unsplash.com/photo-1562979314-bee7453e911c?auto=format&fit=crop&w=2000&q=80",
+        "title": "Industrial & Tech Offices In Coimbatore",
+        "subTitle": "Efficiency meets growth in the textile capital of the South.",
+        "locationsText": "Avinashi Road, Race Course, RS Puram, and Saravanampatti.",
+        "features": [
+            "Emerging Tech Parks",
+            "Strong Industrial Backbone",
+            "Clean & Sustainable Offices",
+            "Connectivity To Major Airports"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "Avinashi Road",
+                "price": "₹ 32,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Race Course",
+                "price": "₹ 50,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Saravanampatti",
+                "price": "₹ 28,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "RS Puram",
+                "price": "₹ 45,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    },
+    "jaipur": {
+        "cityName": "Jaipur",
+        "heroImage": "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=2000&q=80",
+        "title": "Royal Commercial Office Spaces In Jaipur",
+        "subTitle": "Work from the Pink City with regal aesthetics and modern tech facilities.",
+        "locationsText": "Mansarovar, Vaishali Nagar, Malviya Nagar, and C-Scheme.",
+        "features": [
+            "Cultural Vibrant Surroundings",
+            "Strategic Industrial Areas",
+            "Modern Co-working Hubs",
+            "Easy Inter-City Connectivity"
+        ],
+        "amenities": [
+            {
+                "id": "wifi",
+                "title": "High Speed WiFi",
+                "description": "High-Speed WiFi, HDTVs everything you need to do your best work."
+            },
+            {
+                "id": "workstation",
+                "title": "Comfy Workstation",
+                "description": "Connect with other people and share your skills for better and quick growth."
+            },
+            {
+                "id": "meeting",
+                "title": "Meeting Rooms",
+                "description": "Come up with great ideas and engage in valuable discussions in meeting rooms."
+            },
+            {
+                "id": "printer",
+                "title": "Printer",
+                "description": "Printing and scanning facilities available without any extra cost."
+            },
+            {
+                "id": "pantry",
+                "title": "Pantry",
+                "description": "Lounge, kitchen, breakout rooms, and more. Mix of both work tables and lounge seating."
+            },
+            {
+                "id": "parking",
+                "title": "Parking",
+                "description": "Avoid morning hassle with easy and convenient parking area availability."
+            }
+        ],
+        "topLocations": [
+            {
+                "name": "C-Scheme",
+                "price": "₹ 55,000*",
+                "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Malviya Nagar",
+                "price": "₹ 40,000*",
+                "image": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Vaishali Nagar",
+                "price": "₹ 38,000*",
+                "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "name": "Mansarovar",
+                "price": "₹ 32,000*",
+                "image": "https://images.unsplash.com/photo-1571624436279-b272977e4a2a?auto=format&fit=crop&w=800&q=80"
+            }
+        ]
+    }
+}

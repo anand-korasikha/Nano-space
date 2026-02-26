@@ -1,0 +1,909 @@
+{
+    "categories": [
+        {
+            "id": "it-development",
+            "name": "IT Development",
+            "slug": "it-development",
+            "icon": "💻",
+            "description": "Connect with expert developers and tech professionals for all your digital needs",
+            "subcategories": [
+                "Website & App Development",
+                "Software & SaaS Solutions",
+                "AI, Automation & CRM Development",
+                "Cloud & Cybersecurity Services"
+            ],
+            "serviceDescriptions": [
+                "Custom solutions for web and mobile platforms with modern frameworks and responsive design",
+                "Scalable software products and subscription-based service models for growing businesses",
+                "Intelligent systems and customer relationship management solutions powered by AI",
+                "Secure cloud infrastructure and comprehensive cybersecurity protection systems"
+            ],
+            "providers": [
+                {
+                    "id": 1,
+                    "name": "Rajesh Kumar",
+                    "expertise": "Full Stack Developer",
+                    "phone": "+91 98765 43210",
+                    "email": "rajesh.kumar@techsolutions.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 8,
+                    "profileSummary": "Specialized in MERN stack, cloud deployment, and scalable web applications",
+                    "specializations": [
+                        "React",
+                        "Node.js",
+                        "AWS",
+                        "MongoDB"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Priya Sharma",
+                    "expertise": "Mobile App Developer",
+                    "phone": "+91 98765 43211",
+                    "email": "priya.sharma@appdev.in",
+                    "location": "Hyderabad, Telangana",
+                    "experience": 6,
+                    "profileSummary": "Expert in cross-platform mobile development with Flutter and React Native",
+                    "specializations": [
+                        "Flutter",
+                        "React Native",
+                        "iOS",
+                        "Android"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Amit Patel",
+                    "expertise": "AI/ML Engineer",
+                    "phone": "+91 98765 43212",
+                    "email": "amit.patel@aitech.com",
+                    "location": "Pune, Maharashtra",
+                    "experience": 7,
+                    "profileSummary": "Building intelligent automation solutions and custom CRM systems",
+                    "specializations": [
+                        "Python",
+                        "TensorFlow",
+                        "Machine Learning",
+                        "Automation"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Sneha Reddy",
+                    "expertise": "Cloud Solutions Architect",
+                    "phone": "+91 98765 43213",
+                    "email": "sneha.reddy@cloudpro.in",
+                    "location": "Chennai, Tamil Nadu",
+                    "experience": 9,
+                    "profileSummary": "AWS & Azure certified professional specializing in cloud migration",
+                    "specializations": [
+                        "AWS",
+                        "Azure",
+                        "DevOps",
+                        "Kubernetes"
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "Vikram Singh",
+                    "expertise": "Cybersecurity Specialist",
+                    "phone": "+91 98765 43214",
+                    "email": "vikram.singh@securetech.com",
+                    "location": "Delhi NCR",
+                    "experience": 10,
+                    "profileSummary": "Protecting businesses with advanced security solutions and penetration testing",
+                    "specializations": [
+                        "Security Audits",
+                        "Penetration Testing",
+                        "Compliance",
+                        "Firewall"
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "Ananya Iyer",
+                    "expertise": "SaaS Product Developer",
+                    "phone": "+91 98765 43215",
+                    "email": "ananya.iyer@saasbuilders.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 5,
+                    "profileSummary": "Creating scalable SaaS platforms for startups and enterprises",
+                    "specializations": [
+                        "SaaS",
+                        "Microservices",
+                        "API Development",
+                        "PostgreSQL"
+                    ]
+                },
+                {
+                    "id": 7,
+                    "name": "Karthik Menon",
+                    "expertise": "E-commerce Developer",
+                    "phone": "+91 98765 43216",
+                    "email": "karthik.menon@ecomtech.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 6,
+                    "profileSummary": "Building custom e-commerce solutions with payment gateway integration",
+                    "specializations": [
+                        "Shopify",
+                        "WooCommerce",
+                        "Payment Gateways",
+                        "PHP"
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "Divya Nair",
+                    "expertise": "UI/UX Developer",
+                    "phone": "+91 98765 43217",
+                    "email": "divya.nair@designtech.in",
+                    "location": "Kochi, Kerala",
+                    "experience": 4,
+                    "profileSummary": "Creating beautiful and intuitive user interfaces with modern frameworks",
+                    "specializations": [
+                        "Figma",
+                        "React",
+                        "CSS3",
+                        "Responsive Design"
+                    ]
+                },
+                {
+                    "id": 9,
+                    "name": "Arjun Gupta",
+                    "expertise": "Blockchain Developer",
+                    "phone": "+91 98765 43218",
+                    "email": "arjun.gupta@blockchain.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 5,
+                    "profileSummary": "Developing decentralized applications and smart contracts",
+                    "specializations": [
+                        "Ethereum",
+                        "Solidity",
+                        "Web3",
+                        "Smart Contracts"
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "Meera Joshi",
+                    "expertise": "Database Administrator",
+                    "phone": "+91 98765 43219",
+                    "email": "meera.joshi@dbsolutions.com",
+                    "location": "Pune, Maharashtra",
+                    "experience": 8,
+                    "profileSummary": "Expert in database design, optimization, and management",
+                    "specializations": [
+                        "MySQL",
+                        "PostgreSQL",
+                        "MongoDB",
+                        "Database Optimization"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "digital-marketing",
+            "name": "Digital Marketing",
+            "slug": "digital-marketing",
+            "icon": "📱",
+            "description": "Grow your business with expert digital marketing professionals",
+            "subcategories": [
+                "SEO & Performance Marketing",
+                "Social Media & Influencer Marketing",
+                "Meta & Google Ads",
+                "Branding, Content & Lead Generation"
+            ],
+            "serviceDescriptions": [
+                "Data-driven SEO strategies and performance marketing to boost your online visibility",
+                "Engaging social media campaigns and influencer partnerships for brand growth",
+                "Targeted advertising on Meta and Google platforms for maximum ROI",
+                "Strategic branding, compelling content creation, and lead generation campaigns"
+            ],
+            "providers": [
+                {
+                    "id": 11,
+                    "name": "Rohit Malhotra",
+                    "expertise": "SEO Specialist",
+                    "phone": "+91 98765 43220",
+                    "email": "rohit.malhotra@seoexperts.in",
+                    "location": "Delhi NCR",
+                    "experience": 7,
+                    "profileSummary": "Helping businesses rank #1 on Google with proven SEO strategies",
+                    "specializations": [
+                        "SEO",
+                        "Google Analytics",
+                        "Keyword Research",
+                        "Link Building"
+                    ]
+                },
+                {
+                    "id": 12,
+                    "name": "Kavya Rao",
+                    "expertise": "Social Media Manager",
+                    "phone": "+91 98765 43221",
+                    "email": "kavya.rao@socialmedia.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 5,
+                    "profileSummary": "Creating viral social media campaigns and managing brand presence",
+                    "specializations": [
+                        "Instagram",
+                        "Facebook",
+                        "LinkedIn",
+                        "Content Strategy"
+                    ]
+                },
+                {
+                    "id": 13,
+                    "name": "Aditya Verma",
+                    "expertise": "Google Ads Expert",
+                    "phone": "+91 98765 43222",
+                    "email": "aditya.verma@adspro.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 6,
+                    "profileSummary": "Maximizing ROI with targeted Google Ads and PPC campaigns",
+                    "specializations": [
+                        "Google Ads",
+                        "PPC",
+                        "Conversion Optimization",
+                        "Analytics"
+                    ]
+                },
+                {
+                    "id": 14,
+                    "name": "Neha Kapoor",
+                    "expertise": "Content Marketing Strategist",
+                    "phone": "+91 98765 43223",
+                    "email": "neha.kapoor@contentpro.com",
+                    "location": "Pune, Maharashtra",
+                    "experience": 8,
+                    "profileSummary": "Crafting compelling content strategies that drive engagement and conversions",
+                    "specializations": [
+                        "Content Strategy",
+                        "Copywriting",
+                        "Blogging",
+                        "Email Marketing"
+                    ]
+                },
+                {
+                    "id": 15,
+                    "name": "Sanjay Desai",
+                    "expertise": "Performance Marketing Lead",
+                    "phone": "+91 98765 43224",
+                    "email": "sanjay.desai@performance.in",
+                    "location": "Hyderabad, Telangana",
+                    "experience": 9,
+                    "profileSummary": "Data-driven marketing expert focused on measurable results",
+                    "specializations": [
+                        "Performance Marketing",
+                        "Attribution",
+                        "A/B Testing",
+                        "ROI Analysis"
+                    ]
+                },
+                {
+                    "id": 16,
+                    "name": "Pooja Menon",
+                    "expertise": "Influencer Marketing Manager",
+                    "phone": "+91 98765 43225",
+                    "email": "pooja.menon@influencer.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 4,
+                    "profileSummary": "Connecting brands with the right influencers for maximum impact",
+                    "specializations": [
+                        "Influencer Outreach",
+                        "Campaign Management",
+                        "Instagram",
+                        "YouTube"
+                    ]
+                },
+                {
+                    "id": 17,
+                    "name": "Rahul Khanna",
+                    "expertise": "Meta Ads Specialist",
+                    "phone": "+91 98765 43226",
+                    "email": "rahul.khanna@metaads.in",
+                    "location": "Delhi NCR",
+                    "experience": 5,
+                    "profileSummary": "Expert in Facebook and Instagram advertising for lead generation",
+                    "specializations": [
+                        "Facebook Ads",
+                        "Instagram Ads",
+                        "Retargeting",
+                        "Lead Generation"
+                    ]
+                },
+                {
+                    "id": 18,
+                    "name": "Shreya Pillai",
+                    "expertise": "Brand Strategist",
+                    "phone": "+91 98765 43227",
+                    "email": "shreya.pillai@branding.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 7,
+                    "profileSummary": "Building memorable brands with strategic positioning and storytelling",
+                    "specializations": [
+                        "Brand Strategy",
+                        "Visual Identity",
+                        "Positioning",
+                        "Storytelling"
+                    ]
+                },
+                {
+                    "id": 19,
+                    "name": "Manish Agarwal",
+                    "expertise": "Email Marketing Expert",
+                    "phone": "+91 98765 43228",
+                    "email": "manish.agarwal@emailpro.in",
+                    "location": "Chennai, Tamil Nadu",
+                    "experience": 6,
+                    "profileSummary": "Creating high-converting email campaigns and automation workflows",
+                    "specializations": [
+                        "Email Marketing",
+                        "Marketing Automation",
+                        "Mailchimp",
+                        "Segmentation"
+                    ]
+                },
+                {
+                    "id": 20,
+                    "name": "Riya Shah",
+                    "expertise": "Growth Hacker",
+                    "phone": "+91 98765 43229",
+                    "email": "riya.shah@growthhack.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 5,
+                    "profileSummary": "Rapid growth specialist using creative marketing tactics",
+                    "specializations": [
+                        "Growth Hacking",
+                        "Viral Marketing",
+                        "User Acquisition",
+                        "Analytics"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "advocates-lawyers",
+            "name": "Advocates / Lawyers",
+            "slug": "advocates-lawyers",
+            "icon": "⚖️",
+            "description": "Expert legal counsel for all your business and personal needs",
+            "subcategories": [
+                "Corporate & Startup Legal Services",
+                "Contracts, Agreements & Compliance",
+                "Intellectual Property & Trademarks",
+                "Civil, Criminal & Commercial Law"
+            ],
+            "serviceDescriptions": [
+                "Comprehensive legal support for company incorporation, governance, and startup compliance",
+                "Expert drafting and review of contracts, agreements, and regulatory compliance matters",
+                "Protection of intellectual property rights, trademark registration, and IP litigation",
+                "Professional representation in civil disputes, criminal defense, and commercial litigation"
+            ],
+            "providers": [
+                {
+                    "id": 21,
+                    "name": "Adv. Suresh Krishnan",
+                    "expertise": "Corporate Lawyer",
+                    "phone": "+91 98765 43230",
+                    "email": "suresh.krishnan@legalcorp.in",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 12,
+                    "profileSummary": "Specializing in company incorporation, compliance, and corporate governance",
+                    "specializations": [
+                        "Company Law",
+                        "Compliance",
+                        "M&A",
+                        "Corporate Governance"
+                    ]
+                },
+                {
+                    "id": 22,
+                    "name": "Adv. Lakshmi Iyer",
+                    "expertise": "IP & Trademark Attorney",
+                    "phone": "+91 98765 43231",
+                    "email": "lakshmi.iyer@iplegal.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 10,
+                    "profileSummary": "Protecting intellectual property rights and trademark registration",
+                    "specializations": [
+                        "Trademark",
+                        "Copyright",
+                        "Patent",
+                        "IP Litigation"
+                    ]
+                },
+                {
+                    "id": 23,
+                    "name": "Adv. Vikram Malhotra",
+                    "expertise": "Contract Law Specialist",
+                    "phone": "+91 98765 43232",
+                    "email": "vikram.malhotra@contracts.in",
+                    "location": "Delhi NCR",
+                    "experience": 15,
+                    "profileSummary": "Drafting and reviewing commercial contracts and agreements",
+                    "specializations": [
+                        "Contract Drafting",
+                        "Commercial Law",
+                        "Dispute Resolution",
+                        "Negotiation"
+                    ]
+                },
+                {
+                    "id": 24,
+                    "name": "Adv. Priya Nambiar",
+                    "expertise": "Startup Legal Advisor",
+                    "phone": "+91 98765 43233",
+                    "email": "priya.nambiar@startuplegal.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 8,
+                    "profileSummary": "Helping startups with incorporation, funding, and legal compliance",
+                    "specializations": [
+                        "Startup Law",
+                        "Funding Agreements",
+                        "ESOP",
+                        "Compliance"
+                    ]
+                },
+                {
+                    "id": 25,
+                    "name": "Adv. Rajesh Gupta",
+                    "expertise": "Civil Litigation Lawyer",
+                    "phone": "+91 98765 43234",
+                    "email": "rajesh.gupta@civillaw.in",
+                    "location": "Pune, Maharashtra",
+                    "experience": 14,
+                    "profileSummary": "Representing clients in civil disputes and property matters",
+                    "specializations": [
+                        "Civil Litigation",
+                        "Property Law",
+                        "Family Law",
+                        "Consumer Rights"
+                    ]
+                },
+                {
+                    "id": 26,
+                    "name": "Adv. Anjali Deshmukh",
+                    "expertise": "Criminal Defense Attorney",
+                    "phone": "+91 98765 43235",
+                    "email": "anjali.deshmukh@criminallaw.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 11,
+                    "profileSummary": "Experienced criminal defense lawyer with strong courtroom presence",
+                    "specializations": [
+                        "Criminal Defense",
+                        "White Collar Crime",
+                        "Bail",
+                        "Appeals"
+                    ]
+                },
+                {
+                    "id": 27,
+                    "name": "Adv. Karthik Reddy",
+                    "expertise": "Tax & GST Lawyer",
+                    "phone": "+91 98765 43236",
+                    "email": "karthik.reddy@taxlegal.in",
+                    "location": "Hyderabad, Telangana",
+                    "experience": 9,
+                    "profileSummary": "Expert in tax litigation and GST compliance matters",
+                    "specializations": [
+                        "Tax Law",
+                        "GST",
+                        "Income Tax",
+                        "Tax Litigation"
+                    ]
+                },
+                {
+                    "id": 28,
+                    "name": "Adv. Meera Joshi",
+                    "expertise": "Employment Law Specialist",
+                    "phone": "+91 98765 43237",
+                    "email": "meera.joshi@employmentlaw.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 7,
+                    "profileSummary": "Advising on employment contracts, labor law, and workplace disputes",
+                    "specializations": [
+                        "Employment Law",
+                        "Labor Disputes",
+                        "HR Compliance",
+                        "Contracts"
+                    ]
+                },
+                {
+                    "id": 29,
+                    "name": "Adv. Arjun Pillai",
+                    "expertise": "Real Estate Lawyer",
+                    "phone": "+91 98765 43238",
+                    "email": "arjun.pillai@realestate.in",
+                    "location": "Chennai, Tamil Nadu",
+                    "experience": 13,
+                    "profileSummary": "Handling property transactions, title verification, and real estate disputes",
+                    "specializations": [
+                        "Real Estate",
+                        "Property Law",
+                        "Title Verification",
+                        "RERA"
+                    ]
+                },
+                {
+                    "id": 30,
+                    "name": "Adv. Divya Menon",
+                    "expertise": "Data Privacy & Compliance",
+                    "phone": "+91 98765 43239",
+                    "email": "divya.menon@privacy.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 6,
+                    "profileSummary": "Ensuring compliance with data protection laws and privacy regulations",
+                    "specializations": [
+                        "Data Privacy",
+                        "GDPR",
+                        "Compliance",
+                        "Cybersecurity Law"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "chartered-accountants",
+            "name": "Chartered Accountants",
+            "slug": "chartered-accountants",
+            "icon": "📊",
+            "description": "Professional accounting and financial advisory services",
+            "subcategories": [
+                "Accounting & Bookkeeping",
+                "GST, Income Tax & Audits",
+                "Company Incorporation & ROC Filings",
+                "Financial Advisory & Valuations"
+            ],
+            "serviceDescriptions": [
+                "Accurate bookkeeping and accounting services to maintain your financial records",
+                "Expert GST compliance, income tax planning, and comprehensive audit services",
+                "Seamless company registration, incorporation, and ROC filing assistance",
+                "Strategic financial advisory, business valuations, and wealth management solutions"
+            ],
+            "providers": [
+                {
+                    "id": 31,
+                    "name": "CA Ramesh Kumar",
+                    "expertise": "Tax Consultant",
+                    "phone": "+91 98765 43240",
+                    "email": "ramesh.kumar@catax.in",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 15,
+                    "profileSummary": "Expert in income tax planning, GST compliance, and tax audits",
+                    "specializations": [
+                        "Income Tax",
+                        "GST",
+                        "Tax Planning",
+                        "Audits"
+                    ]
+                },
+                {
+                    "id": 32,
+                    "name": "CA Sneha Patel",
+                    "expertise": "Audit & Assurance",
+                    "phone": "+91 98765 43241",
+                    "email": "sneha.patel@audit.com",
+                    "location": "Ahmedabad, Gujarat",
+                    "experience": 10,
+                    "profileSummary": "Conducting statutory audits and internal audits for businesses",
+                    "specializations": [
+                        "Statutory Audit",
+                        "Internal Audit",
+                        "Risk Assessment",
+                        "Compliance"
+                    ]
+                },
+                {
+                    "id": 33,
+                    "name": "CA Anil Sharma",
+                    "expertise": "Company Incorporation Specialist",
+                    "phone": "+91 98765 43242",
+                    "email": "anil.sharma@incorporation.in",
+                    "location": "Delhi NCR",
+                    "experience": 12,
+                    "profileSummary": "Helping startups and businesses with company registration and ROC filings",
+                    "specializations": [
+                        "Company Incorporation",
+                        "ROC Filings",
+                        "Compliance",
+                        "MCA"
+                    ]
+                },
+                {
+                    "id": 34,
+                    "name": "CA Priya Reddy",
+                    "expertise": "GST Consultant",
+                    "phone": "+91 98765 43243",
+                    "email": "priya.reddy@gst.com",
+                    "location": "Hyderabad, Telangana",
+                    "experience": 8,
+                    "profileSummary": "GST registration, return filing, and compliance management",
+                    "specializations": [
+                        "GST Registration",
+                        "GST Returns",
+                        "Input Tax Credit",
+                        "Compliance"
+                    ]
+                },
+                {
+                    "id": 35,
+                    "name": "CA Vijay Iyer",
+                    "expertise": "Financial Advisor",
+                    "phone": "+91 98765 43244",
+                    "email": "vijay.iyer@finance.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 14,
+                    "profileSummary": "Providing strategic financial planning and investment advisory",
+                    "specializations": [
+                        "Financial Planning",
+                        "Investment Advisory",
+                        "Wealth Management",
+                        "Retirement Planning"
+                    ]
+                },
+                {
+                    "id": 36,
+                    "name": "CA Kavita Menon",
+                    "expertise": "Bookkeeping & Accounting",
+                    "phone": "+91 98765 43245",
+                    "email": "kavita.menon@bookkeeping.com",
+                    "location": "Kochi, Kerala",
+                    "experience": 7,
+                    "profileSummary": "Maintaining accurate books of accounts and financial records",
+                    "specializations": [
+                        "Bookkeeping",
+                        "Tally",
+                        "QuickBooks",
+                        "Financial Statements"
+                    ]
+                },
+                {
+                    "id": 37,
+                    "name": "CA Suresh Nair",
+                    "expertise": "Business Valuation Expert",
+                    "phone": "+91 98765 43246",
+                    "email": "suresh.nair@valuation.in",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 16,
+                    "profileSummary": "Conducting business valuations for M&A, funding, and compliance",
+                    "specializations": [
+                        "Business Valuation",
+                        "M&A",
+                        "Due Diligence",
+                        "Financial Modeling"
+                    ]
+                },
+                {
+                    "id": 38,
+                    "name": "CA Deepa Joshi",
+                    "expertise": "Startup CFO Services",
+                    "phone": "+91 98765 43247",
+                    "email": "deepa.joshi@startupcfo.com",
+                    "location": "Pune, Maharashtra",
+                    "experience": 9,
+                    "profileSummary": "Virtual CFO services for startups and SMEs",
+                    "specializations": [
+                        "Virtual CFO",
+                        "Financial Strategy",
+                        "Fundraising",
+                        "Budgeting"
+                    ]
+                },
+                {
+                    "id": 39,
+                    "name": "CA Rajiv Gupta",
+                    "expertise": "International Taxation",
+                    "phone": "+91 98765 43248",
+                    "email": "rajiv.gupta@internationaltax.in",
+                    "location": "Delhi NCR",
+                    "experience": 13,
+                    "profileSummary": "Expert in cross-border taxation and transfer pricing",
+                    "specializations": [
+                        "International Tax",
+                        "Transfer Pricing",
+                        "DTAA",
+                        "FEMA"
+                    ]
+                },
+                {
+                    "id": 40,
+                    "name": "CA Anita Desai",
+                    "expertise": "Payroll & Compliance",
+                    "phone": "+91 98765 43249",
+                    "email": "anita.desai@payroll.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 6,
+                    "profileSummary": "Managing payroll processing and statutory compliance",
+                    "specializations": [
+                        "Payroll",
+                        "PF",
+                        "ESI",
+                        "Labor Compliance"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "mentors-trainers",
+            "name": "Mentors / Trainers",
+            "slug": "mentors-trainers",
+            "icon": "🎓",
+            "description": "Learn from industry experts and accelerate your growth",
+            "subcategories": [
+                "Startup & Business Mentoring",
+                "Leadership & Management Training",
+                "Sales, Marketing & Finance Training",
+                "Career & Skill Development"
+            ],
+            "serviceDescriptions": [
+                "Expert guidance for startups and entrepreneurs on strategy, growth, and fundraising",
+                "Executive coaching and leadership development programs for managers and teams",
+                "Comprehensive training in sales techniques, marketing strategies, and financial management",
+                "Personalized career coaching and skill development programs for professional growth"
+            ],
+            "providers": [
+                {
+                    "id": 41,
+                    "name": "Ravi Shankar",
+                    "expertise": "Startup Mentor",
+                    "phone": "+91 98765 43250",
+                    "email": "ravi.shankar@startupmentor.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 18,
+                    "profileSummary": "Serial entrepreneur mentoring early-stage startups on product-market fit",
+                    "specializations": [
+                        "Startup Strategy",
+                        "Product Development",
+                        "Fundraising",
+                        "Growth"
+                    ]
+                },
+                {
+                    "id": 42,
+                    "name": "Dr. Meena Krishnan",
+                    "expertise": "Leadership Coach",
+                    "phone": "+91 98765 43251",
+                    "email": "meena.krishnan@leadership.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 20,
+                    "profileSummary": "Executive coach helping leaders unlock their full potential",
+                    "specializations": [
+                        "Leadership",
+                        "Executive Coaching",
+                        "Team Building",
+                        "Communication"
+                    ]
+                },
+                {
+                    "id": 43,
+                    "name": "Amit Verma",
+                    "expertise": "Sales Training Expert",
+                    "phone": "+91 98765 43252",
+                    "email": "amit.verma@salestraining.in",
+                    "location": "Delhi NCR",
+                    "experience": 15,
+                    "profileSummary": "Training sales teams on consultative selling and closing techniques",
+                    "specializations": [
+                        "Sales Training",
+                        "Negotiation",
+                        "B2B Sales",
+                        "CRM"
+                    ]
+                },
+                {
+                    "id": 44,
+                    "name": "Priya Kapoor",
+                    "expertise": "Digital Marketing Trainer",
+                    "phone": "+91 98765 43253",
+                    "email": "priya.kapoor@digitaltraining.com",
+                    "location": "Pune, Maharashtra",
+                    "experience": 10,
+                    "profileSummary": "Teaching digital marketing strategies and hands-on campaign management",
+                    "specializations": [
+                        "Digital Marketing",
+                        "SEO",
+                        "Social Media",
+                        "Google Ads"
+                    ]
+                },
+                {
+                    "id": 45,
+                    "name": "Sunil Reddy",
+                    "expertise": "Business Strategy Consultant",
+                    "phone": "+91 98765 43254",
+                    "email": "sunil.reddy@strategy.in",
+                    "location": "Hyderabad, Telangana",
+                    "experience": 22,
+                    "profileSummary": "Helping businesses develop winning strategies and scale operations",
+                    "specializations": [
+                        "Business Strategy",
+                        "Operations",
+                        "Scaling",
+                        "Market Entry"
+                    ]
+                },
+                {
+                    "id": 46,
+                    "name": "Anjali Nair",
+                    "expertise": "Career Coach",
+                    "phone": "+91 98765 43255",
+                    "email": "anjali.nair@careercoach.com",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 12,
+                    "profileSummary": "Guiding professionals through career transitions and skill development",
+                    "specializations": [
+                        "Career Counseling",
+                        "Resume Building",
+                        "Interview Prep",
+                        "Personal Branding"
+                    ]
+                },
+                {
+                    "id": 47,
+                    "name": "Karthik Iyer",
+                    "expertise": "Finance & Accounting Trainer",
+                    "phone": "+91 98765 43256",
+                    "email": "karthik.iyer@financetraining.in",
+                    "location": "Chennai, Tamil Nadu",
+                    "experience": 14,
+                    "profileSummary": "Training professionals in financial modeling and accounting software",
+                    "specializations": [
+                        "Financial Modeling",
+                        "Excel",
+                        "Tally",
+                        "Accounting"
+                    ]
+                },
+                {
+                    "id": 48,
+                    "name": "Neha Malhotra",
+                    "expertise": "Soft Skills Trainer",
+                    "phone": "+91 98765 43257",
+                    "email": "neha.malhotra@softskills.com",
+                    "location": "Mumbai, Maharashtra",
+                    "experience": 11,
+                    "profileSummary": "Developing communication, presentation, and interpersonal skills",
+                    "specializations": [
+                        "Communication",
+                        "Presentation Skills",
+                        "Public Speaking",
+                        "Emotional Intelligence"
+                    ]
+                },
+                {
+                    "id": 49,
+                    "name": "Vikram Desai",
+                    "expertise": "Technology Mentor",
+                    "phone": "+91 98765 43258",
+                    "email": "vikram.desai@techmentor.in",
+                    "location": "Bangalore, Karnataka",
+                    "experience": 16,
+                    "profileSummary": "Mentoring developers and tech teams on best practices and architecture",
+                    "specializations": [
+                        "Software Architecture",
+                        "Code Review",
+                        "Tech Leadership",
+                        "DevOps"
+                    ]
+                },
+                {
+                    "id": 50,
+                    "name": "Shreya Pillai",
+                    "expertise": "Entrepreneurship Trainer",
+                    "phone": "+91 98765 43259",
+                    "email": "shreya.pillai@entrepreneur.com",
+                    "location": "Kochi, Kerala",
+                    "experience": 13,
+                    "profileSummary": "Teaching aspiring entrepreneurs how to start and grow successful businesses",
+                    "specializations": [
+                        "Entrepreneurship",
+                        "Business Planning",
+                        "Pitching",
+                        "Funding"
+                    ]
+                }
+            ]
+        }
+    ]
+}

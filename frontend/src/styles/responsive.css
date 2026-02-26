@@ -1,0 +1,754 @@
+/* ========================================
+   GLOBAL MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Base Responsive Typography */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   CONTAINER & LAYOUT FIXES
+   ======================================== */
+
+/* Ensure all containers are responsive */
+@media (max-width: 1200px) {
+
+    .container,
+    [class*="-container"] {
+        max-width: 100%;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container,
+    [class*="-container"] {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container,
+    [class*="-container"] {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* ========================================
+   GRID LAYOUTS - RESPONSIVE
+   ======================================== */
+
+/* Large Desktop - 4 columns */
+@media (min-width: 1441px) {
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* Desktop - 3 columns for 4-col grids */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Large Tablet - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    [class*="-grid"],
+    .grid,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+    }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    [class*="-grid"],
+    .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 480px) {
+
+    [class*="-grid"],
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+    }
+}
+
+/* ========================================
+   SECTION SPACING - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    section,
+    [class*="-section"] {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    section,
+    [class*="-section"] {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* ========================================
+   TYPOGRAPHY - RESPONSIVE
+   ======================================== */
+
+/* Headings */
+@media (max-width: 768px) {
+
+    h1,
+    .h1 {
+        font-size: 1.875rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.25rem !important;
+    }
+
+    h4,
+    .h4 {
+        font-size: 1.125rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1,
+    .h1 {
+        font-size: 1.5rem !important;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.25rem !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.125rem !important;
+    }
+}
+
+/* ========================================
+   BUTTONS - MOBILE FRIENDLY
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    button,
+    .btn,
+    [class*="-btn"],
+    [class*="-button"] {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.9375rem !important;
+        min-height: 44px;
+        /* Touch-friendly */
+    }
+}
+
+@media (max-width: 480px) {
+
+    button,
+    .btn,
+    [class*="-btn"],
+    [class*="-button"] {
+        /* width: 100%; */
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   CARDS - RESPONSIVE
+   ======================================== */
+
+/* Small Mobile */
+@media (max-width: 375px) {
+
+    [class*="-card"]:not(.carousel-card-enhanced),
+    .card:not(.carousel-card-enhanced) {
+        margin-bottom: 0.75rem;
+        padding: 0.75rem !important;
+    }
+
+    [class*="-card"]:not(.carousel-card-enhanced) img,
+    .card:not(.carousel-card-enhanced) img {
+        max-height: 180px;
+        object-fit: cover;
+    }
+}
+
+/* Mobile */
+@media (min-width: 376px) and (max-width: 640px) {
+
+    [class*="-card"]:not(.carousel-card-enhanced),
+    .card:not(.carousel-card-enhanced) {
+        margin-bottom: 0.875rem;
+        padding: 1rem !important;
+    }
+
+    [class*="-card"]:not(.carousel-card-enhanced) img,
+    .card:not(.carousel-card-enhanced) img {
+        max-height: 200px;
+        object-fit: cover;
+    }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+    [class*="-card"],
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    [class*="-card"]:not(.carousel-card-enhanced) img,
+    .card:not(.carousel-card-enhanced) img {
+        max-height: 220px;
+        object-fit: cover;
+    }
+}
+
+/* ========================================
+   IMAGES - RESPONSIVE
+   ======================================== */
+
+/* All screens - base responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Small Mobile */
+@media (max-width: 250px) {
+
+    [class*="-image"]:not(.logo-img):not(.card-image-enhanced),
+    [class*="-img"]:not(.logo-img):not(.card-image-enhanced) {
+        height: auto !important;
+        min-height: 200px;
+        max-height: 200px;
+        object-fit: cover;
+    }
+}
+
+/* Mobile */
+@media (min-width: 376px) and (max-width: 640px) {
+
+    [class*="-image"]:not(.logo-img):not(.card-image-enhanced),
+    [class*="-img"]:not(.logo-img):not(.card-image-enhanced) {
+        height: auto !important;
+        /* min-height: 220px;
+        max-height: 220px; */
+        object-fit: cover;
+    }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 768px) {
+
+    [class*="-image"]:not(.logo-img):not(.card-image-enhanced),
+    [class*="-img"]:not(.logo-img):not(.card-image-enhanced) {
+        height: auto !important;
+        min-height: 250px;
+        max-height: 250px;
+        object-fit: cover;
+    }
+}
+
+/* ========================================
+   FORMS - MOBILE FRIENDLY
+   ======================================== */
+
+/* All mobile devices */
+@media (max-width: 768px) {
+
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+        /* Prevents zoom on iOS */
+        padding: 0.875rem;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    /* Form groups */
+    .form-group,
+    [class*="-form-group"] {
+        margin-bottom: 1rem;
+    }
+
+    /* Labels */
+    label {
+        font-size: 0.9375rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+}
+
+/* Small mobile - extra spacing */
+@media (max-width: 480px) {
+
+    input,
+    textarea,
+    select {
+        padding: 1rem;
+    }
+}
+
+/* ========================================
+   MODALS - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    [class*="-modal"],
+    .modal {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 1rem auto !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    [class*="-modal-content"],
+    .modal-content {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ========================================
+   NAVIGATION - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* ========================================
+   TABLES - RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+    }
+}
+
+/* ========================================
+   HERO SECTIONS - MOBILE
+   ======================================== */
+
+/* Small Mobile - 375px and below */
+@media (max-width: 375px) {
+
+    [class*="hero"],
+    .hero {
+        min-height: 10px !important;
+        padding: 1.5rem 0.75rem !important;
+    }
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Mobile - 376px to 640px */
+@media (min-width: 376px) and (max-width: 640px) {
+
+
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 0.9375rem !important;
+    }
+}
+
+/* Tablet - 641px to 768px */
+@media (min-width: 641px) and (max-width: 768px) {
+
+    [class*="hero"],
+    .hero {
+        min-height: 550px !important;
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    [class*="hero"] h1,
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+
+    [class*="hero"] p,
+    .hero p {
+        font-size: 1rem !important;
+    }
+}
+
+/* ========================================
+   FLEXBOX - MOBILE STACK
+   ======================================== */
+
+@media (max-width: 768px) {
+    .flex-row-desktop {
+        flex-direction: column !important;
+    }
+
+    .flex-wrap-mobile {
+        flex-wrap: wrap !important;
+    }
+}
+
+
+/* ========================================
+   SPACING UTILITIES - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .gap-4 {
+        gap: 1rem !important;
+    }
+
+    .gap-3 {
+        gap: 0.75rem !important;
+    }
+
+    .gap-2 {
+        gap: 0.5rem !important;
+    }
+
+    .p-4 {
+        padding: 1rem !important;
+    }
+
+    .p-3 {
+        padding: 0.75rem !important;
+    }
+
+    .p-2 {
+        padding: 0.5rem !important;
+    }
+
+    .m-4 {
+        margin: 1rem !important;
+    }
+
+    .m-3 {
+        margin: 0.75rem !important;
+    }
+
+    .m-2 {
+        margin: 0.5rem !important;
+    }
+}
+
+/* ========================================
+   OVERFLOW - PREVENT HORIZONTAL SCROLL
+   ======================================== */
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    * {
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   TOUCH TARGETS - ACCESSIBILITY
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    a,
+    button,
+    input[type="submit"],
+    input[type="button"],
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   HIDE/SHOW UTILITIES - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop {
+        display: none !important;
+    }
+
+    .show-desktop {
+        display: block !important;
+    }
+}
+
+/* ========================================
+   SPECIFIC COMPONENT FIXES
+   ======================================== */
+
+/* City Coworking Page */
+@media (max-width: 768px) {
+    .city-coworking-hero {
+        padding: 2rem 1rem !important;
+    }
+
+    .location-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-dropdowns {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filter-dropdowns select {
+        width: 100%;
+    }
+}
+
+/* Home Page */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .city-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+}
+
+/* ========================================
+   PERFORMANCE - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+
+    img,
+    video {
+        will-change: transform;
+    }
+}
+
+/* ========================================
+   SEARCH FORMS - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .search-form,
+    [class*=\"search-form\"] {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .search-input,
+    [class*=\"search-input\"] {
+        width: 100% !important;
+    }
+
+    .search-button,
+    [class*=\"search-button\"] {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   CAROUSEL - MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    .carousel-dots,
+    [class*=\"carousel-dots\"] {
+        gap: 0.5rem !important;
+    }
+
+    .carousel-dot {
+        width: 8px !important;
+        height: 8px !important;
+    }
+
+    .carousel-arrow,
+    [class*=\"carousel-arrow\"] {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* ========================================
+   ADDITIONAL COMPONENT FIXES
+   ======================================== */
+
+/* Property Cards */
+@media (max-width: 768px) {
+
+    .property-card,
+    [class*=\"property-card\"] {
+        width: 100% !important;
+    }
+}
+
+/* Badges and Tags */
+@media (max-width: 480px) {
+
+    .badge,
+    .tag,
+    [class*=\"-badge\"],
+    [class*=\"-tag\"] {
+        font-size: 0.75rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Spacing Adjustments for Small Screens */
+@media (max-width: 375px) {
+    section {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+
+    .no-print,
+    nav,
+    footer,
+    button,
+    [class*="-modal"] {
+        display: none !important;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}
