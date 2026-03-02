@@ -1,0 +1,144 @@
+/* ── PlacesSearch Component ─────────────────────────────────────────── */
+
+.places-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.places-search-wrapper:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12);
+}
+
+/* Icon */
+.places-search-icon {
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+/* Input */
+.places-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #111827;
+    background: transparent;
+    min-width: 0;
+}
+
+.places-search-input::placeholder {
+    color: #9ca3af;
+}
+
+/* Clear button */
+.places-search-clear {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.15rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    transition: background 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.places-search-clear:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+/* Selected place badge (shows below input row) */
+.places-search-badge {
+    position: absolute;
+    bottom: -1.8rem;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #667eea;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Error / loading states */
+.places-search--error {
+    border-color: #fca5a5;
+    background: #fff7f7;
+    color: #ef4444;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+}
+
+.places-search--error code {
+    font-size: 0.8rem;
+    background: #fee2e2;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+}
+
+.places-search-missing-key {
+    color: #dc2626;
+    font-size: 0.85rem;
+}
+
+.places-search--loading {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.places-search-spinner {
+    animation: places-spin 1s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes places-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Google autocomplete dropdown override — removes default blue focus ring */
+.pac-container {
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    font-family: inherit;
+    margin-top: 4px;
+    z-index: 9999;
+}
+
+.pac-item {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.pac-item:hover,
+.pac-item-selected {
+    background: #f5f3ff;
+}
+
+.pac-item-query {
+    font-size: 0.9rem;
+    color: #111827;
+}
+
+.pac-matched {
+    font-weight: 600;
+    color: #667eea;
+}

@@ -14,10 +14,10 @@ import { propertiesAPI, adminAPI } from './api';
 export const submitProperty = async (propertyData) => {
     try {
         const data = await propertiesAPI.submit(propertyData);
-        return data.property || data;
+        return { success: true, property: data.property || data };
     } catch (error) {
         console.error('Error submitting property:', error);
-        return null;
+        return { success: false, error: error.message || 'Error submitting property. Please try again.' };
     }
 };
 

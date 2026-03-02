@@ -91,6 +91,16 @@ export const authAPI = {
             method: 'PUT',
             body: JSON.stringify(updates),
         }),
+
+    /**
+     * Verify Firebase phone auth token with the backend.
+     * Backend decodes it with Firebase Admin SDK and marks phone_verified = true.
+     */
+    verifyFirebasePhone: (firebaseToken) =>
+        request('/auth/verify-firebase-phone', {
+            method: 'POST',
+            body: JSON.stringify({ firebase_token: firebaseToken }),
+        }),
 };
 
 // ─── Properties API ──────────────────────────────────────────────────────────
@@ -151,6 +161,10 @@ export const adminAPI = {
             method: 'PUT',
             body: JSON.stringify({ reason }),
         }),
+
+    /** Delete a property permanently */
+    deleteProperty: (id) =>
+        request(`/admin/properties/${id}`, { method: 'DELETE' }),
 
     /** Get all enquiries submitted via the website */
     getEnquiries: () => request('/admin/enquiries'),

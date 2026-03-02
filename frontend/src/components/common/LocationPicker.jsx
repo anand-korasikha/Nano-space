@@ -88,24 +88,12 @@ const LocationPicker = ({ value, onChange, defaultCenter = [17.385044, 78.486671
         }
 
         setIsSearching(true);
-        // Hyderabad viewbox: min lon, min lat, max lon, max lat
-        const viewbox = '78.2397,17.1843,78.6146,17.5855';
-
         try {
-            // First attempt with optimized parameters
+            // Unrestricted global search with high limit
             let response = await fetch(
-                `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=10&countrycodes=in&viewbox=${viewbox}&bounded=0&addressdetails=1`
+                `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=15&addressdetails=1`
             );
             let data = await response.json();
-
-            // If no results and it doesn't already contain Hyderabad, try with " Hyderabad" suffix
-            if (data.length === 0 && !query.toLowerCase().includes('hyderabad')) {
-                const fallbackQuery = `${query} Hyderabad`;
-                response = await fetch(
-                    `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fallbackQuery)}&limit=10&countrycodes=in&viewbox=${viewbox}&bounded=0&addressdetails=1`
-                );
-                data = await response.json();
-            }
 
             setSearchResults(data);
             setShowResults(true);
@@ -241,8 +229,8 @@ const LocationPicker = ({ value, onChange, defaultCenter = [17.385044, 78.486671
                     ref={mapRef}
                 >
                     <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='Map data &copy; <a href="https://www.google.com/maps">Google</a>'
+                        url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                     />
                     <MapClickHandler onLocationSelect={handleLocationSelect} />
                     {position && (

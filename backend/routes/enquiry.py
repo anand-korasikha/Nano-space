@@ -5,20 +5,24 @@ Enquiry routes - public form submissions + admin management
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.enquiry import Enquiry
-from models.user import User
 from extensions import db
 from datetime import datetime
+from mongo_client import db_mongo
+from bson.objectid import ObjectId
 
 enquiry_bp = Blueprint('enquiry', __name__)
 
 
 def admin_required():
-    """Check if the current JWT user is an admin"""
-    current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
-    if not user or user.role != 'admin':
+    """Check if the current JWT user is an admin (uses MongoDB)."""
+    try:
+        current_user_id = get_jwt_identity()
+        user = db_mongo.users.find_one({'_id': ObjectId(current_user_id)})
+        if not user or user.get('role') != 'admin':
+            return None
+        return user
+    except Exception:
         return None
-    return user
 
 
 # ─── Public: Submit an enquiry (no auth needed) ──────────────────────────────

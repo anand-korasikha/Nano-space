@@ -140,6 +140,18 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    /**
+     * After Firebase Phone Auth OTP confirmation, send the Firebase idToken
+     * to the backend for verification. Updates local user state.
+     */
+    const verifyFirebasePhone = async (firebaseIdToken) => {
+        const data = await authAPI.verifyFirebasePhone(firebaseIdToken);
+        const updatedUser = { ...user, ...data.user, name: data.user.full_name };
+        setUser(updatedUser);
+        localStorage.setItem('nanospace_user', JSON.stringify(updatedUser));
+        return updatedUser;
+    };
+
     const hasRole = (role) => user?.role === role;
     const isAuthenticated = () => !!user;
 
@@ -150,6 +162,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         logout,
         updateProfile,
+        verifyFirebasePhone,
         hasRole,
         isAuthenticated,
     };

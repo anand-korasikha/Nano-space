@@ -13,7 +13,10 @@ class Config:
     DEBUG = os.environ.get('DEBUG', 'True') == 'True'
     
     # Database
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///nanospace.db'
+    db_url = os.environ.get('DATABASE_URL')
+    if not db_url or 'mongodb' in db_url:
+        db_url = 'sqlite:///nanospace.db'
+    SQLALCHEMY_DATABASE_URI = db_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # JWT

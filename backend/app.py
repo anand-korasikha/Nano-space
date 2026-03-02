@@ -30,6 +30,23 @@ def create_app(config_class=Config):
     # Register blueprints
     register_routes(app)
     
+    # JWT error handlers — return JSON with clear messages instead of default 422
+    @jwt.invalid_token_loader
+    def invalid_token_callback(error):
+        return jsonify({'error': 'Invalid token', 'message': str(error)}), 401
+
+    @jwt.expired_token_loader
+    def expired_token_callback(jwt_header, jwt_data):
+        return jsonify({'error': 'Token has expired', 'message': 'Please log in again'}), 401
+
+    @jwt.unauthorized_loader
+    def missing_token_callback(error):
+        return jsonify({'error': 'Authorization required', 'message': str(error)}), 401
+
+    @jwt.revoked_token_loader
+    def revoked_token_callback(jwt_header, jwt_data):
+        return jsonify({'error': 'Token has been revoked', 'message': 'Please log in again'}), 401
+
     # Error handlers
     @app.errorhandler(404)
     def not_found(error):

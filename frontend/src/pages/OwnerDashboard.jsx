@@ -39,12 +39,12 @@ const OwnerDashboard = () => {
 
     const handleSubmitProperty = async (propertyData) => {
         const result = await submitProperty(propertyData);
-        if (result) {
+        if (result?.success) {
             setIsModalOpen(false);
-            loadProperties(); // Reload properties
+            loadProperties();
             alert('Property submitted successfully! Waiting for admin approval.');
         } else {
-            alert('Error submitting property. Please try again.');
+            alert(result?.error || 'Error submitting property. Please try again.');
         }
     };
 

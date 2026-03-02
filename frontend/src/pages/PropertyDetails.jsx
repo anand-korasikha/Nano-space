@@ -209,8 +209,8 @@ const PropertyDetails = () => {
                                     style={{ height: '100%', width: '100%' }}
                                 >
                                     <TileLayer
-                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
-                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                        attribution='Map data &copy; <a href="https://www.google.com/maps">Google</a>'
+                                        url="https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                                     />
                                     <Marker position={[parseFloat(property.latitude), parseFloat(property.longitude)]}>
                                         <Popup>

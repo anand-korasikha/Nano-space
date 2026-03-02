@@ -12,7 +12,7 @@ class Booking(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, index=True)
-    property_id = db.Column(db.Integer, db.ForeignKey('properties.id'), nullable=False, index=True)
+    property_id = db.Column(db.String(50), nullable=False, index=True)
     
     # Booking details
     booking_type = db.Column(db.String(50))  # seat, cabin, room, day, month

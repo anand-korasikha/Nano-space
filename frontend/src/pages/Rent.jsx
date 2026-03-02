@@ -92,6 +92,7 @@ const Rent = () => {
     const [showFlatDropdown, setShowFlatDropdown] = useState(false);
     const [showBudgetDropdown, setShowBudgetDropdown] = useState(false);
     const [activeBudgetField, setActiveBudgetField] = useState('min');
+    const [showSuggestions, setShowSuggestions] = useState(false);
 
     const widgetRef = useRef(null);
 
@@ -100,6 +101,7 @@ const Rent = () => {
             if (widgetRef.current && !widgetRef.current.contains(event.target)) {
                 setShowFlatDropdown(false);
                 setShowBudgetDropdown(false);
+                setShowSuggestions(false);
             }
         };
 
@@ -140,6 +142,37 @@ const Rent = () => {
         return matchesSearch && cityNameMatch && matchesType && matchesPrice;
     });
 
+    const getSuggestions = () => {
+        if (!searchQuery.trim()) return [];
+        const query = searchQuery.toLowerCase();
+
+        const suggestions = [];
+        const seenValues = new Set();
+
+        const cities = ['Hyderabad', 'Bangalore', 'Chennai', 'Mumbai', 'Delhi', 'Pune'];
+
+        const addSuggestion = (type, value) => {
+            if (!value) return;
+            const key = value.toLowerCase();
+            if (key.includes(query) && !seenValues.has(key)) {
+                seenValues.add(key);
+                suggestions.push({ type, value });
+            }
+        };
+
+        // Static cities
+        cities.forEach(city => addSuggestion('City', city));
+
+        // From properties
+        allSpaces.forEach(space => {
+            addSuggestion('City', space.city);
+            addSuggestion('Locality', space.location);
+            addSuggestion('Project', space.name);
+        });
+
+        return suggestions.slice(0, 6);
+    };
+
 
     return (
         <>
@@ -172,14 +205,52 @@ const Rent = () => {
                     </div>
 
                     <div className="new-search-main-row">
-                        <div className="search-field location-field">
+                        <div className="search-field location-field" style={{ position: 'relative' }}>
                             <MapPin size={20} className="field-icon blue-icon" />
                             <input
                                 type="text"
                                 placeholder="Enter City, Locality, Project"
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={(e) => {
+                                    setSearchQuery(e.target.value);
+                                    setShowSuggestions(true);
+                                }}
+                                onFocus={() => setShowSuggestions(true)}
                             />
+                            {showSuggestions && searchQuery.trim() && (
+                                <div className="dropdown-panel suggestions-panel" onClick={(e) => e.stopPropagation()} style={{
+                                    position: 'absolute', top: '100%', left: 0, right: 0,
+                                    backgroundColor: 'white', borderRadius: '8px', zIndex: 1000,
+                                    marginTop: '8px', maxHeight: '250px', overflowY: 'auto',
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)', border: '1px solid #e2e8f0', padding: '8px 0'
+                                }}>
+                                    {getSuggestions().length > 0 ? getSuggestions().map((suggestion, index) => (
+                                        <div
+                                            key={index}
+                                            className="suggestion-item"
+                                            onClick={() => {
+                                                setSearchQuery(suggestion.value);
+                                                setShowSuggestions(false);
+                                            }}
+                                            style={{
+                                                padding: '10px 16px', cursor: 'pointer', display: 'flex',
+                                                justifyContent: 'space-between', alignItems: 'center', transition: 'background-color 0.2s'
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                                        >
+                                            <span style={{ fontSize: '14px', color: '#1e293b', fontWeight: '500' }}>{suggestion.value}</span>
+                                            <span style={{ fontSize: '11px', color: '#64748b', backgroundColor: '#f1f5f9', padding: '2px 8px', borderRadius: '12px' }}>
+                                                {suggestion.type}
+                                            </span>
+                                        </div>
+                                    )) : (
+                                        <div style={{ padding: '10px 16px', fontSize: '14px', color: '#64748b', textAlign: 'center' }}>
+                                            No matches found
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
 
                         <div className="field-divider"></div>

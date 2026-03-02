@@ -62,8 +62,7 @@ class Property(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    # Relationships
-    bookings = db.relationship('Booking', backref='property', lazy='dynamic', cascade='all, delete-orphan')
+
     
     def set_amenities(self, amenities_list):
         """Set amenities from list"""

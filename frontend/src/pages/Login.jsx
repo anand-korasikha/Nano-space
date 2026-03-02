@@ -1,188 +1,328 @@
-import React, { useState } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { getFirebaseAuth } from '../lib/firebase';
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import './Login.css';
 
+// â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+/** Ensure a phone number has the country code prefix (defaults +91 India). */
+const normalisePhone = (phone) => {
+    const clean = phone.replace(/\s+/g, '');
+    if (clean.startsWith('+')) return clean;
+    if (clean.startsWith('0')) return `+91${clean.slice(1)}`;
+    return `+91${clean}`;
+};
+
+// â”€â”€ component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
 const Login = () => {
-    const [isLogin, setIsLogin] = useState(true);
+    const [mode, setMode] = useState('login'); // 'login' | 'signup'
+    // signup steps: 'form' â†’ 'otp' â†’ 'done'
+    const [step, setStep] = useState('form');
+
     const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        name: '',
-        phone: '',
-        role: 'customer'
+        email: '', password: '', name: '', phone: '', role: 'customer',
     });
+    const [otpCode, setOtpCode] = useState('');
     const [error, setError] = useState('');
+    const [info, setInfo] = useState('');
+    const [sending, setSending] = useState(false);
+    const [verifying, setVerifying] = useState(false);
+    const [countdown, setCountdown] = useState(0);
+
+    // Firebase phone auth state
+    const recaptchaVerifierRef = useRef(null);
+    const confirmationResultRef = useRef(null);
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { login, signup } = useAuth();
+    const { login, signup, verifyFirebasePhone } = useAuth();
 
+    // â”€â”€ countdown timer for resend â”€â”€
+    useEffect(() => {
+        if (countdown <= 0) return;
+        const t = setTimeout(() => setCountdown(c => c - 1), 1000);
+        return () => clearTimeout(t);
+    }, [countdown]);
+
+    // â”€â”€ clean up reCAPTCHA when leaving OTP step â”€â”€
+    useEffect(() => {
+        return () => {
+            if (recaptchaVerifierRef.current) {
+                recaptchaVerifierRef.current.clear();
+                recaptchaVerifierRef.current = null;
+            }
+        };
+    }, []);
+
+    // â”€â”€ field change â”€â”€
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
         setError('');
     };
 
-    const handleSubmit = async (e) => {
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // STEP 1 â€” Login or register
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setError('');
-
         try {
-            if (isLogin) {
-                // Login — must await because login() is async
-                const user = await login(formData);
-
-                // Redirect to intended page or dashboard
-                const from = location.state?.from?.pathname || `/dashboard/${user?.role || 'customer'}`;
-                navigate(from, { replace: true });
-            } else {
-                // Signup — must await because signup() is async
-                const user = await signup(formData);
-
-                // Redirect to dashboard after signup
-                navigate(`/dashboard/${user?.role || 'customer'}`, { replace: true });
-            }
+            const user = await login(formData);
+            const from = location.state?.from?.pathname || `/dashboard/${user?.role || 'customer'}`;
+            navigate(from, { replace: true });
         } catch (err) {
             setError(err.message || 'Authentication failed. Please try again.');
         }
     };
 
+    const handleSignupSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        if (!formData.phone) { setError('Phone number is required for verification.'); return; }
+        setSending(true);
+        try {
+            // 1. Create account in backend
+            await signup(formData);
 
+            // 2. Send OTP via Firebase
+            await sendOtp();
+        } catch (err) {
+            setError(err.message || 'Registration failed. Please try again.');
+        } finally {
+            setSending(false);
+        }
+    };
+
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // Firebase â€” send OTP
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    const sendOtp = async () => {
+        setError('');
+        const phone = normalisePhone(formData.phone);
+
+        // Clear previous verifier
+        if (recaptchaVerifierRef.current) {
+            recaptchaVerifierRef.current.clear();
+            recaptchaVerifierRef.current = null;
+        }
+
+        // Lazy-init Firebase (throws if env vars not configured)
+        const firebaseAuth = getFirebaseAuth();
+
+        const verifier = new RecaptchaVerifier(firebaseAuth, 'recaptcha-container', {
+            size: 'invisible',
+            callback: () => {},
+        });
+        recaptchaVerifierRef.current = verifier;
+
+        const result = await signInWithPhoneNumber(firebaseAuth, phone, verifier);
+        confirmationResultRef.current = result;
+        setStep('otp');
+        setCountdown(60);
+        setInfo(`OTP sent to ${phone}`);
+    };
+
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // STEP 2 â€” Confirm OTP
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    const handleVerifyOtp = async (e) => {
+        e.preventDefault();
+        setError('');
+        if (otpCode.length !== 6) { setError('Enter the 6-digit OTP.'); return; }
+        setVerifying(true);
+        try {
+            // Confirm OTP with Firebase
+            const credential = await confirmationResultRef.current.confirm(otpCode);
+
+            // Get Firebase idToken and send to backend
+            const idToken = await credential.user.getIdToken();
+            await verifyFirebasePhone(idToken);
+
+            setStep('done');
+        } catch (err) {
+            if (err.code === 'auth/invalid-verification-code') {
+                setError('Incorrect OTP. Please try again.');
+            } else if (err.code === 'auth/code-expired') {
+                setError('OTP has expired. Please resend.');
+            } else {
+                setError(err.message || 'Verification failed.');
+            }
+        } finally {
+            setVerifying(false);
+        }
+    };
+
+    const handleResendOtp = async () => {
+        if (countdown > 0) return;
+        setSending(true);
+        try {
+            await sendOtp();
+        } catch (err) {
+            setError(err.message || 'Failed to resend OTP.');
+        } finally {
+            setSending(false);
+        }
+    };
+
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // STEP 3 â€” Done â†’ redirect
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    const goToDashboard = () => {
+        navigate(`/dashboard/${formData.role || 'customer'}`, { replace: true });
+    };
+
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // Render
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     return (
         <div className="login-container">
+            {/* Invisible reCAPTCHA container â€” Firebase requires this in the DOM */}
+            <div id="recaptcha-container" />
+
             <div className="login-wrapper">
                 <div className="login-card">
-                    <div className="login-header">
-                        <h1>{isLogin ? 'Welcome Back' : 'Create Account'}</h1>
-                        <p>{isLogin ? 'Login to access your dashboard' : 'Sign up to get started'}</p>
-                    </div>
 
-                    {error && (
-                        <div className="error-message">
-                            {error}
+                    {/* â”€â”€ LOGIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                    {mode === 'login' && (
+                        <>
+                            <div className="login-header">
+                                <h1>Welcome Back</h1>
+                                <p>Login to access your dashboard</p>
+                            </div>
+                            {error && <div className="error-message">{error}</div>}
+                            <form onSubmit={handleLoginSubmit} className="login-form">
+                                <div className="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" name="email" value={formData.email}
+                                        onChange={handleChange} placeholder="Enter your email" required />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" value={formData.password}
+                                        onChange={handleChange} placeholder="Enter your password" required />
+                                </div>
+                                <div className="form-options">
+                                    <label className="remember-me"><input type="checkbox" /><span>Remember me</span></label>
+                                    <a href="#" className="forgot-password">Forgot Password?</a>
+                                </div>
+                                <button type="submit" className="submit-btn">Login</button>
+                            </form>
+                            <div className="form-divider"><span>OR</span></div>
+                            <div className="toggle-form">
+                                <p>Don't have an account?{' '}
+                                    <button type="button" onClick={() => { setMode('signup'); setStep('form'); setError(''); }}
+                                        className="toggle-btn">Sign Up</button>
+                                </p>
+                            </div>
+                        </>
+                    )}
+
+                    {/* â”€â”€ SIGNUP STEP 1 â€” form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                    {mode === 'signup' && step === 'form' && (
+                        <>
+                            <div className="login-header">
+                                <h1>Create Account</h1>
+                                <p>Sign up to get started</p>
+                            </div>
+                            {error && <div className="error-message">{error}</div>}
+                            <form onSubmit={handleSignupSubmit} className="login-form">
+                                <div className="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" name="name" value={formData.name}
+                                        onChange={handleChange} placeholder="Enter your full name" required />
+                                </div>
+                                <div className="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" name="email" value={formData.email}
+                                        onChange={handleChange} placeholder="Enter your email" required />
+                                </div>
+                                <div className="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" name="phone" value={formData.phone}
+                                        onChange={handleChange} placeholder="+91 98765 43210" required />
+                                    <small className="otp-hint">An OTP will be sent to this number via Firebase.</small>
+                                </div>
+                                <div className="form-group">
+                                    <label>I am a</label>
+                                    <select name="role" value={formData.role} onChange={handleChange} required>
+                                        <option value="customer">Customer â€“ Looking for spaces</option>
+                                        <option value="owner">Owner â€“ Want to list my property</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" value={formData.password}
+                                        onChange={handleChange} placeholder="Create a password" required />
+                                </div>
+                                <button type="submit" className="submit-btn" disabled={sending}>
+                                    {sending ? 'Creating account & sending OTPâ€¦' : 'Sign Up & Send OTP'}
+                                </button>
+                            </form>
+                            <div className="toggle-form">
+                                <p>Already have an account?{' '}
+                                    <button type="button" onClick={() => { setMode('login'); setError(''); }}
+                                        className="toggle-btn">Login</button>
+                                </p>
+                            </div>
+                        </>
+                    )}
+
+                    {/* â”€â”€ SIGNUP STEP 2 â€” OTP entry â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                    {mode === 'signup' && step === 'otp' && (
+                        <>
+                            <div className="login-header">
+                                <div className="otp-icon">ðŸ“±</div>
+                                <h1>Verify Your Phone</h1>
+                                <p>Enter the 6-digit OTP sent to<br />
+                                    <strong>{normalisePhone(formData.phone)}</strong></p>
+                            </div>
+                            {info && <div className="info-message">{info}</div>}
+                            {error && <div className="error-message">{error}</div>}
+                            <form onSubmit={handleVerifyOtp} className="login-form">
+                                <div className="form-group">
+                                    <label>OTP Code</label>
+                                    <input
+                                        type="text" inputMode="numeric" maxLength={6}
+                                        value={otpCode}
+                                        onChange={e => { setOtpCode(e.target.value.replace(/\D/g, '')); setError(''); }}
+                                        placeholder="Enter 6-digit OTP"
+                                        className="otp-input"
+                                        autoFocus
+                                    />
+                                </div>
+                                <button type="submit" className="submit-btn" disabled={verifying || otpCode.length !== 6}>
+                                    {verifying ? 'Verifyingâ€¦' : 'Verify OTP'}
+                                </button>
+                                <div className="otp-resend">
+                                    {countdown > 0
+                                        ? <span>Resend OTP in {countdown}s</span>
+                                        : <button type="button" onClick={handleResendOtp} disabled={sending}
+                                            className="toggle-btn">{sending ? 'Sendingâ€¦' : 'Resend OTP'}</button>
+                                    }
+                                </div>
+                            </form>
+                            <div className="toggle-form">
+                                <button type="button" onClick={() => { setStep('form'); setError(''); setOtpCode(''); }}
+                                    className="toggle-btn">â† Back</button>
+                            </div>
+                        </>
+                    )}
+
+                    {/* â”€â”€ SIGNUP STEP 3 â€” done â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                    {mode === 'signup' && step === 'done' && (
+                        <div className="otp-done">
+                            <div className="otp-success-icon">âœ…</div>
+                            <h1>Phone Verified!</h1>
+                            <p>Your account has been created and your phone number is verified.</p>
+                            <button className="submit-btn" onClick={goToDashboard}>
+                                Go to Dashboard
+                            </button>
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="login-form">
-                        {!isLogin && (
-                            <div className="form-group">
-                                <label htmlFor="name">Full Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Enter your full name"
-                                    required={!isLogin}
-                                />
-                            </div>
-                        )}
-
-                        <div className="form-group">
-                            <label htmlFor="email">Email Address</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="Enter your email"
-                                required
-                            />
-                        </div>
-
-                        {!isLogin && (
-                            <div className="form-group">
-                                <label htmlFor="phone">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="Enter your phone number"
-                                    required={!isLogin}
-                                />
-                            </div>
-                        )}
-
-                        {!isLogin && (
-                            <div className="form-group">
-                                <label htmlFor="role">I am a</label>
-                                <select
-                                    id="role"
-                                    name="role"
-                                    value={formData.role}
-                                    onChange={handleChange}
-                                    required={!isLogin}
-                                >
-                                    <option value="customer">Customer - Looking for spaces</option>
-                                    <option value="owner">Owner - Want to list my property</option>
-
-                                </select>
-                            </div>
-                        )}
-
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                placeholder="Enter your password"
-                                required
-                            />
-                        </div>
-
-                        {isLogin && (
-                            <div className="form-options">
-                                <label className="remember-me">
-                                    <input type="checkbox" />
-                                    <span>Remember me</span>
-                                </label>
-                                <a href="#" className="forgot-password">Forgot Password?</a>
-                            </div>
-                        )}
-
-                        <button type="submit" className="submit-btn">
-                            {isLogin ? 'Login' : 'Sign Up'}
-                        </button>
-                    </form>
-
-                    <div className="form-divider">
-                        <span>OR</span>
-                    </div>
-
-                    <div className="social-login">
-                        <button className="social-btn google-btn" type="button">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                            </svg>
-                            Continue with Google
-                        </button>
-                    </div>
-
-                    <div className="toggle-form">
-                        <p>
-                            {isLogin ? "Don't have an account? " : "Already have an account? "}
-                            <button
-                                type="button"
-                                onClick={() => setIsLogin(!isLogin)}
-                                className="toggle-btn"
-                            >
-                                {isLogin ? 'Sign Up' : 'Login'}
-                            </button>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
