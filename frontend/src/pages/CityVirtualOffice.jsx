@@ -8,6 +8,7 @@ import BusinessNeedsSection from '../components/virtualoffice/BusinessNeedsSecti
 import ExploreLocationsSection from '../components/virtualoffice/ExploreLocationsSection';
 import VirtualOfficePlans from '../components/virtualoffice/VirtualOfficePlans';
 import EnquiryModal from '../components/coworking/EnquiryModal';
+import { enquiriesAPI } from '../services/api';
 
 const CityVirtualOffice = () => {
     const { cityName } = useParams();
@@ -75,11 +76,23 @@ const CityVirtualOffice = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
-        alert('Thank you! We will contact you soon.');
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: 'virtual_office',
+                city: city?.name || cityName || '',
+                message: formData.microlocation ? `Preferred location: ${formData.microlocation}` : '',
+                subject: `Virtual Office enquiry for ${city?.name || cityName}`,
+            });
+            alert('Thank you! We will contact you soon.');
+            setFormData({ name: '', email: '', phone: '', microlocation: '' });
+        } catch (err) {
+            alert('Failed to submit. Please try again.');
+        }
     };
 
     const handleGetQuoteClick = (office = null) => {

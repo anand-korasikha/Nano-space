@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './EnquiryModal.css';
+import { enquiriesAPI } from '../../services/api';
 
 const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
         type: officeType || '',
         seats: ''
     });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
 
     // Update formData when officeType changes
     React.useEffect(() => {
@@ -19,11 +23,29 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
 
     if (!isOpen) return null;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
-        onClose();
+        setSubmitting(true);
+        setError('');
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: formData.type
+                    ? formData.type.toLowerCase().replace(/\s+/g, '_')
+                    : 'coworking',
+                property_type: formData.type,
+                seats_required: formData.seats || null,
+                subject: `Quote request for ${formData.type || 'Coworking Space'}`,
+            });
+            setSubmitted(true);
+            setTimeout(() => { setSubmitted(false); onClose(); }, 2000);
+        } catch (err) {
+            setError('Failed to submit. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -176,9 +198,11 @@ const EnquiryModal = ({ isOpen, onClose, officeType, officeImage }) => {
                             </select>
                         </div>
 
-                        <button type="submit" className="enquiry-submit-btn">
-                            Submit
+                        <button type="submit" className="enquiry-submit-btn" disabled={submitting || submitted}>
+                            {submitted ? '✓ Submitted!' : submitting ? 'Submitting...' : 'Submit'}
                         </button>
+
+                        {error && <p style={{ color: 'red', fontSize: '0.85rem', marginTop: '4px' }}>{error}</p>}
 
                         {/* Contact Expert */}
                         <div className="enquiry-contact-expert">

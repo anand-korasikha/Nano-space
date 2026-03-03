@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Home, Search, MapPin, IndianRupee, Building2, Filter, ChevronDown, Star, Heart, Phone, MoreHorizontal, ExternalLink, CheckCircle2, Mail } from 'lucide-react';
 import MapPreview from '../components/common/MapPreview';
 import './Rent.css';
@@ -387,26 +386,8 @@ const Rent = () => {
                 </div>
             </div>
 
-            {/* Breadcrumb Section */}
-            <div className="breadcrumb-container">
-                <nav className="breadcrumb">
-                    <Link to="/" className="breadcrumb-link">
-                        <Home size={16} />
-                        <span>Home</span>
-                    </Link>
-                    <span className="breadcrumb-separator">/</span>
-                    <span className="breadcrumb-current">Rent</span>
-                </nav>
-            </div>
-
             <div className="rent-page">
                 <div className="rent-container">
-
-                    {/* Results Header */}
-                    <div className="results-header">
-                        <h2>{filteredProperties.length} Rentals Found</h2>
-                        <p>Showing the best matches for your search</p>
-                    </div>
 
                     {/* Properties List (Horizontal Cards) */}
                     <div className="properties-list">

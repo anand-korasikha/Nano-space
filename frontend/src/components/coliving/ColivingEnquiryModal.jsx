@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ColivingEnquiryModal.css';
+import { enquiriesAPI } from '../../services/api';
 
 const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
     const [formData, setFormData] = useState({
@@ -9,14 +10,34 @@ const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
         type: '',
         budget: ''
     });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
 
     if (!isOpen) return null;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
-        onClose();
+        setSubmitting(true);
+        setError('');
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: 'coliving',
+                property_name: propertyName || '',
+                property_type: formData.type,
+                budget: formData.budget,
+                subject: `Coliving enquiry${propertyName ? ` for ${propertyName}` : ''}`,
+            });
+            setSubmitted(true);
+            setTimeout(() => { setSubmitted(false); onClose(); }, 2000);
+        } catch (err) {
+            setError('Failed to submit. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -159,9 +180,10 @@ const ColivingEnquiryModal = ({ isOpen, onClose, propertyName }) => {
                             </select>
                         </div>
 
-                        <button type="submit" className="coliving-submit-btn">
-                            Submit
+                        <button type="submit" className="coliving-submit-btn" disabled={submitting || submitted}>
+                            {submitted ? '✓ Submitted!' : submitting ? 'Submitting...' : 'Submit'}
                         </button>
+                        {error && <p style={{ color: 'red', fontSize: '0.85rem', marginTop: '4px' }}>{error}</p>}
 
                         {/* Contact Expert */}
                         <div className="coliving-contact-expert">

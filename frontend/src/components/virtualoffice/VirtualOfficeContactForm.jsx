@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Building2, FileText, MapPin, Users } from 'lucide-react';
+import { enquiriesAPI } from '../../services/api';
 
 const VirtualOfficeContactForm = () => {
     const [formData, setFormData] = useState({
@@ -7,11 +8,30 @@ const VirtualOfficeContactForm = () => {
         email: '',
         phone: ''
     });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Handle form submission
+        setSubmitting(true);
+        setError('');
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: 'virtual_office',
+                subject: 'Virtual Office enquiry',
+            });
+            setSubmitted(true);
+            setFormData({ name: '', email: '', phone: '' });
+            setTimeout(() => setSubmitted(false), 3000);
+        } catch (err) {
+            setError('Failed to submit. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -194,10 +214,12 @@ const VirtualOfficeContactForm = () => {
                                 {/* Submit Button */}
                                 <button
                                     type="submit"
-                                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-sm"
+                                    disabled={submitting || submitted}
+                                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-sm disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    Submit
+                                    {submitted ? '✓ Submitted!' : submitting ? 'Submitting...' : 'Submit'}
                                 </button>
+                                {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
                             </form>
 
                             {/* Contact Info */}

@@ -5,6 +5,7 @@ import cityOfficeSpacesData from '../data/cityOfficeSpaces.json';
 import { getCityIcon } from '../assets/icons/cityIcons';
 import BookingModal from '../components/BookingModal';
 import TrustedCompanies from '../components/home/TrustedCompanies';
+import { enquiriesAPI } from '../services/api';
 import './OfficeSpaces.css';
 import './NewHeroSection.css';
 
@@ -33,10 +34,22 @@ const OfficeSpaces = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Enquiry submitted:', formData);
-        alert(`Thank you for your enquiry for ${cityData?.cityName}! Our Office Space Expert will connect with you soon.`);
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: 'office_space',
+                city: cityData?.cityName || '',
+                subject: `Office Space enquiry for ${cityData?.cityName}`,
+            });
+            alert(`Thank you! Our Office Space Expert will connect with you soon.`);
+            setFormData({ name: '', email: '', phone: '' });
+        } catch (err) {
+            alert('Failed to submit. Please try again.');
+        }
     };
 
     const handleBookNow = (location) => {

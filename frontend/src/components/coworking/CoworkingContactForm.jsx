@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import { enquiriesAPI } from '../../services/api';
 
 const CoworkingContactForm = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ const CoworkingContactForm = () => {
         city: '',
         requirements: ''
     });
+    const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         setFormData({
@@ -17,10 +21,28 @@ const CoworkingContactForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your form submission logic here
+        setSubmitting(true);
+        setError('');
+        try {
+            await enquiriesAPI.submit({
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                enquiry_type: 'coworking',
+                city: formData.city,
+                message: formData.requirements,
+                subject: 'Coworking Space enquiry',
+            });
+            setSubmitted(true);
+            setFormData({ name: '', email: '', phone: '', city: '', requirements: '' });
+            setTimeout(() => setSubmitted(false), 3000);
+        } catch (err) {
+            setError('Failed to submit. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const cities = [
@@ -154,10 +176,12 @@ const CoworkingContactForm = () => {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+                                disabled={submitting || submitted}
+                                className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                Submit
+                                {submitted ? '✓ Submitted!' : submitting ? 'Submitting...' : 'Submit'}
                             </button>
+                            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
                             {/* Contact Info */}
                             <p className="text-sm text-gray-600 mt-4">

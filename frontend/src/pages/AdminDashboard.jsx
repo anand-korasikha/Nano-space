@@ -91,6 +91,7 @@ const AdminDashboard = () => {
     const [expandedBooking,  setExpandedBooking]  = useState(null);
     const [error,            setError]            = useState(null);
     const [submittingListing, setSubmittingListing] = useState(false);
+    const [enquiryFilter,    setEnquiryFilter]    = useState('all');
 
     // Listing form
     const [newListing, setNewListing] = useState({
@@ -611,15 +612,29 @@ const AdminDashboard = () => {
         );
 
         // Enquiries
-        if (activeTab === 'enquiries') return (
-            <div>
-                {loading
-                    ? <div className="ad-loading"><RefreshCw size={22} className="spin" /> Loading…</div>
-                    : enquiries.length === 0
-                        ? <div className="ad-empty"><MessageSquare size={48} /><p>No enquiries yet.</p></div>
-                        : <div className="ad-list">{enquiries.map(renderEnquiryCard)}</div>}
-            </div>
-        );
+        if (activeTab === 'enquiries') {
+            const filteredEnquiries = enquiryFilter === 'all'
+                ? enquiries
+                : enquiries.filter(e => e.status === enquiryFilter);
+            return (
+                <div>
+                    <div className="ad-filter-pills">
+                        {['all', 'new', 'contacted', 'resolved', 'closed'].map(f => (
+                            <button key={f} className={`ad-pill ${enquiryFilter === f ? 'active' : ''}`} onClick={() => setEnquiryFilter(f)}>
+                                {f.charAt(0).toUpperCase() + f.slice(1)}
+                                {' '}({f === 'all' ? enquiries.length : enquiries.filter(e => e.status === f).length})
+                            </button>
+                        ))}
+                    </div>
+                    <p className="ad-show-count">Showing <strong>{filteredEnquiries.length}</strong> enquir{filteredEnquiries.length === 1 ? 'y' : 'ies'}</p>
+                    {loading
+                        ? <div className="ad-loading"><RefreshCw size={22} className="spin" /> Loading…</div>
+                        : filteredEnquiries.length === 0
+                            ? <div className="ad-empty"><MessageSquare size={48} /><p>No {enquiryFilter !== 'all' ? enquiryFilter : ''} enquiries yet.</p></div>
+                            : <div className="ad-list">{filteredEnquiries.map(renderEnquiryCard)}</div>}
+                </div>
+            );
+        }
 
         // Users
         if (activeTab === 'users') return (

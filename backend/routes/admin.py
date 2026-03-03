@@ -5,7 +5,6 @@ Admin routes - Property approval and management
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.property import Property
-from models.enquiry import Enquiry
 from extensions import db
 from datetime import datetime
 from mongo_client import db_mongo
@@ -273,9 +272,9 @@ def get_admin_stats():
                 'cancelled': db_mongo.bookings.count_documents({'status': 'cancelled'}),
             },
             'enquiries': {
-                'total': Enquiry.query.count(),
-                'new': Enquiry.query.filter_by(status='new').count(),
-                'resolved': Enquiry.query.filter_by(status='resolved').count(),
+                'total': db_mongo.enquiries.count_documents({}),
+                'new': db_mongo.enquiries.count_documents({'status': 'new'}),
+                'resolved': db_mongo.enquiries.count_documents({'status': 'resolved'}),
             },
         }), 200
 
@@ -298,58 +297,68 @@ def get_all_users():
 
 # ── Enquiries ─────────────────────────────────────────────────────────────────
 
+def _enquiry_to_dict(doc):
+    doc['id'] = str(doc['_id'])
+    doc['_id'] = str(doc['_id'])
+    if isinstance(doc.get('created_at'), datetime):
+        doc['created_at'] = doc['created_at'].isoformat()
+    if isinstance(doc.get('updated_at'), datetime):
+        doc['updated_at'] = doc['updated_at'].isoformat()
+    return doc
+
 @admin_bp.route('/enquiries', methods=['GET'])
 @jwt_required()
 def get_admin_enquiries():
-    """Get all enquiries"""
+    """Get all enquiries from MongoDB"""
     try:
         if not admin_required():
             return jsonify({'error': 'Admin access required'}), 403
         status_filter = request.args.get('status')
-        query = Enquiry.query
+        mongo_filter = {}
         if status_filter:
-            query = query.filter_by(status=status_filter)
-        enquiries = query.order_by(Enquiry.created_at.desc()).all()
-        return jsonify({'enquiries': [e.to_dict() for e in enquiries], 'total': len(enquiries)}), 200
+            mongo_filter['status'] = status_filter
+        enquiries = list(db_mongo.enquiries.find(mongo_filter).sort('created_at', -1))
+        result = [_enquiry_to_dict(e) for e in enquiries]
+        return jsonify({'enquiries': result, 'total': len(result)}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@admin_bp.route('/enquiries/<int:enquiry_id>/status', methods=['PUT'])
+@admin_bp.route('/enquiries/<enquiry_id>/status', methods=['PUT'])
 @jwt_required()
 def update_enquiry_status(enquiry_id):
-    """Update enquiry status"""
+    """Update enquiry status in MongoDB"""
     try:
         if not admin_required():
             return jsonify({'error': 'Admin access required'}), 403
-        enquiry = Enquiry.query.get(enquiry_id)
-        if not enquiry:
-            return jsonify({'error': 'Enquiry not found'}), 404
         data = request.get_json()
-        enquiry.status = data.get('status', enquiry.status)
+        update_fields = {'updated_at': datetime.utcnow()}
+        if 'status' in data:
+            update_fields['status'] = data['status']
         if 'admin_notes' in data:
-            enquiry.admin_notes = data['admin_notes']
-        enquiry.updated_at = datetime.utcnow()
-        db.session.commit()
-        return jsonify({'message': 'Enquiry updated', 'enquiry': enquiry.to_dict()}), 200
+            update_fields['admin_notes'] = data['admin_notes']
+        doc = db_mongo.enquiries.find_one_and_update(
+            {'_id': ObjectId(enquiry_id)},
+            {'$set': update_fields},
+            return_document=True
+        )
+        if not doc:
+            return jsonify({'error': 'Enquiry not found'}), 404
+        return jsonify({'message': 'Enquiry updated', 'enquiry': _enquiry_to_dict(doc)}), 200
     except Exception as e:
-        db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
-@admin_bp.route('/enquiries/<int:enquiry_id>', methods=['DELETE'])
+@admin_bp.route('/enquiries/<enquiry_id>', methods=['DELETE'])
 @jwt_required()
 def delete_enquiry(enquiry_id):
-    """Delete an enquiry"""
+    """Delete an enquiry from MongoDB"""
     try:
         if not admin_required():
             return jsonify({'error': 'Admin access required'}), 403
-        enquiry = Enquiry.query.get(enquiry_id)
-        if not enquiry:
+        result = db_mongo.enquiries.delete_one({'_id': ObjectId(enquiry_id)})
+        if result.deleted_count == 0:
             return jsonify({'error': 'Enquiry not found'}), 404
-        db.session.delete(enquiry)
-        db.session.commit()
         return jsonify({'message': 'Enquiry deleted successfully'}), 200
     except Exception as e:
-        db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
 # ── Bookings ──────────────────────────────────────────────────────────────────

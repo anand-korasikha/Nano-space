@@ -248,8 +248,8 @@ const Login = () => {
                                 <div className="form-group">
                                     <label>I am a</label>
                                     <select name="role" value={formData.role} onChange={handleChange} required>
-                                        <option value="customer">Customer â€“ Looking for spaces</option>
-                                        <option value="owner">Owner â€“ Want to list my property</option>
+                                        <option value="customer">Customer- Looking for spaces</option>
+                                        <option value="owner">Owner- Want to list my property</option>
                                     </select>
                                 </div>
                                 <div className="form-group">

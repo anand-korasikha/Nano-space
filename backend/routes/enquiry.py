@@ -1,11 +1,9 @@
 """
-Enquiry routes - public form submissions + admin management
+Enquiry routes - public form submissions + admin management (MongoDB)
 """
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from models.enquiry import Enquiry
-from extensions import db
 from datetime import datetime
 from mongo_client import db_mongo
 from bson.objectid import ObjectId
@@ -25,6 +23,16 @@ def admin_required():
         return None
 
 
+def _enquiry_to_dict(doc):
+    doc['id'] = str(doc['_id'])
+    doc['_id'] = str(doc['_id'])
+    if isinstance(doc.get('created_at'), datetime):
+        doc['created_at'] = doc['created_at'].isoformat()
+    if isinstance(doc.get('updated_at'), datetime):
+        doc['updated_at'] = doc['updated_at'].isoformat()
+    return doc
+
+
 # ─── Public: Submit an enquiry (no auth needed) ──────────────────────────────
 
 @enquiry_bp.route('/', methods=['POST'])
@@ -40,32 +48,34 @@ def submit_enquiry():
         if not all(field in data for field in required_fields):
             return jsonify({'error': 'Name and email are required'}), 400
 
-        enquiry = Enquiry(
-            name=data['name'],
-            email=data['email'],
-            phone=data.get('phone'),
-            enquiry_type=data.get('enquiry_type', 'general'),
-            subject=data.get('subject'),
-            message=data.get('message'),
-            city=data.get('city'),
-            property_name=data.get('property_name'),
-            property_type=data.get('property_type'),
-            budget=data.get('budget'),
-            seats_required=data.get('seats_required'),
-            move_in_date=data.get('move_in_date'),
-            status='new'
-        )
+        now = datetime.utcnow()
+        enquiry_doc = {
+            'name': data['name'],
+            'email': data['email'],
+            'phone': data.get('phone', ''),
+            'enquiry_type': data.get('enquiry_type', 'general'),
+            'subject': data.get('subject', ''),
+            'message': data.get('message', ''),
+            'city': data.get('city', ''),
+            'property_name': data.get('property_name', ''),
+            'property_type': data.get('property_type', ''),
+            'budget': data.get('budget', ''),
+            'seats_required': data.get('seats_required'),
+            'move_in_date': data.get('move_in_date', ''),
+            'status': 'new',
+            'admin_notes': '',
+            'created_at': now,
+            'updated_at': now,
+        }
 
-        db.session.add(enquiry)
-        db.session.commit()
+        result = db_mongo.enquiries.insert_one(enquiry_doc)
 
         return jsonify({
             'message': 'Enquiry submitted successfully! We will contact you shortly.',
-            'enquiry_id': enquiry.id
+            'enquiry_id': str(result.inserted_id)
         }), 201
 
     except Exception as e:
-        db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
 
@@ -82,25 +92,25 @@ def get_all_enquiries():
         status_filter = request.args.get('status')
         type_filter = request.args.get('type')
 
-        query = Enquiry.query
-
+        mongo_filter = {}
         if status_filter:
-            query = query.filter_by(status=status_filter)
+            mongo_filter['status'] = status_filter
         if type_filter:
-            query = query.filter_by(enquiry_type=type_filter)
+            mongo_filter['enquiry_type'] = type_filter
 
-        enquiries = query.order_by(Enquiry.created_at.desc()).all()
+        enquiries = list(db_mongo.enquiries.find(mongo_filter).sort('created_at', -1))
+        result = [_enquiry_to_dict(e) for e in enquiries]
 
         return jsonify({
-            'enquiries': [e.to_dict() for e in enquiries],
-            'total': len(enquiries)
+            'enquiries': result,
+            'total': len(result)
         }), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-@enquiry_bp.route('/admin/<int:enquiry_id>/status', methods=['PUT'])
+@enquiry_bp.route('/admin/<enquiry_id>/status', methods=['PUT'])
 @jwt_required()
 def update_enquiry_status(enquiry_id):
     """Update enquiry status - admin only"""
@@ -108,34 +118,35 @@ def update_enquiry_status(enquiry_id):
         if not admin_required():
             return jsonify({'error': 'Admin access required'}), 403
 
-        enquiry = Enquiry.query.get(enquiry_id)
-        if not enquiry:
-            return jsonify({'error': 'Enquiry not found'}), 404
-
         data = request.get_json()
         valid_statuses = ['new', 'contacted', 'resolved', 'closed']
 
         if 'status' not in data or data['status'] not in valid_statuses:
             return jsonify({'error': f'Status must be one of: {", ".join(valid_statuses)}'}), 400
 
-        enquiry.status = data['status']
+        update_fields = {'status': data['status'], 'updated_at': datetime.utcnow()}
         if 'admin_notes' in data:
-            enquiry.admin_notes = data['admin_notes']
-        enquiry.updated_at = datetime.utcnow()
+            update_fields['admin_notes'] = data['admin_notes']
 
-        db.session.commit()
+        result = db_mongo.enquiries.find_one_and_update(
+            {'_id': ObjectId(enquiry_id)},
+            {'$set': update_fields},
+            return_document=True
+        )
+
+        if not result:
+            return jsonify({'error': 'Enquiry not found'}), 404
 
         return jsonify({
             'message': 'Enquiry status updated',
-            'enquiry': enquiry.to_dict()
+            'enquiry': _enquiry_to_dict(result)
         }), 200
 
     except Exception as e:
-        db.session.rollback()
         return jsonify({'error': str(e)}), 500
 
 
-@enquiry_bp.route('/admin/<int:enquiry_id>', methods=['DELETE'])
+@enquiry_bp.route('/admin/<enquiry_id>', methods=['DELETE'])
 @jwt_required()
 def delete_enquiry(enquiry_id):
     """Delete an enquiry - admin only"""
@@ -143,15 +154,12 @@ def delete_enquiry(enquiry_id):
         if not admin_required():
             return jsonify({'error': 'Admin access required'}), 403
 
-        enquiry = Enquiry.query.get(enquiry_id)
-        if not enquiry:
-            return jsonify({'error': 'Enquiry not found'}), 404
+        result = db_mongo.enquiries.delete_one({'_id': ObjectId(enquiry_id)})
 
-        db.session.delete(enquiry)
-        db.session.commit()
+        if result.deleted_count == 0:
+            return jsonify({'error': 'Enquiry not found'}), 404
 
         return jsonify({'message': 'Enquiry deleted successfully'}), 200
 
     except Exception as e:
-        db.session.rollback()
         return jsonify({'error': str(e)}), 500

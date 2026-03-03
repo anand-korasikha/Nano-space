@@ -498,11 +498,11 @@ const Sell = () => {
                         <p>{activeStep === 1 ? 'Welcome back, let\'s fill out some basic details' : 'Almost there! Help us know your property better'}</p>
                     </div>
 
-                    {activeStep === 1 && <Step1 />}
-                    {activeStep === 2 && <Step2 />}
-                    {activeStep === 3 && <Step3 />}
-                    {activeStep === 4 && <Step4 />}
-                    {activeStep === 5 && <Step5 />}
+                    {activeStep === 1 && Step1()}
+                    {activeStep === 2 && Step2()}
+                    {activeStep === 3 && Step3()}
+                    {activeStep === 4 && Step4()}
+                    {activeStep === 5 && Step5()}
 
                     <div className="form-actions">
                         {activeStep > 1 ? (
