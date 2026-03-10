@@ -47,15 +47,14 @@ const request = async (endpoint, options = {}) => {
 
     const response = await fetch(`${BASE_URL}${endpoint}`, config);
 
-    // Handle 401 - only auto-logout if we actually sent a token that was rejected.
-    // If there was no token (e.g. hardcoded admin bypass), a 401 just means the
-    // backend doesn't accept unauthenticated requests — don't nuke the session.
+    // Handle 401 — token was rejected by the backend.
+    // Dispatch a custom event so React/AuthContext can handle the redirect via
+    // React Router (no hard navigation → no flicker / wrong-page flash).
     if (response.status === 401) {
         if (token) {
-            // Real token was rejected — session has expired, force re-login
             clearTokens();
             localStorage.removeItem('nanospace_user');
-            window.location.href = '/login';
+            window.dispatchEvent(new Event('nanospace:auth-expired'));
         }
         throw new Error('Authentication required. Please login.');
     }
@@ -167,18 +166,18 @@ export const adminAPI = {
         request(`/admin/properties/${id}`, { method: 'DELETE' }),
 
     /** Get all enquiries submitted via the website */
-    getEnquiries: () => request('/admin/enquiries'),
+    getEnquiries: () => request('/enquiries/admin'),
 
     /** Update enquiry status */
     updateEnquiryStatus: (id, status) =>
-        request(`/admin/enquiries/${id}/status`, {
+        request(`/enquiries/admin/${id}/status`, {
             method: 'PUT',
             body: JSON.stringify({ status }),
         }),
 
     /** Delete an enquiry */
     deleteEnquiry: (id) =>
-        request(`/admin/enquiries/${id}`, { method: 'DELETE' }),
+        request(`/enquiries/admin/${id}`, { method: 'DELETE' }),
 
     /** Get all bookings */
     getAllBookings: () => request('/admin/bookings'),
@@ -189,6 +188,19 @@ export const adminAPI = {
             method: 'PUT',
             body: JSON.stringify({ status }),
         }),
+
+    /** Update a property (flags, status, etc.) */
+    updateProperty: (id, updates) =>
+        request(`/admin/properties/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(updates),
+        }),
+
+    /** Get all payments */
+    getPayments: (filters = {}) => {
+        const params = new URLSearchParams(filters).toString();
+        return request(`/payments/${params ? `?${params}` : ''}`);
+    },
 };
 
 // ─── Enquiries API (public, no auth required) ────────────────────────────────
@@ -200,6 +212,30 @@ export const enquiriesAPI = {
             method: 'POST',
             body: JSON.stringify(enquiryData),
         }),
+};
+
+// ─── Payments API ────────────────────────────────────────────────────────────
+
+export const paymentsAPI = {
+    /** Create a Razorpay order for the listing fee */
+    createOrder: (data) =>
+        request('/payments/create-order', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        }),
+
+    /** Verify payment signature and create the property listing */
+    verifyPayment: (data) =>
+        request('/payments/verify', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        }),
+
+    /** Get all payments (admin only) */
+    getAll: (filters = {}) => {
+        const params = new URLSearchParams(filters).toString();
+        return request(`/payments/${params ? `?${params}` : ''}`);
+    },
 };
 
 // ─── Bookings API ─────────────────────────────────────────────────────────────

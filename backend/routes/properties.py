@@ -9,8 +9,39 @@ from extensions import db
 from datetime import datetime
 from mongo_client import db_mongo
 from bson.objectid import ObjectId
+import os
+import time
+import cloudinary
+import cloudinary.uploader
+
+cloudinary.config(
+    cloud_name="dwybarocp",
+    api_key=os.environ.get("CLOUDINARY_API_KEY", "283131215221332"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET", "owAkWZkKnEf9t03SnLR0OAt4okE"),
+    secure=True,
+)
 
 properties_bp = Blueprint('properties', __name__)
+
+def upload_base64_images(images_list, folder_name):
+    """Upload any base64 images in the list to Cloudinary and return the list of secure URLs."""
+    urls = []
+    for index, img_data in enumerate(images_list):
+        if img_data.startswith("data:image"):
+            try:
+                res = cloudinary.uploader.upload(
+                    img_data,
+                    folder=f"nanospace/{folder_name}",
+                    use_filename=True,
+                    unique_filename=True
+                )
+                urls.append(res.get("secure_url"))
+            except Exception as e:
+                print(f"Cloudinary upload failed for an image (missing api keys?): {e}")
+                urls.append(img_data) # Fallback to base64 if Cloudinary fails
+        elif img_data.startswith("http"):
+            urls.append(img_data)
+    return urls
 
 @properties_bp.route('/', methods=['GET'])
 def get_properties():
@@ -62,15 +93,20 @@ def get_properties():
         if request.args.get('buy') == 'true':
             mongo_query['show_on_buy'] = True
             
-        mongo_cursor = db_mongo.properties.find(mongo_query)
-        for mc in mongo_cursor:
-            mc['id'] = str(mc['_id'])
-            del mc['_id']
-            properties_list.append(mc)
+        mongo_total = 0
+        try:
+            mongo_cursor = db_mongo.properties.find(mongo_query)
+            for mc in mongo_cursor:
+                mc['id'] = str(mc['_id'])
+                del mc['_id']
+                properties_list.append(mc)
+            mongo_total = db_mongo.properties.count_documents(mongo_query)
+        except Exception as e:
+            print(f"MongoDB connection skipping: {e}")
             
         return jsonify({
             'properties': properties_list,
-            'total': pagination.total + db_mongo.properties.count_documents(mongo_query),
+            'total': pagination.total + mongo_total,
             'page': page,
             'per_page': per_page,
             'pages': pagination.pages
@@ -85,11 +121,14 @@ def get_property(property_id):
     try:
         # Check Mongo first
         if len(str(property_id)) == 24:
-            m_prop = db_mongo.properties.find_one({'_id': ObjectId(property_id)})
-            if m_prop:
-                m_prop['id'] = str(m_prop['_id'])
-                del m_prop['_id']
-                return jsonify({'property': m_prop}), 200
+            try:
+                m_prop = db_mongo.properties.find_one({'_id': ObjectId(property_id)})
+                if m_prop:
+                    m_prop['id'] = str(m_prop['_id'])
+                    del m_prop['_id']
+                    return jsonify({'property': m_prop}), 200
+            except Exception as e:
+                return jsonify({'error': 'Failed connecting to MongoDB to fetch property'}), 503
                 
         # Fallback to SQLite
         try:
@@ -135,6 +174,10 @@ def create_property():
         price_per_day   = price_val if period == 'day'   else data.get('price_per_day')
         price_per_month = price_val if period == 'month' else data.get('price_per_month')
 
+        # Upload base64 images to Cloudinary into a dynamic folder
+        folder_name = f"prop_{current_user_id}_{int(time.time())}"
+        uploaded_images = upload_base64_images(data.get('images', []), folder_name)
+
         is_admin = user.get('role') == 'admin'
         mongo_prop = {
             'owner_id': current_user_id,
@@ -161,7 +204,7 @@ def create_property():
             'show_on_buy': data.get('show_on_buy', False),
             'status': 'approved' if is_admin else 'pending',
             'amenities': data.get('amenities', []),
-            'images': data.get('images', []),
+            'images': uploaded_images,
             'created_at': datetime.utcnow(),
         }
         res = db_mongo.properties.insert_one(mongo_prop)
@@ -182,13 +225,24 @@ def update_property(property_id):
     try:
         current_user_id = get_jwt_identity()
         user = db_mongo.users.find_one({'_id': ObjectId(current_user_id)})
-        property = Property.query.get(property_id)
+        is_mongo = len(str(property_id)) == 24
         
+        # Determine owner_id based on storage type
+        owner_id = None
+        if is_mongo:
+            property = db_mongo.properties.find_one({'_id': ObjectId(property_id)})
+            if property:
+                owner_id = property.get('owner_id')
+        else:
+            property = Property.query.get(property_id)
+            if property:
+                owner_id = property.owner_id
+                
         if not property:
             return jsonify({'error': 'Property not found'}), 404
         
         # Check authorization
-        if user.get('role') != 'admin' and property.owner_id != current_user_id:
+        if user.get('role') != 'admin' and owner_id != current_user_id:
             return jsonify({'error': 'Unauthorized'}), 403
         
         data = request.get_json()
@@ -209,7 +263,9 @@ def update_property(property_id):
             if 'amenities' in data:
                 update_data['amenities'] = data['amenities']
             if 'images' in data:
-                update_data['images'] = data['images']
+                folder_name = f"prop_update_{property_id}"
+                uploaded_images = upload_base64_images(data['images'], folder_name)
+                update_data['images'] = uploaded_images
                 
             db_mongo.properties.update_one(
                 {'_id': ObjectId(property_id)},
@@ -230,7 +286,9 @@ def update_property(property_id):
             if 'amenities' in data:
                 property.set_amenities(data['amenities'])
             if 'images' in data:
-                property.set_images(data['images'])
+                folder_name = f"prop_update_sqlite_{property_id}"
+                uploaded_images = upload_base64_images(data['images'], folder_name)
+                property.set_images(uploaded_images)
             
             db.session.commit()
             return jsonify({

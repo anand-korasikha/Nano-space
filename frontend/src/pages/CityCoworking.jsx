@@ -17,46 +17,42 @@ import { MapPin, Star } from 'lucide-react';
 const CityCoworking = () => {
     const { cityName } = useParams();
     const navigate = useNavigate();
-    const [cityData, setCityData] = useState(null);
+    const [cityData, setCityData] = useState(() => cityCoworkingData[cityName?.toLowerCase()] || null);
     const [selectedLocation, setSelectedLocation] = useState('Popular Locations');
     const [selectedPrice, setSelectedPrice] = useState('Select Price');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedSpace, setSelectedSpace] = useState(null);
 
     useEffect(() => {
-        const load = async () => {
-            const normalizedCityName = cityName?.toLowerCase();
-            const data = cityCoworkingData[normalizedCityName];
+        const normalizedCityName = cityName?.toLowerCase();
+        const data = cityCoworkingData[normalizedCityName];
 
-            if (data) {
-                // Get approved properties from backend API
-                const approvedProperties = await getApprovedPropertiesByType('Coworking', normalizedCityName);
+        if (!data) {
+            navigate('/coworking');
+            return;
+        }
 
-                // Merge approved properties with existing spaces
-                const mergedSpaces = [
-                    ...data.spaces,
-                    ...(approvedProperties || []).map(prop => ({
-                        id: prop.id,
-                        name: prop.name,
-                        location: prop.location || prop.area,
-                        image: prop.image,
-                        rating: prop.rating || 0,
-                        price: prop.price_per_seat ? `₹${prop.price_per_seat}` : prop.price,
-                        period: prop.period || 'seat/month',
-                        badge: prop.badge,
-                        amenities: prop.amenities || []
-                    }))
-                ];
+        // Render page immediately with local JSON data
+        setCityData(data);
 
-                setCityData({
-                    ...data,
-                    spaces: mergedSpaces
-                });
-            } else {
-                navigate('/coworking');
-            }
-        };
-        load();
+        // Async: merge approved listings from backend without blocking render
+        getApprovedPropertiesByType('Coworking', normalizedCityName)
+            .then(approvedProperties => {
+                if (!approvedProperties?.length) return;
+                const extra = approvedProperties.map(prop => ({
+                    id: prop.id,
+                    name: prop.name,
+                    location: prop.location || prop.area,
+                    image: prop.image,
+                    rating: prop.rating || 0,
+                    price: prop.price_per_seat ? `₹${prop.price_per_seat}` : prop.price,
+                    period: prop.period || 'seat/month',
+                    badge: prop.badge,
+                    amenities: prop.amenities || []
+                }));
+                setCityData(prev => prev ? { ...prev, spaces: [...prev.spaces, ...extra] } : prev);
+            })
+            .catch(() => {}); // silently ignore backend errors
     }, [cityName, navigate]);
 
 

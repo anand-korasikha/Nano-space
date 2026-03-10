@@ -1,0 +1,15 @@
+# Local-only App Hosting configuration for the Emulator.
+# These values will override the production apphosting.yaml when running locally.
+
+env:
+  - name: APP_ENV
+    value: local-emulator
+  # Placeholder for local testing secrets
+  - name: FIREBASE_AUTH_EMULATOR_HOST
+    value: "127.0.0.1:9099"
+  - name: FIREBASE_DATABASE_EMULATOR_HOST
+    value: "127.0.0.1:9000"
+  - name: FIRESTORE_EMULATOR_HOST
+    value: "127.0.0.1:8080"
+  - name: FIREBASE_STORAGE_EMULATOR_HOST
+    value: "127.0.0.1:9199"

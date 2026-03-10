@@ -1,312 +1,733 @@
+:root {
+    --black: #0a0a0a;
+    --dark-bg: #0d0d0d;
+    --white: #ffffff;
+    --blue: #1a3bff;
+    --blue-glow: rgba(26, 59, 255, 0.4);
+    --red: #e81c2e;
+    --gray: #888;
+    --medium-gray: #444;
+    --dark-gray: #222;
+    --border: #222;
+    --surface: #111;
+    --font-inter: 'Inter', sans-serif;
+    --font-bebas: 'Bebas Neue', sans-serif;
+}
+
 .login-container {
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    font-family: var(--font-inter);
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+}
+
+/* ── BACKGROUND ── */
+.login-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--black);
+    background-image:
+        linear-gradient(rgba(26, 59, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 59, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+.login-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 55% 60% at 20% 50%, rgba(26, 59, 255, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(232, 28, 46, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.scanline-effect {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom,
+            transparent 0px, transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px);
+}
+
+.accent-border-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--blue) 0%, var(--red) 100%);
+    z-index: 200;
+}
+
+/* ── LAYOUT ── */
+.login-layout {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    height: 100vh;
+}
+
+.login-left-panel {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 2rem 1rem;
+    padding: 6rem 3rem 6rem 5rem;
+    /* Balanced top and bottom padding */
+    animation: fadeLeft 1s ease both;
+    gap: 1.5rem;
 }
 
-.login-wrapper {
-    width: 100%;
-    max-width: 450px;
-}
-
-.login-card {
-    background: white;
-    border-radius: 20px;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
+@keyframes fadeLeft {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateX(-30px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
-.login-header {
-    text-align: center;
+.panel-divider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 55%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border) 20%, var(--border) 80%, transparent);
+    z-index: 5;
+}
+
+/* ── BRANDING ── */
+.login-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     margin-bottom: 2rem;
 }
 
-.login-header h1 {
-    font-size: 2rem;
+.logo-hex {
+    width: 36px;
+    height: 36px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 15px var(--blue-glow);
+}
+
+.logo-hex-inner {
+    width: 12px;
+    height: 12px;
+    background: white;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.brand-title {
+    font-family: var(--font-bebas);
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+/* ── HERO TEXT ── */
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.8rem;
 }
 
-.login-header p {
-    color: #666;
-    font-size: 0.95rem;
+.hero-tagline::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--blue);
 }
 
-.login-form {
+.hero-main-title {
+    font-family: var(--font-bebas);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.hero-main-title .keyword-accent {
+    color: var(--red);
+    display: block;
+}
+
+.hero-main-title .outline-text {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.25);
+    color: transparent;
+    display: block;
+}
+
+.hero-paragraph {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--gray);
+    max-width: 35ch;
+    font-weight: 300;
+}
+
+/* ── STATS ── */
+.hero-stats-row {
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.stat-item-box .stat-value {
+    font-family: var(--font-bebas);
+    font-size: 1.8rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    line-height: 1;
 }
 
-.form-group label {
+.stat-item-box .stat-value span {
+    color: var(--blue);
+}
+
+.stat-item-box .stat-label-text {
+    font-size: 0.65rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.3rem;
     font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
 }
 
-.form-group input {
-    padding: 0.875rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+/* ── RIGHT PANEL ── */
+.login-right-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 3rem 3rem 1.5rem;
+    /* Significant top padding */
+    animation: fadeRight 1s 0.2s ease both;
+}
+
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.auth-card-nexus {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.2rem 2rem;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(26, 59, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.auth-card-nexus.signup-active {
+    max-width: 620px;
+    padding: 2.5rem 3rem;
+}
+
+/* Card corner accents */
+.auth-card-nexus::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 60px;
+    height: 60px;
+    border-top: 3px solid var(--red);
+    border-right: 3px solid var(--red);
+}
+
+.auth-card-nexus::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 60px;
+    height: 60px;
+    border-bottom: 3px solid var(--blue);
+    border-left: 3px solid var(--blue);
+}
+
+.card-nexus-title {
+    font-family: var(--font-bebas);
+    font-size: 2.2rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+}
+
+.card-nexus-subtitle {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.card-nexus-subtitle .link-alt {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 0.4rem;
+    transition: all 0.3s;
+}
+
+.card-nexus-subtitle .link-alt:hover {
+    color: var(--white);
+    text-shadow: 0 0 8px var(--blue-glow);
+}
+
+/* ── FORM ELEMENTS ── */
+.nexus-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+/* 2-Column Signup Grid */
+.signup-active .nexus-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+}
+
+/* Fields 1-4 are single column, 5 and beyond + buttons are full span */
+.signup-active .nexus-form .form-field-group:nth-child(n+5),
+.signup-active .nexus-form .nexus-btn-primary,
+.signup-active .nexus-form .nexus-divider,
+.signup-active .nexus-form .nexus-btn-social,
+.signup-active .nexus-form .nexus-error-box,
+.signup-active .nexus-form .nexus-info-box {
+    grid-column: span 2;
+}
+
+.signup-active .nexus-form .otp-hint {
+    grid-column: span 2;
+    margin-top: -0.4rem;
+    font-size: 0.72rem;
+    color: var(--medium-gray);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.form-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.form-field-group label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--medium-gray);
+    display: block;
+}
+
+.nexus-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    background: #080808;
+    font-family: var(--font-inter);
+    font-size: 0.85rem;
+    color: var(--white);
     outline: none;
+    transition: all 0.3s;
+    border-radius: 0;
 }
 
-.form-group input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+.nexus-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 15px rgba(26, 59, 255, 0.15);
 }
 
-.form-group input::placeholder {
-    color: #999;
+.nexus-input::placeholder {
+    color: #333;
 }
 
-.form-options {
+/* Custom Select */
+.nexus-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    background: #080808;
+    font-family: var(--font-inter);
+    font-size: 0.85rem;
+    color: var(--white);
+    outline: none;
+    transition: all 0.3s;
+    border-radius: 0;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+}
+
+.nexus-select:focus {
+    border-color: var(--blue);
+}
+
+.nexus-select option {
+    background: var(--surface);
+    color: var(--white);
+    padding: 1rem;
+}
+
+.form-meta-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: -0.5rem;
 }
 
-.remember-me {
+.nexus-checkbox-label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.remember-me input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--gray);
     cursor: pointer;
 }
 
-.forgot-password {
-    color: #667eea;
+.nexus-checkbox {
+    accent-color: var(--blue);
+    width: 16px;
+    height: 16px;
+}
+
+.link-forgot {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
-.forgot-password:hover {
-    color: #764ba2;
+.link-forgot:hover {
+    color: var(--red);
 }
 
-.submit-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1rem;
+/* ── BUTTONS ── */
+.nexus-btn-primary {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--blue);
     border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: var(--font-bebas);
+    font-size: 1.1rem;
+    color: white;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
     margin-top: 0.5rem;
 }
 
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
-}
-
-.form-divider {
-    position: relative;
-    text-align: center;
-    margin: 1.5rem 0;
-}
-
-.form-divider::before {
+.nexus-btn-primary::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background: #e0e0e0;
+    inset: 0;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 0;
 }
 
-.form-divider span {
+.nexus-btn-primary:hover::after {
+    transform: scaleX(1);
+}
+
+.nexus-btn-primary:active {
+    transform: scale(0.98);
+}
+
+.nexus-btn-primary span {
     position: relative;
-    background: white;
-    padding: 0 1rem;
-    color: #999;
-    font-size: 0.9rem;
-    font-weight: 600;
+    z-index: 10;
 }
 
-.social-login {
+.nexus-btn-primary:disabled {
+    background: #333;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.nexus-btn-primary:disabled::after {
+    display: none;
+}
+
+/* Divider */
+.nexus-divider {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.2rem 0;
 }
 
-.social-btn {
+.nexus-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.nexus-divider-text {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--medium-gray);
+    font-weight: 700;
+}
+
+/* Social Buttons */
+.nexus-btn-social {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    padding: 0.875rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    background: white;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #333;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border: 1.5px solid var(--border);
+    background: #080808;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-family: var(--font-inter);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
 }
 
-.social-btn:hover {
-    border-color: #667eea;
-    background: #f8f9ff;
+.nexus-btn-social:hover {
+    border-color: var(--blue);
+    background: #111;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.social-btn svg {
+.social-icon-svg {
     width: 20px;
     height: 20px;
 }
 
-.toggle-form {
+/* ── MESSAGES ── */
+.nexus-error-box {
+    background: rgba(232, 28, 46, 0.1);
+    border: 1px solid var(--red);
+    color: var(--white);
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.nexus-error-box::before {
+    content: '✖';
+    position: absolute;
+    left: 1rem;
+    color: var(--red);
+    font-weight: bold;
+}
+
+.nexus-info-box {
+    background: rgba(26, 59, 255, 0.1);
+    border: 1px solid var(--blue);
+    color: var(--white);
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.nexus-info-box::before {
+    content: 'ℹ';
+    position: absolute;
+    left: 1rem;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+/* ── OTP SPECIFIC ── */
+.otp-display-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.otp-symbol {
+    font-size: 3rem;
+    color: var(--blue);
+    margin-bottom: 1rem;
+}
+
+.otp-nexus-input {
+    letter-spacing: 0.6em;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: center;
+    font-family: var(--font-inter);
+}
+
+.resend-nexus-row {
     text-align: center;
     margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e0e0e0;
+    font-size: 0.85rem;
+    color: var(--gray);
 }
 
-.toggle-form p {
-    color: #666;
-    font-size: 0.95rem;
-}
-
-.toggle-btn {
+.btn-nexus-link {
     background: none;
     border: none;
-    color: #667eea;
+    color: var(--blue);
     font-weight: 700;
     cursor: pointer;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-left: 0.5rem;
 }
 
-.toggle-btn:hover {
-    color: #764ba2;
+.btn-nexus-link:hover {
+    color: var(--white);
     text-decoration: underline;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .login-card {
-        padding: 2rem 1.5rem;
+/* Success View */
+.success-nexus-view {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.success-nexus-icon {
+    font-size: 5rem;
+    color: #4caf50;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+.success-nexus-title {
+    font-family: var(--font-bebas);
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.success-nexus-text {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+    .login-layout {
+        grid-template-columns: 1fr;
     }
 
-    .login-header h1 {
-        font-size: 1.75rem;
+    .panel-divider-line {
+        display: none;
     }
 
-    .form-options {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
+    .login-left-panel {
+        display: none;
+    }
+
+    .login-right-panel {
+        padding: 2rem;
+    }
+
+    .auth-card-nexus {
+        max-width: 500px;
     }
 }
 
-/* ── OTP / Firebase phone auth ──────────────────────────────────────── */
-.otp-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+@media (max-width: 480px) {
+    .auth-card-nexus {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .card-nexus-title {
+        font-size: 2.2rem;
+    }
 }
 
-.otp-hint {
-    color: #888;
-    font-size: 0.78rem;
-    margin-top: 2px;
+/* ── UTILS ── */
+.mt-1 {
+    margin-top: 1rem;
 }
 
-.otp-input {
-    letter-spacing: 0.35em;
-    font-size: 1.4rem !important;
-    font-weight: 700;
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.text-center {
     text-align: center;
 }
 
-.otp-resend {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #888;
-    margin-top: -0.5rem;
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.info-message {
-    background: #eff6ff;
-    color: #1d4ed8;
-    border: 1px solid #bfdbfe;
-    border-radius: 8px;
-    padding: 0.65rem 1rem;
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
-}
-
-.otp-done {
-    text-align: center;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.otp-success-icon {
-    font-size: 4rem;
-}
-
-.otp-done h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #059669;
-    margin: 0;
-}
-
-.otp-done p {
-    color: #555;
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-.submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+.nexus-loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
 }

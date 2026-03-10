@@ -38,6 +38,15 @@ const OwnerDashboard = () => {
     };
 
     const handleSubmitProperty = async (propertyData) => {
+        // Payment route: property already created server-side during verify
+        if (propertyData?.fromPayment) {
+            setIsModalOpen(false);
+            loadProperties();
+            alert('✅ Payment successful! Your property has been submitted for admin approval.');
+            return;
+        }
+
+        // Fallback: direct submit (should not be reached with Razorpay flow)
         const result = await submitProperty(propertyData);
         if (result?.success) {
             setIsModalOpen(false);

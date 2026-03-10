@@ -1,7 +1,27 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, CreditCard, Loader } from 'lucide-react';
 import LocationPicker from '../common/LocationPicker';
+import { paymentsAPI } from '../../services/api';
 import './AddPropertyModal.css';
+
+/**
+ * Dynamically load the Razorpay checkout script on demand.
+ * Returns a promise that resolves when Razorpay is ready.
+ */
+const loadRazorpay = () => new Promise((resolve, reject) => {
+    if (window.Razorpay) { resolve(window.Razorpay); return; }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => {
+        if (window.Razorpay) resolve(window.Razorpay);
+        else reject(new Error('Razorpay SDK failed to initialise.'));
+    };
+    script.onerror = () => reject(
+        new Error('Payment gateway failed to load. Check your internet connection and try again.')
+    );
+    document.body.appendChild(script);
+});
 
 const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -20,6 +40,8 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
 
     const [errors, setErrors] = useState({});
     const [imagePreviews, setImagePreviews] = useState([]); // Changed to array
+    const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+    const [paymentError, setPaymentError] = useState('');
 
     const propertyTypes = ['Coworking', 'Coliving', 'Virtual Office'];
     const cities = [
@@ -170,6 +192,93 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
         return Object.keys(newErrors).length === 0;
     };
 
+    const handlePayAndSubmit = async (e) => {
+        e.preventDefault();
+        setPaymentError('');
+
+        if (!validateForm()) return;
+
+        setIsProcessingPayment(true);
+
+        try {
+            // Load Razorpay dynamically (only when user actually pays)
+            await loadRazorpay();
+
+            // Build the property payload
+            const amenitiesArray = formData.amenities
+                .split(',')
+                .map(item => item.trim())
+                .filter(item => item.length > 0);
+
+            const propertyPayload = {
+                ...formData,
+                amenities: amenitiesArray,
+                rating: 0,
+            };
+
+            // Step 1 — Create a Razorpay order on the backend
+            const orderData = await paymentsAPI.createOrder({
+                property_name: formData.name,
+            });
+
+            // Step 2 — Open Razorpay checkout
+            const rzpOptions = {
+                key: orderData.key,
+                amount: orderData.amount,
+                currency: orderData.currency,
+                name: 'Nanospace',
+                description: `Property Listing Fee — ${formData.name}`,
+                order_id: orderData.order_id,
+                theme: { color: '#7c3aed' },
+                handler: async (response) => {
+                    // Step 3 — Verify payment & create property on the backend
+                    try {
+                        const result = await paymentsAPI.verifyPayment({
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature: response.razorpay_signature,
+                            property_data: propertyPayload,
+                        });
+
+                        // Reset form state
+                        setFormData({
+                            name: '', type: 'Coworking', city: '', description: '',
+                            location: '', amenities: '', price: '', period: 'month',
+                            images: [], badge: 'Popular', mapLocation: null,
+                        });
+                        setErrors({});
+                        setImagePreviews([]);
+                        setPaymentError('');
+
+                        // Notify parent — property already created server-side
+                        onSubmit({ success: true, fromPayment: true, property_id: result.property_id });
+                    } catch (verifyErr) {
+                        setPaymentError(
+                            verifyErr.message ||
+                            'Payment received but verification failed. Please contact support with your payment ID.'
+                        );
+                    } finally {
+                        setIsProcessingPayment(false);
+                    }
+                },
+                modal: {
+                    ondismiss: () => setIsProcessingPayment(false),
+                },
+            };
+
+            const rzp = new window.Razorpay(rzpOptions);
+            rzp.on('payment.failed', () => {
+                setPaymentError('Payment failed. Please try again.');
+                setIsProcessingPayment(false);
+            });
+            rzp.open();
+        } catch (err) {
+            setPaymentError(err.message || 'Failed to initiate payment. Please try again.');
+            setIsProcessingPayment(false);
+        }
+    };
+
+    // Legacy handleSubmit kept for reference — payment flow replaces it
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -221,7 +330,7 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="property-form">
+                <form onSubmit={handlePayAndSubmit} className="property-form">
                     <div className="form-row">
                         <div className="form-group">
                             <label htmlFor="name">Property Name *</label>
@@ -411,11 +520,26 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                     </div>
 
                     <div className="form-actions">
-                        <button type="button" className="btn-cancel" onClick={onClose}>
+                        {paymentError && (
+                            <div className="payment-error-msg">
+                                ⚠ {paymentError}
+                            </div>
+                        )}
+                        <button type="button" className="btn-cancel" onClick={onClose} disabled={isProcessingPayment}>
                             Cancel
                         </button>
-                        <button type="submit" className="btn-submit">
-                            Submit Property
+                        <button type="submit" className="btn-submit btn-pay" disabled={isProcessingPayment}>
+                            {isProcessingPayment ? (
+                                <>
+                                    <Loader className="spin-icon" size={16} />
+                                    Processing…
+                                </>
+                            ) : (
+                                <>
+                                    <CreditCard size={16} />
+                                    Pay ₹999 &amp; List Property
+                                </>
+                            )}
                         </button>
                     </div>
                 </form>

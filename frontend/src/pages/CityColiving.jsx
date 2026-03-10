@@ -16,47 +16,43 @@ import './CityCoworking.css'; // Reusing existing styles for now
 const CityColiving = () => {
     const { cityName } = useParams();
     const navigate = useNavigate();
-    const [cityData, setCityData] = useState(null);
+    const [cityData, setCityData] = useState(() => cityColivingData[cityName?.toLowerCase()] || null);
     const [selectedLocation, setSelectedLocation] = useState('Popular Locations');
     const [selectedPrice, setSelectedPrice] = useState('Select Price');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedSpace, setSelectedSpace] = useState(null);
 
     useEffect(() => {
-        const load = async () => {
-            const normalizedCityName = cityName?.toLowerCase();
-            const data = cityColivingData[normalizedCityName];
+        const normalizedCityName = cityName?.toLowerCase();
+        const data = cityColivingData[normalizedCityName];
 
-            if (data) {
-                // Get approved properties from backend API
-                const approvedProperties = await getApprovedPropertiesByType('Coliving', normalizedCityName);
+        if (!data) {
+            navigate('/coliving');
+            return;
+        }
 
-                // Merge approved properties with existing spaces
-                const mergedSpaces = [
-                    ...data.spaces,
-                    ...(approvedProperties || []).map(prop => ({
-                        id: prop.id,
-                        name: prop.name,
-                        location: prop.location || prop.area,
-                        image: prop.image,
-                        rating: prop.rating || 0,
-                        price: prop.price_per_month ? `₹${prop.price_per_month}` : prop.price,
-                        period: prop.period || 'month',
-                        badge: prop.badge,
-                        amenities: prop.amenities || [],
-                        occupancy: 'Single/Double'
-                    }))
-                ];
+        // Render page immediately with local JSON data
+        setCityData(data);
 
-                setCityData({
-                    ...data,
-                    spaces: mergedSpaces
-                });
-            } else {
-                navigate('/coliving');
-            }
-        };
-        load();
+        // Async: merge approved listings from backend without blocking render
+        getApprovedPropertiesByType('Coliving', normalizedCityName)
+            .then(approvedProperties => {
+                if (!approvedProperties?.length) return;
+                const extra = approvedProperties.map(prop => ({
+                    id: prop.id,
+                    name: prop.name,
+                    location: prop.location || prop.area,
+                    image: prop.image,
+                    rating: prop.rating || 0,
+                    price: prop.price_per_month ? `₹${prop.price_per_month}` : prop.price,
+                    period: prop.period || 'month',
+                    badge: prop.badge,
+                    amenities: prop.amenities || [],
+                    occupancy: 'Single/Double'
+                }));
+                setCityData(prev => prev ? { ...prev, spaces: [...prev.spaces, ...extra] } : prev);
+            })
+            .catch(() => {}); // silently ignore backend errors
     }, [cityName, navigate]);
 
 

@@ -274,7 +274,9 @@ def get_admin_stats():
             'enquiries': {
                 'total': db_mongo.enquiries.count_documents({}),
                 'new': db_mongo.enquiries.count_documents({'status': 'new'}),
+                'contacted': db_mongo.enquiries.count_documents({'status': 'contacted'}),
                 'resolved': db_mongo.enquiries.count_documents({'status': 'resolved'}),
+                'closed': db_mongo.enquiries.count_documents({'status': 'closed'}),
             },
         }), 200
 

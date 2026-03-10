@@ -10,6 +10,7 @@ from routes.admin import admin_bp
 from routes.data_routes import data_bp
 from routes.enquiry import enquiry_bp
 from routes.upload import upload_bp
+from routes.payments import payments_bp
 
 def register_routes(app):
     """Register all blueprints"""
@@ -21,3 +22,4 @@ def register_routes(app):
     app.register_blueprint(data_bp, url_prefix='/api/data')
     app.register_blueprint(enquiry_bp, url_prefix='/api/enquiries')
     app.register_blueprint(upload_bp, url_prefix='/api/uploads')
+    app.register_blueprint(payments_bp, url_prefix='/api/payments')

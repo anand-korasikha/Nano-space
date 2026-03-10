@@ -39,7 +39,7 @@ def get_user_by_id(user_id_str):
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
-    """Register a new user — stored in MongoDB."""
+    """Register a new user — stored in MongoDB, with optional Firebase phone verification."""
     try:
         data = request.get_json()
 
@@ -50,26 +50,42 @@ def register():
         if not re.match(r"[^@]+@[^@]+\.[^@]+", data['email']):
             return jsonify({'error': 'Invalid email format'}), 400
 
-        if data.get('phone') and not re.match(r"^\+?[\d\s-]{10,}$", data['phone']):
-            return jsonify({'error': 'Invalid phone number format'}), 400
-
         if db_mongo.users.find_one({'email': data['email']}):
             return jsonify({'error': 'Email already registered'}), 409
-
-        if data.get('phone') and db_mongo.users.find_one({'phone': data['phone']}):
-            return jsonify({'error': 'Phone number already registered'}), 409
 
         if data['role'] not in ['customer', 'owner', 'admin']:
             return jsonify({'error': 'Invalid role'}), 400
 
+        # Optional Firebase Phone Validation during signup
+        phone = data.get('phone')
+        phone_verified = False
+        firebase_token = data.get('firebase_token')
+
+        if firebase_token:
+            from services.firebase_service import verify_firebase_id_token
+            try:
+                decoded = verify_firebase_id_token(firebase_token)
+                verified_phone = decoded.get('phone_number')
+                if verified_phone:
+                    phone = verified_phone
+                    phone_verified = True
+            except Exception as e:
+                return jsonify({'error': f'Firebase token verification failed: {str(e)}'}), 401
+
+        if phone and not re.match(r"^\+?[\d\s-]{10,}$", phone):
+            return jsonify({'error': 'Invalid phone number format'}), 400
+
+        if phone and db_mongo.users.find_one({'phone': phone}):
+            return jsonify({'error': 'Phone number already registered'}), 409
+
         user_doc = {
             'email': data['email'],
-            'phone': data.get('phone'),
+            'phone': phone,
             'password_hash': generate_password_hash(data['password']),
             'full_name': data['full_name'],
             'role': data['role'],
             'email_verified': False,
-            'phone_verified': False,
+            'phone_verified': phone_verified,
             'created_at': datetime.utcnow(),
             'last_login': None,
         }

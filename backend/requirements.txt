@@ -23,6 +23,9 @@ firebase-admin>=6.2.0
 # File Upload & Validation
 python-multipart==0.0.6
 
+# Payment Gateway
+razorpay>=1.4.1
+
 # Environment Variables
 python-dotenv==1.0.0
 

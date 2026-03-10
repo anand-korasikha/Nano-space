@@ -6,7 +6,7 @@ import {
     Clock, Mail, Phone, MapPin, ChevronDown, ChevronUp,
     IndianRupee, Plus, Star,
     CheckSquare, Square, Upload, LayoutDashboard,
-    LogOut, ChevronRight, Menu, X
+    LogOut, ChevronRight, Menu, X, CreditCard
 } from 'lucide-react';
 import LocationPicker from '../components/common/LocationPicker';
 import {
@@ -17,7 +17,7 @@ import {
     rejectProperty,
     getAdminStats
 } from '../services/propertyService';
-import { adminAPI } from '../services/api';
+import { adminAPI, paymentsAPI } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import {
     LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
@@ -28,16 +28,16 @@ import './AdminDashboard.css';
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 const BOOKING_STATUS_STYLES = {
-    pending:   { bg: '#fef3c7', color: '#92400e', border: '#f59e0b' },
+    pending: { bg: '#fef3c7', color: '#92400e', border: '#f59e0b' },
     confirmed: { bg: '#d1fae5', color: '#065f46', border: '#10b981' },
     cancelled: { bg: '#fee2e2', color: '#991b1b', border: '#ef4444' },
 };
 
 const ENQUIRY_STATUS_COLORS = {
-    new:       '#f59e0b',
+    new: '#f59e0b',
     contacted: '#3b82f6',
-    resolved:  '#10b981',
-    closed:    '#6b7280',
+    resolved: '#10b981',
+    closed: '#6b7280',
 };
 
 const ENQUIRY_TYPE_LABELS = {
@@ -49,18 +49,19 @@ const ENQUIRY_TYPE_LABELS = {
 };
 
 const NAV_ITEMS = [
-    { id: 'dashboard_overview', label: 'Dashboard',   icon: LayoutDashboard },
+    { id: 'dashboard_overview', label: 'Dashboard', icon: LayoutDashboard },
     {
         id: 'properties', label: 'Properties', icon: Building2,
         children: [
-            { id: 'properties_pending',  label: 'Pending Approval' },
+            { id: 'properties_pending', label: 'Pending Approval' },
             { id: 'properties_approved', label: 'Approved' },
             { id: 'properties_rejected', label: 'Rejected' },
         ],
     },
-    { id: 'bookings',    label: 'Bookings',    icon: Calendar },
-    { id: 'enquiries',   label: 'Enquiries',   icon: MessageSquare },
-    { id: 'users',       label: 'Users',       icon: Users },
+    { id: 'bookings', label: 'Bookings', icon: Calendar },
+    { id: 'enquiries', label: 'Enquiries', icon: MessageSquare },
+    { id: 'users', label: 'Users', icon: Users },
+    { id: 'payments', label: 'Payments', icon: CreditCard },
     { id: 'add_listing', label: 'Add Listing', icon: Plus },
 ];
 
@@ -69,29 +70,33 @@ const AdminDashboard = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
-    const [activeTab,          setActiveTab]          = useState('dashboard_overview');
-    const [propertySubTab,     setPropertySubTab]     = useState('pending');
-    const [bookingFilter,      setBookingFilter]      = useState('all');
-    const [sidebarOpen,        setSidebarOpen]        = useState(true);
+    const [activeTab, setActiveTab] = useState('dashboard_overview');
+    const [propertySubTab, setPropertySubTab] = useState('pending');
+    const [bookingFilter, setBookingFilter] = useState('all');
+    const [sidebarOpen, setSidebarOpen] = useState(true);
     const [propertiesExpanded, setPropertiesExpanded] = useState(false);
 
     // Data
-    const [pendingProperties,  setPendingProperties]  = useState([]);
+    const [pendingProperties, setPendingProperties] = useState([]);
     const [approvedProperties, setApprovedProperties] = useState([]);
     const [rejectedProperties, setRejectedProperties] = useState([]);
-    const [enquiries,          setEnquiries]          = useState([]);
-    const [bookings,           setBookings]           = useState([]);
-    const [stats,              setStats]              = useState({ total: 0, pending: 0, approved: 0, rejected: 0, users: {}, bookings: {}, enquiries: {} });
-    const [usersList,          setUsersList]          = useState([]);
+    const [enquiries, setEnquiries] = useState([]);
+    const [bookings, setBookings] = useState([]);
+    const [payments, setPayments] = useState([]);
+    const [stats, setStats] = useState({ total: 0, pending: 0, approved: 0, rejected: 0, users: {}, bookings: {}, enquiries: {} });
+    const [usersList, setUsersList] = useState([]);
 
     // UI
-    const [loading,          setLoading]          = useState(true);
-    const [rejectionReason,  setRejectionReason]  = useState({});
-    const [expandedEnquiry,  setExpandedEnquiry]  = useState(null);
-    const [expandedBooking,  setExpandedBooking]  = useState(null);
-    const [error,            setError]            = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [paymentsLoading, setPaymentsLoading] = useState(false);
+    const [paymentFilter, setPaymentFilter] = useState('all');
+    const [rejectionReason, setRejectionReason] = useState({});
+    const [expandedEnquiry, setExpandedEnquiry] = useState(null);
+    const [expandedBooking, setExpandedBooking] = useState(null);
+    const [error, setError] = useState(null);
     const [submittingListing, setSubmittingListing] = useState(false);
-    const [enquiryFilter,    setEnquiryFilter]    = useState('all');
+    const [enquiryFilter, setEnquiryFilter] = useState('all');
+    const [selectedEnquiries, setSelectedEnquiries] = useState([]);
 
     // Listing form
     const [newListing, setNewListing] = useState({
@@ -109,7 +114,7 @@ const AdminDashboard = () => {
         setLoading(true);
         setError(null);
         try {
-            const [pending, approved, rejected, statsData, enquiryData, bookingData, usersData] = await Promise.all([
+            const [pending, approved, rejected, statsData, enquiryData, bookingData, usersData, paymentsData] = await Promise.all([
                 getPendingProperties(),
                 getApprovedProperties(),
                 getRejectedProperties(),
@@ -117,14 +122,16 @@ const AdminDashboard = () => {
                 adminAPI.getEnquiries().catch(() => ({ enquiries: [] })),
                 adminAPI.getAllBookings().catch(() => ({ bookings: [] })),
                 adminAPI.getAllUsers().catch(() => ({ users: [] })),
+                adminAPI.getPayments().catch(() => ({ payments: [] })),
             ]);
-            setPendingProperties(pending   || []);
+            setPendingProperties(pending || []);
             setApprovedProperties(approved || []);
             setRejectedProperties(rejected || []);
             setStats(statsData || {});
-            setEnquiries(enquiryData?.enquiries  || []);
-            setBookings(bookingData?.bookings     || []);
-            setUsersList(usersData?.users         || []);
+            setEnquiries(enquiryData?.enquiries || []);
+            setBookings(bookingData?.bookings || []);
+            setUsersList(usersData?.users || []);
+            setPayments(paymentsData?.payments || []);
         } catch {
             setError('Failed to load dashboard data. Please try refreshing.');
         } finally {
@@ -163,9 +170,55 @@ const AdminDashboard = () => {
 
     const handleEnquiryStatus = async (id, status) => {
         try {
+            const oldStatus = enquiries.find(e => e.id === id)?.status;
             await adminAPI.updateEnquiryStatus(id, status);
+
+            // Update local state list
             setEnquiries(prev => prev.map(e => e.id === id ? { ...e, status } : e));
-        } catch { setError('Failed to update enquiry status.'); }
+
+            // Update stats counts live so dashboard is accurate
+            if (oldStatus && oldStatus !== status) {
+                setStats(prev => ({
+                    ...prev,
+                    enquiries: {
+                        ...prev.enquiries,
+                        [oldStatus]: Math.max(0, (prev.enquiries?.[oldStatus] || 0) - 1),
+                        [status]: (prev.enquiries?.[status] || 0) + 1
+                    }
+                }));
+            }
+        } catch (err) {
+            console.error('Status update failed:', err);
+            setError('Failed to update enquiry status.');
+        }
+    };
+
+    const handleBulkStatusUpdate = async (status) => {
+        if (selectedEnquiries.length === 0) return;
+        setLoading(true);
+        try {
+            await Promise.all(selectedEnquiries.map(id => adminAPI.updateEnquiryStatus(id, status)));
+            await loadData();
+            setSelectedEnquiries([]);
+        } catch {
+            setError('Failed to update some enquiries.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const toggleEnquirySelection = (id) => {
+        setSelectedEnquiries(prev =>
+            prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+        );
+    };
+
+    const handleSelectAllEnquiries = (filteredEnquiries) => {
+        if (selectedEnquiries.length === filteredEnquiries.length) {
+            setSelectedEnquiries([]);
+        } else {
+            setSelectedEnquiries(filteredEnquiries.map(e => e.id));
+        }
     };
 
     const handleDeleteEnquiry = async (id) => {
@@ -226,8 +279,8 @@ const AdminDashboard = () => {
     // ── Computed ───────────────────────────────────────────────────────────────
     const filteredBookings = bookingFilter === 'all' ? bookings : bookings.filter(b => b.status === bookingFilter);
     const currentProperties = propertySubTab === 'pending' ? pendingProperties : propertySubTab === 'approved' ? approvedProperties : rejectedProperties;
-    const totalProperties   = pendingProperties.length + approvedProperties.length + rejectedProperties.length;
-    const bookingCounts     = { all: bookings.length, pending: bookings.filter(b => b.status === 'pending').length, confirmed: bookings.filter(b => b.status === 'confirmed').length, cancelled: bookings.filter(b => b.status === 'cancelled').length };
+    const totalProperties = pendingProperties.length + approvedProperties.length + rejectedProperties.length;
+    const bookingCounts = { all: bookings.length, pending: bookings.filter(b => b.status === 'pending').length, confirmed: bookings.filter(b => b.status === 'confirmed').length, cancelled: bookings.filter(b => b.status === 'cancelled').length };
 
     const handleNavClick = (id) => {
         if (id === 'properties') {
@@ -244,17 +297,17 @@ const AdminDashboard = () => {
     const getBreadcrumb = () => ({
         dashboard_overview: 'Overview',
         properties: `Properties / ${propertySubTab.charAt(0).toUpperCase() + propertySubTab.slice(1)}`,
-        bookings:    'Bookings',
-        enquiries:   'Enquiries',
-        users:       'Users',
+        bookings: 'Bookings',
+        enquiries: 'Enquiries',
+        users: 'Users',
         add_listing: 'Add Listing',
     }[activeTab] || activeTab);
 
     // ── Card renderers ─────────────────────────────────────────────────────────
     const renderBookingCard = (booking) => {
-        const style      = BOOKING_STATUS_STYLES[booking.status] || BOOKING_STATUS_STYLES.pending;
+        const style = BOOKING_STATUS_STYLES[booking.status] || BOOKING_STATUS_STYLES.pending;
         const isExpanded = expandedBooking === booking.id;
-        const amount     = booking.total_amount ? `₹${booking.total_amount}` : booking.amount || '—';
+        const amount = booking.total_amount ? `₹${booking.total_amount}` : booking.amount || '—';
         return (
             <div key={booking.id} className="ad-card booking-card" style={{ borderLeft: `4px solid ${style.border}` }}>
                 <div className="ad-card-row">
@@ -270,9 +323,9 @@ const AdminDashboard = () => {
                             {booking.property_city && <span className="ad-meta-loc"><MapPin size={11} /> {booking.property_city}</span>}
                         </div>
                         <div className="ad-card-meta">
-                            {booking.customer_name  && <span><Users  size={13} className="ad-icon-gray" /> {booking.customer_name}</span>}
-                            {booking.customer_phone && <span><Phone  size={12} className="ad-icon-gray" /> {booking.customer_phone}</span>}
-                            {booking.customer_email && <span><Mail   size={12} className="ad-icon-gray" /> {booking.customer_email}</span>}
+                            {booking.customer_name && <span><Users size={13} className="ad-icon-gray" /> {booking.customer_name}</span>}
+                            {booking.customer_phone && <span><Phone size={12} className="ad-icon-gray" /> {booking.customer_phone}</span>}
+                            {booking.customer_email && <span><Mail size={12} className="ad-icon-gray" /> {booking.customer_email}</span>}
                         </div>
                     </div>
                     <div className="ad-card-side">
@@ -285,16 +338,16 @@ const AdminDashboard = () => {
                 {isExpanded && (
                     <div className="ad-expand-body">
                         <div className="ad-expand-row">
-                            {booking.start_date    && <span><strong>Start:</strong>  {new Date(booking.start_date).toLocaleDateString('en-IN')}</span>}
-                            {booking.end_date      && <span><strong>End:</strong>    {new Date(booking.end_date).toLocaleDateString('en-IN')}</span>}
-                            {booking.quantity      && <span><strong>Qty:</strong>    {booking.quantity}</span>}
+                            {booking.start_date && <span><strong>Start:</strong>  {new Date(booking.start_date).toLocaleDateString('en-IN')}</span>}
+                            {booking.end_date && <span><strong>End:</strong>    {new Date(booking.end_date).toLocaleDateString('en-IN')}</span>}
+                            {booking.quantity && <span><strong>Qty:</strong>    {booking.quantity}</span>}
                             {booking.property_type && <span><strong>Space:</strong>  {booking.property_type}</span>}
                         </div>
                         {booking.notes && <p className="ad-notes">{booking.notes}</p>}
                         <div className="ad-actions">
-                            {booking.status === 'pending'   && <button className="ad-btn ad-btn-green"    onClick={() => handleBookingStatus(booking.id, 'confirmed')}><CheckCircle size={14} /> Confirm</button>}
+                            {booking.status === 'pending' && <button className="ad-btn ad-btn-green" onClick={() => handleBookingStatus(booking.id, 'confirmed')}><CheckCircle size={14} /> Confirm</button>}
                             {booking.status !== 'cancelled' && <button className="ad-btn ad-btn-red-soft" onClick={() => handleBookingStatus(booking.id, 'cancelled')}><XCircle size={14} /> Cancel</button>}
-                            {booking.status === 'cancelled' && <button className="ad-btn ad-btn-yellow"   onClick={() => handleBookingStatus(booking.id, 'pending')}><RefreshCw size={14} /> Restore</button>}
+                            {booking.status === 'cancelled' && <button className="ad-btn ad-btn-yellow" onClick={() => handleBookingStatus(booking.id, 'pending')}><RefreshCw size={14} /> Restore</button>}
                         </div>
                     </div>
                 )}
@@ -319,15 +372,15 @@ const AdminDashboard = () => {
                 </div>
                 <div className="ad-prop-price">
                     <IndianRupee size={13} />
-                    {property.price_per_seat  ? `${property.price_per_seat}/seat`
-                     : property.price_per_month ? `${property.price_per_month}/mo`
-                     : property.price ? `${property.price}/${property.period}` : '—'}
+                    {property.price_per_seat ? `${property.price_per_seat}/seat`
+                        : property.price_per_month ? `${property.price_per_month}/mo`
+                            : property.price ? `${property.price}/${property.period}` : '—'}
                 </div>
                 {(property.contact_name || property.contact_email || property.contact_phone) && (
                     <div className="ad-owner-info">
-                        {property.contact_name  && <span><Users  size={13} /> {property.contact_name}</span>}
-                        {property.contact_email && <span><Mail   size={13} /> {property.contact_email}</span>}
-                        {property.contact_phone && <span><Phone  size={13} /> {property.contact_phone}</span>}
+                        {property.contact_name && <span><Users size={13} /> {property.contact_name}</span>}
+                        {property.contact_email && <span><Mail size={13} /> {property.contact_email}</span>}
+                        {property.contact_phone && <span><Phone size={13} /> {property.contact_phone}</span>}
                     </div>
                 )}
                 {property.rejection_reason && <p className="ad-rejection-reason">⚠ {property.rejection_reason}</p>}
@@ -339,7 +392,7 @@ const AdminDashboard = () => {
                             onChange={e => setRejectionReason(p => ({ ...p, [property.id]: e.target.value }))} />
                         <div className="ad-actions">
                             <button className="ad-btn ad-btn-green" onClick={() => handleApprove(property.id)}><CheckCircle size={14} /> Approve</button>
-                            <button className="ad-btn ad-btn-red"   onClick={() => handleReject(property.id)}><XCircle size={14} /> Reject</button>
+                            <button className="ad-btn ad-btn-red" onClick={() => handleReject(property.id)}><XCircle size={14} /> Reject</button>
                         </div>
                     </div>
                 )}
@@ -348,9 +401,9 @@ const AdminDashboard = () => {
                         <div className="ad-flag-row">
                             {[
                                 { flag: 'show_on_homepage', label: 'Home' },
-                                { flag: 'is_featured',      label: 'Featured' },
-                                { flag: 'show_on_buy',      label: 'Buy' },
-                                { flag: 'show_on_rent',     label: 'Rent' },
+                                { flag: 'is_featured', label: 'Featured' },
+                                { flag: 'show_on_buy', label: 'Buy' },
+                                { flag: 'show_on_rent', label: 'Rent' },
                             ].map(({ flag, label }) => (
                                 <button key={flag} className={`ad-flag-btn ${property[flag] ? 'active' : ''}`} onClick={() => handleToggleFlag(property, flag)}>
                                     {property[flag] ? <CheckSquare size={13} /> : <Square size={13} />} {label}
@@ -365,12 +418,16 @@ const AdminDashboard = () => {
     );
 
     const renderEnquiryCard = (enquiry) => {
-        const isExpanded  = expandedEnquiry === enquiry.id;
+        const isExpanded = expandedEnquiry === enquiry.id;
+        const isSelected = selectedEnquiries.includes(enquiry.id);
         const statusColor = ENQUIRY_STATUS_COLORS[enquiry.status] || '#6b7280';
         return (
-            <div key={enquiry.id} className="ad-card" style={{ borderLeft: `4px solid ${statusColor}` }}>
+            <div key={enquiry.id} className={`ad-card ${isSelected ? 'selected' : ''}`} style={{ borderLeft: `4px solid ${statusColor}` }}>
                 <div className="ad-card-row">
-                    <div className="ad-card-main">
+                    <div className="ad-card-check">
+                        <input type="checkbox" checked={isSelected} onChange={() => toggleEnquirySelection(enquiry.id)} />
+                    </div>
+                    <div className="ad-card-main" onClick={() => setExpandedEnquiry(isExpanded ? null : enquiry.id)} style={{ cursor: 'pointer' }}>
                         <div className="ad-badges">
                             <h3 className="ad-enquiry-name">{enquiry.name}</h3>
                             <span className="ad-badge" style={{ background: statusColor + '20', color: statusColor, border: `1px solid ${statusColor}` }}>{enquiry.status}</span>
@@ -379,7 +436,7 @@ const AdminDashboard = () => {
                         <div className="ad-card-meta">
                             {enquiry.email && <span><Mail size={12} className="ad-icon-gray" /> {enquiry.email}</span>}
                             {enquiry.phone && <span><Phone size={12} className="ad-icon-gray" /> {enquiry.phone}</span>}
-                            {enquiry.city  && <span><MapPin size={12} className="ad-icon-gray" /> {enquiry.city}</span>}
+                            {enquiry.city && <span><MapPin size={12} className="ad-icon-gray" /> {enquiry.city}</span>}
                             <span className="ad-meta-time"><Clock size={11} /> {new Date(enquiry.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
                         </div>
                     </div>
@@ -392,15 +449,37 @@ const AdminDashboard = () => {
                         {enquiry.subject && <p><strong>Subject:</strong> {enquiry.subject}</p>}
                         {enquiry.message && <p className="ad-notes">{enquiry.message}</p>}
                         <div className="ad-expand-row">
-                            {enquiry.property_name   && <span><strong>Property:</strong> {enquiry.property_name}</span>}
-                            {enquiry.budget          && <span><strong>Budget:</strong>   {enquiry.budget}</span>}
-                            {enquiry.seats_required  && <span><strong>Seats:</strong>    {enquiry.seats_required}</span>}
+                            {enquiry.property_name && <span><strong>Property:</strong> {enquiry.property_name}</span>}
+                            {enquiry.budget && <span><strong>Budget:</strong>   {enquiry.budget}</span>}
+                            {enquiry.seats_required && <span><strong>Seats:</strong>    {enquiry.seats_required}</span>}
                         </div>
                         <div className="ad-actions">
-                            {enquiry.status === 'new'       && <button className="ad-btn ad-btn-blue"     onClick={() => handleEnquiryStatus(enquiry.id, 'contacted')}><Phone size={14} /> Contacted</button>}
-                            {enquiry.status !== 'resolved'  && <button className="ad-btn ad-btn-green"    onClick={() => handleEnquiryStatus(enquiry.id, 'resolved')}><CheckCircle size={14} /> Resolve</button>}
-                            {enquiry.status !== 'closed'    && <button className="ad-btn ad-btn-gray"     onClick={() => handleEnquiryStatus(enquiry.id, 'closed')}><XCircle size={14} /> Close</button>}
-                            <button className="ad-btn ad-btn-red-soft" onClick={() => handleDeleteEnquiry(enquiry.id)}><Trash2 size={14} /> Delete</button>
+                            <span className="ad-action-label">Mark as:</span>
+                            {enquiry.status !== 'new' && (
+                                <button className="ad-btn ad-btn-yellow-soft" onClick={() => handleEnquiryStatus(enquiry.id, 'new')}>
+                                    <Clock size={13} /> New
+                                </button>
+                            )}
+                            {enquiry.status !== 'contacted' && (
+                                <button className="ad-btn ad-btn-blue-soft" onClick={() => handleEnquiryStatus(enquiry.id, 'contacted')}>
+                                    <Phone size={13} /> Contacted
+                                </button>
+                            )}
+                            {enquiry.status !== 'resolved' && (
+                                <button className="ad-btn ad-btn-green-soft" onClick={() => handleEnquiryStatus(enquiry.id, 'resolved')}>
+                                    <CheckCircle size={13} /> Resolved
+                                </button>
+                            )}
+                            {enquiry.status !== 'closed' && (
+                                <button className="ad-btn ad-btn-gray-soft" onClick={() => handleEnquiryStatus(enquiry.id, 'closed')}>
+                                    <XCircle size={13} /> Closed
+                                </button>
+                            )}
+                            <div style={{ marginLeft: 'auto' }}>
+                                <button className="ad-btn ad-btn-red-soft" onClick={() => handleDeleteEnquiry(enquiry.id)}>
+                                    <Trash2 size={13} /> Delete
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -409,8 +488,8 @@ const AdminDashboard = () => {
     };
 
     // ── Analytics helpers ──────────────────────────────────────────────────────
-    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const PIE_COLORS = ['#7c3aed','#10b981','#f59e0b','#ef4444','#3b82f6','#ec4899'];
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const PIE_COLORS = ['#7c3aed', '#10b981', '#f59e0b', '#ef4444', '#3b82f6', '#ec4899'];
 
     const bookingsByMonth = MONTHS.map((m, i) => ({
         month: m,
@@ -418,7 +497,7 @@ const AdminDashboard = () => {
     }));
 
     const bookingStatusData = [
-        { name: 'Pending',   value: bookings.filter(b => b.status === 'pending').length,   fill: '#f59e0b' },
+        { name: 'Pending', value: bookings.filter(b => b.status === 'pending').length, fill: '#f59e0b' },
         { name: 'Confirmed', value: bookings.filter(b => b.status === 'confirmed').length, fill: '#10b981' },
         { name: 'Cancelled', value: bookings.filter(b => b.status === 'cancelled').length, fill: '#ef4444' },
         { name: 'Completed', value: bookings.filter(b => b.status === 'completed').length, fill: '#7c3aed' },
@@ -441,23 +520,25 @@ const AdminDashboard = () => {
             <div className="ad-overview">
                 <div className="ad-stats-grid">
                     {[
-                        { label: 'Total Properties',  value: stats.total   ?? totalProperties,                                              icon: Building2,    color: '#7c3aed', bg: '#ede9fe' },
-                        { label: 'Pending Approvals', value: stats.pending ?? pendingProperties.length,                                    icon: Clock,        color: '#f59e0b', bg: '#fef3c7' },
-                        { label: 'Total Bookings',    value: stats.bookings?.total  ?? bookings.length,                                    icon: Calendar,     color: '#10b981', bg: '#d1fae5' },
-                        { label: 'New Enquiries',     value: stats.enquiries?.new   ?? enquiries.filter(e => e.status === 'new').length,   icon: MessageSquare,color: '#3b82f6', bg: '#dbeafe' },
-                        { label: 'Total Users',       value: stats.users?.total     ?? usersList.length,                                   icon: Users,        color: '#ec4899', bg: '#fce7f3' },
-                        { label: 'Approved Listings', value: stats.approved ?? approvedProperties.length,                                  icon: CheckCircle,  color: '#059669', bg: '#d1fae5' },
+                        { label: 'Total Properties', value: stats.total ?? totalProperties, icon: Building2, color: '#7c3aed', bg: '#ede9fe' },
+                        { label: 'Pending Approvals', value: stats.pending ?? pendingProperties.length, icon: Clock, color: '#f59e0b', bg: '#fef3c7' },
+                        { label: 'Total Bookings', value: stats.bookings?.total ?? bookings.length, icon: Calendar, color: '#10b981', bg: '#d1fae5' },
+                        { label: 'New Enquiries', value: enquiries.filter(e => e.status === 'new').length || (stats.enquiries?.new ?? 0), icon: MessageSquare, color: '#f59e0b', bg: '#fef3c7' },
+                        { label: 'Contacted', value: enquiries.filter(e => e.status === 'contacted').length || (stats.enquiries?.contacted ?? 0), icon: Phone, color: '#3b82f6', bg: '#dbeafe' },
+                        { label: 'Total Users', value: stats.users?.total ?? usersList.length, icon: Users, color: '#ec4899', bg: '#fce7f3' },
+                        { label: 'Approved Listings', value: stats.approved ?? approvedProperties.length, icon: CheckCircle, color: '#059669', bg: '#d1fae5' },
+                        { label: 'Revenue Collected', value: `₹${payments.filter(p => p.status === 'paid').reduce((s, p) => s + (p.amount || 0) / 100, 0).toLocaleString('en-IN')}`, icon: CreditCard, color: '#0f766e', bg: '#ccfbf1' },
                     ].map((stat) => {
                         const StatIcon = stat.icon;
                         return (
-                        <div className="ad-stat-card" key={stat.label}>
-                            <div className="ad-stat-icon" style={{ background: stat.bg, color: stat.color }}><StatIcon size={22} /></div>
-                            <div>
-                                <p className="ad-stat-value" style={{ color: stat.color }}>{loading ? '…' : stat.value}</p>
-                                <p className="ad-stat-label">{stat.label}</p>
+                            <div className="ad-stat-card" key={stat.label}>
+                                <div className="ad-stat-icon" style={{ background: stat.bg, color: stat.color }}><StatIcon size={22} /></div>
+                                <div>
+                                    <p className="ad-stat-value" style={{ color: stat.color }}>{loading ? '…' : stat.value}</p>
+                                    <p className="ad-stat-label">{stat.label}</p>
+                                </div>
                             </div>
-                        </div>
-                    );
+                        );
                     })}
                 </div>
 
@@ -626,6 +707,26 @@ const AdminDashboard = () => {
                             </button>
                         ))}
                     </div>
+
+                    <div className="ad-bulk-bar">
+                        <div className="ad-bulk-left">
+                            <input
+                                type="checkbox"
+                                checked={selectedEnquiries.length === filteredEnquiries.length && filteredEnquiries.length > 0}
+                                onChange={() => handleSelectAllEnquiries(filteredEnquiries)}
+                            />
+                            <span className="ad-bulk-text">{selectedEnquiries.length} selected</span>
+                        </div>
+                        {selectedEnquiries.length > 0 && (
+                            <div className="ad-bulk-actions">
+                                <span className="ad-bulk-label">Mark all selected as:</span>
+                                <button className="ad-btn ad-btn-blue-soft" onClick={() => handleBulkStatusUpdate('contacted')}><Phone size={13} /> Contacted</button>
+                                <button className="ad-btn ad-btn-green-soft" onClick={() => handleBulkStatusUpdate('resolved')}><CheckCircle size={13} /> Resolved</button>
+                                <button className="ad-btn ad-btn-gray-soft" onClick={() => handleBulkStatusUpdate('closed')}><XCircle size={13} /> Closed</button>
+                            </div>
+                        )}
+                    </div>
+
                     <p className="ad-show-count">Showing <strong>{filteredEnquiries.length}</strong> enquir{filteredEnquiries.length === 1 ? 'y' : 'ies'}</p>
                     {loading
                         ? <div className="ad-loading"><RefreshCw size={22} className="spin" /> Loading…</div>
@@ -641,9 +742,9 @@ const AdminDashboard = () => {
             <div>
                 <div className="ad-stats-grid ad-stats-grid-sm" style={{ marginBottom: '1.5rem' }}>
                     {[
-                        { label: 'Total Users',      value: stats.users?.total    || usersList.length, color: '#7c3aed' },
-                        { label: 'Customers',        value: stats.users?.customers || 0,               color: '#3b82f6' },
-                        { label: 'Property Owners',  value: stats.users?.owners    || 0,               color: '#10b981' },
+                        { label: 'Total Users', value: stats.users?.total || usersList.length, color: '#7c3aed' },
+                        { label: 'Customers', value: stats.users?.customers || 0, color: '#3b82f6' },
+                        { label: 'Property Owners', value: stats.users?.owners || 0, color: '#10b981' },
                     ].map(item => (
                         <div key={item.label} className="ad-stat-mini" style={{ borderTop: `3px solid ${item.color}` }}>
                             <p className="ad-stat-value" style={{ color: item.color }}>{item.value}</p>
@@ -674,6 +775,116 @@ const AdminDashboard = () => {
             </div>
         );
 
+        // Payments
+        if (activeTab === 'payments') {
+            const PAYMENT_STATUS_STYLES = {
+                paid: { bg: '#d1fae5', color: '#065f46', border: '#10b981' },
+                pending: { bg: '#fef3c7', color: '#92400e', border: '#f59e0b' },
+                failed: { bg: '#fee2e2', color: '#991b1b', border: '#ef4444' },
+            };
+            const filteredPayments = paymentFilter === 'all'
+                ? payments
+                : payments.filter(p => p.status === paymentFilter);
+            const totalRevenue = payments
+                .filter(p => p.status === 'paid')
+                .reduce((sum, p) => sum + (p.amount || 0) / 100, 0);
+            const paymentCounts = {
+                all: payments.length,
+                paid: payments.filter(p => p.status === 'paid').length,
+                pending: payments.filter(p => p.status === 'pending').length,
+                failed: payments.filter(p => p.status === 'failed').length,
+            };
+            return (
+                <div>
+                    {/* Revenue summary */}
+                    <div className="ad-stats-grid ad-stats-grid-sm" style={{ marginBottom: '1.5rem' }}>
+                        {[
+                            { label: 'Total Payments', value: payments.length, color: '#7c3aed' },
+                            { label: 'Successful', value: paymentCounts.paid, color: '#10b981' },
+                            { label: 'Pending', value: paymentCounts.pending, color: '#f59e0b' },
+                            { label: 'Total Revenue', value: `₹${totalRevenue.toLocaleString('en-IN')}`, color: '#059669' },
+                        ].map(item => (
+                            <div key={item.label} className="ad-stat-mini" style={{ borderTop: `3px solid ${item.color}` }}>
+                                <p className="ad-stat-value" style={{ color: item.color }}>{item.value}</p>
+                                <p className="ad-stat-label">{item.label}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Filter pills */}
+                    <div className="ad-filter-pills">
+                        {['all', 'paid', 'pending', 'failed'].map(f => (
+                            <button key={f} className={`ad-pill ${paymentFilter === f ? 'active' : ''}`} onClick={() => setPaymentFilter(f)}>
+                                {f.charAt(0).toUpperCase() + f.slice(1)} ({paymentCounts[f]})
+                            </button>
+                        ))}
+                    </div>
+
+                    {loading
+                        ? <div className="ad-loading"><RefreshCw size={22} className="spin" /> Loading…</div>
+                        : filteredPayments.length === 0
+                            ? <div className="ad-empty"><CreditCard size={48} /><p>No {paymentFilter !== 'all' ? paymentFilter : ''} payments yet.</p></div>
+                            : (
+                                <div className="ad-table-wrap">
+                                    <table className="ad-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Owner</th>
+                                                <th>Property</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Order ID</th>
+                                                <th>Payment ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {filteredPayments.map(pay => {
+                                                const style = PAYMENT_STATUS_STYLES[pay.status] || PAYMENT_STATUS_STYLES.pending;
+                                                return (
+                                                    <tr key={pay.id}>
+                                                        <td className="ad-td-muted">
+                                                            {pay.created_at
+                                                                ? new Date(pay.created_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+                                                                : '—'}
+                                                        </td>
+                                                        <td>
+                                                            <div className="ad-td-bold">{pay.owner_name || '—'}</div>
+                                                            <div className="ad-td-muted" style={{ fontSize: '0.75rem' }}>{pay.owner_email}</div>
+                                                        </td>
+                                                        <td className="ad-td-bold">{pay.property_name || '—'}</td>
+                                                        <td>
+                                                            <span className="ad-amount" style={{ color: '#059669', fontSize: '0.95rem' }}>
+                                                                <IndianRupee size={13} />
+                                                                {((pay.amount || 0) / 100).toLocaleString('en-IN')}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span className="ad-badge" style={{ background: style.bg, color: style.color, border: `1px solid ${style.border}` }}>
+                                                                {pay.status}
+                                                            </span>
+                                                        </td>
+                                                        <td className="ad-td-muted" style={{ fontSize: '0.75rem' }}>
+                                                            {pay.razorpay_order_id
+                                                                ? `${pay.razorpay_order_id.slice(0, 18)}…`
+                                                                : '—'}
+                                                        </td>
+                                                        <td className="ad-td-muted" style={{ fontSize: '0.75rem' }}>
+                                                            {pay.razorpay_payment_id
+                                                                ? `${pay.razorpay_payment_id.slice(0, 18)}…`
+                                                                : pay.status === 'pending' ? 'Awaiting payment' : '—'}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                </div>
+            );
+        }
+
         // Add Listing
         if (activeTab === 'add_listing') return (
             <div className="ad-form-wrap">
@@ -689,7 +900,7 @@ const AdminDashboard = () => {
                     <div className="ad-form-group">
                         <label>Page / Category *</label>
                         <select value={newListing.type} onChange={e => setNewListing({ ...newListing, type: e.target.value })}>
-                            {['Coworking Space','Coliving Space','Hotel Room','Event Space','Virtual Office','Party Hall','Private Theatre','Office Space','Residential Property'].map(t => <option key={t}>{t}</option>)}
+                            {['Coworking Space', 'Coliving Space', 'Hotel Room', 'Event Space', 'Virtual Office', 'Party Hall', 'Private Theatre', 'Office Space', 'Residential Property'].map(t => <option key={t}>{t}</option>)}
                         </select>
                     </div>
                     <div className="ad-form-group">
@@ -712,10 +923,10 @@ const AdminDashboard = () => {
                     </div>
 
                     {[
-                        { field: 'image',  label: 'Main Photo (Hero) *', id: 'img1', span: true },
-                        { field: 'image2', label: 'Photo 2',             id: 'img2', span: false },
-                        { field: 'image3', label: 'Photo 3',             id: 'img3', span: false },
-                        { field: 'image4', label: 'Photo 4',             id: 'img4', span: false },
+                        { field: 'image', label: 'Main Photo (Hero) *', id: 'img1', span: true },
+                        { field: 'image2', label: 'Photo 2', id: 'img2', span: false },
+                        { field: 'image3', label: 'Photo 3', id: 'img3', span: false },
+                        { field: 'image4', label: 'Photo 4', id: 'img4', span: false },
                     ].map(({ field, label, id, span }) => (
                         <div key={field} className={`ad-form-group${span ? ' span-2' : ''}`}>
                             <label>{label}</label>
@@ -730,7 +941,7 @@ const AdminDashboard = () => {
 
                     <div className="ad-form-group">
                         <label>Latitude</label>
-                        <input type="text" value={newListing.latitude}  onChange={e => setNewListing({ ...newListing, latitude: e.target.value })}  placeholder="17.4483" />
+                        <input type="text" value={newListing.latitude} onChange={e => setNewListing({ ...newListing, latitude: e.target.value })} placeholder="17.4483" />
                     </div>
                     <div className="ad-form-group">
                         <label>Longitude</label>
@@ -744,7 +955,7 @@ const AdminDashboard = () => {
                     </div>
                     <div className="ad-form-group">
                         <label>Area (sqft)</label>
-                        <input type="text" value={newListing.area}    onChange={e => setNewListing({ ...newListing, area: e.target.value })}    placeholder="1500" />
+                        <input type="text" value={newListing.area} onChange={e => setNewListing({ ...newListing, area: e.target.value })} placeholder="1500" />
                     </div>
                     <div className="ad-form-group">
                         <label>Locality / Address</label>
@@ -762,9 +973,9 @@ const AdminDashboard = () => {
                         <div className="ad-visibility-row">
                             {[
                                 { key: 'show_on_homepage', label: 'Show on Homepage' },
-                                { key: 'is_featured',      label: 'Mark Featured' },
-                                { key: 'show_on_rent',     label: 'Post to Rent Page' },
-                                { key: 'show_on_buy',      label: 'Post to Buy Page' },
+                                { key: 'is_featured', label: 'Mark Featured' },
+                                { key: 'show_on_rent', label: 'Post to Rent Page' },
+                                { key: 'show_on_buy', label: 'Post to Buy Page' },
                             ].map(({ key, label }) => (
                                 <label key={key} className="ad-toggle-label">
                                     <input type="checkbox" checked={newListing[key]} onChange={e => setNewListing({ ...newListing, [key]: e.target.checked })} />
@@ -785,7 +996,7 @@ const AdminDashboard = () => {
         return null;
     };
 
-    const PAGE_TITLES = { dashboard_overview: 'Dashboard Overview', properties: 'Properties', bookings: 'Bookings', enquiries: 'Enquiries', users: 'Users', add_listing: 'Add Listing' };
+    const PAGE_TITLES = { dashboard_overview: 'Dashboard Overview', properties: 'Properties', bookings: 'Bookings', enquiries: 'Enquiries', users: 'Users', payments: 'Payments', add_listing: 'Add Listing' };
 
     // ── Render ─────────────────────────────────────────────────────────────────
     return (
@@ -804,8 +1015,8 @@ const AdminDashboard = () => {
 
                 <nav className="ad-nav">
                     {NAV_ITEMS.map(item => {
-                        const Icon       = item.icon;
-                        const isActive   = activeTab === item.id || (item.id === 'properties' && activeTab === 'properties');
+                        const Icon = item.icon;
+                        const isActive = activeTab === item.id || (item.id === 'properties' && activeTab === 'properties');
                         const hasChildren = item.children?.length > 0;
                         return (
                             <div key={item.id}>

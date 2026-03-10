@@ -13,7 +13,7 @@ import { enquiriesAPI } from '../services/api';
 const CityVirtualOffice = () => {
     const { cityName } = useParams();
     const navigate = useNavigate();
-    const [city, setCity] = useState(null);
+    const [city, setCity] = useState(() => cityData[cityName?.toLowerCase()] || null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedOffice, setSelectedOffice] = useState(null);
     const [formData, setFormData] = useState({
@@ -24,42 +24,38 @@ const CityVirtualOffice = () => {
     });
 
     useEffect(() => {
-        const load = async () => {
-            const cityKey = cityName?.toLowerCase();
-            if (cityKey && cityData[cityKey]) {
-                const data = cityData[cityKey];
+        const cityKey = cityName?.toLowerCase();
+        const data = cityData[cityKey];
 
-                // Get approved properties from backend API
-                const approvedProperties = await getApprovedPropertiesByType('Virtual Office', cityKey);
+        if (!data) {
+            navigate('/virtual-office');
+            return;
+        }
 
-                // Merge approved properties with existing office spaces
-                const mergedOfficeSpaces = [
-                    ...(data.officeSpaces || []),
-                    ...(approvedProperties || []).map(prop => ({
-                        id: prop.id,
-                        name: prop.name,
-                        location: prop.location || prop.area,
-                        image: prop.image,
-                        rating: prop.rating || 0,
-                        price: prop.price_per_month ? `₹${prop.price_per_month}` : prop.price,
-                        period: prop.period || 'month',
-                        badge: prop.badge,
-                        amenities: prop.amenities || [],
-                        seats: '10-20 Seats',
-                        cabins: '2-3 Cabins',
-                        meetingRooms: '1-2 Rooms'
-                    }))
-                ];
+        // Set data immediately (already set in useState, but keep in sync on cityName change)
+        setCity(data);
 
-                setCity({
-                    ...data,
-                    officeSpaces: mergedOfficeSpaces
-                });
-            } else {
-                navigate('/virtual-office');
-            }
-        };
-        load();
+        // Async: merge approved listings from backend without blocking render
+        getApprovedPropertiesByType('Virtual Office', cityKey)
+            .then(approvedProperties => {
+                if (!approvedProperties?.length) return;
+                const extra = approvedProperties.map(prop => ({
+                    id: prop.id,
+                    name: prop.name,
+                    location: prop.location || prop.area,
+                    image: prop.image,
+                    rating: prop.rating || 0,
+                    price: prop.price_per_month ? `₹${prop.price_per_month}` : prop.price,
+                    period: prop.period || 'month',
+                    badge: prop.badge,
+                    amenities: prop.amenities || [],
+                    seats: '10-20 Seats',
+                    cabins: '2-3 Cabins',
+                    meetingRooms: '1-2 Rooms'
+                }));
+                setCity(prev => prev ? { ...prev, officeSpaces: [...(prev.officeSpaces || []), ...extra] } : prev);
+            })
+            .catch(() => {}); // silently ignore backend errors
     }, [cityName, navigate]);
 
 

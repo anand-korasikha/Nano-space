@@ -31,6 +31,17 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
+    // Listen for expired-token events fired by the API layer;
+    // update React state so ProtectedRoute can redirect via React Router
+    // (avoids hard window.location navigation and the resulting page-flash).
+    useEffect(() => {
+        const handleAuthExpired = () => {
+            setUser(null);
+        };
+        window.addEventListener('nanospace:auth-expired', handleAuthExpired);
+        return () => window.removeEventListener('nanospace:auth-expired', handleAuthExpired);
+    }, []);
+
     /**
      * Login via Flask backend JWT auth.
      * Falls back to hardcoded admin for offline/dev use.
@@ -90,7 +101,7 @@ export const AuthProvider = ({ children }) => {
     /**
      * Register via Flask backend.
      */
-    const signup = async (userData) => {
+    const signup = async (userData, firebaseToken = null) => {
         if (userData.email === 'admin@nanospace.com') {
             throw new Error('This email is reserved. Please use a different email.');
         }
@@ -102,6 +113,7 @@ export const AuthProvider = ({ children }) => {
                 full_name: userData.name || userData.email.split('@')[0],
                 role: userData.role || 'customer',
                 phone: userData.phone || null,
+                firebase_token: firebaseToken,
             });
 
             const newUser = {

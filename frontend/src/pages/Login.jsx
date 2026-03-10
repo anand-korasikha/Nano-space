@@ -5,7 +5,7 @@ import { getFirebaseAuth } from '../lib/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import './Login.css';
 
-// â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── helpers ─────────────────────────────────────────────────────────────────
 
 /** Ensure a phone number has the country code prefix (defaults +91 India). */
 const normalisePhone = (phone) => {
@@ -15,11 +15,11 @@ const normalisePhone = (phone) => {
     return `+91${clean}`;
 };
 
-// â”€â”€ component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── component ───────────────────────────────────────────────────────────────
 
 const Login = () => {
     const [mode, setMode] = useState('login'); // 'login' | 'signup'
-    // signup steps: 'form' â†’ 'otp' â†’ 'done'
+    // signup steps: 'form' → 'otp' → 'done'
     const [step, setStep] = useState('form');
 
     const [formData, setFormData] = useState({
@@ -38,16 +38,16 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { login, signup, verifyFirebasePhone } = useAuth();
+    const { login, signup } = useAuth();
 
-    // â”€â”€ countdown timer for resend â”€â”€
+    // ── countdown timer for resend ──
     useEffect(() => {
         if (countdown <= 0) return;
         const t = setTimeout(() => setCountdown(c => c - 1), 1000);
         return () => clearTimeout(t);
     }, [countdown]);
 
-    // â”€â”€ clean up reCAPTCHA when leaving OTP step â”€â”€
+    // ── clean up reCAPTCHA when leaving OTP step ──
     useEffect(() => {
         return () => {
             if (recaptchaVerifierRef.current) {
@@ -57,15 +57,15 @@ const Login = () => {
         };
     }, []);
 
-    // â”€â”€ field change â”€â”€
+    // ── field change ──
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
         setError('');
     };
 
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // STEP 1 â€” Login or register
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
+    // STEP 1 — Login or register
+    // ────────────────────────────────────────────────────────────────────────
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -84,10 +84,6 @@ const Login = () => {
         if (!formData.phone) { setError('Phone number is required for verification.'); return; }
         setSending(true);
         try {
-            // 1. Create account in backend
-            await signup(formData);
-
-            // 2. Send OTP via Firebase
             await sendOtp();
         } catch (err) {
             setError(err.message || 'Registration failed. Please try again.');
@@ -96,9 +92,9 @@ const Login = () => {
         }
     };
 
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // Firebase â€” send OTP
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
+    // Firebase — send OTP
+    // ────────────────────────────────────────────────────────────────────────
     const sendOtp = async () => {
         setError('');
         const phone = normalisePhone(formData.phone);
@@ -114,7 +110,7 @@ const Login = () => {
 
         const verifier = new RecaptchaVerifier(firebaseAuth, 'recaptcha-container', {
             size: 'invisible',
-            callback: () => {},
+            callback: () => { },
         });
         recaptchaVerifierRef.current = verifier;
 
@@ -122,31 +118,31 @@ const Login = () => {
         confirmationResultRef.current = result;
         setStep('otp');
         setCountdown(60);
-        setInfo(`OTP sent to ${phone}`);
+        setInfo(`Sequence transmitted to ${phone}`);
     };
 
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // STEP 2 â€” Confirm OTP
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
+    // STEP 2 — Confirm OTP
+    // ────────────────────────────────────────────────────────────────────────
     const handleVerifyOtp = async (e) => {
         e.preventDefault();
         setError('');
-        if (otpCode.length !== 6) { setError('Enter the 6-digit OTP.'); return; }
+        if (otpCode.length !== 6) { setError('6-digit sequence required.'); return; }
         setVerifying(true);
         try {
             // Confirm OTP with Firebase
             const credential = await confirmationResultRef.current.confirm(otpCode);
 
-            // Get Firebase idToken and send to backend
+            // Get Firebase idToken and send to backend signup
             const idToken = await credential.user.getIdToken();
-            await verifyFirebasePhone(idToken);
+            await signup(formData, idToken);
 
             setStep('done');
         } catch (err) {
             if (err.code === 'auth/invalid-verification-code') {
-                setError('Incorrect OTP. Please try again.');
+                setError('Invalid sequence detected.');
             } else if (err.code === 'auth/code-expired') {
-                setError('OTP has expired. Please resend.');
+                setError('Sequence identity expired.');
             } else {
                 setError(err.message || 'Verification failed.');
             }
@@ -161,168 +157,282 @@ const Login = () => {
         try {
             await sendOtp();
         } catch (err) {
-            setError(err.message || 'Failed to resend OTP.');
+            setError(err.message || 'Failed to re-link.');
         } finally {
             setSending(false);
         }
     };
 
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // STEP 3 â€” Done â†’ redirect
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
+    // STEP 3 — Done → redirect
+    // ────────────────────────────────────────────────────────────────────────
     const goToDashboard = () => {
         navigate(`/dashboard/${formData.role || 'customer'}`, { replace: true });
     };
 
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
     // Render
-    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ────────────────────────────────────────────────────────────────────────
     return (
         <div className="login-container">
-            {/* Invisible reCAPTCHA container â€” Firebase requires this in the DOM */}
-            <div id="recaptcha-container" />
+            <div className="login-bg"></div>
+            <div className="accent-border-bar"></div>
+            <div className="scanline-effect"></div>
 
-            <div className="login-wrapper">
-                <div className="login-card">
+            <div className="login-layout">
+                <div className="panel-divider-line"></div>
 
-                    {/* â”€â”€ LOGIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-                    {mode === 'login' && (
-                        <>
-                            <div className="login-header">
-                                <h1>Welcome Back</h1>
-                                <p>Login to access your dashboard</p>
-                            </div>
-                            {error && <div className="error-message">{error}</div>}
-                            <form onSubmit={handleLoginSubmit} className="login-form">
-                                <div className="form-group">
-                                    <label>Email Address</label>
-                                    <input type="email" name="email" value={formData.email}
-                                        onChange={handleChange} placeholder="Enter your email" required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password" value={formData.password}
-                                        onChange={handleChange} placeholder="Enter your password" required />
-                                </div>
-                                <div className="form-options">
-                                    <label className="remember-me"><input type="checkbox" /><span>Remember me</span></label>
-                                    <a href="#" className="forgot-password">Forgot Password?</a>
-                                </div>
-                                <button type="submit" className="submit-btn">Login</button>
-                            </form>
-                            <div className="form-divider"><span>OR</span></div>
-                            <div className="toggle-form">
-                                <p>Don't have an account?{' '}
-                                    <button type="button" onClick={() => { setMode('signup'); setStep('form'); setError(''); }}
-                                        className="toggle-btn">Sign Up</button>
-                                </p>
-                            </div>
-                        </>
-                    )}
+                {/* ── LEFT PANEL: HERO ────────────────────────────────── */}
+                <div className="login-left-panel">
+                    <div className="hero-content">
+                        <div className="hero-tagline">Secure access portal</div>
+                        <h1 className="hero-main-title">
+                            Gateway
+                            <span className="keyword-accent">Nexus</span>
+                            <span className="outline-text">Verified.</span>
+                        </h1>
+                        <p className="hero-paragraph">
+                            Access the most premium coworking and private spaces across the globe. Secure, verified, and ready for you.
+                        </p>
+                    </div>
 
-                    {/* â”€â”€ SIGNUP STEP 1 â€” form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-                    {mode === 'signup' && step === 'form' && (
-                        <>
-                            <div className="login-header">
-                                <h1>Create Account</h1>
-                                <p>Sign up to get started</p>
-                            </div>
-                            {error && <div className="error-message">{error}</div>}
-                            <form onSubmit={handleSignupSubmit} className="login-form">
-                                <div className="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" name="name" value={formData.name}
-                                        onChange={handleChange} placeholder="Enter your full name" required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Email Address</label>
-                                    <input type="email" name="email" value={formData.email}
-                                        onChange={handleChange} placeholder="Enter your email" required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Phone Number</label>
-                                    <input type="tel" name="phone" value={formData.phone}
-                                        onChange={handleChange} placeholder="+91 98765 43210" required />
-                                    <small className="otp-hint">An OTP will be sent to this number via Firebase.</small>
-                                </div>
-                                <div className="form-group">
-                                    <label>I am a</label>
-                                    <select name="role" value={formData.role} onChange={handleChange} required>
-                                        <option value="customer">Customer- Looking for spaces</option>
-                                        <option value="owner">Owner- Want to list my property</option>
-                                    </select>
-                                </div>
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password" value={formData.password}
-                                        onChange={handleChange} placeholder="Create a password" required />
-                                </div>
-                                <button type="submit" className="submit-btn" disabled={sending}>
-                                    {sending ? 'Creating account & sending OTPâ€¦' : 'Sign Up & Send OTP'}
-                                </button>
-                            </form>
-                            <div className="toggle-form">
-                                <p>Already have an account?{' '}
-                                    <button type="button" onClick={() => { setMode('login'); setError(''); }}
-                                        className="toggle-btn">Login</button>
-                                </p>
-                            </div>
-                        </>
-                    )}
-
-                    {/* â”€â”€ SIGNUP STEP 2 â€” OTP entry â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-                    {mode === 'signup' && step === 'otp' && (
-                        <>
-                            <div className="login-header">
-                                <div className="otp-icon">ðŸ“±</div>
-                                <h1>Verify Your Phone</h1>
-                                <p>Enter the 6-digit OTP sent to<br />
-                                    <strong>{normalisePhone(formData.phone)}</strong></p>
-                            </div>
-                            {info && <div className="info-message">{info}</div>}
-                            {error && <div className="error-message">{error}</div>}
-                            <form onSubmit={handleVerifyOtp} className="login-form">
-                                <div className="form-group">
-                                    <label>OTP Code</label>
-                                    <input
-                                        type="text" inputMode="numeric" maxLength={6}
-                                        value={otpCode}
-                                        onChange={e => { setOtpCode(e.target.value.replace(/\D/g, '')); setError(''); }}
-                                        placeholder="Enter 6-digit OTP"
-                                        className="otp-input"
-                                        autoFocus
-                                    />
-                                </div>
-                                <button type="submit" className="submit-btn" disabled={verifying || otpCode.length !== 6}>
-                                    {verifying ? 'Verifyingâ€¦' : 'Verify OTP'}
-                                </button>
-                                <div className="otp-resend">
-                                    {countdown > 0
-                                        ? <span>Resend OTP in {countdown}s</span>
-                                        : <button type="button" onClick={handleResendOtp} disabled={sending}
-                                            className="toggle-btn">{sending ? 'Sendingâ€¦' : 'Resend OTP'}</button>
-                                    }
-                                </div>
-                            </form>
-                            <div className="toggle-form">
-                                <button type="button" onClick={() => { setStep('form'); setError(''); setOtpCode(''); }}
-                                    className="toggle-btn">â† Back</button>
-                            </div>
-                        </>
-                    )}
-
-                    {/* â”€â”€ SIGNUP STEP 3 â€” done â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-                    {mode === 'signup' && step === 'done' && (
-                        <div className="otp-done">
-                            <div className="otp-success-icon">âœ…</div>
-                            <h1>Phone Verified!</h1>
-                            <p>Your account has been created and your phone number is verified.</p>
-                            <button className="submit-btn" onClick={goToDashboard}>
-                                Go to Dashboard
-                            </button>
+                    <div className="hero-stats-row">
+                        <div className="stat-item-box">
+                            <div className="stat-value">500<span>+</span></div>
+                            <div className="stat-label-text">Verified Spaces</div>
                         </div>
-                    )}
+                        <div className="stat-item-box">
+                            <div className="stat-value">99<span>%</span></div>
+                            <div className="stat-label-text">Trust Score</div>
+                        </div>
+                        <div className="stat-item-box">
+                            <div className="stat-value">0<span>ms</span></div>
+                            <div className="stat-label-text">Validation Latency</div>
+                        </div>
+                    </div>
+                </div>
 
+                {/* ── RIGHT PANEL: AUTH ────────────────────────────────── */}
+                <div className="login-right-panel">
+                    <div className={`auth-card-nexus ${mode === 'signup' ? 'signup-active' : ''}`}>
+                        {/* Invisible reCAPTCHA container — Firebase requires this in the DOM */}
+                        <div id="recaptcha-container" />
+
+                        {/* ── LOGIN MODE ─────────────────────── */}
+                        {mode === 'login' && (
+                            <>
+                                <h2 className="card-nexus-title">Welcome Back</h2>
+                                <p className="card-nexus-subtitle">
+                                    No account?
+                                    <button onClick={() => { setMode('signup'); setStep('form'); setError(''); }} className="link-alt">
+                                        Register →
+                                    </button>
+                                </p>
+
+                                {error && <div className="nexus-error-box">{error}</div>}
+
+                                <form onSubmit={handleLoginSubmit} className="nexus-form">
+                                    <div className="form-field-group">
+                                        <label>Email ID</label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="nexus-input"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="you@nexus.io"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-field-group">
+                                        <label>Password</label>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className="nexus-input"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            placeholder="••••••••"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-meta-row">
+                                        <label className="nexus-checkbox-label">
+                                            <input type="checkbox" className="nexus-checkbox" />
+                                            <span>Keep me logged in</span>
+                                        </label>
+                                        <a href="#" className="link-forgot">Forgot Password</a>
+                                    </div>
+                                    <button type="submit" className="nexus-btn-primary">
+                                        <span>Login</span>
+                                    </button>
+                                </form>
+
+                                <div className="nexus-divider">
+                                    <div className="nexus-divider-line"></div>
+                                    <span className="nexus-divider-text">Or</span>
+                                    <div className="nexus-divider-line"></div>
+                                </div>
+
+                                <button type="button" className="nexus-btn-social">
+                                    <svg className="social-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                                    </svg>
+                                    <span>Signin with Google</span>
+                                </button>
+                            </>
+                        )}
+
+                        {/* ── SIGNUP MODE: FORM STEP ─────────────────────── */}
+                        {mode === 'signup' && step === 'form' && (
+                            <>
+                                <h2 className="card-nexus-title">Create Account</h2>
+                                <p className="card-nexus-subtitle">
+                                    Already verified?
+                                    <button onClick={() => { setMode('login'); setError(''); }} className="link-alt">
+                                        Login →
+                                    </button>
+                                </p>
+
+                                {error && <div className="nexus-error-box">{error}</div>}
+
+                                <form onSubmit={handleSignupSubmit} className="nexus-form">
+                                    <div className="form-field-group">
+                                        <label>Full Name</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            className="nexus-input"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            placeholder="Enter Full Name"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-field-group">
+                                        <label>Email ID</label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            className="nexus-input"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="identity@nexus.io"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-field-group">
+                                        <label>Mobile Number</label>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            className="nexus-input"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            placeholder="+91 00000 00000"
+                                            required
+                                        />
+                                        <small className="otp-hint">Secure With OTP</small>
+                                    </div>
+                                    <div className="form-field-group">
+                                        <label>Select</label>
+                                        <select
+                                            name="role"
+                                            className="nexus-select"
+                                            value={formData.role}
+                                            onChange={handleChange}
+                                            required
+                                        >
+                                            <option value="customer">Customer - Search for Spaces</option>
+                                            <option value="owner">Owner - List my space</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-field-group">
+                                        <label>Password</label>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className="nexus-input"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            placeholder="Generate complex key"
+                                            required
+                                        />
+                                    </div>
+                                    <button type="submit" className="nexus-btn-primary" disabled={sending}>
+                                        {sending && <span className="nexus-loading-spinner"></span>}
+                                        <span>{sending ? 'Routing OTP...' : 'SignIn'}</span>
+                                    </button>
+                                </form>
+                            </>
+                        )}
+
+                        {/* ── SIGNUP MODE: OTP STEP ─────────────────────── */}
+                        {mode === 'signup' && step === 'otp' && (
+                            <>
+                                <div className="otp-display-header">
+                                    <div className="otp-symbol">🔐</div>
+                                    <h2 className="card-nexus-title">Validation</h2>
+                                    <p className="card-nexus-subtitle">
+                                        Intercepting 6-digit transmission at <br />
+                                        <strong>{normalisePhone(formData.phone)}</strong>
+                                    </p>
+                                </div>
+
+                                {info && <div className="nexus-info-box">{info}</div>}
+                                {error && <div className="nexus-error-box">{error}</div>}
+
+                                <form onSubmit={handleVerifyOtp} className="nexus-form">
+                                    <div className="form-field-group">
+                                        <label>OTP Sequence</label>
+                                        <input
+                                            type="text"
+                                            inputMode="numeric"
+                                            maxLength={6}
+                                            className="nexus-input otp-nexus-input"
+                                            value={otpCode}
+                                            onChange={e => { setOtpCode(e.target.value.replace(/\D/g, '')); setError(''); }}
+                                            placeholder="000 000"
+                                            autoFocus
+                                            required
+                                        />
+                                    </div>
+                                    <button type="submit" className="nexus-btn-primary" disabled={verifying || otpCode.length !== 6}>
+                                        {verifying && <span className="nexus-loading-spinner"></span>}
+                                        <span>{verifying ? 'decrypting...' : 'Validate Sequence'}</span>
+                                    </button>
+                                    <div className="resend-nexus-row">
+                                        {countdown > 0
+                                            ? <span>Re-link in {countdown}s</span>
+                                            : <span>Link dead. <button type="button" onClick={handleResendOtp} disabled={sending} className="btn-nexus-link">Reconnect →</button></span>
+                                        }
+                                    </div>
+                                </form>
+                                <div className="text-center mt-2">
+                                    <button type="button" onClick={() => { setStep('form'); setError(''); setOtpCode(''); }} className="btn-nexus-link">
+                                        ← Abort Sequence
+                                    </button>
+                                </div>
+                            </>
+                        )}
+
+                        {/* ── SIGNUP MODE: DONE ─────────────────────── */}
+                        {mode === 'signup' && step === 'done' && (
+                            <div className="success-nexus-view">
+                                <div className="success-nexus-icon">✓</div>
+                                <h1 className="success-nexus-title">Verified</h1>
+                                <p className="success-nexus-text">
+                                    Identity confirmed. Your local node is now active and secure.
+                                </p>
+                                <button className="nexus-btn-primary" onClick={goToDashboard}>
+                                    <span>Enter Workspace</span>
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

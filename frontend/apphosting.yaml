@@ -1,0 +1,10 @@
+# App Hosting configuration (production)
+# This file is used for real deployments but is also read by the emulator.
+
+# Node.js runtime version
+runtime: nodejs18
+
+# Environment variables (example)
+# env:
+#   - name: MY_VAR
+#     value: some-value
