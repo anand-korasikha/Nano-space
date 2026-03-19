@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import './HotelRooms.css';
 import hotelsData from '../data/hotelsData.json';
 import BookingModal from '../components/BookingModal';
-
+import DynamicListings from '../components/common/DynamicListings';
+import AddPropertyModal from '../components/owner/AddPropertyModal';
 const HotelRooms = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedHotel, setSelectedHotel] = useState(null);
+    const [isListingOpen, setIsListingOpen] = useState(false);
 
     const handleBookNow = (hotel) => {
         setSelectedHotel(hotel);
@@ -72,6 +74,21 @@ const HotelRooms = () => {
                     />
                 </div>
             </div>
+
+            {/* New backend listings */}
+            <DynamicListings
+                type="Hotel Room"
+                sectionTitle="New Hotel Listings"
+                onBook={handleBookNow}
+            />
+
+            {/* Add Listing Modal (Hotel Room) */}
+            <AddPropertyModal
+                isOpen={isListingOpen}
+                onClose={() => setIsListingOpen(false)}
+                onSubmit={() => setIsListingOpen(false)}
+                initialType="Hotel Room"
+            />
 
             {/* Booking Modal */}
             <BookingModal

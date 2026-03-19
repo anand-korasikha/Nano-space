@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Star, Info, Home, Users, Film, Sparkles } fr
 import { Link } from 'react-router-dom';
 import './PrivateTheatres.css';
 import privateTheatresData from '../data/privateTheatresData.json';
+import DynamicListings from '../components/common/DynamicListings';
 
 const PrivateTheatres = () => {
     return (
@@ -56,6 +57,12 @@ const PrivateTheatres = () => {
                     />
                 </div>
             </div>
+
+            {/* New backend listings */}
+            <DynamicListings
+                type="Private Theatre"
+                sectionTitle="New Private Theatre Listings"
+            />
         </>
     );
 };

@@ -35,7 +35,7 @@ const CityColiving = () => {
         setCityData(data);
 
         // Async: merge approved listings from backend without blocking render
-        getApprovedPropertiesByType('Coliving', normalizedCityName)
+        getApprovedPropertiesByType('Coliving Space', normalizedCityName)
             .then(approvedProperties => {
                 if (!approvedProperties?.length) return;
                 const extra = approvedProperties.map(prop => ({

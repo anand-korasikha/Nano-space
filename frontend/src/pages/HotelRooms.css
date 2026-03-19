@@ -8,6 +8,108 @@
     background: #1a1a1a;
 }
 
+/* ── List Your Hotel CTA ───────────────────────────────────────────────────── */
+.hotel-list-cta {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5986 100%);
+    padding: 3rem 1.5rem;
+    margin-top: 2rem;
+}
+
+.hotel-list-cta-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hotel-list-cta-text {
+    flex: 1;
+    min-width: 260px;
+    color: #fff;
+}
+
+.hotel-list-cta-text h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hotel-list-cta-text p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.hotel-list-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.hotel-list-benefits li {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+.hotel-list-cta-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    min-width: 240px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.hotel-fee-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.hotel-fee-row {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+}
+
+.hotel-fee-row.hotel-fee-total {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1e3a5f;
+}
+
+.hotel-list-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1e3a5f, #2d5986);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.hotel-list-btn:hover {
+    opacity: 0.9;
+}
+
+
 .hotel-hero-image {
     width: 100%;
     height: 100%;

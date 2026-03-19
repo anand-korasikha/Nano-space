@@ -1,41 +1,54 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import ScrollToTop from './components/common/ScrollToTop';
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
-import Coworking from './pages/Coworking';
-import CityCoworking from './pages/CityCoworking';
-import CoworkingSpaceDetails from './components/coworking/CoworkingSpaceDetails';
-import Coliving from './pages/Coliving';
-import CityColiving from './pages/CityColiving';
-import ColivingSpaceDetails from './components/coliving/ColivingSpaceDetails';
-import VirtualOffice from './pages/VirtualOffice';
-import CityVirtualOffice from './pages/CityVirtualOffice';
-import OfficeSpaces from './pages/OfficeSpaces';
-import Login from './pages/Login';
-import HotelRooms from './pages/HotelRooms';
-import EventSpaces from './pages/EventSpaces';
-import PartyHalls from './pages/PartyHalls';
-import PrivateTheatres from './pages/PrivateTheatres';
-import PropertyDetails from './pages/PropertyDetails';
-import Sell from './pages/Sell';
-import Buy from './pages/Buy';
-import Rent from './pages/Rent';
-import OtherServices from './pages/OtherServices';
-import ServiceCategory from './pages/ServiceCategory';
-import CustomerDashboard from './pages/CustomerDashboard';
-import OwnerDashboard from './pages/OwnerDashboard';
-import AdminDashboard from './pages/AdminDashboard';
 import './styles/responsive.css';
+
+// Eagerly load Home for fast first-paint
+import Home from './pages/Home';
+
+// Lazy load all other pages — each becomes its own JS chunk
+const Coworking = lazy(() => import('./pages/Coworking'));
+const CityCoworking = lazy(() => import('./pages/CityCoworking'));
+const CoworkingSpaceDetails = lazy(() => import('./components/coworking/CoworkingSpaceDetails'));
+const Coliving = lazy(() => import('./pages/Coliving'));
+const CityColiving = lazy(() => import('./pages/CityColiving'));
+const ColivingSpaceDetails = lazy(() => import('./components/coliving/ColivingSpaceDetails'));
+const VirtualOffice = lazy(() => import('./pages/VirtualOffice'));
+const CityVirtualOffice = lazy(() => import('./pages/CityVirtualOffice'));
+const OfficeSpaces = lazy(() => import('./pages/OfficeSpaces'));
+const Login = lazy(() => import('./pages/Login'));
+const HotelRooms = lazy(() => import('./pages/HotelRooms'));
+const EventSpaces = lazy(() => import('./pages/EventSpaces'));
+const PartyHalls = lazy(() => import('./pages/PartyHalls'));
+const PrivateTheatres = lazy(() => import('./pages/PrivateTheatres'));
+const PropertyDetails = lazy(() => import('./pages/PropertyDetails'));
+const Sell = lazy(() => import('./pages/Sell'));
+const Buy = lazy(() => import('./pages/Buy'));
+const Rent = lazy(() => import('./pages/Rent'));
+const OtherServices = lazy(() => import('./pages/OtherServices'));
+const ServiceCategory = lazy(() => import('./pages/ServiceCategory'));
+const CustomerDashboard = lazy(() => import('./pages/CustomerDashboard'));
+const OwnerDashboard = lazy(() => import('./pages/OwnerDashboard'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
+
+// Simple full-page loading fallback
+const PageLoader = () => (
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
+    <div style={{ width: 40, height: 40, border: '3px solid #e5e7eb', borderTopColor: '#3b82f6', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+    <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+  </div>
+);
 
 
 function App() {
   return (
     <AuthProvider>
       <ScrollToTop />
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="coworking" element={<Coworking />} />
@@ -87,6 +100,7 @@ function App() {
           />
         </Route>
       </Routes>
+      </Suspense>
     </AuthProvider>
   );
 }

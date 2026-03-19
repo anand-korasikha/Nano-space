@@ -54,7 +54,8 @@ export const sendPhoneOTP = async (phone) => {
         return {
             success: true,
             message: data.message || `OTP sent to ${phone}`,
-            expiresIn: data.expires_in || 300
+            expiresIn: data.expires_in || 300,
+            devOtp: data.dev_otp || null,
         };
     } catch (error) {
         return handleApiError(error);
@@ -113,6 +114,42 @@ export const resendOTP = async (identifier) => {
  */
 export const clearOTP = (identifier) => {
     // Backend handles OTP state
+};
+
+/**
+ * Request a forgot-password OTP
+ */
+export const requestForgotPasswordOTP = async (identifier) => {
+    try {
+        const response = await fetch(`${BASE_URL}/auth/forgot-password/request`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ identifier }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Failed to send OTP');
+        return { success: true, message: data.message, devOtp: data.dev_otp || null };
+    } catch (error) {
+        return handleApiError(error);
+    }
+};
+
+/**
+ * Verify OTP and set a new password
+ */
+export const resetPassword = async (phone, otp, newPassword) => {
+    try {
+        const response = await fetch(`${BASE_URL}/auth/forgot-password/reset`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone, otp, new_password: newPassword }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Password reset failed');
+        return { success: true, message: data.message };
+    } catch (error) {
+        return handleApiError(error);
+    }
 };
 
 /**

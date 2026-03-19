@@ -4,14 +4,24 @@ import {
     Home, Building2, MapPin, IndianRupee, Upload,
     CheckCircle2, Phone, Mail, User, ChevronRight,
     ChevronLeft, Star, Camera, Video, Mic, Info,
-    Circle, CheckCircle, MoreHorizontal
+    Circle, CheckCircle, MoreHorizontal, CreditCard, Loader
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { submitProperty } from '../services/propertyService';
 import { sendEmailOTP, sendPhoneOTP } from '../services/otpService';
+import { paymentsAPI } from '../services/api';
 import LocationPicker from '../components/common/LocationPicker';
 import InlineOTPVerification from '../components/common/InlineOTPVerification';
 import './Sell.css';
+
+const loadRazorpay = () => new Promise((resolve, reject) => {
+    if (window.Razorpay) { resolve(window.Razorpay); return; }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => window.Razorpay ? resolve(window.Razorpay) : reject(new Error('Razorpay SDK failed'));
+    script.onerror = () => reject(new Error('Payment gateway failed to load.'));
+    document.body.appendChild(script);
+});
 
 const Sell = () => {
     const { user } = useAuth();
@@ -19,6 +29,15 @@ const Sell = () => {
 
     const [activeStep, setActiveStep] = useState(1);
     const [submitted, setSubmitted] = useState(false);
+    const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+    const [paymentError, setPaymentError] = useState('');
+    const [feeBreakdown, setFeeBreakdown] = useState({ base: 3000, gst: 540, total: 3540 });
+
+    useEffect(() => {
+        paymentsAPI.getFee()
+            .then(data => setFeeBreakdown({ base: data.base, gst: data.gst, total: data.total }))
+            .catch(() => {}); // keep default on error
+    }, []);
 
     // Form data state
     const [formData, setFormData] = useState({
@@ -128,20 +147,55 @@ const Sell = () => {
             contactName: formData.ownerName,
             contactEmail: formData.ownerEmail,
             contactPhone: formData.ownerPhone,
-            images: [], // In real app, upload to S3 first
+            images: [],
             amenities: formData.amenities,
             latitude: formData.mapLocation?.lat,
             longitude: formData.mapLocation?.lng
         };
 
+        setPaymentError('');
+        setIsProcessingPayment(true);
         try {
-            const result = await submitProperty(submission);
-            if (result) {
-                setSubmitted(true);
-                setTimeout(() => navigate('/dashboard/owner'), 3000);
-            }
+            await loadRazorpay();
+
+            const orderData = await paymentsAPI.createOrder({ property_name: submission.name });
+
+            const rzpOptions = {
+                key: orderData.key,
+                amount: orderData.amount,
+                currency: orderData.currency,
+                name: 'Nanospace',
+                description: `Property Listing Fee — ${submission.name}`,
+                order_id: orderData.order_id,
+                theme: { color: '#7c3aed' },
+                handler: async (response) => {
+                    try {
+                        await paymentsAPI.verifyPayment({
+                            razorpay_order_id: response.razorpay_order_id,
+                            razorpay_payment_id: response.razorpay_payment_id,
+                            razorpay_signature: response.razorpay_signature,
+                            property_data: submission,
+                        });
+                        setSubmitted(true);
+                        setTimeout(() => navigate('/dashboard/owner'), 3000);
+                    } catch (verifyErr) {
+                        setPaymentError(verifyErr.message || 'Payment received but verification failed. Contact support.');
+                    } finally {
+                        setIsProcessingPayment(false);
+                    }
+                },
+                modal: { ondismiss: () => setIsProcessingPayment(false) },
+            };
+
+            const rzp = new window.Razorpay(rzpOptions);
+            rzp.on('payment.failed', () => {
+                setPaymentError('Payment failed. Please try again.');
+                setIsProcessingPayment(false);
+            });
+            rzp.open();
         } catch (err) {
-            alert('Submission failed: ' + err.message);
+            setPaymentError(err.message || 'Failed to initiate payment.');
+            setIsProcessingPayment(false);
         }
     };
 
@@ -518,13 +572,28 @@ const Sell = () => {
                                 <ChevronRight size={20} />
                             </button>
                         ) : (
-                            <button
-                                className="btn-continue"
-                                onClick={handleSubmit}
-                                disabled={!emailVerified || !phoneVerified}
-                            >
-                                Submit Listing
-                            </button>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.75rem', width: '100%' }}>
+                                {/* Fee breakdown */}
+                                <div className="sell-fee-breakdown">
+                                    <div className="sell-fee-row"><span>Listing Fee</span><span>₹{feeBreakdown.base.toLocaleString('en-IN')}</span></div>
+                                    <div className="sell-fee-row"><span>GST (18%)</span><span>₹{feeBreakdown.gst.toLocaleString('en-IN')}</span></div>
+                                    <div className="sell-fee-row sell-fee-total"><span>Total Payable</span><span>₹{feeBreakdown.total.toLocaleString('en-IN')}</span></div>
+                                </div>
+                                {paymentError && (
+                                    <p style={{ color: '#dc2626', fontSize: '0.85rem', margin: 0 }}>⚠ {paymentError}</p>
+                                )}
+                                <button
+                                    className="btn-continue"
+                                    onClick={handleSubmit}
+                                    disabled={!emailVerified || !phoneVerified || isProcessingPayment}
+                                >
+                                    {isProcessingPayment ? (
+                                        <><Loader size={18} className="spin-icon" /> Processing…</>
+                                    ) : (
+                                        <><CreditCard size={18} /> Pay ₹{feeBreakdown.total.toLocaleString('en-IN')} &amp; Submit Listing</>
+                                    )}
+                                </button>
+                            </div>
                         )}
                     </div>
                 </main>

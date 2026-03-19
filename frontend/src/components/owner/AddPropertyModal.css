@@ -180,8 +180,35 @@
     background: #f5c6cb;
 }
 
+.fee-breakdown {
+    width: 100%;
+    background: #f8f9ff;
+    border: 1px solid #e0e7ff;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.fee-row {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    padding: 0.2rem 0;
+}
+
+.fee-row.fee-total {
+    border-top: 1px solid #c7d2fe;
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1e1e2e;
+}
+
 .form-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: flex-end;
     margin-top: 2rem;

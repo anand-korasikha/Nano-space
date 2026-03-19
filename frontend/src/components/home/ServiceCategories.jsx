@@ -49,7 +49,7 @@ const categories = [
         id: 5,
         titleLine1: "List",
         titleLine2: "Property",
-        link: "/list-property",
+        link: "/dashboard/owner",
         type: "graphic",
         bgClass: "bg-amber-50",
         graphicElement: (
@@ -66,7 +66,7 @@ const categories = [
         id: 6,
         titleLine1: "Office",
         titleLine2: "Spaces",
-        link: "/office-spaces",
+        link: "/business-plans",
         image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
         type: "image"
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getApprovedProperties } from '../services/propertyService';
+import { propertiesAPI } from '../services/api';
 import { MapPin, Star, ArrowLeft, Wifi, Coffee, Users, Home, Utensils, Car, Dumbbell, Phone, Mail, Navigation } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -26,11 +26,8 @@ const PropertyDetails = () => {
         const load = async () => {
             setLoading(true);
             try {
-                const approvedProperties = await getApprovedProperties();
-                const idStr = String(propertyId);
-                const foundProperty = (approvedProperties || []).find(
-                    p => String(p.id) === idStr
-                );
+                const data = await propertiesAPI.getById(propertyId);
+                const foundProperty = data?.property || null;
                 if (foundProperty) {
                     setProperty(foundProperty);
                     setActiveImage(foundProperty.image || (foundProperty.images && foundProperty.images[0]));

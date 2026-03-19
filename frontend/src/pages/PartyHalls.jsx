@@ -3,7 +3,8 @@ import { ChevronLeft, ChevronRight, Star, Info, Home, Users } from 'lucide-react
 import { Link } from 'react-router-dom';
 import './PartyHalls.css';
 import partyHallsData from '../data/partyHallsData.json';
-import BookingModal from '../components/BookingModal';
+import PartyHallEnquiryModal from '../components/PartyHallEnquiryModal';
+import DynamicListings from '../components/common/DynamicListings';
 
 const PartyHalls = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,11 +49,10 @@ const PartyHalls = () => {
             </div>
 
             <div className="party-halls-page">
-                <BookingModal
+                <PartyHallEnquiryModal
                     isOpen={isModalOpen}
                     onClose={closeModal}
-                    hotel={selectedVenue}
-                    bookingType="party-hall"
+                    venue={selectedVenue}
                 />
                 <div className="party-halls-container">
 
@@ -81,6 +81,13 @@ const PartyHalls = () => {
                     />
                 </div>
             </div>
+
+            {/* New backend listings */}
+            <DynamicListings
+                type="Party Hall"
+                sectionTitle="New Party Hall Listings"
+                onBook={handleBookNow}
+            />
         </>
     );
 };
@@ -89,37 +96,8 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false, onBookNow }
     const carouselRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
 
-    // Check if mobile
-    React.useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    // Reverse the venues array if reverse prop is true
     const displayVenues = reverse ? [...venues].reverse() : venues;
-
-    // Auto-scroll for mobile continuous flow
-    React.useEffect(() => {
-        if (isMobile) {
-            const interval = setInterval(() => {
-                setCurrentIndex((prev) => {
-                    if (reverse) {
-                        return prev - 1;
-                    } else {
-                        return prev + 1;
-                    }
-                });
-            }, 3000);
-            return () => clearInterval(interval);
-        }
-    }, [isMobile, reverse]);
 
     const checkScrollButtons = () => {
         if (carouselRef.current) {
@@ -129,28 +107,27 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false, onBookNow }
         }
     };
 
+    React.useEffect(() => {
+        checkScrollButtons();
+    }, []);
+
     const scroll = (direction) => {
         if (carouselRef.current) {
-            const isMobile = window.innerWidth <= 768;
-            const scrollAmount = isMobile
-                ? window.innerWidth - 32
-                : 320;
-
-            const newScrollLeft = carouselRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
-            carouselRef.current.scrollTo({
-                left: newScrollLeft,
+            const card = carouselRef.current.querySelector('.party-hall-card');
+            const cardWidth = card ? card.offsetWidth + 24 : 304;
+            carouselRef.current.scrollBy({
+                left: direction === 'left' ? -cardWidth : cardWidth,
                 behavior: 'smooth'
             });
-            setTimeout(checkScrollButtons, 300);
+            setTimeout(checkScrollButtons, 350);
         }
     };
 
     return (
         <div className={`city-section ${reverse ? 'reverse' : ''}`}>
             <h2 className="city-title">Party Halls in {cityName}</h2>
-
             <div className="carousel-container">
-                {!isMobile && canScrollLeft && (
+                {canScrollLeft && (
                     <button
                         className="carousel-nav-btn left"
                         onClick={() => scroll('left')}
@@ -159,38 +136,16 @@ const CityPartyHallsCarousel = ({ cityName, venues, reverse = false, onBookNow }
                         <ChevronLeft size={24} />
                     </button>
                 )}
-
-                {isMobile ? (
-                    <div className="halls-carousel-mobile">
-                        <div
-                            className="halls-carousel-track"
-                            style={{
-                                transform: reverse
-                                    ? `translateX(${((currentIndex % displayVenues.length) * 100)}%)`
-                                    : `translateX(-${((currentIndex % displayVenues.length) * 100)}%)`,
-                                transition: 'transform 700ms linear'
-                            }}
-                        >
-                            {[...displayVenues, ...displayVenues, ...displayVenues].map((venue, index) => (
-                                <div key={`${venue.id}-${index}`} className="hall-card-wrapper">
-                                    <HallCard venue={venue} onBookNow={onBookNow} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : (
-                    <div
-                        className="halls-carousel"
-                        ref={carouselRef}
-                        onScroll={checkScrollButtons}
-                    >
-                        {displayVenues.map((venue) => (
-                            <HallCard key={venue.id} venue={venue} onBookNow={onBookNow} />
-                        ))}
-                    </div>
-                )}
-
-                {!isMobile && canScrollRight && (
+                <div
+                    className="halls-carousel"
+                    ref={carouselRef}
+                    onScroll={checkScrollButtons}
+                >
+                    {displayVenues.map((venue) => (
+                        <HallCard key={venue.id} venue={venue} onBookNow={onBookNow} />
+                    ))}
+                </div>
+                {canScrollRight && (
                     <button
                         className="carousel-nav-btn right"
                         onClick={() => scroll('right')}
@@ -321,15 +276,16 @@ const HallCard = ({ venue, onBookNow }) => {
                     </div>
                 )}
 
-                <button className="cta-button" onClick={() => onBookNow(venue)}>
-                    Book Now →
-                </button>
-
-                <div className="card-footer">
-                    <span className="free-cancellation">Free cancellation</span>
-                    <div className="verified-badge-container">
-                        <img src="/svg/quality-assurance.svg" alt="Verified" className="verified-icon" />
-                        <span className="verified-text">Verified venue</span>
+                <div className="card-bottom">
+                    <button className="cta-button" onClick={() => onBookNow(venue)}>
+                        Book Now →
+                    </button>
+                    <div className="card-footer">
+                        <span className="free-cancellation">Free cancellation</span>
+                        <div className="verified-badge-container">
+                            <img src="/svg/quality-assurance.svg" alt="Verified" className="verified-icon" />
+                            <span className="verified-text">Verified venue</span>
+                        </div>
                     </div>
                 </div>
             </div>

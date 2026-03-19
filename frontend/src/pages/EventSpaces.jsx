@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Star, Info, Home, Users } from 'lucide-react
 import { Link } from 'react-router-dom';
 import './EventSpaces.css';
 import eventSpacesData from '../data/eventSpacesData.json';
+import DynamicListings from '../components/common/DynamicListings';
 
 const EventSpaces = () => {
     return (
@@ -58,6 +59,12 @@ const EventSpaces = () => {
                     />
                 </div>
             </div>
+
+            {/* New backend listings */}
+            <DynamicListings
+                type="Event Space"
+                sectionTitle="New Event Space Listings"
+            />
         </>
     );
 };

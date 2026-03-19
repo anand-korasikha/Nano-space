@@ -23,10 +23,10 @@ const loadRazorpay = () => new Promise((resolve, reject) => {
     document.body.appendChild(script);
 });
 
-const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
+const AddPropertyModal = ({ isOpen, onClose, onSubmit, initialType = 'Coworking Space' }) => {
     const [formData, setFormData] = useState({
         name: '',
-        type: 'Coworking',
+        type: initialType,
         city: '',
         description: '',
         location: '',
@@ -42,8 +42,10 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
     const [imagePreviews, setImagePreviews] = useState([]); // Changed to array
     const [isProcessingPayment, setIsProcessingPayment] = useState(false);
     const [paymentError, setPaymentError] = useState('');
+    const [isUploadingImages, setIsUploadingImages] = useState(false);
+    const [feeBreakdown, setFeeBreakdown] = useState({ base: 3000, gst: 540, total: 3540 });
 
-    const propertyTypes = ['Coworking', 'Coliving', 'Virtual Office'];
+    const propertyTypes = ['Coworking Space', 'Coliving Space', 'Virtual Office', 'Hotel Room', 'Event Space', 'Party Hall', 'Private Theatre', 'Office Space'];
     const cities = [
         'Hyderabad', 'Bangalore', 'Mumbai', 'Delhi', 'Pune',
         'Noida', 'Chennai', 'Gurugram', 'Ahmedabad', 'Lucknow', 'Indore'
@@ -66,7 +68,7 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
         }
     };
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const files = Array.from(e.target.files);
 
         if (files.length === 0) return;
@@ -86,57 +88,46 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
         // Validate each file
         const validFiles = [];
         for (let file of files) {
-            // Validate file type
             if (!file.type.startsWith('image/')) {
-                setErrors(prev => ({
-                    ...prev,
-                    images: 'Please select valid image files only'
-                }));
+                setErrors(prev => ({ ...prev, images: 'Please select valid image files only' }));
                 return;
             }
-
-            // Validate file size (max 5MB)
             if (file.size > 5 * 1024 * 1024) {
-                setErrors(prev => ({
-                    ...prev,
-                    images: 'Each image size should be less than 5MB'
-                }));
+                setErrors(prev => ({ ...prev, images: 'Each image size should be less than 5MB' }));
                 return;
             }
-
             validFiles.push(file);
         }
 
-        // Clear previous errors
-        setErrors(prev => ({
-            ...prev,
-            images: ''
-        }));
+        setErrors(prev => ({ ...prev, images: '' }));
+        setIsUploadingImages(true);
+
+        try {
+            const { uploadToFirebaseStorage } = await import('../../lib/firebase');
+            const results = await Promise.all(
+                validFiles.map(async (file) => {
+                    const preview = URL.createObjectURL(file);
+                    const storagePath = `listings/${Date.now()}_${file.name}`;
+                    const url = await uploadToFirebaseStorage(file, storagePath);
+                    return { preview, url };
+                })
+            );
+            setImagePreviews(prev => [...prev, ...results.map(r => r.preview)]);
+            setFormData(prev => ({
+                ...prev,
+                images: [...prev.images, ...results.map(r => r.url)]
+            }));
+        } catch (err) {
+            setErrors(prev => ({ ...prev, images: 'Image upload failed. Please try again.' }));
+        } finally {
+            setIsUploadingImages(false);
+        }
+    };
 
         // Process all valid files
         const newPreviews = [];
         const newImages = [];
         let processedCount = 0;
-
-        validFiles.forEach((file) => {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                newPreviews.push(reader.result);
-                newImages.push(reader.result);
-                processedCount++;
-
-                // Once all files are processed, update state
-                if (processedCount === validFiles.length) {
-                    setImagePreviews(prev => [...prev, ...newPreviews]);
-                    setFormData(prev => ({
-                        ...prev,
-                        images: [...prev.images, ...newImages]
-                    }));
-                }
-            };
-            reader.readAsDataURL(file);
-        });
-    };
 
     const removeImage = (index) => {
         setImagePreviews(prev => prev.filter((_, i) => i !== index));
@@ -220,6 +211,15 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
             const orderData = await paymentsAPI.createOrder({
                 property_name: formData.name,
             });
+
+            // Update fee breakdown from server response
+            if (orderData.listing_fee) {
+                setFeeBreakdown({
+                    base: orderData.listing_fee,
+                    gst: orderData.gst_amount,
+                    total: orderData.total_fee,
+                });
+            }
 
             // Step 2 — Open Razorpay checkout
             const rzpOptions = {
@@ -471,7 +471,7 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                         <div className="label-with-progress">
                             <label htmlFor="images">Property Images * (Exactly 4 required)</label>
                             <span className="upload-progress">
-                                {imagePreviews.length}/4 images uploaded
+                                {isUploadingImages ? 'Uploading…' : `${imagePreviews.length}/4 images uploaded`}
                             </span>
                         </div>
 
@@ -483,7 +483,7 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                             multiple
                             onChange={handleImageChange}
                             className="file-input"
-                            disabled={imagePreviews.length >= 4}
+                            disabled={imagePreviews.length >= 4 || isUploadingImages}
                         />
                         {errors.images && <span className="error-text">{errors.images}</span>}
                         <small className="form-hint">
@@ -525,6 +525,21 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                                 ⚠ {paymentError}
                             </div>
                         )}
+                        {/* Fee breakdown */}
+                        <div className="fee-breakdown">
+                            <div className="fee-row">
+                                <span>Listing Fee</span>
+                                <span>₹{feeBreakdown.base.toLocaleString('en-IN')}</span>
+                            </div>
+                            <div className="fee-row">
+                                <span>GST (18%)</span>
+                                <span>₹{feeBreakdown.gst.toLocaleString('en-IN')}</span>
+                            </div>
+                            <div className="fee-row fee-total">
+                                <span>Total Payable</span>
+                                <span>₹{feeBreakdown.total.toLocaleString('en-IN')}</span>
+                            </div>
+                        </div>
                         <button type="button" className="btn-cancel" onClick={onClose} disabled={isProcessingPayment}>
                             Cancel
                         </button>
@@ -537,7 +552,7 @@ const AddPropertyModal = ({ isOpen, onClose, onSubmit }) => {
                             ) : (
                                 <>
                                     <CreditCard size={16} />
-                                    Pay ₹999 &amp; List Property
+                                    Pay ₹{feeBreakdown.total.toLocaleString('en-IN')} &amp; List Property
                                 </>
                             )}
                         </button>

@@ -164,6 +164,8 @@ const HeroCarousel = () => {
                                 <img
                                     src={card.image}
                                     alt={card.title}
+                                    loading={index === 0 ? 'eager' : 'lazy'}
+                                    decoding="async"
                                     className="card-image-enhanced"
                                 />
                                 <div className={`absolute inset-0 bg-gradient-to-t ${card.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>

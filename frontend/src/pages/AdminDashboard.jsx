@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import {
     Shield, CheckCircle, XCircle, Users, Building2,
@@ -6,7 +6,7 @@ import {
     Clock, Mail, Phone, MapPin, ChevronDown, ChevronUp,
     IndianRupee, Plus, Star,
     CheckSquare, Square, Upload, LayoutDashboard,
-    LogOut, ChevronRight, Menu, X, CreditCard
+    LogOut, ChevronRight, Menu, X, CreditCard, Bell
 } from 'lucide-react';
 import LocationPicker from '../components/common/LocationPicker';
 import {
@@ -98,6 +98,14 @@ const AdminDashboard = () => {
     const [enquiryFilter, setEnquiryFilter] = useState('all');
     const [selectedEnquiries, setSelectedEnquiries] = useState([]);
 
+    // ── Notifications ──────────────────────────────────────────────────────────
+    const [showNotifications, setShowNotifications] = useState(false);
+    const [seenIds, setSeenIds] = useState(() => {
+        try { return new Set(JSON.parse(localStorage.getItem('ns_admin_seen_notifs') || '[]')); }
+        catch { return new Set(); }
+    });
+    const notifRef = useRef(null);
+
     // Listing form
     const [newListing, setNewListing] = useState({
         name: '', type: 'Coworking Space', city: '',
@@ -140,6 +148,22 @@ const AdminDashboard = () => {
     }, []);
 
     useEffect(() => { loadData(); }, [loadData]);
+
+    // Close notification dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (notifRef.current && !notifRef.current.contains(e.target)) {
+                setShowNotifications(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    // Persist seenIds to localStorage
+    useEffect(() => {
+        localStorage.setItem('ns_admin_seen_notifs', JSON.stringify([...seenIds]));
+    }, [seenIds]);
 
     // ── Handlers ───────────────────────────────────────────────────────────────
     const handleApprove = async (id) => {
@@ -229,17 +253,11 @@ const AdminDashboard = () => {
 
     const handleImageUpload = async (file, field) => {
         if (!file) return;
-        const formData = new FormData();
-        formData.append('file', file);
         try {
-            const token = localStorage.getItem('nanospace_token');
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/upload/image`, {
-                method: 'POST',
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
-            });
-            const data = await res.json();
-            if (data.url) setNewListing(prev => ({ ...prev, [field]: data.url }));
+            const { uploadToFirebaseStorage } = await import('../lib/firebase');
+            const storagePath = `listings/${Date.now()}_${file.name}`;
+            const url = await uploadToFirebaseStorage(file, storagePath);
+            setNewListing(prev => ({ ...prev, [field]: url }));
         } catch { setError('Image upload failed.'); }
     };
 
@@ -277,6 +295,42 @@ const AdminDashboard = () => {
     const handleLogout = () => { logout(); navigate('/'); };
 
     // ── Computed ───────────────────────────────────────────────────────────────
+    // Build notification list from pending bookings + new enquiries
+    const notifications = [
+        ...bookings
+            .filter(b => b.status === 'pending')
+            .map(b => ({
+                id: `booking_${b.id}`,
+                type: 'booking',
+                title: b.property_name || `Booking #${b.id}`,
+                subtitle: b.customer_name ? `from ${b.customer_name}` : 'New booking request',
+                time: b.created_at,
+                tab: 'bookings',
+            })),
+        ...enquiries
+            .filter(e => e.status === 'new')
+            .map(e => ({
+                id: `enquiry_${e.id}`,
+                type: 'enquiry',
+                title: e.name || 'New Enquiry',
+                subtitle: `${ENQUIRY_TYPE_LABELS[e.enquiry_type] || e.enquiry_type}${e.property_name ? ` · ${e.property_name}` : ''}`,
+                time: e.created_at,
+                tab: 'enquiries',
+            })),
+    ].sort((a, b) => new Date(b.time) - new Date(a.time));
+
+    const unreadCount = notifications.filter(n => !seenIds.has(n.id)).length;
+
+    const markAllSeen = () => setSeenIds(new Set(notifications.map(n => n.id)));
+
+    const handleNotifClick = (notif) => {
+        setSeenIds(prev => new Set([...prev, notif.id]));
+        setShowNotifications(false);
+        setActiveTab(notif.tab);
+        if (notif.tab === 'bookings') setBookingFilter('pending');
+        if (notif.tab === 'enquiries') setEnquiryFilter('new');
+    };
+
     const filteredBookings = bookingFilter === 'all' ? bookings : bookings.filter(b => b.status === bookingFilter);
     const currentProperties = propertySubTab === 'pending' ? pendingProperties : propertySubTab === 'approved' ? approvedProperties : rejectedProperties;
     const totalProperties = pendingProperties.length + approvedProperties.length + rejectedProperties.length;
@@ -1001,6 +1055,12 @@ const AdminDashboard = () => {
     // ── Render ─────────────────────────────────────────────────────────────────
     return (
         <div className={`ad-layout${sidebarOpen ? '' : ' sidebar-collapsed'}`}>
+            {/* Mobile overlay — tap to close sidebar */}
+            <div
+                className={`ad-overlay${sidebarOpen ? ' visible' : ''}`}
+                onClick={() => setSidebarOpen(false)}
+            />
+
             {/* Sidebar */}
             <aside className={`ad-sidebar ${sidebarOpen ? 'open' : 'collapsed'}`}>
                 <div className="ad-brand">
@@ -1080,6 +1140,84 @@ const AdminDashboard = () => {
                         </div>
                     </div>
                     <div className="ad-topbar-right">
+                        {/* Notification Bell */}
+                        <div className="ad-notif-wrap" ref={notifRef}>
+                            <button
+                                className="ad-notif-btn"
+                                onClick={() => setShowNotifications(v => !v)}
+                                aria-label="Notifications"
+                            >
+                                <Bell size={18} />
+                                {unreadCount > 0 && (
+                                    <span className="ad-notif-badge">{unreadCount > 99 ? '99+' : unreadCount}</span>
+                                )}
+                            </button>
+
+                            {showNotifications && (
+                                <div className="ad-notif-dropdown">
+                                    <div className="ad-notif-header">
+                                        <span className="ad-notif-title">
+                                            Notifications
+                                            {unreadCount > 0 && <span className="ad-notif-count">{unreadCount} new</span>}
+                                        </span>
+                                        {unreadCount > 0 && (
+                                            <button className="ad-notif-mark-all" onClick={markAllSeen}>
+                                                Mark all read
+                                            </button>
+                                        )}
+                                    </div>
+
+                                    <div className="ad-notif-list">
+                                        {notifications.length === 0 ? (
+                                            <div className="ad-notif-empty">
+                                                <Bell size={28} />
+                                                <p>All caught up!</p>
+                                                <span>No pending bookings or new enquiries.</span>
+                                            </div>
+                                        ) : (
+                                            notifications.map(notif => {
+                                                const isUnread = !seenIds.has(notif.id);
+                                                return (
+                                                    <button
+                                                        key={notif.id}
+                                                        className={`ad-notif-item${isUnread ? ' unread' : ''}`}
+                                                        onClick={() => handleNotifClick(notif)}
+                                                    >
+                                                        <div className={`ad-notif-icon-wrap ${notif.type}`}>
+                                                            {notif.type === 'booking'
+                                                                ? <Calendar size={15} />
+                                                                : <MessageSquare size={15} />}
+                                                        </div>
+                                                        <div className="ad-notif-body">
+                                                            <p className="ad-notif-item-title">{notif.title}</p>
+                                                            <p className="ad-notif-item-sub">{notif.subtitle}</p>
+                                                            {notif.time && (
+                                                                <p className="ad-notif-item-time">
+                                                                    {new Date(notif.time).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                                                </p>
+                                                            )}
+                                                        </div>
+                                                        {isUnread && <span className="ad-notif-dot" />}
+                                                    </button>
+                                                );
+                                            })
+                                        )}
+                                    </div>
+
+                                    {notifications.length > 0 && (
+                                        <div className="ad-notif-footer">
+                                            <button className="ad-notif-view-all" onClick={() => { setShowNotifications(false); setActiveTab('bookings'); setBookingFilter('pending'); }}>
+                                                <Calendar size={13} /> View pending bookings
+                                            </button>
+                                            <button className="ad-notif-view-all" onClick={() => { setShowNotifications(false); setActiveTab('enquiries'); setEnquiryFilter('new'); }}>
+                                                <MessageSquare size={13} /> View new enquiries
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
                         <button className="ad-refresh-btn" onClick={loadData} disabled={loading}>
                             <RefreshCw size={15} className={loading ? 'spin' : ''} /><span>Refresh</span>
                         </button>

@@ -129,6 +129,19 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    /**
+     * Sign in with Google via Firebase popup, then verify with the backend.
+     * idToken and role are provided by the caller after role selection.
+     */
+    const loginWithGoogle = async (idToken, role = 'customer') => {
+        const data = await authAPI.googleSignIn(idToken, role);
+        const loggedInUser = { ...data.user, name: data.user.full_name };
+        storeTokens(data.access_token, data.refresh_token);
+        setUser(loggedInUser);
+        localStorage.setItem('nanospace_user', JSON.stringify(loggedInUser));
+        return loggedInUser;
+    };
+
     const logout = () => {
         setUser(null);
         localStorage.removeItem('nanospace_user');
@@ -173,6 +186,7 @@ export const AuthProvider = ({ children }) => {
         login,
         signup,
         logout,
+        loginWithGoogle,
         updateProfile,
         verifyFirebasePhone,
         hasRole,

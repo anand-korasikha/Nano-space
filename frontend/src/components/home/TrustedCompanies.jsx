@@ -50,6 +50,8 @@ const TrustedCompanies = () => {
                             <img
                                 src={company.image}
                                 alt={company.name}
+                                loading="lazy"
+                                decoding="async"
                                 className="h-8 md:h-14 object-contain opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
                             />
                         </div>
@@ -69,7 +71,7 @@ const TrustedCompanies = () => {
             </div>
 
             {/* Keyframe animation */}
-            <style jsx>{`
+            <style>{`
                 @keyframes fadeInUp {
                     from {
                         opacity: 0;

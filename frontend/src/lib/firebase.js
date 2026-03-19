@@ -12,10 +12,10 @@
  */
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import { getAuth, connectAuthEmulator, GoogleAuthProvider, signInWithPopup, signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 import { getDatabase, connectDatabaseEmulator } from 'firebase/database';
 import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
-import { getStorage, connectStorageEmulator } from 'firebase/storage';
+import { getStorage, connectStorageEmulator, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { getFunctions, connectFunctionsEmulator } from 'firebase/functions';
 
 let _auth = null;
@@ -70,6 +70,54 @@ export function getFirebaseAuth() {
         console.log(`Connected to Firebase Auth Emulator at ${emulatorHost}`);
     }
     return _auth;
+}
+
+/**
+ * Sign in with Google using a popup.
+ * Returns the Firebase credential result; call result.user.getIdToken() for the ID token.
+ */
+export async function signInWithGoogle() {
+    const auth = getFirebaseAuth();
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+    return signInWithPopup(auth, provider);
+}
+
+/**
+ * Send phone OTP using Firebase Phone Auth (invisible reCAPTCHA).
+ * containerId must be the id of a <div> in the DOM.
+ * Returns a ConfirmationResult — pass it to confirmPhoneOTPFirebase.
+ */
+export async function sendPhoneOTPFirebase(phone, containerId = 'recaptcha-container') {
+    const auth = getFirebaseAuth();
+    // Clear any previously rendered verifier so the div can be reused
+    if (window._recaptchaVerifier) {
+        try { window._recaptchaVerifier.clear(); } catch (_) {}
+        window._recaptchaVerifier = null;
+    }
+    const verifier = new RecaptchaVerifier(auth, containerId, { size: 'invisible' });
+    window._recaptchaVerifier = verifier;
+    return signInWithPhoneNumber(auth, phone, verifier);
+}
+
+/**
+ * Confirm a Firebase phone OTP.
+ * Returns a UserCredential — call result.user.getIdToken() to get the ID token.
+ */
+export async function confirmPhoneOTPFirebase(confirmationResult, code) {
+    return confirmationResult.confirm(code);
+}
+
+/**
+ * Upload a file to Firebase Storage.
+ * storagePath: e.g. 'listings/1234_photo.jpg'
+ * Returns the public download URL.
+ */
+export async function uploadToFirebaseStorage(file, storagePath) {
+    const storage = getFirebaseStorage();
+    const storageRef = ref(storage, storagePath);
+    await uploadBytesResumable(storageRef, file);
+    return getDownloadURL(storageRef);
 }
 
 export function getFirebaseDatabase() {

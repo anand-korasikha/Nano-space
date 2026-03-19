@@ -100,6 +100,15 @@ export const authAPI = {
             method: 'POST',
             body: JSON.stringify({ firebase_token: firebaseToken }),
         }),
+
+    /**
+     * Sign in (or register) with a Firebase ID token from Google OAuth.
+     */
+    googleSignIn: (firebaseToken, role = 'customer') =>
+        request('/auth/google-signin', {
+            method: 'POST',
+            body: JSON.stringify({ firebase_token: firebaseToken, role }),
+        }),
 };
 
 // ─── Properties API ──────────────────────────────────────────────────────────
@@ -217,6 +226,9 @@ export const enquiriesAPI = {
 // ─── Payments API ────────────────────────────────────────────────────────────
 
 export const paymentsAPI = {
+    /** Get the current listing fee breakdown (no auth required) */
+    getFee: () => request('/payments/fee'),
+
     /** Create a Razorpay order for the listing fee */
     createOrder: (data) =>
         request('/payments/create-order', {
